@@ -27,6 +27,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
@@ -43,11 +44,11 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -69,15 +70,45 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 </head>
 
-<body class="quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Modelado de Datos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./recursos/syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -87,7 +118,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#bienvenido" id="toc-bienvenido" class="nav-link active" data-scroll-target="#bienvenido">Bienvenido</a>
   <ul class="collapse">
-  <li><a href="#material" id="toc-material" class="nav-link" data-scroll-target="#material">Material</a></li>
+  <li><a href="#material-del-curso" id="toc-material-del-curso" class="nav-link" data-scroll-target="#material-del-curso">Material del curso</a></li>
+  <li><a href="#repositorio" id="toc-repositorio" class="nav-link" data-scroll-target="#repositorio">Repositorio</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -98,6 +130,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Modelado de Datos</h1>
+<p class="subtitle lead">Análisis y modelado de datos en ciencias</p>
 </div>
 
 
@@ -116,12 +149,52 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="bienvenido" class="level1">
 <h1>Bienvenido</h1>
-<p>Repositorio del curso.</p>
-<section id="material" class="level2">
-<h2 class="anchored" data-anchor-id="material">Material</h2>
+<p>Bienvenido al repositorio oficial del curso <strong>Análisis y modelado de datos en ciencias</strong>.</p>
+<p>En este sitio se publicarán gradualmente las lecciones, notebooks, conjuntos de datos y recursos utilizados durante el semestre.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Antes de comenzar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se recomienda revisar el <strong>syllabus</strong> para conocer los objetivos, la metodología, el esquema de evaluación y el cronograma del curso.</p>
+</div>
+</div>
+<section id="material-del-curso" class="level2">
+<h2 class="anchored" data-anchor-id="material-del-curso">Material del curso</h2>
+<div class="grid">
+<section id="información-del-curso" class="level3 g-col-6">
+<h3 class="anchored" data-anchor-id="información-del-curso">Información del curso</h3>
 <ul>
 <li><a href="./recursos/syllabus.html">Syllabus</a></li>
 </ul>
+</section>
+<section id="recursos" class="level3 g-col-6">
+<h3 class="anchored" data-anchor-id="recursos">Recursos</h3>
+<ul>
+<li>Bibliografía</li>
+<li>Conjuntos de datos</li>
+<li>Material complementario</li>
+</ul>
+</section>
+<section id="lecciones" class="level3 g-col-6">
+<h3 class="anchored" data-anchor-id="lecciones">Lecciones</h3>
+<p>Las diapositivas y notebooks se publicarán conforme avance el semestre.</p>
+</section>
+<section id="proyecto" class="level3 g-col-6">
+<h3 class="anchored" data-anchor-id="proyecto">Proyecto</h3>
+<p>La información y los entregables del proyecto se publicarán durante el curso.</p>
+</section>
+</div>
+</section>
+<section id="repositorio" class="level2">
+<h2 class="anchored" data-anchor-id="repositorio">Repositorio</h2>
+<p>Todo el material del curso se encuentra disponible en GitHub.</p>
+<p><a href="https://github.com/urendacdenisse-hub/Modelado-de-datos" class="uri">https://github.com/urendacdenisse-hub/Modelado-de-datos</a></p>
 
 
 </section>
@@ -533,4 +606,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

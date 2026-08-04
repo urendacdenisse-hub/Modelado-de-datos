@@ -1,11 +1,63 @@
 ---
 title: "Modelado de Datos"
+subtitle: "Análisis y modelado de datos en ciencias"
 ---
 
 # Bienvenido
 
-Repositorio del curso.
+Bienvenido al repositorio oficial del curso **Análisis y modelado de datos en ciencias**.
 
-## Material
+En este sitio se publicarán gradualmente las lecciones, notebooks, conjuntos de datos y recursos utilizados durante el semestre.
+
+::: {.callout-note}
+## Antes de comenzar
+
+Se recomienda revisar el **syllabus** para conocer los objetivos, la metodología, el esquema de evaluación y el cronograma del curso.
+:::
+
+## Material del curso
+
+<div class="grid">
+
+::: {.g-col-6}
+
+### Información del curso
 
 - [Syllabus](recursos/syllabus.qmd)
+
+:::
+
+::: {.g-col-6}
+
+### Recursos
+
+- Bibliografía
+- Conjuntos de datos
+- Material complementario
+
+:::
+
+::: {.g-col-6}
+
+### Lecciones
+
+Las diapositivas y notebooks se publicarán conforme avance el semestre.
+
+:::
+
+::: {.g-col-6}
+
+### Proyecto
+
+La información y los entregables del proyecto se publicarán durante el curso.
+
+:::
+
+</div>
+
+
+## Repositorio
+
+Todo el material del curso se encuentra disponible en GitHub.
+
+<https://github.com/urendacdenisse-hub/Modelado-de-datos>
