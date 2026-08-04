@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dra. Denisse Urenda Castañeda">
+
+<title>Análisis y modelado de datos en ciencias – Modelado de Datos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#información-del-curso" id="toc-información-del-curso" class="nav-link active" data-scroll-target="#información-del-curso">Información del curso</a></li>
+  <li><a href="#información-del-instructor" id="toc-información-del-instructor" class="nav-link" data-scroll-target="#información-del-instructor">Información del instructor</a></li>
+  <li><a href="#descripción-del-curso" id="toc-descripción-del-curso" class="nav-link" data-scroll-target="#descripción-del-curso">Descripción del curso</a></li>
+  <li><a href="#resultados-de-aprendizaje" id="toc-resultados-de-aprendizaje" class="nav-link" data-scroll-target="#resultados-de-aprendizaje">Resultados de aprendizaje</a></li>
+  <li><a href="#enfoque-del-curso" id="toc-enfoque-del-curso" class="nav-link" data-scroll-target="#enfoque-del-curso">Enfoque del curso</a></li>
+  <li><a href="#evaluación-del-curso" id="toc-evaluación-del-curso" class="nav-link" data-scroll-target="#evaluación-del-curso">Evaluación del curso</a>
+  <ul class="collapse">
+  <li><a href="#sobre-los-quizzes" id="toc-sobre-los-quizzes" class="nav-link" data-scroll-target="#sobre-los-quizzes">Sobre los quizzes</a></li>
+  <li><a href="#sobre-el-proyecto" id="toc-sobre-el-proyecto" class="nav-link" data-scroll-target="#sobre-el-proyecto">Sobre el proyecto</a></li>
+  <li><a href="#sobre-el-puntaje-extra" id="toc-sobre-el-puntaje-extra" class="nav-link" data-scroll-target="#sobre-el-puntaje-extra">Sobre el puntaje extra</a></li>
+  </ul></li>
+  <li><a href="#cronograma-del-curso" id="toc-cronograma-del-curso" class="nav-link" data-scroll-target="#cronograma-del-curso">Cronograma del curso</a></li>
+  <li><a href="#recursos-y-herramientas-del-curso" id="toc-recursos-y-herramientas-del-curso" class="nav-link" data-scroll-target="#recursos-y-herramientas-del-curso">Recursos y herramientas del curso</a></li>
+  <li><a href="#uso-de-inteligencia-artificial" id="toc-uso-de-inteligencia-artificial" class="nav-link" data-scroll-target="#uso-de-inteligencia-artificial">Uso de inteligencia artificial</a></li>
+  <li><a href="#bibliografía" id="toc-bibliografía" class="nav-link" data-scroll-target="#bibliografía">Bibliografía</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Análisis y modelado de datos en ciencias</h1>
+<p class="subtitle lead">Syllabus</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dra. Denisse Urenda Castañeda </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="información-del-curso" class="level1">
+<h1>Información del curso</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Campo</strong></th>
+<th><strong>Información</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nombre</strong></td>
+<td>Análisis y modelado de datos en ciencias</td>
+</tr>
+<tr class="even">
+<td><strong>Clave</strong></td>
+<td>CBE-2853-06 / CBE-9869-17</td>
+</tr>
+<tr class="odd">
+<td><strong>Semestre</strong></td>
+<td>Agosto – Diciembre 2026</td>
+</tr>
+<tr class="even">
+<td><strong>Créditos</strong></td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td><strong>Horas</strong></td>
+<td>4.00</td>
+</tr>
+<tr class="even">
+<td><strong>Grupo</strong></td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td><strong>Horario</strong></td>
+<td>Martes y jueves<br>4:00 pm – 6:00 pm</td>
+</tr>
+<tr class="even">
+<td><strong>Lugar</strong></td>
+<td>Salón 103-H1-308</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="información-del-instructor" class="level1">
+<h1>Información del instructor</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Campo</strong></th>
+<th><strong>Información</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nombre</strong></td>
+<td>Dra. Denisse Urenda Castañeda</td>
+</tr>
+<tr class="even">
+<td><strong>Correo electrónico</strong></td>
+<td>denisse.urenda@uacj.mx</td>
+</tr>
+<tr class="odd">
+<td><strong>Asesorías</strong></td>
+<td>En línea, por medio de cita previa</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="descripción-del-curso" class="level1">
+<h1>Descripción del curso</h1>
+<p>Este curso introduce los fundamentos del análisis y modelado de datos aplicados a problemas científicos y de ingeniería. A lo largo del semestre, los estudiantes estudiarán técnicas de aprendizaje supervisado y no supervisado, métodos espectrales y análisis de grafos, comprendiendo tanto sus fundamentos matemáticos como su aplicación práctica. El curso combina teoría con un proyecto integrador, en el que los estudiantes desarrollarán un proyecto utilizando Python y documentarán de manera clara la metodología, las decisiones de diseño y los resultados obtenidos mediante un reporte técnico elaborado en Overleaf.</p>
+</section>
+<section id="resultados-de-aprendizaje" class="level1">
+<h1>Resultados de aprendizaje</h1>
+<p>Al finalizar el curso, el estudiante será capaz de: - Formular problemas de análisis y modelado de datos a partir de preguntas científicas o de ingeniería. - Explorar, visualizar e interpretar conjuntos de datos para identificar patrones y generar hipótesis. - Seleccionar y aplicar técnicas de aprendizaje supervisado, aprendizaje no supervisado y análisis espectral de acuerdo con las características del problema. - Evaluar e interpretar críticamente el desempeño de diferentes modelos utilizando métricas y herramientas de validación apropiadas. - Desarrollar un proyecto reproducible utilizando Python y documentar el proceso seguido mediante un reporte técnico elaborado en Overleaf.</p>
+</section>
+<section id="enfoque-del-curso" class="level1">
+<h1>Enfoque del curso</h1>
+<p>Este curso adopta un enfoque de aprendizaje basado en la resolución de problemas. Si bien la comprensión de los fundamentos matemáticos es esencial, el objetivo principal es desarrollar la capacidad de seleccionar y aplicar las herramientas adecuadas para analizar datos y responder preguntas científicas o de ingeniería. El aprendizaje se organiza alrededor de un proyecto semestral, el cual evoluciona conforme se introducen nuevas técnicas de análisis y modelado. En consecuencia, la evaluación se centra en la resolución de problemas, el desarrollo del proyecto y la comunicación clara de la metodología, las decisiones tomadas y los resultados obtenidos.</p>
+</section>
+<section id="evaluación-del-curso" class="level1">
+<h1>Evaluación del curso</h1>
+<p>Durante el curso, la evaluación estará basada en cuestionarios y en un proyecto desarrollado a lo largo del semestre. A continuación, se muestra la rúbrica de evaluación.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>Producto</strong></th>
+<th style="text-align: right;"><strong>Valor</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Quizzes (8)</td>
+<td style="text-align: right;">40% (5% cada uno)</td>
+</tr>
+<tr class="even">
+<td>Proyecto (3 entregables)</td>
+<td style="text-align: right;">60% (20% cada uno)</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>100%</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Extra</strong></td>
+<td style="text-align: right;"><strong>5%</strong></td>
+</tr>
+</tbody>
+</table>
+<section id="sobre-los-quizzes" class="level2">
+<h2 class="anchored" data-anchor-id="sobre-los-quizzes">Sobre los quizzes</h2>
+<p>Los quizzes se aplicarán aproximadamente cada dos semanas, durante la primera hora de la sesión correspondiente, y evaluarán la comprensión de los conceptos discutidos en clase.</p>
+</section>
+<section id="sobre-el-proyecto" class="level2">
+<h2 class="anchored" data-anchor-id="sobre-el-proyecto">Sobre el proyecto</h2>
+<p>Al inicio del curso, cada estudiante seleccionará un problema de análisis y modelado de datos que desarrollará durante todo el semestre. El proyecto se entregará en tres etapas distribuidas a lo largo del semestre, culminando con un reporte técnico elaborado en Overleaf.</p>
+</section>
+<section id="sobre-el-puntaje-extra" class="level2">
+<h2 class="anchored" data-anchor-id="sobre-el-puntaje-extra">Sobre el puntaje extra</h2>
+<p>La asistencia no forma parte de la calificación ordinaria del curso. Sin embargo, como reconocimiento al compromiso y la participación constante, se otorgará un porcentaje adicional sobre la calificación final conforme a los siguientes criterios:</p>
+<ul>
+<li>Asistencia perfecta: +5% sobre la calificación final.</li>
+<li>Hasta dos faltas o cuatro retardos: +3% sobre la calificación final.</li>
+</ul>
+</section>
+</section>
+<section id="cronograma-del-curso" class="level1">
+<h1>Cronograma del curso</h1>
+<p>El siguiente cronograma establece las fechas, los temas, las secciones y las actividades que se abordarán durante el curso.</p>
+<style>
+.cronograma {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.25;
+}
+
+.cronograma th,
+.cronograma td {
+  border: 1px solid #9e9e9e;
+  padding: 0.35rem 0.45rem;
+  vertical-align: middle;
+}
+
+.cronograma thead th {
+  background: #c6e7f5;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cronograma .unidad {
+  background: #12617c;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cronograma .semana,
+.cronograma .fecha,
+.cronograma .seccion,
+.cronograma .actividad {
+  text-align: center;
+}
+
+.cronograma .semana {
+  font-weight: 700;
+  background: #f4f4f4;
+}
+
+.cronograma .tema {
+  min-width: 16rem;
+}
+
+.cronograma ul {
+  margin: 0.15rem 0 0.15rem 1.1rem;
+  padding: 0;
+}
+
+.cronograma p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .cronograma {
+    font-size: 0.82rem;
+  }
+
+  .cronograma th,
+  .cronograma td {
+    padding: 0.25rem 0.3rem;
+  }
+}
+</style>
+<div style="overflow-x: auto;">
+<table class="cronograma">
+<thead>
+<tr>
+<th rowspan="2">
+Semana
+</th>
+<th rowspan="2">
+Fecha
+</th>
+<th rowspan="2">
+Tema
+</th>
+<th colspan="2">
+Sección
+</th>
+<th rowspan="2">
+Actividad
+</th>
+</tr>
+<tr>
+<th>
+ESL
+</th>
+<th>
+ISLP
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="6" class="unidad">
+Unidad I. Aprendizaje supervisado
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+1
+</td>
+<td class="fecha">
+04/08
+</td>
+<td class="tema">
+<strong>Introducción al curso</strong>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+06/08
+</td>
+<td class="tema">
+<strong>Introducción al análisis de datos</strong>
+<ul>
+<li>
+Tipos y fuentes de datos
+</li>
+<li>
+Adquisición y extracción de datos
+</li>
+<li>
+Preparación de datos
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+2.1, 2.2
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+2
+</td>
+<td class="fecha">
+11/08
+</td>
+<td class="tema">
+<ul>
+<li>
+Análisis exploratorio de datos (EDA)
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+13/08
+</td>
+<td class="tema">
+<strong>Introducción al aprendizaje supervisado</strong><br> <strong>Modelos paramétricos</strong>
+<ul>
+<li>
+Regresión lineal
+</li>
+</ul>
+</td>
+<td class="seccion">
+2.1
+</td>
+<td class="seccion">
+2.6
+</td>
+<td class="actividad">
+Quizz 1
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+3
+</td>
+<td class="fecha">
+18/08
+</td>
+<td class="tema">
+<ul>
+<li>
+Regresión lineal
+</li>
+</ul>
+</td>
+<td class="seccion">
+3.1, 3.2
+</td>
+<td class="seccion">
+3.2
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+20/08
+</td>
+<td class="tema">
+<ul>
+<li>
+Regularización: Ridge y Lasso
+</li>
+</ul>
+</td>
+<td class="seccion">
+6.2
+</td>
+<td class="seccion">
+3.4
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+4
+</td>
+<td class="fecha">
+25/08
+</td>
+<td class="tema">
+<ul>
+<li>
+Regresión logística
+</li>
+</ul>
+</td>
+<td class="seccion">
+4.3
+</td>
+<td class="seccion">
+4.4
+</td>
+<td class="actividad">
+Quizz 2
+</td>
+</tr>
+<tr>
+<td class="fecha">
+27/08
+</td>
+<td class="tema">
+<ul>
+<li>
+Support vector machines (SVM)
+</li>
+</ul>
+</td>
+<td class="seccion">
+9.3
+</td>
+<td class="seccion">
+12.2, 12.3
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+5
+</td>
+<td class="fecha">
+01/09
+</td>
+<td class="tema">
+<strong>Modelos no paramétricos y ensambles</strong>
+<ul>
+<li>
+<em>k</em>-Nearest Neighbors (<em>k</em>-NN)
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+13.3
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+03/09
+</td>
+<td class="tema">
+<ul>
+<li>
+Árboles de decisión
+</li>
+<li>
+Random Forest
+</li>
+</ul>
+</td>
+<td class="seccion">
+8.1, 8.2
+</td>
+<td class="seccion">
+9.2, 15.2
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+6
+</td>
+<td class="fecha">
+08/09
+</td>
+<td class="tema">
+<ul>
+<li>
+Boosting
+</li>
+</ul>
+</td>
+<td class="seccion">
+8.2
+</td>
+<td class="seccion">
+10.1, 16.2
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+10/09
+</td>
+<td class="tema">
+<ul>
+<li>
+Redes neuronales
+</li>
+</ul>
+</td>
+<td class="seccion">
+10.1, 10.2
+</td>
+<td class="seccion">
+11.3
+</td>
+<td class="actividad">
+Quizz 3<br>Entregable 1
+</td>
+</tr>
+<tr>
+<td colspan="6" class="unidad">
+Unidad II. Aprendizaje no supervisado
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+7
+</td>
+<td class="fecha">
+15/09
+</td>
+<td rowspan="2" class="tema">
+<strong>Introducción al aprendizaje no supervisado</strong><br> <strong>Reducción de dimensionalidad</strong>
+<ul>
+<li>
+Análisis de componentes principales (PCA)
+</li>
+</ul>
+</td>
+<td class="seccion">
+12.1
+</td>
+<td class="seccion">
+14.1
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+17/09
+</td>
+<td class="seccion">
+12.2
+</td>
+<td class="seccion">
+14.5
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+8
+</td>
+<td class="fecha">
+22/09
+</td>
+<td class="tema">
+<ul>
+<li>
+Descomposición de valores singulares (SVD)
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+24/09
+</td>
+<td class="tema">
+<strong>Métodos de agrupamiento</strong>
+<ul>
+<li>
+K-Means
+</li>
+</ul>
+</td>
+<td class="seccion">
+12.4
+</td>
+<td class="seccion">
+14.3
+</td>
+<td class="actividad">
+Quizz 4
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+9
+</td>
+<td class="fecha">
+29/09
+</td>
+<td class="tema">
+<ul>
+<li>
+Clustering jerárquico
+</li>
+</ul>
+</td>
+<td class="seccion">
+12.4
+</td>
+<td class="seccion">
+12.5, 12.6
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+01/10
+</td>
+<td class="tema">
+<ul>
+<li>
+DBSCAN
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+10
+</td>
+<td class="fecha">
+06/10
+</td>
+<td class="tema">
+<strong>Modelos probabilísticos</strong>
+<ul>
+<li>
+Mezclas gaussianas (GMM)
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+14.3
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+08/10
+</td>
+<td class="tema">
+<ul>
+<li>
+Algoritmo EM
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+8.5
+</td>
+<td class="actividad">
+Quizz 5
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+11
+</td>
+<td class="fecha">
+13/10
+</td>
+<td class="tema">
+<strong>Representación y visualización de datos</strong>
+<ul>
+<li>
+t-SNE
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+15/10
+</td>
+<td class="tema">
+<ul>
+<li>
+UMAP
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+</td>
+<td class="actividad">
+Entregable 2
+</td>
+</tr>
+<tr>
+<td colspan="6" class="unidad">
+Unidad III. Métodos espectrales y grafos
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+12
+</td>
+<td class="fecha">
+20/10
+</td>
+<td class="tema">
+<strong>Introducción</strong><br> <strong>Representación de datos como grafos</strong>
+<ul>
+<li>
+Grafos y redes
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+17.1<br>*6.1
+</td>
+<td class="actividad">
+Quizz 6
+</td>
+</tr>
+<tr>
+<td class="fecha">
+22/10
+</td>
+<td class="tema" style="text-align:center;">
+Día inhábil
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+13
+</td>
+<td class="fecha">
+27/10
+</td>
+<td class="tema">
+<ul>
+<li>
+Matriz de adyacencia
+</li>
+<li>
+Grados e incidencia
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+17.2,<br>*6.2,<br>*6.9
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+29/10
+</td>
+<td class="tema">
+<strong>Estructura espectral del grafo</strong>
+<ul>
+<li>
+Laplaciano del grafo
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+*6.13
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+14
+</td>
+<td class="fecha">
+03/11
+</td>
+<td class="tema">
+<ul>
+<li>
+Espectro del grafo
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+*6.13
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+05/11
+</td>
+<td class="tema">
+<strong>Métodos sobre grafos</strong>
+<ul>
+<li>
+Clustering espectral
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+</td>
+<td class="actividad">
+Quizz 7
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+15
+</td>
+<td class="fecha">
+10/11
+</td>
+<td class="tema">
+<ul>
+<li>
+Caminatas aleatorias
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+*6.14
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td class="fecha">
+12/11
+</td>
+<td class="tema">
+<ul>
+<li>
+Difusión de grafos
+</li>
+</ul>
+</td>
+<td class="seccion">
+</td>
+<td class="seccion">
+*6.14
+</td>
+<td class="actividad">
+</td>
+</tr>
+<tr>
+<td rowspan="2" class="semana">
+16
+</td>
+<td class="fecha">
+17/11
+</td>
+<td rowspan="2" class="tema">
+<strong>Aplicaciones</strong>
+</td>
+<td rowspan="2" class="seccion">
+</td>
+<td rowspan="2" class="seccion">
+*2–*4
+</td>
+<td rowspan="2" class="actividad">
+Quizz 8<br> Entregable 3
+</td>
+</tr>
+<tr>
+<td class="fecha">
+19/11
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="recursos-y-herramientas-del-curso" class="level1">
+<h1>Recursos y herramientas del curso</h1>
+<p>El material del curso estará disponible en un repositorio de GitHub, donde se publicarán las presentaciones, notebooks, conjuntos de datos y recursos complementarios. Los notebooks estarán desarrollados en Google Colab y servirán como apoyo para reproducir los ejemplos y experimentos presentados durante el curso.</p>
+<p>El proyecto semestral deberá documentarse mediante un reporte técnico elaborado en Overleaf, siguiendo una estructura similar a la de un artículo científico. El objetivo del reporte es desarrollar la capacidad de comunicar de manera clara el problema abordado, la metodología empleada, las decisiones tomadas y los resultados obtenidos.</p>
+<p><strong>Nota</strong>: <em>No se requiere experiencia previa con Google Colab, GitHub ni Overleaf. Las herramientas necesarias se introducirán gradualmente conforme avance el curso.</em></p>
+</section>
+<section id="uso-de-inteligencia-artificial" class="level1">
+<h1>Uso de inteligencia artificial</h1>
+<p>El uso de herramientas de inteligencia artificial generativa (por ejemplo, ChatGPT, Claude, Gemini o GitHub Copilot) está permitido y es alentado como apoyo para el aprendizaje. Sin embargo, estas herramientas deben utilizarse de manera crítica y responsable. Los estudiantes son responsables de comprender, validar y poder explicar cualquier solución presentada en el proyecto.</p>
+</section>
+<section id="bibliografía" class="level1">
+<h1>Bibliografía</h1>
+<p>Durante el curso, los libros enlistados a continuación servirán como material de apoyo para complementar los temas presentados en clase.</p>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><a href="https://hastie.su.domains/ElemStatLearn/"><img src="imagenes/esl.jpg" class="img-fluid" style="width:80.0%"></a></p>
+</div><div class="column" style="width:80%;">
+<section id="the-elements-of-statistical-learning-esl" class="level2">
+<h2 class="anchored" data-anchor-id="the-elements-of-statistical-learning-esl">The Elements of Statistical Learning (ESL)</h2>
+<p>Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em> (2nd ed.). Springer.</p>
+<p><a href="https://hastie.su.domains/ElemStatLearn/" class="uri">https://hastie.su.domains/ElemStatLearn/</a></p>
+</section>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><a href="https://www.statlearning.com/"><img src="imagenes/islp.jpg" class="img-fluid" style="width:80.0%"></a></p>
+</div><div class="column" style="width:80%;">
+<section id="introduction-to-statistical-learning-with-applications-in-python-islp" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-statistical-learning-with-applications-in-python-islp">Introduction to Statistical Learning with Applications in Python (ISLP)</h2>
+<p>James, G., Witten, D., Hastie, T., Tibshirani, R., &amp; Taylor, J. (2023). <em>An Introduction to Statistical Learning: With Applications in Python</em>. Springer.</p>
+<p><a href="https://www.statlearning.com/" class="uri">https://www.statlearning.com/</a></p>
+</section>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><a href="https://academic.oup.com/book/27303"><img src="imagenes/networks.jpg" class="img-fluid" style="width:80.0%"></a></p>
+</div><div class="column" style="width:80%;">
+<section id="networks-an-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="networks-an-introduction">Networks: An Introduction</h2>
+<p>Newman, M. E. J. (2010). <em>Networks: An Introduction</em>. Oxford University Press.</p>
+</section>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
