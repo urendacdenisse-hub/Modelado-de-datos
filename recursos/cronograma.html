@@ -1,0 +1,429 @@
+<style>
+.cronograma {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  line-height: 1.25;
+}
+
+.cronograma th,
+.cronograma td {
+  border: 1px solid #9e9e9e;
+  padding: 0.35rem 0.45rem;
+  vertical-align: middle;
+}
+
+.cronograma thead th {
+  background: #c6e7f5;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cronograma .unidad {
+  background: #12617c;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}
+
+.cronograma .semana,
+.cronograma .fecha,
+.cronograma .seccion,
+.cronograma .actividad {
+  text-align: center;
+}
+
+.cronograma .semana {
+  font-weight: 700;
+  background: #f4f4f4;
+}
+
+.cronograma .tema {
+  min-width: 16rem;
+}
+
+.cronograma ul {
+  margin: 0.15rem 0 0.15rem 1.1rem;
+  padding: 0;
+}
+
+.cronograma p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .cronograma {
+    font-size: 0.82rem;
+  }
+
+  .cronograma th,
+  .cronograma td {
+    padding: 0.25rem 0.3rem;
+  }
+}
+</style>
+
+<div style="overflow-x: auto;">
+<table class="cronograma">
+  <thead>
+    <tr>
+      <th rowspan="2">Semana</th>
+      <th rowspan="2">Fecha</th>
+      <th rowspan="2">Tema</th>
+      <th colspan="2">Sección</th>
+      <th rowspan="2">Actividad</th>
+    </tr>
+    <tr>
+      <th>ESL</th>
+      <th>ISLP</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td colspan="6" class="unidad">Unidad I. Aprendizaje supervisado</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">1</td>
+      <td class="fecha">04/08</td>
+      <td class="tema"><strong>Introducción al curso</strong></td>
+      <td class="seccion"></td>
+      <td class="seccion"></td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">06/08</td>
+      <td class="tema">
+        <strong>Introducción al análisis de datos</strong>
+        <ul>
+          <li>Tipos y fuentes de datos</li>
+          <li>Adquisición y extracción de datos</li>
+          <li>Preparación de datos</li>
+        </ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">2.1, 2.2</td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">2</td>
+      <td class="fecha">11/08</td>
+      <td class="tema">
+        <ul><li>Análisis exploratorio de datos (EDA)</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion"></td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">13/08</td>
+      <td class="tema">
+        <strong>Introducción al aprendizaje supervisado</strong><br>
+        <strong>Modelos paramétricos</strong>
+        <ul><li>Regresión lineal</li></ul>
+      </td>
+      <td class="seccion">2.1</td>
+      <td class="seccion">2.6</td>
+      <td class="actividad">Quizz 1</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">3</td>
+      <td class="fecha">18/08</td>
+      <td class="tema">
+        <ul><li>Regresión lineal</li></ul>
+      </td>
+      <td class="seccion">3.1, 3.2</td>
+      <td class="seccion">3.2</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">20/08</td>
+      <td class="tema">
+        <ul><li>Regularización: Ridge y Lasso</li></ul>
+      </td>
+      <td class="seccion">6.2</td>
+      <td class="seccion">3.4</td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">4</td>
+      <td class="fecha">25/08</td>
+      <td class="tema">
+        <ul><li>Regresión logística</li></ul>
+      </td>
+      <td class="seccion">4.3</td>
+      <td class="seccion">4.4</td>
+      <td class="actividad">Quizz 2</td>
+    </tr>
+    <tr>
+      <td class="fecha">27/08</td>
+      <td class="tema">
+        <ul><li>Support vector machines (SVM)</li></ul>
+      </td>
+      <td class="seccion">9.3</td>
+      <td class="seccion">12.2, 12.3</td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">5</td>
+      <td class="fecha">01/09</td>
+      <td class="tema">
+        <strong>Modelos no paramétricos y ensambles</strong>
+        <ul><li><em>k</em>-Nearest Neighbors (<em>k</em>-NN)</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">13.3</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">03/09</td>
+      <td class="tema">
+        <ul>
+          <li>Árboles de decisión</li>
+          <li>Random Forest</li>
+        </ul>
+      </td>
+      <td class="seccion">8.1, 8.2</td>
+      <td class="seccion">9.2, 15.2</td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">6</td>
+      <td class="fecha">08/09</td>
+      <td class="tema">
+        <ul><li>Boosting</li></ul>
+      </td>
+      <td class="seccion">8.2</td>
+      <td class="seccion">10.1, 16.2</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">10/09</td>
+      <td class="tema">
+        <ul><li>Redes neuronales</li></ul>
+      </td>
+      <td class="seccion">10.1, 10.2</td>
+      <td class="seccion">11.3</td>
+      <td class="actividad">Quizz 3<br>Entregable 1</td>
+    </tr>
+
+    <tr>
+      <td colspan="6" class="unidad">Unidad II. Aprendizaje no supervisado</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">7</td>
+      <td class="fecha">15/09</td>
+      <td rowspan="2" class="tema">
+        <strong>Introducción al aprendizaje no supervisado</strong><br>
+        <strong>Reducción de dimensionalidad</strong>
+        <ul><li>Análisis de componentes principales (PCA)</li></ul>
+      </td>
+      <td class="seccion">12.1</td>
+      <td class="seccion">14.1</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">17/09</td>
+      <td class="seccion">12.2</td>
+      <td class="seccion">14.5</td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">8</td>
+      <td class="fecha">22/09</td>
+      <td class="tema">
+        <ul><li>Descomposición de valores singulares (SVD)</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion"></td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">24/09</td>
+      <td class="tema">
+        <strong>Métodos de agrupamiento</strong>
+        <ul><li>K-Means</li></ul>
+      </td>
+      <td class="seccion">12.4</td>
+      <td class="seccion">14.3</td>
+      <td class="actividad">Quizz 4</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">9</td>
+      <td class="fecha">29/09</td>
+      <td class="tema">
+        <ul><li>Clustering jerárquico</li></ul>
+      </td>
+      <td class="seccion">12.4</td>
+      <td class="seccion">12.5, 12.6</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">01/10</td>
+      <td class="tema">
+        <ul><li>DBSCAN</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion"></td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">10</td>
+      <td class="fecha">06/10</td>
+      <td class="tema">
+        <strong>Modelos probabilísticos</strong>
+        <ul><li>Mezclas gaussianas (GMM)</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">14.3</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">08/10</td>
+      <td class="tema">
+        <ul><li>Algoritmo EM</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">8.5</td>
+      <td class="actividad">Quizz 5</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">11</td>
+      <td class="fecha">13/10</td>
+      <td class="tema">
+        <strong>Representación y visualización de datos</strong>
+        <ul><li>t-SNE</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion"></td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">15/10</td>
+      <td class="tema">
+        <ul><li>UMAP</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion"></td>
+      <td class="actividad">Entregable 2</td>
+    </tr>
+
+    <tr>
+      <td colspan="6" class="unidad">Unidad III. Métodos espectrales y grafos</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">12</td>
+      <td class="fecha">20/10</td>
+      <td class="tema">
+        <strong>Introducción</strong><br>
+        <strong>Representación de datos como grafos</strong>
+        <ul><li>Grafos y redes</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">17.1<br>&#42;6.1</td>
+      <td class="actividad">Quizz 6</td>
+    </tr>
+    <tr>
+      <td class="fecha">22/10</td>
+      <td class="tema" style="text-align:center;">Día inhábil</td>
+      <td class="seccion"></td>
+      <td class="seccion"></td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">13</td>
+      <td class="fecha">27/10</td>
+      <td class="tema">
+        <ul>
+          <li>Matriz de adyacencia</li>
+          <li>Grados e incidencia</li>
+        </ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">17.2,<br>&#42;6.2,<br>&#42;6.9</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">29/10</td>
+      <td class="tema">
+        <strong>Estructura espectral del grafo</strong>
+        <ul><li>Laplaciano del grafo</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">&#42;6.13</td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">14</td>
+      <td class="fecha">03/11</td>
+      <td class="tema">
+        <ul><li>Espectro del grafo</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">&#42;6.13</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">05/11</td>
+      <td class="tema">
+        <strong>Métodos sobre grafos</strong>
+        <ul><li>Clustering espectral</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion"></td>
+      <td class="actividad">Quizz 7</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">15</td>
+      <td class="fecha">10/11</td>
+      <td class="tema">
+        <ul><li>Caminatas aleatorias</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">&#42;6.14</td>
+      <td class="actividad"></td>
+    </tr>
+    <tr>
+      <td class="fecha">12/11</td>
+      <td class="tema">
+        <ul><li>Difusión de grafos</li></ul>
+      </td>
+      <td class="seccion"></td>
+      <td class="seccion">&#42;6.14</td>
+      <td class="actividad"></td>
+    </tr>
+
+    <tr>
+      <td rowspan="2" class="semana">16</td>
+      <td class="fecha">17/11</td>
+      <td rowspan="2" class="tema">
+        <strong>Aplicaciones</strong>
+      </td>
+      <td rowspan="2" class="seccion"></td>
+      <td rowspan="2" class="seccion">&#42;2–&#42;4</td>
+      <td rowspan="2" class="actividad">
+        Quizz 8<br>
+        Entregable 3
+      </td>
+    </tr>
+    <tr>
+      <td class="fecha">19/11</td>
+    </tr>
+  </tbody>
+</table>
+</div>
