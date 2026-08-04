@@ -1,0 +1,9 @@
+---
+title: "Análisis y modelado de datos en ciencias"
+---
+
+Bienvenido al sitio del curso.
+
+## Material disponible
+
+- [Syllabus del curso](recursos/syllabus.qmd)
