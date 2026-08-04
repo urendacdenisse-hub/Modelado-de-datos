@@ -36,11 +36,17 @@ Este curso introduce los fundamentos del análisis y modelado de datos aplicados
 # Resultados de aprendizaje
 
 Al finalizar el curso, el estudiante será capaz de:
+
 - Formular problemas de análisis y modelado de datos a partir de preguntas científicas o de ingeniería. 
+
 - Explorar, visualizar e interpretar conjuntos de datos para identificar patrones y generar hipótesis. 
+
 - Seleccionar y aplicar técnicas de aprendizaje supervisado, aprendizaje no supervisado y análisis espectral de acuerdo con las características del problema. 
+
 - Evaluar e interpretar críticamente el desempeño de diferentes modelos utilizando métricas y herramientas de validación apropiadas. 
+
 - Desarrollar un proyecto reproducible utilizando Python y documentar el proceso seguido mediante un reporte técnico elaborado en Overleaf.
+
 
 # Enfoque del curso
 
@@ -80,15 +86,15 @@ El siguiente cronograma establece las fechas, los temas, las secciones y las act
 
 # Recursos y herramientas del curso
 
-El material del curso estará disponible en un repositorio de GitHub, donde se publicarán las presentaciones, notebooks, conjuntos de datos y recursos complementarios. Los notebooks estarán desarrollados en Google Colab y servirán como apoyo para reproducir los ejemplos y experimentos presentados durante el curso.
+El material del curso estará disponible en el repositorio de [GitHub](https://github.com/urendacdenisse-hub/Modelado-de-datos), donde se publicarán las presentaciones, notebooks, conjuntos de datos y recursos complementarios. Los notebooks estarán desarrollados en [Google Colab](https://colab.research.google.com/) y servirán como apoyo para reproducir los ejemplos y experimentos presentados durante el curso.
 
-El proyecto semestral deberá documentarse mediante un reporte técnico elaborado en Overleaf, siguiendo una estructura similar a la de un artículo científico. El objetivo del reporte es desarrollar la capacidad de comunicar de manera clara el problema abordado, la metodología empleada, las decisiones tomadas y los resultados obtenidos.
+El proyecto semestral deberá documentarse mediante un reporte técnico elaborado en [Overleaf](https://es.overleaf.com/), siguiendo una estructura similar a la de un artículo científico. El objetivo del reporte es desarrollar la capacidad de comunicar de manera clara el problema abordado, la metodología empleada, las decisiones tomadas y los resultados obtenidos.
 
 **Nota**: *No se requiere experiencia previa con Google Colab, GitHub ni Overleaf. Las herramientas necesarias se introducirán gradualmente conforme avance el curso.*
 
 # Uso de inteligencia artificial
 
-El uso de herramientas de inteligencia artificial generativa (por ejemplo, ChatGPT, Claude, Gemini o GitHub Copilot) está permitido y es alentado como apoyo para el aprendizaje. Sin embargo, estas herramientas deben utilizarse de manera crítica y responsable. Los estudiantes son responsables de comprender, validar y poder explicar cualquier solución presentada en el proyecto.
+El uso de herramientas de inteligencia artificial generativa (por ejemplo, ChatGPT, Claude, Gemini o GitHub Copilot) está permitido y es alentado como apoyo para el aprendizaje. Sin embargo, estas herramientas deben utilizarse de manera crítica y responsable. **Los estudiantes son responsables de comprender, validar y poder explicar cualquier solución presentada en el proyecto.**
 
 # Bibliografía
 

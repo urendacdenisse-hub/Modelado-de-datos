@@ -1,6 +1,5 @@
 ---
-title: "Modelado de Datos"
-subtitle: "Análisis y modelado de datos en ciencias"
+title: "Análisis y modelado de datos en ciencias"
 ---
 
 # Bienvenido
