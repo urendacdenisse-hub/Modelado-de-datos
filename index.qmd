@@ -1,0 +1,11 @@
+---
+title: "Modelado de Datos"
+---
+
+# Bienvenido
+
+Repositorio del curso.
+
+## Material
+
+- [Syllabus](recursos/syllabus.qmd)

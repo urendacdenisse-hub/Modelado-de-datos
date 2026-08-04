@@ -1,0 +1,10 @@
+project:
+  type: website
+
+website:
+  title: "Modelado de Datos"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
