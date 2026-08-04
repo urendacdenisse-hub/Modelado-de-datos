@@ -3,13 +3,13 @@ project:
 
 website:
   title: "Modelado de Datos"
-
   navbar:
     left:
       - href: index.qmd
         text: Inicio
       - href: recursos/syllabus.qmd
         text: Syllabus
+
 format:
   html:
     theme: cosmo
