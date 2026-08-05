@@ -1,0 +1,42 @@
+---
+title: "Proyecto"
+---
+
+El proyecto tiene como objetivo que el estudiante aplique de manera progresiva los conocimientos adquiridos a lo largo del curso para resolver un problema real mediante técnicas de modelado de datos. El proyecto se desarrollará de forma incremental a través de tres entregables, cada uno enfocado en una etapa específica del proceso de análisis y modelado. Cada entrega será evaluada de acuerdo con la rúbrica correspondiente.
+
+# Entregables
+
+A continuación se describen los objetivos y requisitos de cada uno de los entregables que conforman el proyecto. Se espera que cada entrega incorpore las observaciones realizadas en la evaluación anterior, de manera que el proyecto evolucione de forma continua hasta su versión final.
+
+## Entregable 1. Planteamiento del problema y modelado supervisado
+
+En esta primera entrega el estudiante deberá definir claramente el problema que abordará, justificar su relevancia y presentar una propuesta metodológica para resolverlo. La entrega deberá incluir los siguientes apartados:
+
+- **Planteamiento del problema o pregunta de investigación**.
+  
+- **Revisión de literatura**, considerando al menos **tres artículos científicos** relacionados con el problema.
+  
+- **Selección y descripción del conjunto de datos**, incluyendo su origen, variables principales y características generales.
+  
+- **Análisis exploratorio de datos (EDA)**, utilizando visualizaciones y estadísticas descriptivas para comprender el comportamiento de los datos.
+
+- **Desarrollo de modelos de aprendizaje supervisado**, incluyendo la selección, justificación, implementación y evaluación de al menos **tres modelos**. Los resultados deberán compararse mediante métricas apropiadas para el problema, identificando el modelo con mejor desempeño y discutiendo sus principales ventajas y limitaciones.
+
+
+# Rúbricas
+
+Las siguientes rúbricas describen los criterios de evaluación de cada entregable del proyecto. Cada criterio será valorado de acuerdo con el nivel de desempeño alcanzado: No entregado, Insuficiente, Aceptable o Excelente. La calificación de cada entregable se obtendrá a partir del desempeño demostrado en los distintos criterios de evaluación.
+
+## Rúbrica 1. Planteamiento del problema y modelado supervisado
+
+La siguiente rúbrica describe los criterios de evaluación para el primer entregable del proyecto.
+
+| Criterio | No entregado (0%) | Insuficiente (40%) | Aceptable (70%) | Excelente (100%) |
+|----------|--------------|--------------|-----------|-----------|
+| **Planteamiento del problema** | No se presenta el planteamiento del problema. | El problema es poco claro o carece de justificación. | El problema está claramente definido y cuenta con una justificación básica. | El problema está claramente definido, bien justificado y demuestra una comprensión sólida del contexto y su relevancia. |
+| **Revisión de literatura** | No se presenta revisión de literatura. | Se presentan menos de tres artículos o el análisis es superficial. | Se presentan al menos tres artículos relevantes y se describe su relación con el problema. | Los artículos son pertinentes, se analizan críticamente y se establece claramente su relación con el proyecto. |
+| **Descripción del conjunto de datos** | No se describe el conjunto de datos. | La descripción es incompleta o poco clara. | Se describe el origen, las variables principales y las características generales del conjunto de datos. | La descripción es completa, organizada y justifica la selección del conjunto de datos para resolver el problema. |
+| **Análisis exploratorio de datos (EDA)** | No se realiza el análisis exploratorio. | El análisis es limitado o las visualizaciones son escasas y poco interpretadas. | Se presentan visualizaciones y estadísticas descriptivas que permiten comprender el conjunto de datos. | El análisis es profundo, utiliza visualizaciones apropiadas y genera conclusiones relevantes para el desarrollo del proyecto. |
+| **Implementación de modelos supervisados** | No se implementan modelos. | Se implementan menos de tres modelos o presentan errores importantes en su desarrollo o entrenamiento. | Se implementan y entrenan correctamente al menos tres modelos de aprendizaje supervisado. | Los modelos están correctamente implementados, se justifica su selección y se siguen buenas prácticas en su desarrollo y entrenamiento. |
+| **Comparación de resultados** | No se comparan los modelos. | La comparación es incompleta o utiliza métricas inadecuadas. | Los modelos se comparan mediante métricas apropiadas y se identifica el mejor desempeño. | La comparación es rigurosa, interpreta adecuadamente las métricas y justifica de manera sólida la selección del modelo final. |
+| **Calidad del reporte** | No se entrega reporte. | El reporte presenta deficiencias importantes de organización, redacción o formato. | El reporte está bien organizado, redactado y documentado, con referencias adecuadas. | El reporte presenta una excelente organización, redacción técnica, figuras y tablas de calidad, así como referencias correctamente citadas. |

@@ -1,0 +1,36 @@
+---
+title: "Lecciones"
+---
+
+# Unidad I. Aprendizaje supervisado
+
+## Introducción a la ciencia de datos
+
+- [Introduccón](unidad-01/leccion-01.qmd)
+
+## Introduccion al analisis de datos
+
+- [Introduccón](unidad-01/leccion-02.qmd)
+- [Tipos y fuentes de datos](unidad-01/leccion-03.qmd)
+- [Adquisicion y extracción de datos](unidad-01/leccion-04.qmd)
+- Preparación de datos
+- Analisis exporatorio de datos
+
+## Introducción al aprendizaje supervisado
+
+- Introducción
+
+## Modelos paramétricos
+
+- Regresión lineal
+- Regularización: Ridge y Lasso
+- Regresion logística
+- Support vector machines
+
+## Modelos no paramétricos y ensambles
+
+- $k$-Nearest Neighbors
+- Árboles de decisión
+- Random Forest
+- Boosting
+- Redes neuronales

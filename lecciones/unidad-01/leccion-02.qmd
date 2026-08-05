@@ -1,0 +1,152 @@
+---
+title: "Aprendizaje supervisado"
+subtitle: "Introducción al análisis de datos"
+author: "Dra. Denisse Urenda Castañeda"
+
+bibliography: ../../recursos/referencias.bib
+csl: ../../recursos/ieee.csl
+
+nocite: |
+    @questionpro_analisis
+
+
+format:
+  revealjs:
+    css: ../../recursos/slides.css
+    include-after-body: 
+        text: |
+            <a href="../index.html" class="home-button">
+            📖 Lecciones
+            </a>
+    theme: simple
+    slide-number: c/t
+    transition: fade
+    toc: true
+    toc-depth: 2
+    incremental: false
+    center: false
+    footer: "Modelado de Datos · UACJ"
+---
+
+## Introducción
+
+El análisis de datos es un proceso estructurado que permite transformar datos en información útil para responder preguntas y apoyar la toma de decisiones.
+
+## El proceso de análisis de datos
+
+![](../imagenes/como-hacer-un-analisis-de-datos.jpeg){width=95%}
+
+::: {.figure-source}
+Fuente: QuestionPro, *Análisis de datos*.
+:::
+
+## Tipos y fuentes de datos
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+![](../imagenes/analisis-paso2.jpg){width=90%}
+
+:::
+
+::: {.column width="80%"}
+
+**Tareas**
+
+- Identificar las variables necesarias.
+- Definir qué información se requiere.
+- Seleccionar las fuentes de datos.
+- Evaluar la disponibilidad y calidad de los datos.
+
+:::
+
+::::
+
+## Adquisición y preparación de datos
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+![](../imagenes/analisis-paso3.jpg){width=90%}
+
+:::
+
+::: {.column width="80%"}
+
+**Tareas**
+
+- Obtener los datos desde las fuentes seleccionadas.
+- Integrar información de múltiples orígenes.
+- Limpiar errores e inconsistencias.
+- Transformar los datos para su análisis.
+
+:::
+
+::::
+
+## Exploración y análisis
+
+:::: {.columns}
+
+::: {.column width="20%"}
+
+![](../imagenes/analisis-paso4.jpg){width=90%}
+
+:::
+
+::: {.column width="80%"}
+
+**Tareas**
+
+- Explorar la estructura de los datos.
+- Identificar patrones y relaciones.
+- Detectar valores atípicos y anomalías.
+- Generar información para apoyar decisiones.
+
+:::
+
+::::
+
+## Resumen
+
+- El análisis de datos sigue un proceso estructurado para responder preguntas mediante el uso de datos.
+
+- Las primeras etapas consisten en identificar los datos necesarios, obtenerlos y prepararlos para su análisis.
+
+- La exploración de los datos permite comprender su comportamiento antes de construir modelos.
+
+## Referencias
+
+::: {#refs}
+:::
+
+## Preguntas
+
+:::: {.columns}
+
+::: {.column width="45%"}
+![](../imagenes/mister.jpg){width=95%}
+:::
+
+::: {.column width="55%"}
+::: {.vcenter}
+
+<div class="fragment"> ¿Seguro? 🤨 </div>
+
+<div class="fragment">Bueno...</div>
+
+<div class="fragment">Pregúntale a [ChatGPT](https://chatgpt.com) pues.</div>
+
+:::
+:::
+
+::::
+
+
+## ¿Qué sigue?
+
+En la siguiente sesión aprenderemos a identificar los principales **tipos de datos** y las **fuentes de información** utilizadas en proyectos de análisis de datos.
+
+[**Ir a la siguiente lección →**](leccion-03.qmd)

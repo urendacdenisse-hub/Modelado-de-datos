@@ -1,0 +1,83 @@
+---
+title: "Título de la unidad"
+subtitle: "Titulo de la lección"
+author: "Dra. Denisse Urenda Castañeda"
+
+bibliography: ../recursos/referencias.bib
+csl: ../recursos/ieee.csl
+
+nocite: |
+
+format:
+  revealjs:
+    css: ../recursos/slides.css
+    include-after-body: 
+      text: |
+        <a href="../index.html" class="home-button">
+        📖 Lecciones
+        </a>
+    theme: simple
+    slide-number: c/t
+    transition: fade
+    toc: true
+    toc-depth: 2
+    incremental: false
+    center: false
+    footer: "Modelado de Datos · UACJ"
+---
+
+## Introducción
+
+...
+
+## Tema 1
+
+...
+
+## Tema 2
+
+...
+
+## Tema 3
+
+...
+
+## Resumen
+
+- Idea clave 1.
+- Idea clave 2.
+- Idea clave 3.
+
+## Referencias
+
+::: {#refs}
+:::
+
+## Preguntas
+
+:::: {.columns}
+
+::: {.column width="45%"}
+![](../imagenes/mister.jpg){width=95%}
+:::
+
+::: {.column width="55%"}
+::: {.vcenter}
+
+<div class="fragment"> ¿Seguro? 🤨 </div>
+
+<div class="fragment">Bueno...</div>
+
+<div class="fragment">Pregúntale a [ChatGPT](https://chatgpt.com) pues.</div>
+
+:::
+:::
+
+::::
+
+
+## ¿Qué sigue?
+
+Descripcion breve
+
+[**Ir a la siguiente sección →**](nombre de leccion/laboratorio/proyecto)

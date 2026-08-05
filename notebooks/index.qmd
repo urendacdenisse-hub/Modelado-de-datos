@@ -1,0 +1,27 @@
+---
+title: "Notebooks"
+---
+
+# Unidad I. Aprendizaje supervisado
+
+## Introduccion al analisis de datos
+
+- Tipos y fuentes de datos
+- Adquisicion y extracción de datos
+- Preparación de datos
+- Analisis exporatorio de datos
+
+## Modelos paramétricos
+
+- Regresión lineal
+- Regularización: Ridge y Lasso
+- Regresion logística
+- Support vector machines
+
+## Modelos no paramétricos y ensambles
+
+- $k$-Nearest Neighbors
+- Árboles de decisión
+- Random Forest
+- Boosting
+- Redes neuronales

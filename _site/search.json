@@ -68,5 +68,537 @@
     "title": "Análisis y modelado de datos en ciencias",
     "section": "",
     "text": "Todo el material del curso se encuentra disponible en GitHub.\nhttps://github.com/urendacdenisse-hub/Modelado-de-datos"
+  },
+  {
+    "objectID": "proyecto/index.html",
+    "href": "proyecto/index.html",
+    "title": "Proyecto",
+    "section": "",
+    "text": "El proyecto tiene como objetivo que el estudiante aplique de manera progresiva los conocimientos adquiridos a lo largo del curso para resolver un problema real mediante técnicas de modelado de datos. El proyecto se desarrollará de forma incremental a través de tres entregables, cada uno enfocado en una etapa específica del proceso de análisis y modelado. Cada entrega será evaluada de acuerdo con la rúbrica correspondiente."
+  },
+  {
+    "objectID": "proyecto/index.html#entregable-1.-planteamiento-del-problema-y-modelado-supervisado",
+    "href": "proyecto/index.html#entregable-1.-planteamiento-del-problema-y-modelado-supervisado",
+    "title": "Proyecto",
+    "section": "Entregable 1. Planteamiento del problema y modelado supervisado",
+    "text": "Entregable 1. Planteamiento del problema y modelado supervisado\nEn esta primera entrega el estudiante deberá definir claramente el problema que abordará, justificar su relevancia y presentar una propuesta metodológica para resolverlo. La entrega deberá incluir los siguientes apartados:\n\nPlanteamiento del problema o pregunta de investigación.\nRevisión de literatura, considerando al menos tres artículos científicos relacionados con el problema.\nSelección y descripción del conjunto de datos, incluyendo su origen, variables principales y características generales.\nAnálisis exploratorio de datos (EDA), utilizando visualizaciones y estadísticas descriptivas para comprender el comportamiento de los datos.\nDesarrollo de modelos de aprendizaje supervisado, incluyendo la selección, justificación, implementación y evaluación de al menos tres modelos. Los resultados deberán compararse mediante métricas apropiadas para el problema, identificando el modelo con mejor desempeño y discutiendo sus principales ventajas y limitaciones."
+  },
+  {
+    "objectID": "proyecto/index.html#rúbrica-1.-planteamiento-del-problema-y-modelado-supervisado",
+    "href": "proyecto/index.html#rúbrica-1.-planteamiento-del-problema-y-modelado-supervisado",
+    "title": "Proyecto",
+    "section": "Rúbrica 1. Planteamiento del problema y modelado supervisado",
+    "text": "Rúbrica 1. Planteamiento del problema y modelado supervisado\nLa siguiente rúbrica describe los criterios de evaluación para el primer entregable del proyecto.\n\n\n\n\n\n\n\n\n\n\nCriterio\nNo entregado (0%)\nInsuficiente (40%)\nAceptable (70%)\nExcelente (100%)\n\n\n\n\nPlanteamiento del problema\nNo se presenta el planteamiento del problema.\nEl problema es poco claro o carece de justificación.\nEl problema está claramente definido y cuenta con una justificación básica.\nEl problema está claramente definido, bien justificado y demuestra una comprensión sólida del contexto y su relevancia.\n\n\nRevisión de literatura\nNo se presenta revisión de literatura.\nSe presentan menos de tres artículos o el análisis es superficial.\nSe presentan al menos tres artículos relevantes y se describe su relación con el problema.\nLos artículos son pertinentes, se analizan críticamente y se establece claramente su relación con el proyecto.\n\n\nDescripción del conjunto de datos\nNo se describe el conjunto de datos.\nLa descripción es incompleta o poco clara.\nSe describe el origen, las variables principales y las características generales del conjunto de datos.\nLa descripción es completa, organizada y justifica la selección del conjunto de datos para resolver el problema.\n\n\nAnálisis exploratorio de datos (EDA)\nNo se realiza el análisis exploratorio.\nEl análisis es limitado o las visualizaciones son escasas y poco interpretadas.\nSe presentan visualizaciones y estadísticas descriptivas que permiten comprender el conjunto de datos.\nEl análisis es profundo, utiliza visualizaciones apropiadas y genera conclusiones relevantes para el desarrollo del proyecto.\n\n\nImplementación de modelos supervisados\nNo se implementan modelos.\nSe implementan menos de tres modelos o presentan errores importantes en su desarrollo o entrenamiento.\nSe implementan y entrenan correctamente al menos tres modelos de aprendizaje supervisado.\nLos modelos están correctamente implementados, se justifica su selección y se siguen buenas prácticas en su desarrollo y entrenamiento.\n\n\nComparación de resultados\nNo se comparan los modelos.\nLa comparación es incompleta o utiliza métricas inadecuadas.\nLos modelos se comparan mediante métricas apropiadas y se identifica el mejor desempeño.\nLa comparación es rigurosa, interpreta adecuadamente las métricas y justifica de manera sólida la selección del modelo final.\n\n\nCalidad del reporte\nNo se entrega reporte.\nEl reporte presenta deficiencias importantes de organización, redacción o formato.\nEl reporte está bien organizado, redactado y documentado, con referencias adecuadas.\nEl reporte presenta una excelente organización, redacción técnica, figuras y tablas de calidad, así como referencias correctamente citadas."
+  },
+  {
+    "objectID": "lecciones/index.html",
+    "href": "lecciones/index.html",
+    "title": "Lecciones",
+    "section": "",
+    "text": "Introduccón\n\n\n\n\n\nIntroduccón\nTipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos\n\n\n\n\n\nIntroducción\n\n\n\n\n\nRegresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines\n\n\n\n\n\n\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
+  },
+  {
+    "objectID": "lecciones/index.html#introducción-a-la-ciencia-de-datos",
+    "href": "lecciones/index.html#introducción-a-la-ciencia-de-datos",
+    "title": "Lecciones",
+    "section": "",
+    "text": "Introduccón"
+  },
+  {
+    "objectID": "lecciones/index.html#introduccion-al-analisis-de-datos",
+    "href": "lecciones/index.html#introduccion-al-analisis-de-datos",
+    "title": "Lecciones",
+    "section": "",
+    "text": "Introduccón\nTipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
+  },
+  {
+    "objectID": "lecciones/index.html#introducción-al-aprendizaje-supervisado",
+    "href": "lecciones/index.html#introducción-al-aprendizaje-supervisado",
+    "title": "Lecciones",
+    "section": "",
+    "text": "Introducción"
+  },
+  {
+    "objectID": "lecciones/index.html#modelos-paramétricos",
+    "href": "lecciones/index.html#modelos-paramétricos",
+    "title": "Lecciones",
+    "section": "",
+    "text": "Regresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines"
+  },
+  {
+    "objectID": "lecciones/index.html#modelos-no-paramétricos-y-ensambles",
+    "href": "lecciones/index.html#modelos-no-paramétricos-y-ensambles",
+    "title": "Lecciones",
+    "section": "",
+    "text": "\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
+  },
+  {
+    "objectID": "notebooks/index.html",
+    "href": "notebooks/index.html",
+    "title": "Notebooks",
+    "section": "",
+    "text": "Tipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos\n\n\n\n\n\nRegresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines\n\n\n\n\n\n\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
+  },
+  {
+    "objectID": "notebooks/index.html#introduccion-al-analisis-de-datos",
+    "href": "notebooks/index.html#introduccion-al-analisis-de-datos",
+    "title": "Notebooks",
+    "section": "",
+    "text": "Tipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
+  },
+  {
+    "objectID": "notebooks/index.html#modelos-paramétricos",
+    "href": "notebooks/index.html#modelos-paramétricos",
+    "title": "Notebooks",
+    "section": "",
+    "text": "Regresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines"
+  },
+  {
+    "objectID": "notebooks/index.html#modelos-no-paramétricos-y-ensambles",
+    "href": "notebooks/index.html#modelos-no-paramétricos-y-ensambles",
+    "title": "Notebooks",
+    "section": "",
+    "text": "\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
+  },
+  {
+    "objectID": "plantillas/lecciones.html#introducción",
+    "href": "plantillas/lecciones.html#introducción",
+    "title": "Título de la unidad",
+    "section": "Introducción",
+    "text": "Introducción\n…"
+  },
+  {
+    "objectID": "plantillas/lecciones.html#tema-1",
+    "href": "plantillas/lecciones.html#tema-1",
+    "title": "Título de la unidad",
+    "section": "Tema 1",
+    "text": "Tema 1\n…"
+  },
+  {
+    "objectID": "plantillas/lecciones.html#tema-2",
+    "href": "plantillas/lecciones.html#tema-2",
+    "title": "Título de la unidad",
+    "section": "Tema 2",
+    "text": "Tema 2\n…"
+  },
+  {
+    "objectID": "plantillas/lecciones.html#tema-3",
+    "href": "plantillas/lecciones.html#tema-3",
+    "title": "Título de la unidad",
+    "section": "Tema 3",
+    "text": "Tema 3\n…"
+  },
+  {
+    "objectID": "plantillas/lecciones.html#resumen",
+    "href": "plantillas/lecciones.html#resumen",
+    "title": "Título de la unidad",
+    "section": "Resumen",
+    "text": "Resumen\n\nIdea clave 1.\nIdea clave 2.\nIdea clave 3."
+  },
+  {
+    "objectID": "plantillas/lecciones.html#referencias",
+    "href": "plantillas/lecciones.html#referencias",
+    "title": "Título de la unidad",
+    "section": "Referencias",
+    "text": "Referencias"
+  },
+  {
+    "objectID": "plantillas/lecciones.html#preguntas",
+    "href": "plantillas/lecciones.html#preguntas",
+    "title": "Título de la unidad",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "plantillas/lecciones.html#siguiente-lección",
+    "href": "plantillas/lecciones.html#siguiente-lección",
+    "title": "Título de la unidad",
+    "section": "Siguiente lección",
+    "text": "Siguiente lección"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#introducción",
+    "href": "lecciones/unidad-01/leccion-01.html#introducción",
+    "title": "Aprendizaje supervisado",
+    "section": "Introducción",
+    "text": "Introducción\n\n\nLa ciencia de datos es una disciplina interdisciplinaria que combina estadística, computación y conocimiento del dominio para transformar datos en información útil que apoye la toma de decisiones.\n\n\n\n\n\n\n\nFuente: Data Science Research Perú (Facebook, 2020)."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#flujo-de-un-proyecto-de-ciencia-de-datos",
+    "href": "lecciones/unidad-01/leccion-01.html#flujo-de-un-proyecto-de-ciencia-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Flujo de un proyecto de ciencia de datos",
+    "text": "Flujo de un proyecto de ciencia de datos"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#roles-en-ciencia-de-datos",
+    "href": "lecciones/unidad-01/leccion-01.html#roles-en-ciencia-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Roles en ciencia de datos",
+    "text": "Roles en ciencia de datos\n\n\n\n\n\n\n\nRol\nObjetivo\n\n\n\n\nIngeniero de Datos\nConstruir y mantener la infraestructura de datos.\n\n\nAnalista de Datos\nObtener información útil para apoyar decisiones.\n\n\nCientífico de Datos\nConstruir modelos que expliquen o predigan fenómenos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#ingeniero-de-datos",
+    "href": "lecciones/unidad-01/leccion-01.html#ingeniero-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Ingeniero de Datos",
+    "text": "Ingeniero de Datos\nSu principal responsabilidad es garantizar que los datos estén disponibles, organizados y sean confiables.\n\n\nIntegración de datos: combinar múltiples fuentes de información.\nBases de datos: diseñar y administrar sistemas de almacenamiento.\nETL / ELT: extraer, transformar y cargar datos.\nAutomatización: automatizar tareas y procesos de datos.\nCalidad de datos: detectar y corregir inconsistencias.\nPipelines: construir flujos de procesamiento de datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#analista-de-datos",
+    "href": "lecciones/unidad-01/leccion-01.html#analista-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Analista de datos",
+    "text": "Analista de datos\nSu objetivo es transformar datos en información que facilite la toma de decisiones.\n\n\nConsultas SQL: consultar y filtrar información.\nDashboards: diseñar paneles de indicadores.\nEstadística descriptiva: resumir y explorar datos.\nVisualización: comunicar resultados mediante gráficos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#científico-de-datos",
+    "href": "lecciones/unidad-01/leccion-01.html#científico-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Científico de datos",
+    "text": "Científico de datos\nSu trabajo consiste en desarrollar modelos capaces de describir, clasificar o predecir fenómenos a partir de datos.\n\nMachine Learning: entrenar modelos de aprendizaje.\nEstadística: analizar e interpretar datos.\nOptimización: desarrollar modelos de optimización.\nPredicción: estimar resultados futuros.\nExperimentación: diseñar y evaluar experimentos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#comparación",
+    "href": "lecciones/unidad-01/leccion-01.html#comparación",
+    "title": "Aprendizaje supervisado",
+    "section": "Comparación",
+    "text": "Comparación\n\n\n\nActividad\nIngeniero\nAnalista\nCientífico\n\n\n\n\nBases de datos\n✓\n\n\n\n\nETL\n✓\n\n\n\n\nSQL\n✓\n✓\n✓\n\n\nVisualización\n\n✓\n✓\n\n\nMachine Learning\n\n\n✓\n\n\nModelado estadístico\n\n✓\n✓"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#resumen",
+    "href": "lecciones/unidad-01/leccion-01.html#resumen",
+    "title": "Aprendizaje supervisado",
+    "section": "Resumen",
+    "text": "Resumen\n\nLa ciencia de datos combina estadística, computación y conocimiento del dominio para transformar datos en información útil.\nLos ingenieros, analistas y científicos de datos cumplen funciones distintas, pero colaboran para resolver un mismo problema.\nEl modelado de datos proporciona las herramientas para analizar información, construir modelos y apoyar la toma de decisiones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#referencias",
+    "href": "lecciones/unidad-01/leccion-01.html#referencias",
+    "title": "Aprendizaje supervisado",
+    "section": "Referencias",
+    "text": "Referencias\n\n\n[1] IBM, “¿Qué es la ciencia de datos?” Accessed: Aug. 05, 2026. [Online]. Available: https://www.ibm.com/mx-es/think/topics/data-science\n\n\n[2] Databricks, “Uncovering data science: Skills, careers and education.” Accessed: Aug. 05, 2026. [Online]. Available: https://www.databricks.com/es/blog/uncovering-data-science-skills-careers-and-education"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#preguntas",
+    "href": "lecciones/unidad-01/leccion-01.html#preguntas",
+    "title": "Aprendizaje supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#siguiente-lección",
+    "href": "lecciones/unidad-01/leccion-01.html#siguiente-lección",
+    "title": "Aprendizaje supervisado",
+    "section": "Siguiente lección",
+    "text": "Siguiente lección\nEn la siguiente sesión conoceremos el flujo general del análisis de datos, desde la obtención de los datos hasta su exploración inicial. Cada una de estas etapas será desarrollada con mayor detalle en las lecciones posteriores.\n\nTipos y fuentes de datos.\nAdquisición y extracción de datos.\nPreparación de datos.\nAnálisis exploratorio de datos.\n\nIr a la siguiente lección →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#flujo-de-trabajo-en-ciencia-de-datos",
+    "href": "lecciones/unidad-01/leccion-01.html#flujo-de-trabajo-en-ciencia-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Flujo de trabajo en ciencia de datos",
+    "text": "Flujo de trabajo en ciencia de datos\n\n\nFuente: Data Science Research Perú (Facebook, 2025)."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#introducción",
+    "href": "lecciones/unidad-01/leccion-02.html#introducción",
+    "title": "Aprendizaje supervisado",
+    "section": "Introducción",
+    "text": "Introducción\nEl análisis de datos es un proceso estructurado que permite transformar datos en información útil para responder preguntas y apoyar la toma de decisiones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#el-proceso-de-análisis-de-datos",
+    "href": "lecciones/unidad-01/leccion-02.html#el-proceso-de-análisis-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "El proceso de análisis de datos",
+    "text": "El proceso de análisis de datos\n\n\nFuente: QuestionPro, Análisis de datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#tipos-y-fuentes-de-datos",
+    "href": "lecciones/unidad-01/leccion-02.html#tipos-y-fuentes-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Tipos y fuentes de datos",
+    "text": "Tipos y fuentes de datos\n\n\n\n\nTareas\n\nIdentificar las variables necesarias.\nDefinir qué información se requiere.\nSeleccionar las fuentes de datos.\nEvaluar la disponibilidad y calidad de los datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#adquisición-y-preparación-de-datos",
+    "href": "lecciones/unidad-01/leccion-02.html#adquisición-y-preparación-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Adquisición y preparación de datos",
+    "text": "Adquisición y preparación de datos\n\n\n\n\nTareas\n\nObtener los datos desde las fuentes seleccionadas.\nIntegrar información de múltiples orígenes.\nLimpiar errores e inconsistencias.\nTransformar los datos para su análisis."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#exploración-y-análisis",
+    "href": "lecciones/unidad-01/leccion-02.html#exploración-y-análisis",
+    "title": "Aprendizaje supervisado",
+    "section": "Exploración y análisis",
+    "text": "Exploración y análisis\n\n\n\n\nTareas\n\nExplorar la estructura de los datos.\nIdentificar patrones y relaciones.\nDetectar valores atípicos y anomalías.\nGenerar información para apoyar decisiones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#resumen",
+    "href": "lecciones/unidad-01/leccion-02.html#resumen",
+    "title": "Aprendizaje supervisado",
+    "section": "Resumen",
+    "text": "Resumen\n\nEl análisis de datos sigue un proceso estructurado para responder preguntas mediante el uso de datos.\nLas primeras etapas consisten en identificar los datos necesarios, obtenerlos y prepararlos para su análisis.\nLa exploración de los datos permite comprender su comportamiento antes de construir modelos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#referencias",
+    "href": "lecciones/unidad-01/leccion-02.html#referencias",
+    "title": "Aprendizaje supervisado",
+    "section": "Referencias",
+    "text": "Referencias\n\n\n[1] QuestionPro, “Análisis de datos.” Accessed: Aug. 05, 2026. [Online]. Available: https://www.questionpro.com/es/analisis-de-datos.html"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#preguntas",
+    "href": "lecciones/unidad-01/leccion-02.html#preguntas",
+    "title": "Aprendizaje supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#siguiente-lección",
+    "href": "lecciones/unidad-01/leccion-02.html#siguiente-lección",
+    "title": "Aprendizaje supervisado",
+    "section": "Siguiente lección",
+    "text": "Siguiente lección\nEn la siguiente sesión aprenderemos a identificar los principales tipos de datos y las fuentes de información utilizadas en proyectos de análisis de datos.\nIr a la siguiente lección →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html",
+    "href": "lecciones/unidad-01/leccion-02.html",
+    "title": "Aprendizaje supervisado",
+    "section": "",
+    "text": "El análisis de datos es un proceso estructurado que permite transformar datos en información útil para responder preguntas y apoyar la toma de decisiones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#introducción",
+    "href": "lecciones/unidad-01/leccion-03.html#introducción",
+    "title": "Aprendizaje supervisado",
+    "section": "Introducción",
+    "text": "Introducción\nLos datos constituyen la materia prima de cualquier proyecto de análisis de datos. Antes de analizarlos, es necesario identificar qué información se requiere, cómo está representada y de dónde puede obtenerse."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#qué-son-los-datos",
+    "href": "lecciones/unidad-01/leccion-03.html#qué-son-los-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué son los datos?",
+    "text": "¿Qué son los datos?\nLos datos son observaciones, mediciones o registros que describen un fenómeno de interés.\nPueden representar información de distinta naturaleza y almacenarse de diferentes formas.\nEjemplos\n\nEdad de una persona.\nTemperatura ambiental.\nConsumo de energía.\nImagen satelital.\nComentario en una red social."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#tipos-de-datos",
+    "href": "lecciones/unidad-01/leccion-03.html#tipos-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Tipos de datos",
+    "text": "Tipos de datos\nLos datos pueden clasificarse según la información que representan.\n\n\n\n\n\n\n\nTipo\nEjemplos\n\n\n\n\nNuméricos\nEdad, peso, salario\n\n\nTexto\nNombre, correo electrónico, comentario\n\n\nBooleanos\n¿Aprobó?, ¿Está activo?, ¿Tiene membresía?\n\n\nFecha y hora\nFecha de nacimiento, hora de llegada, fecha de compra\n\n\nMultimedia\nFotografía, grabación de audio, video"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#fuentes-de-datos",
+    "href": "lecciones/unidad-01/leccion-03.html#fuentes-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Fuentes de datos",
+    "text": "Fuentes de datos\nUna fuente de datos es el origen desde el cual se obtiene la información utilizada en un análisis.\n\n\n\n\n\n\n\n\n\nTipo\nDescripción\nEjemplos\n\n\n\n\nBases de datos\nDatos en tablas.\nPostgreSQL, MySQL\n\n\nArchivos\nDocumentos digitales.\nCSV, Excel, JSON\n\n\nAPIs\nAcceso mediante servicios web.\nOpenWeather, GitHub API\n\n\nSensores\nMediciones automáticas.\nIoT, estaciones meteorológicas\n\n\nSitios web\nInformación publicada.\nPortales, redes sociales"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#ejemplos",
+    "href": "lecciones/unidad-01/leccion-03.html#ejemplos",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplos",
+    "text": "Ejemplos\nEn un proyecto de análisis de datos, el problema de interés determina qué datos se necesitan y de dónde pueden obtenerse.\n\n\n\n\nProblema\nDatos\nFuente\n\n\n\n\nPronóstico del clima\nTemperatura y humedad\nOpenWeather API\n\n\nAnálisis económico\nPIB, inflación y población\nINEGI\n\n\nPredicción del precio de viviendas\nDatos históricos de viviendas\nKaggle Datasets\n\n\nAnálisis de opiniones\nPublicaciones y comentarios\nMeta Graph API"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#resumen",
+    "href": "lecciones/unidad-01/leccion-03.html#resumen",
+    "title": "Aprendizaje supervisado",
+    "section": "Resumen",
+    "text": "Resumen\n\nLos datos pueden clasificarse según su naturaleza, su uso, su representación y su estructura.\nLa forma en que se representan los datos depende del contexto en el que serán utilizados.\nLa selección de una fuente de datos depende del problema que se desea resolver."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#referencias",
+    "href": "lecciones/unidad-01/leccion-03.html#referencias",
+    "title": "Aprendizaje supervisado",
+    "section": "Referencias",
+    "text": "Referencias\n\n\n[1] A. Choudhury, “What are data types and why are they important?” Accessed: Aug. 05, 2026. [Online]. Available: https://amplitude.com/blog/data-types\n\n\n[2] Ethan, “Data sources: Overview, types of data, & free data providers.” Accessed: Aug. 05, 2026. [Online]. Available: https://portable.io/learn/data-sources"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#preguntas",
+    "href": "lecciones/unidad-01/leccion-03.html#preguntas",
+    "title": "Aprendizaje supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#siguiente-lección",
+    "href": "lecciones/unidad-01/leccion-03.html#siguiente-lección",
+    "title": "Aprendizaje supervisado",
+    "section": "Siguiente lección",
+    "text": "Siguiente lección\nEn la siguiente sesión aprenderemos cómo obtener datos desde diferentes fuentes y prepararlos para su análisis.\nIr a la siguiente lección →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#tipos-de-datos-en-estadística",
+    "href": "lecciones/unidad-01/leccion-03.html#tipos-de-datos-en-estadística",
+    "title": "Aprendizaje supervisado",
+    "section": "Tipos de datos en estadística",
+    "text": "Tipos de datos en estadística\nEn estadística, los datos suelen clasificarse según las técnicas utilizadas para analizarlos.\n\n\n\nTipo\nEjemplo\n\n\n\n\nNuméricos\nEdad, peso, temperatura\n\n\nCategóricos\nSexo, ciudad, color\n\n\nTemporales\nFecha, hora, series de tiempo"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#tipos-de-datos-en-programación",
+    "href": "lecciones/unidad-01/leccion-03.html#tipos-de-datos-en-programación",
+    "title": "Aprendizaje supervisado",
+    "section": "Tipos de datos en programación",
+    "text": "Tipos de datos en programación\nCuando los datos se almacenan o procesan en un lenguaje de programación, cada valor debe representarse mediante un tipo de dato específico.\n\n\n\nTipo\nPython\nEjemplo\n\n\n\n\nEntero\nint\n25\n\n\nDecimal\nfloat\n18.5\n\n\nTexto\nstr\n\"Juárez\"\n\n\nBooleano\nbool\nTrue\n\n\nFecha y hora\ndatetime\ndatetime(2026, 8, 5)"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#tipos-de-datos-según-su-estructura",
+    "href": "lecciones/unidad-01/leccion-03.html#tipos-de-datos-según-su-estructura",
+    "title": "Aprendizaje supervisado",
+    "section": "Tipos de datos según su estructura",
+    "text": "Tipos de datos según su estructura\nAdemás de su contenido, los datos también pueden clasificarse según la forma en que están organizados.\n\n\n\n\n\n\n\n\n\nTipo\nDescripción\nEjemplos\n\n\n\n\nEstructurados\nEsquema fijo en filas y columnas.\nSQL, CSV\n\n\nSemiestructurados\nEstructura flexible con etiquetas.\nJSON, XML\n\n\nNo estructurados\nSin un esquema definido.\nTexto, imágenes, audio"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#ejemplos-en-física",
+    "href": "lecciones/unidad-01/leccion-03.html#ejemplos-en-física",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplos en Física",
+    "text": "Ejemplos en Física\nEjemplos de aplicaciones y fuentes de datos en física.\n\n\n\n\nProblema\nDatos\nFuente\n\n\n\n\nDetección de exoplanetas\nObservaciones de telescopios\nNASA Exoplanet Archive\n\n\nDetección de ondas gravitacionales\nMediciones experimentales\nLIGO Open Science Center\n\n\nClasificación de galaxias\nImágenes astronómicas\nSloan Digital Sky Survey\n\n\nAnálisis climático\nTemperatura y precipitación\nNASA Earthdata\n\n\nEstudio de terremotos\nMagnitud y ubicación\nUSGS Earthquake Catalog\n\n\nAnálisis de partículas\nDatos de colisiones\nCERN Open Data\n\n\nAnálisis de la calidad del aire\nConcentración de contaminantes\nOpenAQ\n\n\n\n\n\nNota: Los ejemplos fueron recopilados con apoyo de ChatGPT y verificados mediante las fuentes oficiales indicadas."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#introducción",
+    "href": "lecciones/unidad-01/leccion-04.html#introducción",
+    "title": "Aprendizaje supervisado",
+    "section": "Introducción",
+    "text": "Introducción\nUna vez identificadas las fuentes de datos, el siguiente paso consiste en obtener la información necesaria para su análisis.\nEn esta lección conoceremos las principales formas de adquirir datos utilizando Python."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#qué-es-la-adquisición-de-datos",
+    "href": "lecciones/unidad-01/leccion-04.html#qué-es-la-adquisición-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué es la adquisición de datos?",
+    "text": "¿Qué es la adquisición de datos?\nLa adquisición de datos es el proceso de obtener información desde una o varias fuentes para utilizarla en un proyecto de análisis de datos.\nLos datos pueden obtenerse desde:\n\nArchivos.\nBases de datos.\nAPIs.\nSitios web.\nSensores y dispositivos"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#lectura-de-archivos",
+    "href": "lecciones/unidad-01/leccion-04.html#lectura-de-archivos",
+    "title": "Aprendizaje supervisado",
+    "section": "Lectura de archivos",
+    "text": "Lectura de archivos\nPython permite leer distintos formatos de archivos mediante la biblioteca pandas.\nimport pandas as pd\n\ndf = pd.read_csv(\"datos.csv\")\ndf = pd.read_excel(\"datos.xlsx\")\ndf = pd.read_json(\"datos.json\")"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#consulta-de-bases-de-datos",
+    "href": "lecciones/unidad-01/leccion-04.html#consulta-de-bases-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Consulta de bases de datos",
+    "text": "Consulta de bases de datos\nLos datos también pueden obtenerse directamente desde un sistema gestor de bases de datos.\nimport pandas as pd\nfrom sqlalchemy import create_engine\n\nengine = create_engine(...)\ndf = pd.read_sql(\"SELECT * FROM ventas\", engine)"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#consumo-de-apis",
+    "href": "lecciones/unidad-01/leccion-04.html#consumo-de-apis",
+    "title": "Aprendizaje supervisado",
+    "section": "Consumo de APIs",
+    "text": "Consumo de APIs\nMuchas organizaciones ofrecen APIs para acceder a información actualizada mediante Internet.\nimport requests\n\nresponse = requests.get(url)\ndata = response.json()"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#extracción-desde-sitios-web",
+    "href": "lecciones/unidad-01/leccion-04.html#extracción-desde-sitios-web",
+    "title": "Aprendizaje supervisado",
+    "section": "Extracción desde sitios web",
+    "text": "Extracción desde sitios web\nCuando los datos no están disponibles mediante una API, es posible extraer información directamente desde una página web.\nimport pandas as pd\n\ntables = pd.read_html(url)"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#resumen",
+    "href": "lecciones/unidad-01/leccion-04.html#resumen",
+    "title": "Aprendizaje supervisado",
+    "section": "Resumen",
+    "text": "Resumen\n\nLos datos pueden obtenerse desde múltiples fuentes.\nPython proporciona herramientas para acceder a estas fuentes.\nEstas técnicas se aplicarán en el primer laboratorio del curso."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#referencias",
+    "href": "lecciones/unidad-01/leccion-04.html#referencias",
+    "title": "Aprendizaje supervisado",
+    "section": "Referencias",
+    "text": "Referencias\n\n\n[1] A. Jonker and T. Krantz, “¿Qué es la adquisición de datos?” Accessed: Aug. 05, 2026. [Online]. Available: https://www.ibm.com/mx-es/think/topics/data-acquisition"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#preguntas",
+    "href": "lecciones/unidad-01/leccion-04.html#preguntas",
+    "title": "Aprendizaje supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#qué-aprenderemos-en-el-laboratorio",
+    "href": "lecciones/unidad-01/leccion-04.html#qué-aprenderemos-en-el-laboratorio",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué aprenderemos en el laboratorio?",
+    "text": "¿Qué aprenderemos en el laboratorio?\nEn el laboratorio pondremos en práctica estas herramientas para obtener datos desde diferentes fuentes y construir nuestros primeros conjuntos de datos.\n\nLectura de archivos CSV, Excel y JSON.\nConsumo de una API.\nExtracción básica desde un sitio web.\nCreación de un DataFrame."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#qué-sigue",
+    "href": "lecciones/unidad-01/leccion-04.html#qué-sigue",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn el laboratorio pondremos en práctica estas herramientas para obtener datos desde diferentes fuentes y construir nuestros primeros conjuntos de datos.\n\nLectura de archivos CSV, Excel y JSON.\nConsumo de una API.\nExtracción básica desde un sitio web.\nCreación de un DataFrame.\n\nIr al Notebook 1 →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#archivos",
+    "href": "lecciones/unidad-01/leccion-04.html#archivos",
+    "title": "Aprendizaje supervisado",
+    "section": "Archivos",
+    "text": "Archivos\nLos datos suelen descargarse como archivos en formatos como CSV, Excel o JSON. En Python, estos pueden leerse fácilmente mediante la biblioteca pandas.\nimport pandas as pd\n\ndf = pd.read_csv(\"datos.csv\")\ndf = pd.read_excel(\"datos.xlsx\")\ndf = pd.read_json(\"datos.json\")"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#bases-de-datos",
+    "href": "lecciones/unidad-01/leccion-04.html#bases-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Bases de datos",
+    "text": "Bases de datos\nMuchas organizaciones almacenan sus datos en bases de datos relacionales. En Python, es posible consultar esta información mediante consultas SQL.\nimport pandas as pd\nfrom sqlalchemy import create_engine\n\nengine = create_engine(\"sqlite:///chinook.db\")\n\ndf = pd.read_sql(\"SELECT * FROM customers\", engine)"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#apis",
+    "href": "lecciones/unidad-01/leccion-04.html#apis",
+    "title": "Aprendizaje supervisado",
+    "section": "APIs",
+    "text": "APIs\nMuchas organizaciones ofrecen APIs para compartir información mediante Internet. En Python, es posible acceder a estos datos realizando solicitudes HTTP.\nimport requests\n\nurl = (\n    \"https://api.open-meteo.com/v1/forecast\"\n    \"?latitude=31.74&longitude=-106.49&current=temperature_2m\"\n)\n\nresponse = requests.get(url)\ndata = response.json()"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#sitios-web",
+    "href": "lecciones/unidad-01/leccion-04.html#sitios-web",
+    "title": "Aprendizaje supervisado",
+    "section": "Sitios web",
+    "text": "Sitios web\nCuando los datos no están disponibles para descarga o mediante una API, es posible extraer información directamente desde una página web.\nimport pandas as pd\n\nurl = \"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\"\ntables = pd.read_html(url)"
+  },
+  {
+    "objectID": "plantillas/lecciones.html#qué-sigue",
+    "href": "plantillas/lecciones.html#qué-sigue",
+    "title": "Título de la unidad",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nDescripcion breve\nIr a la siguiente sección →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-02.html#qué-sigue",
+    "href": "lecciones/unidad-01/leccion-02.html#qué-sigue",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn la siguiente sesión aprenderemos a identificar los principales tipos de datos y las fuentes de información utilizadas en proyectos de análisis de datos.\nIr a la siguiente lección →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-01.html#qué-sigue",
+    "href": "lecciones/unidad-01/leccion-01.html#qué-sigue",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn la siguiente sesión conoceremos el flujo general del análisis de datos, desde la obtención de los datos hasta su exploración inicial. Cada una de estas etapas será desarrollada con mayor detalle en las lecciones posteriores.\n\nTipos y fuentes de datos.\nAdquisición y extracción de datos.\nPreparación de datos.\nAnálisis exploratorio de datos.\n\nIr a la siguiente lección →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-03.html#qué-sigue",
+    "href": "lecciones/unidad-01/leccion-03.html#qué-sigue",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn la siguiente lección conoceremos las principales técnicas para obtener datos desde archivos, bases de datos, APIs y otras fuentes de información.\nIr a la siguiente lección →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-04.html#sensores-y-dispositivos",
+    "href": "lecciones/unidad-01/leccion-04.html#sensores-y-dispositivos",
+    "title": "Aprendizaje supervisado",
+    "section": "Sensores y dispositivos",
+    "text": "Sensores y dispositivos\nEn aplicaciones científicas e industriales, los datos pueden generarse directamente mediante sensores e instrumentos de medición.\n\n\nFuente: Imagen generada con ChatGPT."
   }
 ]
