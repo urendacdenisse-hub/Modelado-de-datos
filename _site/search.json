@@ -600,5 +600,96 @@
     "title": "Aprendizaje supervisado",
     "section": "Sensores y dispositivos",
     "text": "Sensores y dispositivos\nEn aplicaciones científicas e industriales, los datos pueden generarse directamente mediante sensores e instrumentos de medición.\n\n\nFuente: Imagen generada con ChatGPT."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#introducción",
+    "href": "lecciones/unidad-01/leccion-05.html#introducción",
+    "title": "Aprendizaje supervisado",
+    "section": "Introducción",
+    "text": "Introducción\nLos datos obtenidos de diferentes fuentes rara vez están listos para analizarse. Antes de utilizarlos, es necesario prepararlos para mejorar su calidad y facilitar su procesamiento."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#qué-es-la-preparación-de-datos",
+    "href": "lecciones/unidad-01/leccion-05.html#qué-es-la-preparación-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué es la preparación de datos?",
+    "text": "¿Qué es la preparación de datos?\n\n\nLa preparación de datos es el conjunto de actividades que transforman datos crudos en un conjunto de datos listo para su análisis.\nSu objetivo es mejorar la calidad, consistencia y utilidad de la información."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#exploración-inicial",
+    "href": "lecciones/unidad-01/leccion-05.html#exploración-inicial",
+    "title": "Aprendizaje supervisado",
+    "section": "Exploración inicial",
+    "text": "Exploración inicial\nEl primer paso consiste en comprender el conjunto de datos y detectar posibles problemas antes de realizar cualquier modificación.\nEjemplos\n\nIdentificar el tipo de cada variable.\nRevisar el número de registros.\nDetectar valores faltantes.\nBuscar valores inusuales."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#limpieza-de-datos",
+    "href": "lecciones/unidad-01/leccion-05.html#limpieza-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Limpieza de datos",
+    "text": "Limpieza de datos\nLa limpieza busca corregir problemas que puedan afectar la calidad de los datos y, por lo tanto, los resultados del análisis.\nEjemplos\n\nEliminar registros duplicados.\nCorregir errores de captura.\nTratar valores faltantes.\nDetectar valores atípicos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#transformación-de-datos",
+    "href": "lecciones/unidad-01/leccion-05.html#transformación-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Transformación de datos",
+    "text": "Transformación de datos\nUna vez limpios, los datos pueden transformarse para facilitar su análisis y procesamiento.\nEjemplos\n\nConvertir tipos de datos.\nNormalizar o escalar variables.\nCrear nuevas variables.\nCambiar el formato de fechas."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#datos-listos-para-analizar",
+    "href": "lecciones/unidad-01/leccion-05.html#datos-listos-para-analizar",
+    "title": "Aprendizaje supervisado",
+    "section": "Datos listos para analizar",
+    "text": "Datos listos para analizar\nAl finalizar la preparación, se obtiene un conjunto de datos consistente y confiable que puede utilizarse para generar estadísticas, visualizaciones o modelos de aprendizaje automático.\n\n\n\nTransformación\nEjemplo\n\n\n\n\nConversión de tipo\n\"25\" → 25\n\n\nCorrección de texto\njuarez → Juárez\n\n\nConversión de fecha\n05/08/26 → 2026-08-05\n\n\nCreación de variables\nprecio × cantidad → total\n\n\nConversión de unidades\n25 °C → 77 °F\n\n\nCodificación categórica\nSí/No → 1/0"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#resumen",
+    "href": "lecciones/unidad-01/leccion-05.html#resumen",
+    "title": "Aprendizaje supervisado",
+    "section": "Resumen",
+    "text": "Resumen\n\nLa preparación de datos mejora la calidad de la información.\nEl proceso incluye exploración, limpieza y transformación.\nUn conjunto de datos bien preparado facilita el análisis y la construcción de modelos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#referencias",
+    "href": "lecciones/unidad-01/leccion-05.html#referencias",
+    "title": "Aprendizaje supervisado",
+    "section": "Referencias",
+    "text": "Referencias\n\n\n[1] S. Mushtaq, “Data preprocessing in detail.” Accessed: Aug. 05, 2026. [Online]. Available: https://developer.ibm.com/articles/data-preprocessing-in-detail/"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#preguntas",
+    "href": "lecciones/unidad-01/leccion-05.html#preguntas",
+    "title": "Aprendizaje supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#qué-sigue",
+    "href": "lecciones/unidad-01/leccion-05.html#qué-sigue",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn el laboratorio aplicaremos las técnicas vistas en esta lección para explorar, limpiar y transformar un conjunto de datos utilizando Python y pandas.\n\nExploración inicial del conjunto de datos.\nLimpieza de datos.\nTransformación de variables.\nPreparación del conjunto de datos para su análisis.\n\nIr al notebook →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#exploración-inicial-con-python",
+    "href": "lecciones/unidad-01/leccion-05.html#exploración-inicial-con-python",
+    "title": "Aprendizaje supervisado",
+    "section": "Exploración inicial con Python",
+    "text": "Exploración inicial con Python\nLas bibliotecas de análisis de datos proporcionan funciones que permiten explorar rápidamente la estructura y calidad de un conjunto de datos.\ndf.info()         # Muestra la estructura del conjunto de datos\n\ndf.shape          # Obtiene el número de filas y columnas\n\ndf.isna().sum()   # Cuenta los valores faltantes\n\ndf.describe()     # Calcula estadísticas descriptivas"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#limpieza-de-datos-con-python",
+    "href": "lecciones/unidad-01/leccion-05.html#limpieza-de-datos-con-python",
+    "title": "Aprendizaje supervisado",
+    "section": "Limpieza de datos con Python",
+    "text": "Limpieza de datos con Python\nLas bibliotecas de análisis de datos ofrecen funciones para corregir algunos de los problemas más comunes encontrados durante la exploración.\ndf.drop_duplicates()   # Elimina registros duplicados\n\ndf.fillna(0)           # Reemplaza valores faltantes por 0\n\ndf.dropna()            # Elimina registros con valores faltantes\n\ndf.clip(lower=0)       # Reemplaza valores menores que 0 por 0"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-05.html#transformación-de-datos-con-python",
+    "href": "lecciones/unidad-01/leccion-05.html#transformación-de-datos-con-python",
+    "title": "Aprendizaje supervisado",
+    "section": "Transformación de datos con Python",
+    "text": "Transformación de datos con Python\nLas bibliotecas de análisis de datos permiten transformar la información para adaptarla a las necesidades de un análisis o modelo.\n# Convierte el tipo de dato a entero\ndf[\"edad\"] = df[\"edad\"].astype(int)\n\n# Normaliza una variable\ndf[\"peso\"] = (df[\"peso\"] - df[\"peso\"].mean()) / df[\"peso\"].std()\n\n# Crea una nueva variable\ndf[\"total\"] = df[\"precio\"] * df[\"cantidad\"]\n\n# Convierte una fecha\ndf[\"fecha\"] = pd.to_datetime(df[\"fecha\"])"
   }
 ]
