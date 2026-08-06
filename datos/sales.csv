@@ -1,0 +1,16 @@
+sale_id,date,customer_id,city,product,category,quantity,unit_price,payment_method
+1001,2026-08-01,C001,Juarez,Laptop,Computers,1,18500,Credit Card
+1002,2026-08-01,C002,Chihuahua,Mouse,Accessories,2,350,Debit Card
+1003,2026-08-01,C003,Juarez,Keyboard,Accessories,1,950,Cash
+1004,2026-08-02,C004,Monterrey,Monitor,Displays,2,4200,Credit Card
+1005,2026-08-02,C005,Hermosillo,USB Drive,Storage,3,280,Cash
+1006,2026-08-03,C006,Juarez,External SSD,Storage,1,2400,Debit Card
+1007,2026-08-03,C007,Chihuahua,Laptop,Computers,1,19900,Credit Card
+1008,2026-08-03,C008,Tijuana,Headphones,Audio,2,1250,Credit Card
+1009,2026-08-04,C009,Juarez,Monitor,Displays,1,4100,Debit Card
+1010,2026-08-04,C010,Monterrey,Mouse,Accessories,4,330,Cash
+1011,2026-08-05,C011,Hermosillo,Keyboard,Accessories,2,890,Credit Card
+1012,2026-08-05,C012,Juarez,Laptop,Computers,1,21000,Debit Card
+1013,2026-08-05,C013,Chihuahua,USB Drive,Storage,5,260,Cash
+1014,2026-08-06,C014,Tijuana,Headphones,Audio,1,1350,Credit Card
+1015,2026-08-06,C015,Juarez,External SSD,Storage,2,2350,Credit Card

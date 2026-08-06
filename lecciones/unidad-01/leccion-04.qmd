@@ -53,9 +53,9 @@ Los datos suelen descargarse como archivos en formatos como CSV, Excel o JSON. E
 ```python
 import pandas as pd
 
-df = pd.read_csv("datos.csv")
-df = pd.read_excel("datos.xlsx")
-df = pd.read_json("datos.json")
+df = pd.read_csv("sales.csv")
+df = pd.read_excel("students.xlsx")
+df = pd.read_json("books.json")
 ```
 
 ## Bases de datos
@@ -63,12 +63,15 @@ df = pd.read_json("datos.json")
 Muchas organizaciones almacenan sus datos en bases de datos relacionales. En Python, es posible consultar esta información mediante consultas **SQL**.
 
 ```python
+import sqlite3
 import pandas as pd
-from sqlalchemy import create_engine
 
-engine = create_engine("sqlite:///chinook.db")
+conn = sqlite3.connect("chinook.sqlite")
 
-df = pd.read_sql("SELECT * FROM customers", engine)
+df = pd.read_sql_query("SELECT * FROM Artist", conn)
+df.head()
+
+conn.close()
 ```
 
 ## APIs
@@ -94,7 +97,7 @@ Cuando los datos no están disponibles para descarga o mediante una API, es posi
 ```python
 import pandas as pd
 
-url = "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
+url = "https://www.w3schools.com/html/html_tables.asp"
 tables = pd.read_html(url)
 ```
 

@@ -1,0 +1,47 @@
+[
+    {
+        "book_id": "B001",
+        "title": "Python for Data Analysis",
+        "author": "Wes McKinney",
+        "category": "Programming",
+        "year": 2023,
+        "pages": 546,
+        "available": true
+    },
+    {
+        "book_id": "B002",
+        "title": "Hands-On Machine Learning",
+        "author": "Aurélien Géron",
+        "category": "Machine Learning",
+        "year": 2022,
+        "pages": 856,
+        "available": false
+    },
+    {
+        "book_id": "B003",
+        "title": "Deep Learning",
+        "author": "Ian Goodfellow",
+        "category": "Artificial Intelligence",
+        "year": 2016,
+        "pages": 800,
+        "available": true
+    },
+    {
+        "book_id": "B004",
+        "title": "Introduction to Algorithms",
+        "author": "Thomas H. Cormen",
+        "category": "Algorithms",
+        "year": 2022,
+        "pages": 1312,
+        "available": true
+    },
+    {
+        "book_id": "B005",
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "category": "Software Engineering",
+        "year": 2008,
+        "pages": 464,
+        "available": false
+    }
+]
