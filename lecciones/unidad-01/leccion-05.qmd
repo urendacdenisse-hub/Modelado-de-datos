@@ -45,6 +45,9 @@ Su objetivo es mejorar la **calidad**, **consistencia** y **utilidad** de la inf
 ::: {.column width="50%"}
 ![](../imagenes/preparacion-datos.png){width=100%}
 :::
+::: {.figure-source}
+Fuente: Imagen generada con ChatGPT.
+:::
 
 ::::
 
