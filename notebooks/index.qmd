@@ -6,9 +6,8 @@ title: "Notebooks"
 
 ## Introduccion al analisis de datos
 
-- Tipos y fuentes de datos
-- Adquisicion y extracción de datos
-- Preparación de datos
+- [Adquisicion y extracción de datos](unidad-01/notebook-01.ipynb)
+- [Preparación de datos](unidad-01/notebook-02.ipynb)
 - Analisis exporatorio de datos
 
 ## Modelos paramétricos

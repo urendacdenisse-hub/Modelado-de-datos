@@ -137,14 +137,14 @@
     "href": "notebooks/index.html",
     "title": "Notebooks",
     "section": "",
-    "text": "Tipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos\n\n\n\n\n\nRegresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines\n\n\n\n\n\n\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
+    "text": "Adquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos\n\n\n\n\n\nRegresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines\n\n\n\n\n\n\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
   },
   {
     "objectID": "notebooks/index.html#introduccion-al-analisis-de-datos",
     "href": "notebooks/index.html#introduccion-al-analisis-de-datos",
     "title": "Notebooks",
     "section": "",
-    "text": "Tipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
+    "text": "Adquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
   },
   {
     "objectID": "notebooks/index.html#modelos-paramétricos",
@@ -543,14 +543,14 @@
     "href": "lecciones/unidad-01/leccion-04.html#archivos",
     "title": "Aprendizaje supervisado",
     "section": "Archivos",
-    "text": "Archivos\nLos datos suelen descargarse como archivos en formatos como CSV, Excel o JSON. En Python, estos pueden leerse fácilmente mediante la biblioteca pandas.\nimport pandas as pd\n\ndf = pd.read_csv(\"datos.csv\")\ndf = pd.read_excel(\"datos.xlsx\")\ndf = pd.read_json(\"datos.json\")"
+    "text": "Archivos\nLos datos suelen descargarse como archivos en formatos como CSV, Excel o JSON. En Python, estos pueden leerse fácilmente mediante la biblioteca pandas.\nimport pandas as pd\n\ndf = pd.read_csv(\"sales.csv\")\ndf = pd.read_excel(\"students.xlsx\")\ndf = pd.read_json(\"books.json\")"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-04.html#bases-de-datos",
     "href": "lecciones/unidad-01/leccion-04.html#bases-de-datos",
     "title": "Aprendizaje supervisado",
     "section": "Bases de datos",
-    "text": "Bases de datos\nMuchas organizaciones almacenan sus datos en bases de datos relacionales. En Python, es posible consultar esta información mediante consultas SQL.\nimport pandas as pd\nfrom sqlalchemy import create_engine\n\nengine = create_engine(\"sqlite:///chinook.db\")\n\ndf = pd.read_sql(\"SELECT * FROM customers\", engine)"
+    "text": "Bases de datos\nMuchas organizaciones almacenan sus datos en bases de datos relacionales. En Python, es posible consultar esta información mediante consultas SQL.\nimport sqlite3\nimport pandas as pd\n\nconn = sqlite3.connect(\"chinook.sqlite\")\n\ndf = pd.read_sql_query(\"SELECT * FROM Artist\", conn)\ndf.head()\n\nconn.close()"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-04.html#apis",
@@ -564,7 +564,7 @@
     "href": "lecciones/unidad-01/leccion-04.html#sitios-web",
     "title": "Aprendizaje supervisado",
     "section": "Sitios web",
-    "text": "Sitios web\nCuando los datos no están disponibles para descarga o mediante una API, es posible extraer información directamente desde una página web.\nimport pandas as pd\n\nurl = \"https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population\"\ntables = pd.read_html(url)"
+    "text": "Sitios web\nCuando los datos no están disponibles para descarga o mediante una API, es posible extraer información directamente desde una página web.\nimport pandas as pd\n\nurl = \"https://www.w3schools.com/html/html_tables.asp\"\ntables = pd.read_html(url)"
   },
   {
     "objectID": "plantillas/lecciones.html#qué-sigue",
@@ -691,5 +691,82 @@
     "title": "Aprendizaje supervisado",
     "section": "Transformación de datos con Python",
     "text": "Transformación de datos con Python\nLas bibliotecas de análisis de datos permiten transformar la información para adaptarla a las necesidades de un análisis o modelo.\n# Convierte el tipo de dato a entero\ndf[\"edad\"] = df[\"edad\"].astype(int)\n\n# Normaliza una variable\ndf[\"peso\"] = (df[\"peso\"] - df[\"peso\"].mean()) / df[\"peso\"].std()\n\n# Crea una nueva variable\ndf[\"total\"] = df[\"precio\"] * df[\"cantidad\"]\n\n# Convierte una fecha\ndf[\"fecha\"] = pd.to_datetime(df[\"fecha\"])"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html",
+    "href": "notebooks/unidad-01/notebook-02.html",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "",
+    "text": "Antes de comenzar\nEste laboratorio está diseñado para ejecutarse en Google Colab.\nAbra el notebook desde el siguiente enlace:\n🔗 https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-02.ipynb\nUna vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.\n!git clone https://github.com/urendacdenisse-hub/modelado-de-datos.git"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#objetivo",
+    "href": "notebooks/unidad-01/notebook-02.html#objetivo",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Objetivo",
+    "text": "Objetivo\nEn este notebook aplicaremos las técnicas vistas en la lección para explorar, limpiar y transformar un conjunto de datos utilizando Python y pandas.\n\nExplorar un conjunto de datos.\nLimpiar datos.\nTransformar variables.\nPreparar un conjunto de datos para su análisis."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#exploración-inicial",
+    "href": "notebooks/unidad-01/notebook-02.html#exploración-inicial",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Exploración inicial",
+    "text": "Exploración inicial\nCarguemos un conjunto de datos y realicemos una exploración inicial de su contenido.\n\nimport pandas as pd\n\ndf = pd.read_csv(\"../../datos/sales.csv\")\n\nLibrería: pandas\npandas proporciona herramientas para explorar y resumir la información contenida en un DataFrame.\nFunciones utilizadas\n\ninfo(): Muestra la estructura del DataFrame, incluyendo el tipo de datos y los valores no nulos de cada columna.\nshape: Devuelve el número de filas y columnas del DataFrame.\nisna(): Identifica los valores faltantes en el DataFrame.\nsum(): Suma los valores de cada columna.\ndescribe(): Calcula estadísticas descriptivas de las variables numéricas.\n\n\ndf.info()\n\n\ndf.shape\n\n\ndf.isna().sum()\n\n\ndf.describe()"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#limpieza-de-datos",
+    "href": "notebooks/unidad-01/notebook-02.html#limpieza-de-datos",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Limpieza de datos",
+    "text": "Limpieza de datos\nEliminemos algunos problemas comunes antes de comenzar el análisis del conjunto de datos.\nFunciones utilizadas\n\ndrop_duplicates(): Elimina los registros duplicados.\nfillna(): Reemplaza los valores faltantes por un valor especificado.\ndropna(): Elimina los registros que contienen valores faltantes.\nclip(): Limita los valores de una columna a un intervalo definido.\n\n\ndf.drop_duplicates()\n\n\ndf.fillna(0)\n\n\ndf.dropna()\n\n\ndf[\"unit_price\"].clip(lower=0)"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#transformación-de-datos",
+    "href": "notebooks/unidad-01/notebook-02.html#transformación-de-datos",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Transformación de datos",
+    "text": "Transformación de datos\nTransformemos las variables del conjunto de datos para prepararlas para su análisis.\nFunciones utilizadas\n\nastype(): Convierte una columna al tipo de dato especificado.\nmean(): Calcula la media de una columna.\nstd(): Calcula la desviación estándar de una columna.\npd.to_datetime(): Convierte una columna al tipo de dato fecha y hora (datetime).\n\n\ndf.info()\n\n\ndf[\"quantity\"].astype(int)\n\n\n(df[\"unit_price\"] - df[\"unit_price\"].mean()) / df[\"unit_price\"].std()\n\n\ndf[\"quantity\"] * df[\"unit_price\"]\n\n\npd.to_datetime(df[\"date\"])"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#datos-listos-para-analizar",
+    "href": "notebooks/unidad-01/notebook-02.html#datos-listos-para-analizar",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Datos listos para analizar",
+    "text": "Datos listos para analizar\nGuardemos el conjunto de datos preparado para utilizarlo en etapas posteriores del análisis.\nFunciones utilizadas\n\nto_csv(): Guarda el contenido del DataFrame en un archivo CSV.\n\n\ndf.to_csv(\"../../datos/clean_data.csv\", index=False)"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html",
+    "href": "notebooks/unidad-01/notebook-01.html",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "",
+    "text": "Antes de comenzar\nEste laboratorio está diseñado para ejecutarse en Google Colab.\nAbra el notebook desde el siguiente enlace:\n🔗 https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-01.ipynb\nUna vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.\n!git clone https://github.com/urendacdenisse-hub/modelado-de-datos.git"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#archivos",
+    "href": "notebooks/unidad-01/notebook-01.html#archivos",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "Archivos",
+    "text": "Archivos\nUtiliza las funciones de pandas para leer archivos CSV, Excel y JSON.\nLibrería: pandas\nProporciona herramientas para leer, manipular y analizar datos tabulares en Python.\nFunciones utilizadas\n\npd.read_csv(): Lee un archivo CSV y devuelve un DataFrame.\nhead(): Muestra las primeras filas del DataFrame.\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"../../datos/sales.csv\")\ndf.head()\n\nFunciones utilizadas\n\npd.read_excel(): Lee un archivo de Excel y devuelve un DataFrame.\n\n\ndf = pd.read_excel(\"../../datos/students.xlsx\")\ndf.head()\n\nFunciones utilizadas\n\npd.read_json(): Lee un archivo JSON y devuelve un DataFrame.\n\n\ndf = pd.read_json(\"../../datos/books.json\")\ndf.head()"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#bases-de-datos",
+    "href": "notebooks/unidad-01/notebook-01.html#bases-de-datos",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "Bases de datos",
+    "text": "Bases de datos\nConectémonos a una base de datos SQLite y ejecutemos una consulta para cargar los resultados en un DataFrame.\nLibrería: sqlite3\nsqlite3 permite conectarse y ejecutar consultas sobre bases de datos SQLite desde Python.\nFunciones utilizadas\n\nsqlite3.connect(): Abre una conexión con una base de datos SQLite.\ncursor(): Crea un cursor para ejecutar instrucciones SQL.\nexecute(): Ejecuta una instrucción SQL.\nfetchall(): Recupera todos los resultados de la consulta.\n\n\nimport sqlite3\n\nconn = sqlite3.connect(\"../../datos/chinook.sqlite\")\ncursor = conn.cursor()\n\ncursor.execute(\n    \"SELECT name FROM sqlite_master WHERE type='table';\"\n)\nprint(cursor.fetchall())\n\nFunciones utilizadas\n\npd.read_sql_query(): Ejecuta una consulta SQL y devuelve el resultado como un DataFrame.\n\n\nartists = pd.read_sql_query(\n    \"SELECT * FROM Artist;\",\n    conn\n)\n\nartists.head()\n\nFunciones utilizadas\n\nclose(): Cierra la conexión con la base de datos y libera los recursos asociados.\n\n\nconn.close()"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#apis",
+    "href": "notebooks/unidad-01/notebook-01.html#apis",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "APIs",
+    "text": "APIs\nEnviemos una solicitud a una API y recuperemos la información en formato JSON.\nLibrería: requests\nrequests permite enviar solicitudes a servicios web y APIs desde Python.\nFunciones utilizadas\n\nrequests.get(): Solicita información desde la URL especificada.\njson(): Convierte la respuesta de la API en un objeto de Python (diccionario o lista).\n\n\nimport requests\n\nurl = (\n    \"https://api.open-meteo.com/v1/forecast\"\n    \"?latitude=31.74&longitude=-106.49&current=temperature_2m\"\n)\n\nresponse = requests.get(url)\ndata = response.json()\n\n\ndata"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#sitios-web",
+    "href": "notebooks/unidad-01/notebook-01.html#sitios-web",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "Sitios web",
+    "text": "Sitios web\nExtraigamos tablas publicadas en un sitio web y carguemos su contenido en un DataFrame.\nFunciones utilizadas\n\npd.read_html(): Extrae las tablas encontradas en una página web y las devuelve como una lista de DataFrames.\n\n\nurl = \"https://www.w3schools.com/html/html_tables.asp\"\ntables = pd.read_html(url)\n\n\ntables[0]"
   }
 ]
