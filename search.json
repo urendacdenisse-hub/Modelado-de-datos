@@ -91,6 +91,13 @@
     "text": "Datos listos para analizar\nGuardemos el conjunto de datos preparado para utilizarlo en etapas posteriores del análisis.\nFunciones utilizadas\n\nto_csv(): Guarda el contenido del DataFrame en un archivo CSV.\n\n\ndf.to_csv(\"../../datos/clean_data.csv\", index=False)"
   },
   {
+    "objectID": "notebooks/unidad-01/notebook-02.html#siguiente-lección",
+    "href": "notebooks/unidad-01/notebook-02.html#siguiente-lección",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Siguiente lección",
+    "text": "Siguiente lección\nUna vez completado este laboratorio, continúa con la siguiente lección del curso:\n➡️ Análisis exploratorio de datos"
+  },
+  {
     "objectID": "notebooks/index.html",
     "href": "notebooks/index.html",
     "title": "Notebooks",
@@ -263,21 +270,21 @@
     "href": "lecciones/index.html",
     "title": "Lecciones",
     "section": "",
-    "text": "Introduccón\n\n\n\n\n\nIntroduccón\nTipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos\n\n\n\n\n\nIntroducción\n\n\n\n\n\nRegresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines\n\n\n\n\n\n\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
+    "text": "Introducción\n\n\n\n\n\nIntroducción\nTipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos\n\n\n\n\n\nIntroducción\n\n\n\n\n\nRegresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines\n\n\n\n\n\n\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
   },
   {
     "objectID": "lecciones/index.html#introducción-a-la-ciencia-de-datos",
     "href": "lecciones/index.html#introducción-a-la-ciencia-de-datos",
     "title": "Lecciones",
     "section": "",
-    "text": "Introduccón"
+    "text": "Introducción"
   },
   {
     "objectID": "lecciones/index.html#introduccion-al-analisis-de-datos",
     "href": "lecciones/index.html#introduccion-al-analisis-de-datos",
     "title": "Lecciones",
     "section": "",
-    "text": "Introduccón\nTipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
+    "text": "Introducción\nTipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
   },
   {
     "objectID": "lecciones/index.html#introducción-al-aprendizaje-supervisado",
@@ -501,7 +508,7 @@
     "href": "lecciones/unidad-01/leccion-05.html#qué-es-la-preparación-de-datos",
     "title": "Aprendizaje supervisado",
     "section": "¿Qué es la preparación de datos?",
-    "text": "¿Qué es la preparación de datos?\n\n\nLa preparación de datos es el conjunto de actividades que transforman datos crudos en un conjunto de datos listo para su análisis.\nSu objetivo es mejorar la calidad, consistencia y utilidad de la información."
+    "text": "¿Qué es la preparación de datos?\n\n\nLa preparación de datos es el conjunto de actividades que transforman datos crudos en un conjunto de datos listo para su análisis.\nSu objetivo es mejorar la calidad, consistencia y utilidad de la información.\n\n\n\nFuente: Imagen generada con ChatGPT."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-05.html#exploración-inicial",
@@ -614,6 +621,13 @@
     "title": "Laboratorio 1. Adquisición y extracción de datos",
     "section": "Sitios web",
     "text": "Sitios web\nExtraigamos tablas publicadas en un sitio web y carguemos su contenido en un DataFrame.\nFunciones utilizadas\n\npd.read_html(): Extrae las tablas encontradas en una página web y las devuelve como una lista de DataFrames.\n\n\nurl = \"https://www.w3schools.com/html/html_tables.asp\"\ntables = pd.read_html(url)\n\n\ntables[0]"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#siguiente-lección",
+    "href": "notebooks/unidad-01/notebook-01.html#siguiente-lección",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "Siguiente lección",
+    "text": "Siguiente lección\nUna vez completado este laboratorio, continúa con la siguiente lección del curso:\n➡️ Preparación de datos"
   },
   {
     "objectID": "plantillas/lecciones.html#introducción",
