@@ -1,0 +1,17 @@
+sale_id,date,customer_id,city,product,category,quantity,unit_price,payment_method
+1001.0,2026-08-01,C001,Juarez,Laptop,Computers,1.0,18500.0,
+1002.0,2026-08-01,C002,Chihuahua,Mouse,Accessories,2.0,-350.0,Debit Card
+1003.0,2026-08-01,C003,Juarez,Keyboard,Accessories,1.0,950.0,Cashh
+1004.0,2026-08-02,C004,Monterrey,Monitor,Displays,2.0,4200.0,Credit Card
+1005.0,2026-08-02,C005,,USB Drive,Storage,3.0,280.0,Cash
+1006.0,2026-08-03,C006,Juarez,External SSD,Storage,1.0,2400.0,Debit Card
+,2026-08-03,C007,Chihuahua,Laptop,Computers,1.0,19900.0,Credit Card
+1008.0,2026-08-03,C008,Tijuana,Headphones,Audio,2.0,1250.0,Credit Card
+1009.0,2026-08-04,C009,Juarez,Monitor,Displays,1.0,4100.0,Debit Card
+1010.0,2026-08-04,C010,Monterrey,Mouse,Accessories,4.0,330.0,Cash
+1011.0,2026-08-05,C011,Hermosillo,Keyboard,Accessories,2.0,890.0,Credit Card
+1012.0,2026-08-05,C012,juarez,Laptop,Computers,1.0,21000.0,Debit Card
+1013.0,2026-08-05,C013,Chihuahua,USB Drive,Storage,5.0,260.0,Cash
+1014.0,2026-08-06,C014,Tijuana,Headphones,Audio,1.0,1350.0,Credit Card
+1015.0,2026-08-06,,Juarez,External SSD,Storage,2.0,2350.0,Credit Card
+1015.0,2026-08-06,,Juarez,External SSD,Storage,2.0,2350.0,Credit Card
