@@ -6,14 +6,14 @@ title: "Lecciones"
 
 ## Introducción a la ciencia de datos
 
-- [Introduccón](unidad-01/leccion-01.qmd)
+- [Introducción](unidad-01/leccion-01.qmd)
 
 ## Introduccion al analisis de datos
 
-- [Introduccón](unidad-01/leccion-02.qmd)
+- [Introducción](unidad-01/leccion-02.qmd)
 - [Tipos y fuentes de datos](unidad-01/leccion-03.qmd)
 - [Adquisicion y extracción de datos](unidad-01/leccion-04.qmd)
-- Preparación de datos
+- [Preparación de datos](unidad-01/leccion-05.qmd)
 - Analisis exporatorio de datos
 
 ## Introducción al aprendizaje supervisado
