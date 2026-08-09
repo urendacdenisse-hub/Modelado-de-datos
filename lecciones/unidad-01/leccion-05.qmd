@@ -3,6 +3,8 @@ title: "Aprendizaje supervisado"
 subtitle: "Preparación de datos"
 author: "Dra. Denisse Urenda Castañeda"
 
+lang: es
+
 bibliography: ../../recursos/referencias.bib
 csl: ../../recursos/ieee.csl
 
@@ -187,4 +189,4 @@ En el laboratorio aplicaremos las técnicas vistas en esta lección para explora
 - Transformación de variables.
 - Preparación del conjunto de datos para su análisis.
 
-[**Ir al notebook →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-02.ipynb**)
+[**Ir al notebook →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-02.ipynb)

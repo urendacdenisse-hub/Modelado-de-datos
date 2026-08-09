@@ -3,6 +3,8 @@ title: "Título de la unidad"
 subtitle: "Titulo de la lección"
 author: "Dra. Denisse Urenda Castañeda"
 
+lang: es
+
 bibliography: ../recursos/referencias.bib
 csl: ../recursos/ieee.csl
 

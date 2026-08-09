@@ -3,6 +3,8 @@ title: "Aprendizaje supervisado"
 subtitle: "Adquisición y extracción de datos"
 author: "Dra. Denisse Urenda Castañeda"
 
+lang: es
+
 bibliography: ../../recursos/referencias.bib
 csl: ../../recursos/ieee.csl
 

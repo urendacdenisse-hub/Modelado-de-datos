@@ -3,6 +3,8 @@ title: "Aprendizaje supervisado"
 subtitle: "Introducción al análisis de datos"
 author: "Dra. Denisse Urenda Castañeda"
 
+lang: es
+
 bibliography: ../../recursos/referencias.bib
 csl: ../../recursos/ieee.csl
 

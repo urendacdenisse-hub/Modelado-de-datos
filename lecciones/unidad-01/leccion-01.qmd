@@ -3,6 +3,8 @@ title: "Aprendizaje supervisado"
 subtitle: "Introducción a la ciencia de datos"
 author: "Dra. Denisse Urenda Castañeda"
 
+lang: es
+
 bibliography: ../../recursos/referencias.bib
 csl: ../../recursos/ieee.csl
 
