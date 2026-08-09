@@ -627,7 +627,7 @@
     "href": "index.html",
     "title": "Análisis y modelado de datos en ciencias",
     "section": "",
-    "text": "Bienvenido al repositorio oficial del curso Análisis y modelado de datos en ciencias.\nEn este sitio se publicarán gradualmente las lecciones, notebooks, conjuntos de datos y recursos utilizados durante el semestre.\n\n\n\n\n\n\nNoteAntes de comenzar\n\n\n\nSe recomienda revisar el syllabus para conocer los objetivos, la metodología, el esquema de evaluación y el cronograma del curso.\n\n\n\n\nTodo el material del curso se encuentra disponible en GitHub.\nhttps://github.com/urendacdenisse-hub/Modelado-de-datos"
+    "text": "Bienvenido al repositorio oficial del curso Análisis y modelado de datos en ciencias.\nEn este sitio se publicarán gradualmente las lecciones, notebooks, conjuntos de datos y recursos utilizados durante el semestre.\n\n\n\n\n\n\nNotaAntes de comenzar\n\n\n\nSe recomienda revisar el syllabus para conocer los objetivos, la metodología, el esquema de evaluación y el cronograma del curso.\n\n\n\n\nTodo el material del curso se encuentra disponible en GitHub.\nhttps://github.com/urendacdenisse-hub/Modelado-de-datos"
   },
   {
     "objectID": "index.html#repositorio",
@@ -879,7 +879,7 @@
     "href": "lecciones/unidad-01/leccion-05.html#referencias",
     "title": "Aprendizaje supervisado",
     "section": "Referencias",
-    "text": "Referencias\n\n\n[1] S. Mushtaq, “Data preprocessing in detail.” Accessed: Aug. 05, 2026. [Online]. Available: https://developer.ibm.com/articles/data-preprocessing-in-detail/"
+    "text": "Referencias\n\n\n[1] S. Mushtaq, «Data Preprocessing in Detail». Accedido: 5 de agosto de 2026. [En línea]. Disponible en: https://developer.ibm.com/articles/data-preprocessing-in-detail/"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-05.html#preguntas",

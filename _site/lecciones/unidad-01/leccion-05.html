@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="es"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -230,7 +230,7 @@ Dra. Denisse Urenda Castañeda
 
 </section><section id="TOC">
 <nav role="doc-toc"> 
-<h2 id="toc-title">Table of contents</h2>
+<h2 id="toc-title">Tabla de contenidos</h2>
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
 <li><a href="#/qué-es-la-preparación-de-datos" id="/toc-qué-es-la-preparación-de-datos">¿Qué es la preparación de datos?</a></li>
@@ -285,7 +285,7 @@ Dra. Denisse Urenda Castañeda
 <span id="cb1-4"><a></a></span>
 <span id="cb1-5"><a></a>df.isna().<span class="bu">sum</span>()   <span class="co"># Cuenta los valores faltantes</span></span>
 <span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a>df.describe()     <span class="co"># Calcula estadísticas descriptivas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a></a>df.describe()     <span class="co"># Calcula estadísticas descriptivas</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="limpieza-de-datos" class="slide level2">
 <h2>Limpieza de datos</h2>
@@ -307,7 +307,7 @@ Dra. Denisse Urenda Castañeda
 <span id="cb2-4"><a></a></span>
 <span id="cb2-5"><a></a>df.dropna()            <span class="co"># Elimina registros con valores faltantes</span></span>
 <span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a>df.clip(lower<span class="op">=</span><span class="dv">0</span>)       <span class="co"># Reemplaza valores menores que 0 por 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-7"><a></a>df.clip(lower<span class="op">=</span><span class="dv">0</span>)       <span class="co"># Reemplaza valores menores que 0 por 0</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="transformación-de-datos" class="slide level2">
 <h2>Transformación de datos</h2>
@@ -333,7 +333,7 @@ Dra. Denisse Urenda Castañeda
 <span id="cb3-8"><a></a>df[<span class="st">"total"</span>] <span class="op">=</span> df[<span class="st">"precio"</span>] <span class="op">*</span> df[<span class="st">"cantidad"</span>]</span>
 <span id="cb3-9"><a></a></span>
 <span id="cb3-10"><a></a><span class="co"># Convierte una fecha</span></span>
-<span id="cb3-11"><a></a>df[<span class="st">"fecha"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"fecha"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-11"><a></a>df[<span class="st">"fecha"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"fecha"</span>])</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="datos-listos-para-analizar" class="slide level2">
 <h2>Datos listos para analizar</h2>
@@ -385,7 +385,7 @@ Dra. Denisse Urenda Castañeda
 <h2>Referencias</h2>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-ibm_preprocessing" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">S. Mushtaq, <span>“Data preprocessing in detail.”</span> Accessed: Aug. 05, 2026. [Online]. Available: <a href="https://developer.ibm.com/articles/data-preprocessing-in-detail/">https://developer.ibm.com/articles/data-preprocessing-in-detail/</a></div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">S. Mushtaq, <span>«Data Preprocessing in Detail»</span>. Accedido: 5 de agosto de 2026. [En línea]. Disponible en: <a href="https://developer.ibm.com/articles/data-preprocessing-in-detail/">https://developer.ibm.com/articles/data-preprocessing-in-detail/</a></div>
 </div>
 </div>
 </section>
@@ -417,7 +417,7 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
 <li>Transformación de variables.</li>
 <li>Preparación del conjunto de datos para su análisis.</li>
 </ul>
-<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-02.ipynb**"><strong>Ir al notebook →</strong></a></p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-02.ipynb"><strong>Ir al notebook →</strong></a></p>
 
 
 </section>
@@ -658,12 +658,12 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Copiado");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Copiado");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",
@@ -706,7 +706,7 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/urendacdenisse-hub\.github\.io\/Modelado-de-datos\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
