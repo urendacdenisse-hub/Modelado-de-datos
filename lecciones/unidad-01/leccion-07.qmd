@@ -361,4 +361,4 @@ Un valor menor indica grupos **más compactos**.
 
 En la siguiente sección comenzaremos a estudiar métodos de **aprendizaje supervisado**.
 
-[**Ir a la siguiente sección →**](nombre de leccion/laboratorio/proyecto)
+[**Ir a la siguiente sección →**](leccion-08.qmd)

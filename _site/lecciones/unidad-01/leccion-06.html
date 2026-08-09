@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="en"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -151,7 +151,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Aprendizaje supervisado</h1>
-  <p class="subtitle">Introducción a machine learning</p>
+  <p class="subtitle">Análisis exploratorio de datos</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -163,13 +163,12 @@ Dra. Denisse Urenda Castañeda
 
 </section><section id="TOC">
 <nav role="doc-toc"> 
-<h2 id="toc-title">Tabla de contenidos</h2>
+<h2 id="toc-title">Table of contents</h2>
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
-<li><a href="#/estimación-de-f" id="/toc-estimación-de-f">Estimación de <span class="math inline">\(f\)</span></a></li>
-<li><a href="#/tipos-de-métodos" id="/toc-tipos-de-métodos">Tipos de métodos</a></li>
-<li><a href="#/tipos-de-aprendizaje" id="/toc-tipos-de-aprendizaje">Tipos de aprendizaje</a></li>
-<li><a href="#/evaluación" id="/toc-evaluación">Evaluación</a></li>
+<li><a href="#/estadística-descriptiva" id="/toc-estadística-descriptiva">Estadística descriptiva</a></li>
+<li><a href="#/distribución-de-los-datos" id="/toc-distribución-de-los-datos">Distribución de los datos</a></li>
+<li><a href="#/relaciones-entre-variables" id="/toc-relaciones-entre-variables">Relaciones entre variables</a></li>
 <li><a href="#/resumen" id="/toc-resumen">Resumen</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
@@ -177,322 +176,59 @@ Dra. Denisse Urenda Castañeda
 </ul>
 </nav>
 </section>
-<section>
-<section id="introducción" class="title-slide slide level1 center">
-<h1>Introducción</h1>
-
+<section id="introducción" class="slide level2">
+<h2>Introducción</h2>
+<p>El <strong>análisis exploratorio de datos (EDA)</strong> permite examinar un conjunto de datos para comprender sus principales características antes de construir un modelo.</p>
+<p>El objetivo es identificar <strong>patrones, distribuciones, relaciones y posibles problemas</strong> en los datos.</p>
 </section>
-<section id="machine-learning" class="slide level2">
-<h2>Machine learning</h2>
-<p>El <strong>machine learning</strong> estudia métodos que permiten utilizar datos para <strong>aprender relaciones y patrones</strong>.</p>
-<p>A partir de un conjunto de observaciones, buscamos aprender cómo ciertas <strong>variables de entrada</strong> se relacionan con una <strong>variable de respuesta</strong>.</p>
-<p>Esta relación puede utilizarse para <strong>comprender los datos o realizar predicciones</strong> sobre nuevas observaciones.</p>
-</section>
-<section id="un-ejemplo" class="slide level2">
-<h2>Un ejemplo</h2>
-<p>Supongamos que queremos <strong>predecir el precio de una vivienda</strong>.</p>
-<p>Tenemos como variables de entrada:</p>
+<section id="estadística-descriptiva" class="slide level2">
+<h2>Estadística descriptiva</h2>
+<p>La estadística descriptiva permite <strong>resumir las características principales de los datos</strong>.</p>
 <ul>
-<li><span class="math inline">\(X_1\)</span>: tamaño de la vivienda.</li>
-<li><span class="math inline">\(X_2\)</span>: número de habitaciones.</li>
-<li><span class="math inline">\(X_3\)</span>: ubicación.</li>
-</ul>
-<p>Y como variable de respuesta:</p>
-<p><span class="math display">\[
-Y = \text{precio de la vivienda}
-\]</span></p>
-<p>Buscamos aprender la relación:</p>
-<p><span class="math display">\[
-\text{Precio}
-=
-f(\text{tamaño, habitaciones, ubicación})
-+
-\varepsilon
-\]</span></p>
-<p>El objetivo es utilizar los datos para <strong>estimar la función desconocida <span class="math inline">\(f\)</span></strong>.</p>
-</section>
-<section id="de-forma-general" class="slide level2">
-<h2>De forma general</h2>
-<p>Las variables de entrada pueden representarse como:</p>
-<p><span class="math display">\[
-X = (X_1, X_2, \ldots, X_p)
-\]</span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(X\)</span>: <strong>variables de entrada</strong> (<em>features</em> o <em>predictors</em>).</li>
-<li><span class="math inline">\(Y\)</span>: <strong>variable de respuesta</strong> (<em>response</em>).</li>
-</ul>
-<p>La relación entre las entradas y la respuesta se representa como:</p>
-<p><span class="math display">\[
-Y = f(X) + \varepsilon
-\]</span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(f\)</span> representa la <strong>relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span></strong>.</li>
-<li><span class="math inline">\(\varepsilon\)</span> representa el <strong>error aleatorio</strong>.</li>
-</ul>
-</section></section>
-<section>
-<section id="estimación-de-f" class="title-slide slide level1 center">
-<h1>Estimación de <span class="math inline">\(f\)</span></h1>
-
-</section>
-<section id="predicción-e-inferencia" class="slide level2">
-<h2>Predicción e inferencia</h2>
-<p>Existen dos objetivos principales:</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Predicción</th>
-<th>Inferencia</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Predecir <span class="math inline">\(Y\)</span> a partir de <span class="math inline">\(X\)</span></td>
-<td>Comprender la relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span></td>
-</tr>
-<tr class="even">
-<td>Importa la precisión</td>
-<td>Importa la interpretación</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(f\)</span> puede tratarse como una <em>caja negra</em></td>
-<td>Necesitamos entender la forma de <span class="math inline">\(f\)</span></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="predicción" class="slide level2">
-<h2>Predicción</h2>
-<p>Utilizamos <span class="math inline">\(\hat f\)</span> para obtener una respuesta estimada:</p>
-<p><span class="math display">\[
-\hat{Y} = \hat{f}(X)
-\]</span></p>
-<p><em>Ejemplo:</em> predecir el precio de una vivienda a partir de sus características.</p>
-</section>
-<section id="inferencia" class="slide level2">
-<h2>Inferencia</h2>
-<p>Utilizamos <span class="math inline">\(\hat f\)</span> para <strong>entender cómo <span class="math inline">\(X\)</span> se relaciona con <span class="math inline">\(Y\)</span></strong>.</p>
-<p><em>Ejemplo:</em> estudiar cómo el tamaño, número de habitaciones y ubicación se relacionan con el precio de una vivienda.</p>
-<p>Preguntas de interés:</p>
-<ul>
-<li>¿Qué variables están asociadas con el precio?</li>
-<li>¿Cómo cambia el precio cuando cambia una variable?</li>
-<li>¿Qué forma tiene la relación?</li>
+<li>Tendencia central.</li>
+<li>Dispersión.</li>
+<li>Posición.</li>
+<li>Frecuencias.</li>
 </ul>
 </section>
-<section id="datos-de-entrenamiento" class="slide level2">
-<h2>Datos de entrenamiento</h2>
-<p>Para estimar <span class="math inline">\(f\)</span> utilizamos un conjunto de <strong>datos de entrenamiento</strong>:</p>
-<p><span class="math display">\[
-\{(x_1,y_1),(x_2,y_2),\ldots,(x_n,y_n)\}
-\]</span></p>
-<p>donde cada observación contiene:</p>
+<section id="distribución-de-los-datos" class="slide level2">
+<h2>Distribución de los datos</h2>
+<p>Explorar la distribución permite comprender <strong>cómo se comportan los valores de una variable</strong>.</p>
+<p>Podemos observar:</p>
 <ul>
-<li><span class="math inline">\(x_i\)</span>: valores de las variables de entrada.</li>
-<li><span class="math inline">\(y_i\)</span>: respuesta observada.</li>
-</ul>
-<p>El objetivo es encontrar una función <span class="math inline">\(\hat f\)</span> tal que:</p>
-<p><span class="math display">\[
-Y \approx \hat f(X)
-\]</span></p>
-</section></section>
-<section>
-<section id="tipos-de-métodos" class="title-slide slide level1 center">
-<h1>Tipos de métodos</h1>
-
-</section>
-<section id="métodos-paramétricos" class="slide level2">
-<h2>Métodos paramétricos</h2>
-<p>Los métodos paramétricos suponen una <strong>forma específica para <span class="math inline">\(f\)</span></strong>.</p>
-<p>Por ejemplo, podemos asumir una relación lineal:</p>
-<p><span class="math display">\[
-f(X)=\beta_0+\beta_1X_1+\cdots+\beta_pX_p
-\]</span></p>
-<p>El problema se reduce entonces a estimar:</p>
-<p><span class="math display">\[
-\beta_0,\beta_1,\ldots,\beta_p
-\]</span></p>
-<p><strong>Ventaja:</strong> simplifican el problema.</p>
-<p><strong>Desventaja:</strong> si la forma elegida no representa adecuadamente la relación real, el modelo puede ser poco preciso.</p>
-</section>
-<section id="métodos-no-paramétricos" class="slide level2">
-<h2>Métodos no paramétricos</h2>
-<p>Los métodos no paramétricos <strong>no imponen una forma específica para <span class="math inline">\(f\)</span></strong>.</p>
-<p>Buscan aproximarse a los datos con mayor flexibilidad.</p>
-<p><em>Ejemplo</em>: Para predecir <span class="math inline">\(Y\)</span> para una nueva observación, <span class="math inline">\(k\)</span>-NN busca las observaciones más cercanas y utiliza sus valores para obtener la predicción.</p>
-<p>No suponemos previamente que <span class="math inline">\(f\)</span> sea lineal, cuadrática, exponencial, etc.</p>
-<blockquote>
-<p><strong>La forma de <span class="math inline">\(\hat f\)</span> se adapta a los datos.</strong></p>
-</blockquote>
-<p><strong>Ventaja:</strong> pueden representar relaciones más complejas.</p>
-<p><strong>Desventaja:</strong> generalmente requieren más observaciones y pueden ajustarse demasiado a los datos.</p>
-</section></section>
-<section>
-<section id="tipos-de-aprendizaje" class="title-slide slide level1 center">
-<h1>Tipos de aprendizaje</h1>
-
-</section>
-<section id="aprendizaje-supervisado" class="slide level2">
-<h2>Aprendizaje supervisado</h2>
-<p>En el <strong>aprendizaje supervisado</strong>, cada observación contiene:</p>
-<p><span class="math display">\[
-(x_i,y_i)
-\]</span></p>
-<p>Es decir, conocemos las variables de entrada <span class="math inline">\(X\)</span> y la respuesta <span class="math inline">\(Y\)</span>.</p>
-<p>El objetivo es aprender la relación entre ambas para:</p>
-<ul>
-<li><strong>predecir</strong> nuevas respuestas,</li>
-<li>o realizar <strong>inferencia</strong> sobre la relación entre las variables.</li>
+<li>Forma de la distribución.</li>
+<li>Concentración de los valores.</li>
+<li>Asimetría.</li>
+<li>Valores atípicos.</li>
 </ul>
 </section>
-<section id="regresión-y-clasificación" class="slide level2">
-<h2>Regresión y clasificación</h2>
-<p>Los problemas supervisados pueden distinguirse según el tipo de respuesta <span class="math inline">\(Y\)</span>.</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th>Regresión</th>
-<th>Clasificación</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Respuesta</strong></td>
-<td>Cuantitativa</td>
-<td>Cualitativa</td>
-</tr>
-<tr class="even">
-<td><strong>Objetivo</strong></td>
-<td>Predecir un valor</td>
-<td>Predecir una clase</td>
-</tr>
-<tr class="odd">
-<td><strong>Ejemplo</strong></td>
-<td>Precio de una casa</td>
-<td>Diagnóstico positivo/negativo</td>
-</tr>
-</tbody>
-</table>
-<p>La distinción depende principalmente de la <strong>variable de respuesta</strong>, no del tipo de predictores.</p>
-</section>
-<section id="aprendizaje-no-supervisado" class="slide level2">
-<h2>Aprendizaje no supervisado</h2>
-<p>En el <strong>aprendizaje no supervisado</strong> observamos:</p>
-<p><span class="math display">\[
-x_1,x_2,\ldots,x_n
-\]</span></p>
-<p>pero <strong>no existe una respuesta <span class="math inline">\(Y\)</span> conocida</strong>.</p>
-<p>Por lo tanto, no buscamos predecir una respuesta.</p>
-<p>Buscamos descubrir:</p>
+<section id="relaciones-entre-variables" class="slide level2">
+<h2>Relaciones entre variables</h2>
+<p>El EDA también permite explorar <strong>cómo se relacionan las variables entre sí</strong>.</p>
+<p>Podemos analizar:</p>
 <ul>
-<li>relaciones entre variables,</li>
-<li>similitudes entre observaciones,</li>
-<li>estructuras o grupos presentes en los datos.</li>
-</ul>
-</section></section>
-<section>
-<section id="evaluación" class="title-slide slide level1 center">
-<h1>Evaluación</h1>
-
-</section>
-<section id="cómo-evaluamos-un-modelo" class="slide level2">
-<h2>¿Cómo evaluamos un modelo?</h2>
-<p>El objetivo no es únicamente que un modelo funcione bien con los datos utilizados para <strong>entrenarlo</strong>, sino que también funcione bien con <strong>datos nuevos</strong>.</p>
-<p>Por ello, distinguimos entre:</p>
-<ul>
-<li><strong>Datos de entrenamiento (<em>train</em>):</strong> se utilizan para ajustar el modelo.</li>
-<li><strong>Datos de prueba (<em>test</em>):</strong> se utilizan para evaluar su desempeño en datos que no ha visto.</li>
-</ul>
-<blockquote>
-<p>Un buen modelo debe ser capaz de <strong>generalizar a nuevos datos</strong>.</p>
-</blockquote>
-</section>
-<section id="evaluación-en-aprendizaje-supervisado" class="slide level2">
-<h2>Evaluación en aprendizaje supervisado</h2>
-<p>En aprendizaje supervisado conocemos la <strong>respuesta real <span class="math inline">\(Y\)</span></strong>, por lo que podemos compararla con la respuesta predicha <span class="math inline">\(\hat{Y}\)</span>.</p>
-<p>Por ejemplo, en regresión una medida común es el <strong>error cuadrático medio</strong>:</p>
-<p><span class="math display">\[
-MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
-\]</span></p>
-<p>Un MSE pequeño indica que las predicciones se encuentran cerca de los valores reales.</p>
-<blockquote>
-<p>La evaluación mide qué tan bien el modelo <strong>predice la respuesta</strong>.</p>
-</blockquote>
-</section>
-<section id="entrenamiento-vs.-prueba" class="slide level2">
-<h2>Entrenamiento vs.&nbsp;prueba</h2>
-<p>En aprendizaje supervisado, no buscamos únicamente un error pequeño sobre los <strong>datos de entrenamiento</strong>.</p>
-<p>Queremos que el modelo funcione bien sobre <strong>datos que no ha visto anteriormente</strong>.</p>
-<ul>
-<li><strong>Training error:</strong> error sobre los datos utilizados para ajustar el modelo.</li>
-<li><strong>Test error:</strong> error sobre nuevas observaciones.</li>
-</ul>
-<blockquote>
-<p>El objetivo es obtener un <strong>test error bajo</strong>.</p>
-</blockquote>
-</section>
-<section id="overfitting" class="slide level2">
-<h2>Overfitting</h2>
-<p>Un modelo presenta <strong>overfitting</strong> cuando se ajusta demasiado a los datos de entrenamiento.</p>
-<p>Puede obtener:</p>
-<ul>
-<li>error de entrenamiento muy bajo,</li>
-<li>error de prueba elevado.</li>
-</ul>
-<p>Esto ocurre cuando el modelo aprende características particulares o ruido del conjunto de entrenamiento que <strong>no se generalizan a nuevos datos</strong>.</p>
-</section>
-<section id="evaluación-en-aprendizaje-no-supervisado" class="slide level2">
-<h2>Evaluación en aprendizaje no supervisado</h2>
-<p>En aprendizaje no supervisado <strong>no conocemos una respuesta <span class="math inline">\(Y\)</span></strong> con la cual comparar los resultados.</p>
-<p><span class="math display">\[
-X \longrightarrow \text{estructura o patrones}
-\]</span></p>
-<p>Por lo tanto, no podemos calcular directamente un <strong>error de predicción</strong> como en aprendizaje supervisado.</p>
-<p>La evaluación depende de <strong>qué estructura estamos buscando</strong>.</p>
-</section>
-<section id="ejemplo-k-means" class="slide level2">
-<h2>Ejemplo: <span class="math inline">\(K\)</span>-means</h2>
-<p><span class="math inline">\(K\)</span>-means busca formar grupos de observaciones similares.</p>
-<p>Podemos evaluar el resultado midiendo, por ejemplo, <strong>qué tan cercanas están las observaciones al centro de su grupo</strong>:</p>
-<p><span class="math display">\[
-\sum_{k=1}^{K}\sum_{x_i \in C_k}
-\|x_i-\mu_k\|^2
-\]</span></p>
-<p>Un valor menor indica grupos <strong>más compactos</strong>.</p>
-<blockquote>
-<p>En aprendizaje no supervisado, la forma de evaluar depende del objetivo del método.</p>
-</blockquote>
-</section></section>
-<section id="resumen" class="title-slide slide level1 center">
-<h1>Resumen</h1>
-<ul>
-<li>Machine learning permite <strong>aprender relaciones y patrones a partir de datos</strong>.</li>
-<li>Estimamos una función <span class="math inline">\(f\)</span> con objetivos de <strong>predicción o inferencia</strong>.</li>
-<li>Los métodos pueden ser <strong>paramétricos</strong> o <strong>no paramétricos</strong>.</li>
-<li>El aprendizaje puede ser <strong>supervisado</strong> o <strong>no supervisado</strong>; en el primero conocemos <span class="math inline">\(Y\)</span> y en el segundo buscamos estructuras sin una respuesta conocida.</li>
-<li>Los problemas supervisados pueden ser de <strong>regresión</strong> o <strong>clasificación</strong>.</li>
-<li>Un modelo supervisado debe evaluarse por su capacidad de <strong>generalizar a datos nuevos</strong>, no solo por su desempeño en entrenamiento.</li>
-<li>El <strong>overfitting</strong> ocurre cuando un modelo se ajusta demasiado al entrenamiento y pierde capacidad de generalización.</li>
-<li>En aprendizaje no supervisado, la evaluación depende de la <strong>estructura y del objetivo del método</strong>.</li>
+<li>Asociación entre variables numéricas.</li>
+<li>Diferencias entre grupos.</li>
+<li>Patrones conjuntos.</li>
 </ul>
 </section>
-
-<section id="referencias" class="title-slide slide level1 smaller scrollable">
-<h1>Referencias</h1>
+<section id="resumen" class="slide level2">
+<h2>Resumen</h2>
+<ul>
+<li>El <strong>EDA</strong> permite comprender los datos antes de construir un modelo.</li>
+<li>La <strong>estadística descriptiva</strong> resume sus características principales.</li>
+<li>Las <strong>distribuciones</strong> muestran cómo se comportan las variables.</li>
+<li>Las <strong>relaciones entre variables</strong> permiten descubrir patrones.</li>
+</ul>
+</section>
+<section id="referencias" class="slide level2 smaller scrollable">
+<h2>Referencias</h2>
 <div id="refs" role="list">
 
 </div>
 </section>
-
-<section id="preguntas" class="title-slide slide level1 center">
-<h1>Preguntas</h1>
+<section id="preguntas" class="slide level2">
+<h2>Preguntas</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><img data-src="../imagenes/mister.jpg" style="width:95.0%"></p>
@@ -510,11 +246,10 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
 </div>
 </div></div>
 </section>
-
-<section id="qué-sigue" class="title-slide slide level1 center">
-<h1>¿Qué sigue?</h1>
-<p>En la siguiente sección comenzaremos a estudiar métodos de <strong>aprendizaje supervisado</strong>.</p>
-<p><a href="nombre de leccion/laboratorio/proyecto"><strong>Ir a la siguiente sección →</strong></a></p>
+<section id="qué-sigue" class="slide level2">
+<h2>¿Qué sigue?</h2>
+<p>Ahora realizaremos un <strong>análisis exploratorio de datos (EDA)</strong> para conocer la estructura, características, calidad y principales patrones de un conjunto de datos.</p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-03.ipynb**"><strong>Ir al laboratorio →</strong></a></p>
 
 
 </section>
@@ -755,12 +490,12 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copiado");
+          button.setAttribute("title", "Copied!");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copiado");
+            button.setAttribute("data-bs-title", "Copied!");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

@@ -49,81 +49,396 @@
     "text": "Networks: An Introduction\nNewman, M. E. J. (2010). Networks: An Introduction. Oxford University Press."
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-02.html",
-    "href": "notebooks/unidad-01/notebook-02.html",
-    "title": "Laboratorio 2. Preparación de datos",
+    "objectID": "plantillas/notebooks.html",
+    "href": "plantillas/notebooks.html",
+    "title": "Laboratorio x. titutlo",
     "section": "",
-    "text": "Antes de comenzar\nEste laboratorio está diseñado para ejecutarse en Google Colab.\nAbra el notebook desde el siguiente enlace:\n🔗 https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-02.ipynb\nUna vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.\n!git clone https://github.com/urendacdenisse-hub/modelado-de-datos.git"
+    "text": "Antes de comenzar\nEste laboratorio está diseñado para ejecutarse en Google Colab.\nUna vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.\n!git clone https://github.com/urendacdenisse-hub/modelado-de-datos.git\n%cd modelado-de-datos"
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-02.html#objetivo",
-    "href": "notebooks/unidad-01/notebook-02.html#objetivo",
-    "title": "Laboratorio 2. Preparación de datos",
-    "section": "Objetivo",
-    "text": "Objetivo\nEn este notebook aplicaremos las técnicas vistas en la lección para explorar, limpiar y transformar un conjunto de datos utilizando Python y pandas.\n\nExplorar un conjunto de datos.\nLimpiar datos.\nTransformar variables.\nPreparar un conjunto de datos para su análisis."
+    "objectID": "plantillas/notebooks.html#tema",
+    "href": "plantillas/notebooks.html#tema",
+    "title": "Laboratorio x. titutlo",
+    "section": "Tema",
+    "text": "Tema\n\n# Codigo\n\nFunciones utilizadas\n\n…\n…"
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-02.html#exploración-inicial",
-    "href": "notebooks/unidad-01/notebook-02.html#exploración-inicial",
-    "title": "Laboratorio 2. Preparación de datos",
-    "section": "Exploración inicial",
-    "text": "Exploración inicial\nCarguemos un conjunto de datos y realicemos una exploración inicial de su contenido.\n\nimport pandas as pd\n\ndf = pd.read_csv(\"../../datos/sales.csv\")\n\nLibrería: pandas\npandas proporciona herramientas para explorar y resumir la información contenida en un DataFrame.\nFunciones utilizadas\n\ninfo(): Muestra la estructura del DataFrame, incluyendo el tipo de datos y los valores no nulos de cada columna.\nshape: Devuelve el número de filas y columnas del DataFrame.\nisna(): Identifica los valores faltantes en el DataFrame.\nsum(): Suma los valores de cada columna.\ndescribe(): Calcula estadísticas descriptivas de las variables numéricas.\n\n\ndf.info()\n\n\ndf.shape\n\n\ndf.isna().sum()\n\n\ndf.describe()"
-  },
-  {
-    "objectID": "notebooks/unidad-01/notebook-02.html#limpieza-de-datos",
-    "href": "notebooks/unidad-01/notebook-02.html#limpieza-de-datos",
-    "title": "Laboratorio 2. Preparación de datos",
-    "section": "Limpieza de datos",
-    "text": "Limpieza de datos\nEliminemos algunos problemas comunes antes de comenzar el análisis del conjunto de datos.\nFunciones utilizadas\n\ndrop_duplicates(): Elimina los registros duplicados.\nfillna(): Reemplaza los valores faltantes por un valor especificado.\ndropna(): Elimina los registros que contienen valores faltantes.\nclip(): Limita los valores de una columna a un intervalo definido.\n\n\ndf.drop_duplicates()\n\n\ndf.fillna(0)\n\n\ndf.dropna()\n\n\ndf[\"unit_price\"].clip(lower=0)"
-  },
-  {
-    "objectID": "notebooks/unidad-01/notebook-02.html#transformación-de-datos",
-    "href": "notebooks/unidad-01/notebook-02.html#transformación-de-datos",
-    "title": "Laboratorio 2. Preparación de datos",
-    "section": "Transformación de datos",
-    "text": "Transformación de datos\nTransformemos las variables del conjunto de datos para prepararlas para su análisis.\nFunciones utilizadas\n\nastype(): Convierte una columna al tipo de dato especificado.\nmean(): Calcula la media de una columna.\nstd(): Calcula la desviación estándar de una columna.\npd.to_datetime(): Convierte una columna al tipo de dato fecha y hora (datetime).\n\n\ndf.info()\n\n\ndf[\"quantity\"].astype(int)\n\n\n(df[\"unit_price\"] - df[\"unit_price\"].mean()) / df[\"unit_price\"].std()\n\n\ndf[\"quantity\"] * df[\"unit_price\"]\n\n\npd.to_datetime(df[\"date\"])"
-  },
-  {
-    "objectID": "notebooks/unidad-01/notebook-02.html#datos-listos-para-analizar",
-    "href": "notebooks/unidad-01/notebook-02.html#datos-listos-para-analizar",
-    "title": "Laboratorio 2. Preparación de datos",
-    "section": "Datos listos para analizar",
-    "text": "Datos listos para analizar\nGuardemos el conjunto de datos preparado para utilizarlo en etapas posteriores del análisis.\nFunciones utilizadas\n\nto_csv(): Guarda el contenido del DataFrame en un archivo CSV.\n\n\ndf.to_csv(\"../../datos/clean_data.csv\", index=False)"
-  },
-  {
-    "objectID": "notebooks/unidad-01/notebook-02.html#siguiente-lección",
-    "href": "notebooks/unidad-01/notebook-02.html#siguiente-lección",
-    "title": "Laboratorio 2. Preparación de datos",
+    "objectID": "plantillas/notebooks.html#siguiente-lección",
+    "href": "plantillas/notebooks.html#siguiente-lección",
+    "title": "Laboratorio x. titutlo",
     "section": "Siguiente lección",
-    "text": "Siguiente lección\nUna vez completado este laboratorio, continúa con la siguiente lección del curso:\n➡️ Análisis exploratorio de datos"
+    "text": "Siguiente lección\nUna vez completado este laboratorio, continúa con la siguiente lección del curso:\n➡️ titulo"
   },
   {
-    "objectID": "notebooks/index.html",
-    "href": "notebooks/index.html",
-    "title": "Notebooks",
+    "objectID": "notebooks/unidad-01/notebook-03.html",
+    "href": "notebooks/unidad-01/notebook-03.html",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
     "section": "",
-    "text": "Adquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos\n\n\n\n\n\nRegresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines\n\n\n\n\n\n\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
+    "text": "Antes de comenzar\nEste laboratorio está diseñado para ejecutarse en Google Colab.\nUna vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.\n!git clone https://github.com/urendacdenisse-hub/modelado-de-datos.git\n%cd modelado-de-datos"
   },
   {
-    "objectID": "notebooks/index.html#introduccion-al-analisis-de-datos",
-    "href": "notebooks/index.html#introduccion-al-analisis-de-datos",
-    "title": "Notebooks",
-    "section": "",
-    "text": "Adquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
+    "objectID": "notebooks/unidad-01/notebook-03.html#conjunto-de-datos",
+    "href": "notebooks/unidad-01/notebook-03.html#conjunto-de-datos",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
+    "section": "Conjunto de datos",
+    "text": "Conjunto de datos\nEn este laboratorio realizaremos un análisis exploratorio de datos (EDA) utilizando el conjunto de datos ventas.csv, ubicado en la carpeta datos.\nEl conjunto contiene información sobre ventas, clientes, productos y transacciones, que utilizaremos a lo largo de las diferentes etapas del análisis."
   },
   {
-    "objectID": "notebooks/index.html#modelos-paramétricos",
-    "href": "notebooks/index.html#modelos-paramétricos",
-    "title": "Notebooks",
-    "section": "",
-    "text": "Regresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines"
+    "objectID": "notebooks/unidad-01/notebook-03.html#carga-de-datos",
+    "href": "notebooks/unidad-01/notebook-03.html#carga-de-datos",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
+    "section": "Carga de datos",
+    "text": "Carga de datos\nImportaremos el conjunto de datos y realizaremos una primera inspección."
   },
   {
-    "objectID": "notebooks/index.html#modelos-no-paramétricos-y-ensambles",
-    "href": "notebooks/index.html#modelos-no-paramétricos-y-ensambles",
-    "title": "Notebooks",
+    "objectID": "notebooks/unidad-01/notebook-03.html#estructura-de-los-datos",
+    "href": "notebooks/unidad-01/notebook-03.html#estructura-de-los-datos",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
+    "section": "Estructura de los datos",
+    "text": "Estructura de los datos\nIdentificaremos las dimensiones, variables y tipos de datos, distinguiendo entre variables numéricas, categóricas y temporales."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-03.html#estadísticas-descriptivas",
+    "href": "notebooks/unidad-01/notebook-03.html#estadísticas-descriptivas",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
+    "section": "Estadísticas descriptivas",
+    "text": "Estadísticas descriptivas\nUtilizaremos media, mediana y moda para describir valores típicos, desviación estándar y rango para estudiar la variabilidad, y frecuencias y proporciones para resumir variables categóricas."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-03.html#calidad-de-los-datos",
+    "href": "notebooks/unidad-01/notebook-03.html#calidad-de-los-datos",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
+    "section": "Calidad de los datos",
+    "text": "Calidad de los datos\nIdentificaremos valores faltantes, registros duplicados, valores atípicos e inconsistencias en variables numéricas y categóricas."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-03.html#distribuciones",
+    "href": "notebooks/unidad-01/notebook-03.html#distribuciones",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
+    "section": "Distribuciones",
+    "text": "Distribuciones\nAnalizaremos la distribución de las variables numéricas y la frecuencia de las categorías para identificar patrones, concentraciones y valores poco comunes."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-03.html#relaciones-entre-variables",
+    "href": "notebooks/unidad-01/notebook-03.html#relaciones-entre-variables",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
+    "section": "Relaciones entre variables",
+    "text": "Relaciones entre variables\nExploraremos relaciones entre variables numéricas y categóricas, buscando asociaciones, diferencias entre grupos y posibles patrones."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-03.html#conclusiones",
+    "href": "notebooks/unidad-01/notebook-03.html#conclusiones",
+    "title": "Laboratorio 3. Análisis exploratorio de datos",
+    "section": "Conclusiones",
+    "text": "Conclusiones\nResumiremos los principales patrones, características y problemas de calidad encontrados durante la exploración."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html",
+    "href": "notebooks/unidad-01/notebook-01.html",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
     "section": "",
-    "text": "\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
+    "text": "Antes de comenzar\nEste laboratorio está diseñado para ejecutarse en Google Colab.\nUna vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.\n!git clone https://github.com/urendacdenisse-hub/modelado-de-datos.git\n%cd modelado-de-datos"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#archivos",
+    "href": "notebooks/unidad-01/notebook-01.html#archivos",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "Archivos",
+    "text": "Archivos\nUtiliza las funciones de pandas para leer archivos CSV, Excel y JSON.\nLibrería: pandas\nProporciona herramientas para leer, manipular y analizar datos tabulares en Python.\nFunciones utilizadas\n\npd.read_csv(): Lee un archivo CSV y devuelve un DataFrame.\nhead(): Muestra las primeras filas del DataFrame.\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"modelado-de-datos/datos/sales.csv\")\ndf.head()\n\nFunciones utilizadas\n\npd.read_excel(): Lee un archivo de Excel y devuelve un DataFrame.\n\n\ndf = pd.read_excel(\"modelado-de-datos/datos/students.xlsx\")\ndf.head()\n\nFunciones utilizadas\n\npd.read_json(): Lee un archivo JSON y devuelve un DataFrame.\n\n\ndf = pd.read_json(\"modelado-de-datos/datos/books.json\")\ndf.head()"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#bases-de-datos",
+    "href": "notebooks/unidad-01/notebook-01.html#bases-de-datos",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "Bases de datos",
+    "text": "Bases de datos\nConectémonos a una base de datos SQLite y ejecutemos una consulta para cargar los resultados en un DataFrame.\nLibrería: sqlite3\nsqlite3 permite conectarse y ejecutar consultas sobre bases de datos SQLite desde Python.\nFunciones utilizadas\n\nsqlite3.connect(): Abre una conexión con una base de datos SQLite.\ncursor(): Crea un cursor para ejecutar instrucciones SQL.\nexecute(): Ejecuta una instrucción SQL.\nfetchall(): Recupera todos los resultados de la consulta.\n\n\nimport sqlite3\n\nconn = sqlite3.connect(\"modelado-de-datos/datos/chinook.sqlite\")\ncursor = conn.cursor()\n\ncursor.execute(\n    \"SELECT name FROM sqlite_master WHERE type='table';\"\n)\nprint(cursor.fetchall())\n\nFunciones utilizadas\n\npd.read_sql_query(): Ejecuta una consulta SQL y devuelve el resultado como un DataFrame.\n\n\nartists = pd.read_sql_query(\n    \"SELECT * FROM Artist;\",\n    conn\n)\n\nartists.head()\n\nFunciones utilizadas\n\nclose(): Cierra la conexión con la base de datos y libera los recursos asociados.\n\n\nconn.close()"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#apis",
+    "href": "notebooks/unidad-01/notebook-01.html#apis",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "APIs",
+    "text": "APIs\nEnviemos una solicitud a una API y recuperemos la información en formato JSON.\nLibrería: requests\nrequests permite enviar solicitudes a servicios web y APIs desde Python.\nFunciones utilizadas\n\nrequests.get(): Solicita información desde la URL especificada.\njson(): Convierte la respuesta de la API en un objeto de Python (diccionario o lista).\n\n\nimport requests\n\nurl = (\n    \"https://api.open-meteo.com/v1/forecast\"\n    \"?latitude=31.74&longitude=-106.49&current=temperature_2m\"\n)\n\nresponse = requests.get(url)\ndata = response.json()\n\n\ndata"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#sitios-web",
+    "href": "notebooks/unidad-01/notebook-01.html#sitios-web",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "Sitios web",
+    "text": "Sitios web\nExtraigamos tablas publicadas en un sitio web y carguemos su contenido en un DataFrame.\nFunciones utilizadas\n\npd.read_html(): Extrae las tablas encontradas en una página web y las devuelve como una lista de DataFrames.\n\n\nurl = \"https://www.w3schools.com/html/html_tables.asp\"\ntables = pd.read_html(url)\n\n\ntables[0]"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-01.html#siguiente-lección",
+    "href": "notebooks/unidad-01/notebook-01.html#siguiente-lección",
+    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "section": "Siguiente lección",
+    "text": "Siguiente lección\nUna vez completado este laboratorio, continúa con la siguiente lección del curso:\n➡️ Preparación de datos"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#regresión-lineal",
+    "href": "lecciones/unidad-01/leccion-08.html#regresión-lineal",
+    "title": "Aprendizaje supervisado",
+    "section": "Regresión lineal",
+    "text": "Regresión lineal\nLa regresión lineal es un método de aprendizaje supervisado utilizado para estudiar la relación entre una respuesta cuantitativa \\(Y\\) y una o más variables de entrada \\(X\\).\nPuede utilizarse con dos objetivos:\n\nPredicción: estimar el valor de \\(Y\\) para nuevas observaciones.\nInferencia: estudiar cómo las variables de entrada se relacionan con \\(Y\\).\n\nComenzaremos con el caso más sencillo: una sola variable de entrada."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#el-modelo",
+    "href": "lecciones/unidad-01/leccion-08.html#el-modelo",
+    "title": "Aprendizaje supervisado",
+    "section": "El modelo",
+    "text": "El modelo\nSupongamos que tenemos una variable de entrada \\(X\\) y una respuesta cuantitativa \\(Y\\).\nLa regresión lineal simple supone que su relación puede aproximarse mediante:\n\\[\nY = \\beta_0 + \\beta_1X + \\varepsilon\n\\]\ndonde:\n\n\\(\\beta_0\\): intercepto.\n\\(\\beta_1\\): pendiente.\n\\(\\varepsilon\\): término de error.\n\nLa parte\n\\[\n\\beta_0+\\beta_1X\n\\]\nrepresenta la relación lineal entre \\(X\\) y \\(Y\\)."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#interpretación-de-los-coeficientes",
+    "href": "lecciones/unidad-01/leccion-08.html#interpretación-de-los-coeficientes",
+    "title": "Aprendizaje supervisado",
+    "section": "Interpretación de los coeficientes",
+    "text": "Interpretación de los coeficientes\nEn el modelo\n\\[\nY = \\beta_0+\\beta_1X+\\varepsilon\n\\]\nel intercepto \\(\\beta_0\\) representa el valor esperado de \\(Y\\) cuando:\n\\[\nX=0\n\\]\nLa pendiente \\(\\beta_1\\) representa el cambio promedio esperado en \\(Y\\) asociado con un incremento de una unidad en \\(X\\).\n\nEl significado de los coeficientes siempre depende del contexto y de las unidades de las variables."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#de-la-población-a-los-datos",
+    "href": "lecciones/unidad-01/leccion-08.html#de-la-población-a-los-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "De la población a los datos",
+    "text": "De la población a los datos\nLos parámetros reales\n\\[\n\\beta_0,\\beta_1\n\\]\nson desconocidos.\nA partir de una muestra:\n\\[\n(x_1,y_1),(x_2,y_2),\\ldots,(x_n,y_n)\n\\]\nbuscamos estimarlos mediante:\n\\[\n\\hat{\\beta}_0,\\hat{\\beta}_1\n\\]\nobteniendo la recta estimada:\n\\[\n\\hat{Y}=\\hat{\\beta}_0+\\hat{\\beta}_1X\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#residuales",
+    "href": "lecciones/unidad-01/leccion-08.html#residuales",
+    "title": "Aprendizaje supervisado",
+    "section": "Residuales",
+    "text": "Residuales\nPara cada observación podemos obtener una predicción:\n\\[\n\\hat y_i=\\hat\\beta_0+\\hat\\beta_1x_i\n\\]\nEl residual es la diferencia entre el valor observado y el valor predicho:\n\\[\ne_i=y_i-\\hat y_i\n\\]\nPor lo tanto:\n\\[\ne_i=y_i-(\\hat\\beta_0+\\hat\\beta_1x_i)\n\\]\nLos residuales indican qué tan lejos se encuentra cada observación de la recta estimada."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados",
+    "href": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados",
+    "title": "Aprendizaje supervisado",
+    "section": "Mínimos cuadrados",
+    "text": "Mínimos cuadrados\nQueremos encontrar la recta que haga los residuales tan pequeños como sea posible.\nDefinimos la suma de cuadrados de los residuales:\n\\[\nRSS=\\sum_{i=1}^{n}e_i^2\n\\]\nSustituyendo el residual:\n\\[\nRSS(\\beta_0,\\beta_1)\n=\n\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nEl método de mínimos cuadrados elige los valores de \\(\\beta_0\\) y \\(\\beta_1\\) que minimizan esta cantidad."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#estimación-de-los-coeficientes",
+    "href": "lecciones/unidad-01/leccion-08.html#estimación-de-los-coeficientes",
+    "title": "Aprendizaje supervisado",
+    "section": "Estimación de los coeficientes",
+    "text": "Estimación de los coeficientes\nBuscamos:\n\\[\n\\min_{\\beta_0,\\beta_1}\n\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nPara encontrar el mínimo, derivamos con respecto a cada parámetro:\n\\[\n\\frac{\\partial RSS}{\\partial\\beta_0}\n=\n-2\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)\n\\]\n\\[\n\\frac{\\partial RSS}{\\partial\\beta_1}\n=\n-2\\sum_{i=1}^{n}\nx_i(y_i-\\beta_0-\\beta_1x_i)\n\\]\nEn el mínimo, ambas derivadas deben ser iguales a cero."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#ecuaciones-normales",
+    "href": "lecciones/unidad-01/leccion-08.html#ecuaciones-normales",
+    "title": "Aprendizaje supervisado",
+    "section": "Ecuaciones normales",
+    "text": "Ecuaciones normales\nIgualando las derivadas a cero:\n\\[\n\\sum_{i=1}^{n}\n(y_i-\\hat\\beta_0-\\hat\\beta_1x_i)=0\n\\]\n\\[\n\\sum_{i=1}^{n}\nx_i(y_i-\\hat\\beta_0-\\hat\\beta_1x_i)=0\n\\]\nDe la primera ecuación:\n\\[\n\\sum y_i=n\\hat\\beta_0+\\hat\\beta_1\\sum x_i\n\\]\nDividiendo entre \\(n\\):\n\\[\n\\bar y=\\hat\\beta_0+\\hat\\beta_1\\bar x\n\\]\npor lo tanto:\n\\[\n\\boxed{\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#estimación-de-la-pendiente",
+    "href": "lecciones/unidad-01/leccion-08.html#estimación-de-la-pendiente",
+    "title": "Aprendizaje supervisado",
+    "section": "Estimación de la pendiente",
+    "text": "Estimación de la pendiente\nSustituyendo el intercepto en la segunda ecuación y simplificando obtenemos:\n\\[\n\\boxed{\n\\hat\\beta_1=\n\\frac{\n\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})\n}{\n\\sum_{i=1}^{n}(x_i-\\bar{x})^2\n}\n}\n\\]\ny posteriormente:\n\\[\n\\boxed{\n\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x\n}\n\\]\nEstos son los estimadores de mínimos cuadrados para la regresión lineal simple."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#precio-de-una-vivienda",
+    "href": "lecciones/unidad-01/leccion-08.html#precio-de-una-vivienda",
+    "title": "Aprendizaje supervisado",
+    "section": "Precio de una vivienda",
+    "text": "Precio de una vivienda\nSupongamos que queremos estudiar la relación entre:\n\\[\nX=\\text{tamaño de una vivienda}\n\\]\ny \\[\nY=\\text{precio de la vivienda}\n\\]\nTenemos las siguientes observaciones:\n\n\n\nTamaño \\(X\\) (m²)\nPrecio \\(Y\\) (miles de $)\n\n\n\n\n50\n120\n\n\n70\n150\n\n\n90\n180\n\n\n110\n210\n\n\n130\n260"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#precio-de-una-vivienda-1",
+    "href": "lecciones/unidad-01/leccion-08.html#precio-de-una-vivienda-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Precio de una vivienda",
+    "text": "Precio de una vivienda\nBuscamos estimar:\n\\[\n\\hat Y=\\hat\\beta_0+\\hat\\beta_1X\n\\]\ny utilizar el modelo para predecir el precio de una vivienda de:\n\\[\nX=100\\text{ m}^2\n\\]\n\nDesarrollo del ejemplo en el pizarrón."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#existe-una-relación",
+    "href": "lecciones/unidad-01/leccion-08.html#existe-una-relación",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Existe una relación?",
+    "text": "¿Existe una relación?\nEl modelo poblacional es:\n\\[\nY=\\beta_0+\\beta_1X+\\varepsilon\n\\]\nSi:\n\\[\n\\beta_1=0\n\\]\nentonces \\(X\\) no aporta información lineal sobre \\(Y\\).\nPodemos plantear:\n\\[\nH_0:\\beta_1=0\n\\]\nfrente a:\n\\[\nH_a:\\beta_1\\neq0\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#estadístico-t",
+    "href": "lecciones/unidad-01/leccion-08.html#estadístico-t",
+    "title": "Aprendizaje supervisado",
+    "section": "Estadístico \\(t\\)",
+    "text": "Estadístico \\(t\\)\nPara evaluar la hipótesis utilizamos:\n\\[\nt=\n\\frac{\\hat\\beta_1}\n{SE(\\hat\\beta_1)}\n\\]\nEl error estándar de la pendiente es:\n\\[\nSE(\\hat\\beta_1)^2\n=\n\\frac{\\sigma^2}\n{\\sum_{i=1}^{n}(x_i-\\bar{x})^2}\n\\]\nComo \\(\\sigma^2\\) es desconocida, debe estimarse a partir de los datos.\nUn valor de \\(|\\hat\\beta_1|\\) grande en relación con su error estándar proporciona evidencia contra \\(H_0\\)."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#error-estándar-residual",
+    "href": "lecciones/unidad-01/leccion-08.html#error-estándar-residual",
+    "title": "Aprendizaje supervisado",
+    "section": "Error estándar residual",
+    "text": "Error estándar residual\nLa variabilidad del término de error puede estimarse mediante el error estándar residual:\n\\[\nRSE=\n\\sqrt{\n\\frac{RSS}{n-2}\n}\n\\]\no equivalentemente:\n\\[\nRSE=\n\\sqrt{\n\\frac{1}{n-2}\n\\sum_{i=1}^{n}(y_i-\\hat y_i)^2\n}\n\\]\nEl RSE representa aproximadamente cuánto se desvían las observaciones de la recta de regresión."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#coeficiente-de-determinación",
+    "href": "lecciones/unidad-01/leccion-08.html#coeficiente-de-determinación",
+    "title": "Aprendizaje supervisado",
+    "section": "Coeficiente de determinación",
+    "text": "Coeficiente de determinación\nOtra medida de ajuste es:\n\\[\nR^2=\n\\frac{TSS-RSS}{TSS}\n=\n1-\\frac{RSS}{TSS}\n\\]\ndonde:\n\\[\nTSS=\\sum_{i=1}^{n}(y_i-\\bar y)^2\n\\]\n\\(R^2\\) representa la proporción de la variabilidad de \\(Y\\) explicada por el modelo.\n\\[\n0\\leq R^2\\leq1\n\\]\nUn valor cercano a 1 indica que una mayor proporción de la variabilidad de \\(Y\\) es explicada por la relación lineal."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#supuestos-del-modelo",
+    "href": "lecciones/unidad-01/leccion-08.html#supuestos-del-modelo",
+    "title": "Aprendizaje supervisado",
+    "section": "Supuestos del modelo",
+    "text": "Supuestos del modelo\nEl modelo\n\\[\nY=\\beta_0+\\beta_1X+\\varepsilon\n\\]\nrepresenta una aproximación de la relación entre \\(X\\) y \\(Y\\).\nPara realizar inferencia con el modelo se consideran supuestos sobre los errores, entre ellos:\n\nrelación aproximadamente lineal,\nerrores con media cero,\nerrores independientes,\nvarianza aproximadamente constante.\n\nAlgunos procedimientos inferenciales requieren además supuestos sobre la distribución de los errores."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#cuando-la-relación-no-es-lineal",
+    "href": "lecciones/unidad-01/leccion-08.html#cuando-la-relación-no-es-lineal",
+    "title": "Aprendizaje supervisado",
+    "section": "Cuando la relación no es lineal",
+    "text": "Cuando la relación no es lineal\nLa regresión lineal supone que la relación puede representarse adecuadamente mediante una recta.\nSi la relación real presenta una estructura diferente:\n\\[\nY \\neq \\beta_0+\\beta_1X+\\varepsilon\n\\]\nuna recta puede producir un ajuste inadecuado.\n\nUn modelo lineal es una aproximación; no implica que la relación real sea necesariamente lineal."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#correlación-no-implica-causalidad",
+    "href": "lecciones/unidad-01/leccion-08.html#correlación-no-implica-causalidad",
+    "title": "Aprendizaje supervisado",
+    "section": "Correlación no implica causalidad",
+    "text": "Correlación no implica causalidad\nEncontrar una asociación entre \\(X\\) y \\(Y\\) no implica que:\n\\[\nX\\longrightarrow Y\n\\]\nsea una relación causal.\nUna tercera variable puede estar relacionada con ambas.\nPor ejemplo:\n\\[\n\\text{ventas de helado}\n\\longleftrightarrow\n\\text{ataques de tiburón}\n\\]\npueden estar asociadas porque ambas aumentan cuando aumenta la temperatura.\n\nLa regresión describe asociaciones; por sí sola no demuestra causalidad."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#por-qué-necesitamos-más-predictores",
+    "href": "lecciones/unidad-01/leccion-08.html#por-qué-necesitamos-más-predictores",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Por qué necesitamos más predictores?",
+    "text": "¿Por qué necesitamos más predictores?\nEn muchos problemas una respuesta depende de varias variables.\nPor ejemplo:\n\\[\nY=\\text{precio de una vivienda}\n\\]\npuede depender de:\n\\[\nX_1=\\text{tamaño}\n\\]\n\\[\nX_2=\\text{habitaciones}\n\\]\n\\[\nX_3=\\text{ubicación}\n\\]\nEn lugar de construir un modelo independiente para cada variable, podemos incorporarlas simultáneamente."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#el-modelo-múltiple",
+    "href": "lecciones/unidad-01/leccion-08.html#el-modelo-múltiple",
+    "title": "Aprendizaje supervisado",
+    "section": "El modelo múltiple",
+    "text": "El modelo múltiple\nCon \\(p\\) predictores:\n\\[\nY=\n\\beta_0+\n\\beta_1X_1+\n\\beta_2X_2+\n\\cdots+\n\\beta_pX_p+\n\\varepsilon\n\\]\nPara una observación:\n\\[\n\\hat y=\n\\hat\\beta_0+\n\\hat\\beta_1x_1+\n\\hat\\beta_2x_2+\n\\cdots+\n\\hat\\beta_px_p\n\\]\nAhora estimamos:\n\\[\n\\beta_0,\\beta_1,\\ldots,\\beta_p\n\\]\nsimultáneamente."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#interpretación-de-los-coeficientes-1",
+    "href": "lecciones/unidad-01/leccion-08.html#interpretación-de-los-coeficientes-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Interpretación de los coeficientes",
+    "text": "Interpretación de los coeficientes\nEn regresión múltiple, \\(\\beta_j\\) representa el cambio promedio en \\(Y\\) asociado con un incremento de una unidad en \\(X_j\\):\n\nmanteniendo los demás predictores constantes.\n\nPor ejemplo:\n\\[\nY=\n\\beta_0+\n\\beta_1X_1+\n\\beta_2X_2+\n\\varepsilon\n\\]\n\\(\\beta_1\\) representa el cambio asociado con \\(X_1\\) cuando \\(X_2\\) se mantiene fijo.\nEsta interpretación distingue a la regresión múltiple de realizar varias regresiones simples por separado."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados-1",
+    "href": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Mínimos cuadrados",
+    "text": "Mínimos cuadrados\nLa idea es exactamente la misma que en regresión simple.\nPara cada observación:\n\\[\ne_i=\ny_i-\n\\left(\n\\beta_0+\n\\beta_1x_{i1}+\n\\cdots+\n\\beta_px_{ip}\n\\right)\n\\]\nDefinimos:\n\\[\nRSS=\n\\sum_{i=1}^{n}\n\\left(\ny_i-\n\\beta_0-\n\\sum_{j=1}^{p}\\beta_jx_{ij}\n\\right)^2\n\\]\nBuscamos los coeficientes que minimizan \\(RSS\\)."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#el-modelo-en-forma-matricial",
+    "href": "lecciones/unidad-01/leccion-08.html#el-modelo-en-forma-matricial",
+    "title": "Aprendizaje supervisado",
+    "section": "El modelo en forma matricial",
+    "text": "El modelo en forma matricial\nPodemos escribir la regresión múltiple como:\n\\[\n\\mathbf y=\\mathbf X\\boldsymbol\\beta+\\boldsymbol\\varepsilon\n\\]\ndonde:\n\\[\n\\mathbf y=\n\\begin{bmatrix}\ny_1\\\\\ny_2\\\\\n\\vdots\\\\\ny_n\n\\end{bmatrix}\n\\]\ny\n\\[\n\\boldsymbol\\beta=\n\\begin{bmatrix}\n\\beta_0\\\\\n\\beta_1\\\\\n\\vdots\\\\\n\\beta_p\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#matriz-de-diseño",
+    "href": "lecciones/unidad-01/leccion-08.html#matriz-de-diseño",
+    "title": "Aprendizaje supervisado",
+    "section": "Matriz de diseño",
+    "text": "Matriz de diseño\nLa matriz de predictores es:\n\\[\n\\mathbf X=\n\\begin{bmatrix}\n1 & x_{11} & x_{12} & \\cdots & x_{1p}\\\\\n1 & x_{21} & x_{22} & \\cdots & x_{2p}\\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots\\\\\n1 & x_{n1} & x_{n2} & \\cdots & x_{np}\n\\end{bmatrix}\n\\]\nLa primera columna de unos corresponde al intercepto \\(\\beta_0\\).\nLa predicción puede escribirse como:\n\\[\n\\hat{\\mathbf y}=\\mathbf X\\hat{\\boldsymbol\\beta}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados-en-forma-matricial",
+    "href": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados-en-forma-matricial",
+    "title": "Aprendizaje supervisado",
+    "section": "Mínimos cuadrados en forma matricial",
+    "text": "Mínimos cuadrados en forma matricial\nQueremos minimizar:\n\\[\nRSS=\n(\\mathbf y-\\mathbf X\\boldsymbol\\beta)^T\n(\\mathbf y-\\mathbf X\\boldsymbol\\beta)\n\\]\nExpandiendo:\n\\[\nRSS=\n\\mathbf y^T\\mathbf y\n-\n2\\boldsymbol\\beta^T\\mathbf X^T\\mathbf y\n+\n\\boldsymbol\\beta^T\\mathbf X^T\\mathbf X\\boldsymbol\\beta\n\\]\nDerivamos con respecto a \\(\\boldsymbol\\beta\\):\n\\[\n\\frac{\\partial RSS}{\\partial\\boldsymbol\\beta}\n=\n-2\\mathbf X^T\\mathbf y\n+\n2\\mathbf X^T\\mathbf X\\boldsymbol\\beta\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#ecuaciones-normales-1",
+    "href": "lecciones/unidad-01/leccion-08.html#ecuaciones-normales-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Ecuaciones normales",
+    "text": "Ecuaciones normales\nIgualamos la derivada a cero:\n\\[\n-2\\mathbf X^T\\mathbf y\n+\n2\\mathbf X^T\\mathbf X\\hat{\\boldsymbol\\beta}\n=0\n\\]\npor lo tanto:\n\\[\n\\mathbf X^T\\mathbf X\\hat{\\boldsymbol\\beta}\n=\n\\mathbf X^T\\mathbf y\n\\]\nSi \\(\\mathbf X^T\\mathbf X\\) es invertible:\n\\[\n\\boxed{\n\\hat{\\boldsymbol\\beta}\n=\n(\\mathbf X^T\\mathbf X)^{-1}\n\\mathbf X^T\\mathbf y\n}\n\\]\nEsta es la solución de mínimos cuadrados para la regresión lineal múltiple."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#existe-alguna-relación",
+    "href": "lecciones/unidad-01/leccion-08.html#existe-alguna-relación",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Existe alguna relación?",
+    "text": "¿Existe alguna relación?\nCon múltiples predictores podemos preguntar si al menos uno está relacionado con la respuesta.\nPlanteamos:\n\\[\nH_0:\n\\beta_1=\\beta_2=\\cdots=\\beta_p=0\n\\]\nfrente a:\n\\[\nH_a:\n\\text{al menos un }\\beta_j\\neq0\n\\]\nPara evaluar esta hipótesis utilizamos el estadístico \\(F\\)."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#estadístico-f",
+    "href": "lecciones/unidad-01/leccion-08.html#estadístico-f",
+    "title": "Aprendizaje supervisado",
+    "section": "Estadístico \\(F\\)",
+    "text": "Estadístico \\(F\\)\nEl estadístico se define como:\n\\[\nF=\n\\frac{(TSS-RSS)/p}\n{RSS/(n-p-1)}\n\\]\nSi \\(H_0\\) es cierta, esperamos un valor de \\(F\\) cercano a 1.\nUn valor suficientemente grande proporciona evidencia de que al menos uno de los predictores está relacionado con la respuesta."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#evaluación-individual",
+    "href": "lecciones/unidad-01/leccion-08.html#evaluación-individual",
+    "title": "Aprendizaje supervisado",
+    "section": "Evaluación individual",
+    "text": "Evaluación individual\nUna vez establecida una relación global, también podemos estudiar cada predictor.\nPara cada coeficiente:\n\\[\nH_0:\\beta_j=0\n\\]\nfrente a:\n\\[\nH_a:\\beta_j\\neq0\n\\]\nEl coeficiente \\(\\beta_j\\) debe interpretarse considerando que los demás predictores permanecen constantes."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#agregar-variables-no-siempre-mejora-el-modelo",
+    "href": "lecciones/unidad-01/leccion-08.html#agregar-variables-no-siempre-mejora-el-modelo",
+    "title": "Aprendizaje supervisado",
+    "section": "Agregar variables no siempre mejora el modelo",
+    "text": "Agregar variables no siempre mejora el modelo\nEn los datos de entrenamiento, agregar predictores nunca aumenta el RSS.\nPor lo tanto, \\(R^2\\) puede aumentar incluso cuando agregamos variables poco útiles.\nEsto significa que:\n\nUn \\(R^2\\) mayor no garantiza un mejor modelo para nuevas observaciones.\n\nLa capacidad de generalización debe evaluarse utilizando datos que no participaron en el ajuste."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-06.html#introducción",
+    "href": "lecciones/unidad-01/leccion-06.html#introducción",
+    "title": "Aprendizaje supervisado",
+    "section": "Introducción",
+    "text": "Introducción\nEl análisis exploratorio de datos (EDA) permite examinar un conjunto de datos para comprender sus principales características antes de construir un modelo.\nEl objetivo es identificar patrones, distribuciones, relaciones y posibles problemas en los datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-06.html#estadística-descriptiva",
+    "href": "lecciones/unidad-01/leccion-06.html#estadística-descriptiva",
+    "title": "Aprendizaje supervisado",
+    "section": "Estadística descriptiva",
+    "text": "Estadística descriptiva\nLa estadística descriptiva permite resumir las características principales de los datos.\n\nTendencia central.\nDispersión.\nPosición.\nFrecuencias."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-06.html#distribución-de-los-datos",
+    "href": "lecciones/unidad-01/leccion-06.html#distribución-de-los-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Distribución de los datos",
+    "text": "Distribución de los datos\nExplorar la distribución permite comprender cómo se comportan los valores de una variable.\nPodemos observar:\n\nForma de la distribución.\nConcentración de los valores.\nAsimetría.\nValores atípicos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-06.html#relaciones-entre-variables",
+    "href": "lecciones/unidad-01/leccion-06.html#relaciones-entre-variables",
+    "title": "Aprendizaje supervisado",
+    "section": "Relaciones entre variables",
+    "text": "Relaciones entre variables\nEl EDA también permite explorar cómo se relacionan las variables entre sí.\nPodemos analizar:\n\nAsociación entre variables numéricas.\nDiferencias entre grupos.\nPatrones conjuntos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-06.html#resumen",
+    "href": "lecciones/unidad-01/leccion-06.html#resumen",
+    "title": "Aprendizaje supervisado",
+    "section": "Resumen",
+    "text": "Resumen\n\nEl EDA permite comprender los datos antes de construir un modelo.\nLa estadística descriptiva resume sus características principales.\nLas distribuciones muestran cómo se comportan las variables.\nLas relaciones entre variables permiten descubrir patrones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-06.html#referencias",
+    "href": "lecciones/unidad-01/leccion-06.html#referencias",
+    "title": "Aprendizaje supervisado",
+    "section": "Referencias",
+    "text": "Referencias"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-06.html#preguntas",
+    "href": "lecciones/unidad-01/leccion-06.html#preguntas",
+    "title": "Aprendizaje supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-06.html#qué-sigue",
+    "href": "lecciones/unidad-01/leccion-06.html#qué-sigue",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nAhora realizaremos un análisis exploratorio de datos (EDA) para conocer la estructura, características, calidad y principales patrones de un conjunto de datos.\nIr al laboratorio →"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-04.html#introducción",
@@ -200,7 +515,7 @@
     "href": "lecciones/unidad-01/leccion-04.html#qué-sigue",
     "title": "Aprendizaje supervisado",
     "section": "¿Qué sigue?",
-    "text": "¿Qué sigue?\nEn el laboratorio pondremos en práctica estas herramientas para obtener datos desde diferentes fuentes y construir nuestros primeros conjuntos de datos.\n\nLectura de archivos CSV, Excel y JSON.\nConsumo de una API.\nExtracción básica desde un sitio web.\nCreación de un DataFrame.\n\nIr al Notebook 1 →"
+    "text": "¿Qué sigue?\nEn el laboratorio pondremos en práctica estas herramientas para obtener datos desde diferentes fuentes y construir nuestros primeros conjuntos de datos.\n\nLectura de archivos CSV, Excel y JSON.\nConsumo de una API.\nExtracción básica desde un sitio web.\nCreación de un DataFrame.\n\nIr al Notebook →"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-02.html#introducción",
@@ -287,8 +602,8 @@
     "text": "Introducción\nTipos y fuentes de datos\nAdquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
   },
   {
-    "objectID": "lecciones/index.html#introducción-al-aprendizaje-supervisado",
-    "href": "lecciones/index.html#introducción-al-aprendizaje-supervisado",
+    "objectID": "lecciones/index.html#introducción-al-machine-learning",
+    "href": "lecciones/index.html#introducción-al-machine-learning",
     "title": "Lecciones",
     "section": "",
     "text": "Introducción"
@@ -312,14 +627,7 @@
     "href": "index.html",
     "title": "Análisis y modelado de datos en ciencias",
     "section": "",
-    "text": "Bienvenido al repositorio oficial del curso Análisis y modelado de datos en ciencias.\nEn este sitio se publicarán gradualmente las lecciones, notebooks, conjuntos de datos y recursos utilizados durante el semestre.\n\n\n\n\n\n\nNoteAntes de comenzar\n\n\n\nSe recomienda revisar el syllabus para conocer los objetivos, la metodología, el esquema de evaluación y el cronograma del curso.\n\n\n\n\n\n\n\n\nSyllabus\n\n\n\n\n\nBibliografía\nConjuntos de datos\nMaterial complementario\n\n\n\n\nLas diapositivas y notebooks se publicarán conforme avance el semestre.\n\n\n\nLa información y los entregables del proyecto se publicarán durante el curso.\n\n\n\n\n\nTodo el material del curso se encuentra disponible en GitHub.\nhttps://github.com/urendacdenisse-hub/Modelado-de-datos"
-  },
-  {
-    "objectID": "index.html#material-del-curso",
-    "href": "index.html#material-del-curso",
-    "title": "Análisis y modelado de datos en ciencias",
-    "section": "",
-    "text": "Syllabus\n\n\n\n\n\nBibliografía\nConjuntos de datos\nMaterial complementario\n\n\n\n\nLas diapositivas y notebooks se publicarán conforme avance el semestre.\n\n\n\nLa información y los entregables del proyecto se publicarán durante el curso."
+    "text": "Bienvenido al repositorio oficial del curso Análisis y modelado de datos en ciencias.\nEn este sitio se publicarán gradualmente las lecciones, notebooks, conjuntos de datos y recursos utilizados durante el semestre.\n\n\n\n\n\n\nNoteAntes de comenzar\n\n\n\nSe recomienda revisar el syllabus para conocer los objetivos, la metodología, el esquema de evaluación y el cronograma del curso.\n\n\n\n\nTodo el material del curso se encuentra disponible en GitHub.\nhttps://github.com/urendacdenisse-hub/Modelado-de-datos"
   },
   {
     "objectID": "index.html#repositorio",
@@ -588,46 +896,207 @@
     "text": "¿Qué sigue?\nEn el laboratorio aplicaremos las técnicas vistas en esta lección para explorar, limpiar y transformar un conjunto de datos utilizando Python y pandas.\n\nExploración inicial del conjunto de datos.\nLimpieza de datos.\nTransformación de variables.\nPreparación del conjunto de datos para su análisis.\n\nIr al notebook →"
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-01.html",
-    "href": "notebooks/unidad-01/notebook-01.html",
-    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "objectID": "lecciones/unidad-01/leccion-07.html#machine-learning",
+    "href": "lecciones/unidad-01/leccion-07.html#machine-learning",
+    "title": "Aprendizaje supervisado",
+    "section": "Machine learning",
+    "text": "Machine learning\nEl machine learning estudia métodos que permiten utilizar datos para aprender relaciones y patrones.\nA partir de un conjunto de observaciones, buscamos aprender cómo ciertas variables de entrada se relacionan con una variable de respuesta.\nEsta relación puede utilizarse para comprender los datos o realizar predicciones sobre nuevas observaciones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#un-ejemplo",
+    "href": "lecciones/unidad-01/leccion-07.html#un-ejemplo",
+    "title": "Aprendizaje supervisado",
+    "section": "Un ejemplo",
+    "text": "Un ejemplo\nSupongamos que queremos predecir el precio de una vivienda.\nTenemos como variables de entrada:\n\n\\(X_1\\): tamaño de la vivienda.\n\\(X_2\\): número de habitaciones.\n\\(X_3\\): ubicación.\n\nY como variable de respuesta:\n\\[\nY = \\text{precio de la vivienda}\n\\]\nBuscamos aprender la relación:\n\\[\n\\text{Precio}\n=\nf(\\text{tamaño, habitaciones, ubicación})\n+\n\\varepsilon\n\\]\nEl objetivo es utilizar los datos para estimar la función desconocida \\(f\\)."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#de-forma-general",
+    "href": "lecciones/unidad-01/leccion-07.html#de-forma-general",
+    "title": "Aprendizaje supervisado",
+    "section": "De forma general",
+    "text": "De forma general\nLas variables de entrada pueden representarse como:\n\\[\nX = (X_1, X_2, \\ldots, X_p)\n\\]\ndonde:\n\n\\(X\\): variables de entrada (features o predictors).\n\\(Y\\): variable de respuesta (response).\n\nLa relación entre las entradas y la respuesta se representa como:\n\\[\nY = f(X) + \\varepsilon\n\\]\ndonde:\n\n\\(f\\) representa la relación entre \\(X\\) y \\(Y\\).\n\\(\\varepsilon\\) representa el error aleatorio."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#predicción-e-inferencia",
+    "href": "lecciones/unidad-01/leccion-07.html#predicción-e-inferencia",
+    "title": "Aprendizaje supervisado",
+    "section": "Predicción e inferencia",
+    "text": "Predicción e inferencia\nExisten dos objetivos principales:\n\n\n\n\n\n\n\nPredicción\nInferencia\n\n\n\n\nPredecir \\(Y\\) a partir de \\(X\\)\nComprender la relación entre \\(X\\) y \\(Y\\)\n\n\nImporta la precisión\nImporta la interpretación\n\n\n\\(f\\) puede tratarse como una caja negra\nNecesitamos entender la forma de \\(f\\)"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#predicción",
+    "href": "lecciones/unidad-01/leccion-07.html#predicción",
+    "title": "Aprendizaje supervisado",
+    "section": "Predicción",
+    "text": "Predicción\nUtilizamos \\(\\hat f\\) para obtener una respuesta estimada:\n\\[\n\\hat{Y} = \\hat{f}(X)\n\\]\nEjemplo: predecir el precio de una vivienda a partir de sus características."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#inferencia",
+    "href": "lecciones/unidad-01/leccion-07.html#inferencia",
+    "title": "Aprendizaje supervisado",
+    "section": "Inferencia",
+    "text": "Inferencia\nUtilizamos \\(\\hat f\\) para entender cómo \\(X\\) se relaciona con \\(Y\\).\nEjemplo: estudiar cómo el tamaño, número de habitaciones y ubicación se relacionan con el precio de una vivienda.\nPreguntas de interés:\n\n¿Qué variables están asociadas con el precio?\n¿Cómo cambia el precio cuando cambia una variable?\n¿Qué forma tiene la relación?"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#datos-de-entrenamiento",
+    "href": "lecciones/unidad-01/leccion-07.html#datos-de-entrenamiento",
+    "title": "Aprendizaje supervisado",
+    "section": "Datos de entrenamiento",
+    "text": "Datos de entrenamiento\nPara estimar \\(f\\) utilizamos un conjunto de datos de entrenamiento:\n\\[\n\\{(x_1,y_1),(x_2,y_2),\\ldots,(x_n,y_n)\\}\n\\]\ndonde cada observación contiene:\n\n\\(x_i\\): valores de las variables de entrada.\n\\(y_i\\): respuesta observada.\n\nEl objetivo es encontrar una función \\(\\hat f\\) tal que:\n\\[\nY \\approx \\hat f(X)\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#métodos-paramétricos",
+    "href": "lecciones/unidad-01/leccion-07.html#métodos-paramétricos",
+    "title": "Aprendizaje supervisado",
+    "section": "Métodos paramétricos",
+    "text": "Métodos paramétricos\nLos métodos paramétricos suponen una forma específica para \\(f\\).\nPor ejemplo, podemos asumir una relación lineal:\n\\[\nf(X)=\\beta_0+\\beta_1X_1+\\cdots+\\beta_pX_p\n\\]\nEl problema se reduce entonces a estimar:\n\\[\n\\beta_0,\\beta_1,\\ldots,\\beta_p\n\\]\nVentaja: simplifican el problema.\nDesventaja: si la forma elegida no representa adecuadamente la relación real, el modelo puede ser poco preciso."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#métodos-no-paramétricos",
+    "href": "lecciones/unidad-01/leccion-07.html#métodos-no-paramétricos",
+    "title": "Aprendizaje supervisado",
+    "section": "Métodos no paramétricos",
+    "text": "Métodos no paramétricos\nLos métodos no paramétricos no imponen una forma específica para \\(f\\).\nBuscan aproximarse a los datos con mayor flexibilidad.\nEjemplo: Para predecir \\(Y\\) para una nueva observación, \\(k\\)-NN busca las observaciones más cercanas y utiliza sus valores para obtener la predicción.\nNo suponemos previamente que \\(f\\) sea lineal, cuadrática, exponencial, etc.\n\nLa forma de \\(\\hat f\\) se adapta a los datos.\n\nVentaja: pueden representar relaciones más complejas.\nDesventaja: generalmente requieren más observaciones y pueden ajustarse demasiado a los datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#aprendizaje-supervisado",
+    "href": "lecciones/unidad-01/leccion-07.html#aprendizaje-supervisado",
+    "title": "Aprendizaje supervisado",
+    "section": "Aprendizaje supervisado",
+    "text": "Aprendizaje supervisado\nEn el aprendizaje supervisado, cada observación contiene:\n\\[\n(x_i,y_i)\n\\]\nEs decir, conocemos las variables de entrada \\(X\\) y la respuesta \\(Y\\).\nEl objetivo es aprender la relación entre ambas para:\n\npredecir nuevas respuestas,\no realizar inferencia sobre la relación entre las variables."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#regresión-y-clasificación",
+    "href": "lecciones/unidad-01/leccion-07.html#regresión-y-clasificación",
+    "title": "Aprendizaje supervisado",
+    "section": "Regresión y clasificación",
+    "text": "Regresión y clasificación\nLos problemas supervisados pueden distinguirse según el tipo de respuesta \\(Y\\).\n\n\n\n\nRegresión\nClasificación\n\n\n\n\nRespuesta\nCuantitativa\nCualitativa\n\n\nObjetivo\nPredecir un valor\nPredecir una clase\n\n\nEjemplo\nPrecio de una casa\nDiagnóstico positivo/negativo\n\n\n\nLa distinción depende principalmente de la variable de respuesta, no del tipo de predictores."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#aprendizaje-no-supervisado",
+    "href": "lecciones/unidad-01/leccion-07.html#aprendizaje-no-supervisado",
+    "title": "Aprendizaje supervisado",
+    "section": "Aprendizaje no supervisado",
+    "text": "Aprendizaje no supervisado\nEn el aprendizaje no supervisado observamos:\n\\[\nx_1,x_2,\\ldots,x_n\n\\]\npero no existe una respuesta \\(Y\\) conocida.\nPor lo tanto, no buscamos predecir una respuesta.\nBuscamos descubrir:\n\nrelaciones entre variables,\nsimilitudes entre observaciones,\nestructuras o grupos presentes en los datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#cómo-evaluamos-un-modelo",
+    "href": "lecciones/unidad-01/leccion-07.html#cómo-evaluamos-un-modelo",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Cómo evaluamos un modelo?",
+    "text": "¿Cómo evaluamos un modelo?\nEl objetivo no es únicamente que un modelo funcione bien con los datos utilizados para entrenarlo, sino que también funcione bien con datos nuevos.\nPor ello, distinguimos entre:\n\nDatos de entrenamiento (train): se utilizan para ajustar el modelo.\nDatos de prueba (test): se utilizan para evaluar su desempeño en datos que no ha visto.\n\n\nUn buen modelo debe ser capaz de generalizar a nuevos datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#evaluación-en-aprendizaje-supervisado",
+    "href": "lecciones/unidad-01/leccion-07.html#evaluación-en-aprendizaje-supervisado",
+    "title": "Aprendizaje supervisado",
+    "section": "Evaluación en aprendizaje supervisado",
+    "text": "Evaluación en aprendizaje supervisado\nEn aprendizaje supervisado conocemos la respuesta real \\(Y\\), por lo que podemos compararla con la respuesta predicha \\(\\hat{Y}\\).\nPor ejemplo, en regresión una medida común es el error cuadrático medio:\n\\[\nMSE = \\frac{1}{n}\\sum_{i=1}^{n}(y_i-\\hat{y}_i)^2\n\\]\nUn MSE pequeño indica que las predicciones se encuentran cerca de los valores reales.\n\nLa evaluación mide qué tan bien el modelo predice la respuesta."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#entrenamiento-vs.-prueba",
+    "href": "lecciones/unidad-01/leccion-07.html#entrenamiento-vs.-prueba",
+    "title": "Aprendizaje supervisado",
+    "section": "Entrenamiento vs. prueba",
+    "text": "Entrenamiento vs. prueba\nEn aprendizaje supervisado, no buscamos únicamente un error pequeño sobre los datos de entrenamiento.\nQueremos que el modelo funcione bien sobre datos que no ha visto anteriormente.\n\nTraining error: error sobre los datos utilizados para ajustar el modelo.\nTest error: error sobre nuevas observaciones.\n\n\nEl objetivo es obtener un test error bajo."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#overfitting",
+    "href": "lecciones/unidad-01/leccion-07.html#overfitting",
+    "title": "Aprendizaje supervisado",
+    "section": "Overfitting",
+    "text": "Overfitting\nUn modelo presenta overfitting cuando se ajusta demasiado a los datos de entrenamiento.\nPuede obtener:\n\nerror de entrenamiento muy bajo,\nerror de prueba elevado.\n\nEsto ocurre cuando el modelo aprende características particulares o ruido del conjunto de entrenamiento que no se generalizan a nuevos datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#evaluación-en-aprendizaje-no-supervisado",
+    "href": "lecciones/unidad-01/leccion-07.html#evaluación-en-aprendizaje-no-supervisado",
+    "title": "Aprendizaje supervisado",
+    "section": "Evaluación en aprendizaje no supervisado",
+    "text": "Evaluación en aprendizaje no supervisado\nEn aprendizaje no supervisado no conocemos una respuesta \\(Y\\) con la cual comparar los resultados.\n\\[\nX \\longrightarrow \\text{estructura o patrones}\n\\]\nPor lo tanto, no podemos calcular directamente un error de predicción como en aprendizaje supervisado.\nLa evaluación depende de qué estructura estamos buscando."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo-k-means",
+    "href": "lecciones/unidad-01/leccion-07.html#ejemplo-k-means",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo: \\(K\\)-means",
+    "text": "Ejemplo: \\(K\\)-means\n\\(K\\)-means busca formar grupos de observaciones similares.\nPodemos evaluar el resultado midiendo, por ejemplo, qué tan cercanas están las observaciones al centro de su grupo:\n\\[\n\\sum_{k=1}^{K}\\sum_{x_i \\in C_k}\n\\|x_i-\\mu_k\\|^2\n\\]\nUn valor menor indica grupos más compactos.\n\nEn aprendizaje no supervisado, la forma de evaluar depende del objetivo del método."
+  },
+  {
+    "objectID": "notebooks/index.html",
+    "href": "notebooks/index.html",
+    "title": "Notebooks",
     "section": "",
-    "text": "Antes de comenzar\nEste laboratorio está diseñado para ejecutarse en Google Colab.\nAbra el notebook desde el siguiente enlace:\n🔗 https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-01.ipynb\nUna vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.\n!git clone https://github.com/urendacdenisse-hub/modelado-de-datos.git"
+    "text": "Adquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos\n\n\n\n\n\nRegresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines\n\n\n\n\n\n\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-01.html#archivos",
-    "href": "notebooks/unidad-01/notebook-01.html#archivos",
-    "title": "Laboratorio 1. Adquisición y extracción de datos",
-    "section": "Archivos",
-    "text": "Archivos\nUtiliza las funciones de pandas para leer archivos CSV, Excel y JSON.\nLibrería: pandas\nProporciona herramientas para leer, manipular y analizar datos tabulares en Python.\nFunciones utilizadas\n\npd.read_csv(): Lee un archivo CSV y devuelve un DataFrame.\nhead(): Muestra las primeras filas del DataFrame.\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"../../datos/sales.csv\")\ndf.head()\n\nFunciones utilizadas\n\npd.read_excel(): Lee un archivo de Excel y devuelve un DataFrame.\n\n\ndf = pd.read_excel(\"../../datos/students.xlsx\")\ndf.head()\n\nFunciones utilizadas\n\npd.read_json(): Lee un archivo JSON y devuelve un DataFrame.\n\n\ndf = pd.read_json(\"../../datos/books.json\")\ndf.head()"
+    "objectID": "notebooks/index.html#introduccion-al-analisis-de-datos",
+    "href": "notebooks/index.html#introduccion-al-analisis-de-datos",
+    "title": "Notebooks",
+    "section": "",
+    "text": "Adquisicion y extracción de datos\nPreparación de datos\nAnalisis exporatorio de datos"
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-01.html#bases-de-datos",
-    "href": "notebooks/unidad-01/notebook-01.html#bases-de-datos",
-    "title": "Laboratorio 1. Adquisición y extracción de datos",
-    "section": "Bases de datos",
-    "text": "Bases de datos\nConectémonos a una base de datos SQLite y ejecutemos una consulta para cargar los resultados en un DataFrame.\nLibrería: sqlite3\nsqlite3 permite conectarse y ejecutar consultas sobre bases de datos SQLite desde Python.\nFunciones utilizadas\n\nsqlite3.connect(): Abre una conexión con una base de datos SQLite.\ncursor(): Crea un cursor para ejecutar instrucciones SQL.\nexecute(): Ejecuta una instrucción SQL.\nfetchall(): Recupera todos los resultados de la consulta.\n\n\nimport sqlite3\n\nconn = sqlite3.connect(\"../../datos/chinook.sqlite\")\ncursor = conn.cursor()\n\ncursor.execute(\n    \"SELECT name FROM sqlite_master WHERE type='table';\"\n)\nprint(cursor.fetchall())\n\nFunciones utilizadas\n\npd.read_sql_query(): Ejecuta una consulta SQL y devuelve el resultado como un DataFrame.\n\n\nartists = pd.read_sql_query(\n    \"SELECT * FROM Artist;\",\n    conn\n)\n\nartists.head()\n\nFunciones utilizadas\n\nclose(): Cierra la conexión con la base de datos y libera los recursos asociados.\n\n\nconn.close()"
+    "objectID": "notebooks/index.html#modelos-paramétricos",
+    "href": "notebooks/index.html#modelos-paramétricos",
+    "title": "Notebooks",
+    "section": "",
+    "text": "Regresión lineal\nRegularización: Ridge y Lasso\nRegresion logística\nSupport vector machines"
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-01.html#apis",
-    "href": "notebooks/unidad-01/notebook-01.html#apis",
-    "title": "Laboratorio 1. Adquisición y extracción de datos",
-    "section": "APIs",
-    "text": "APIs\nEnviemos una solicitud a una API y recuperemos la información en formato JSON.\nLibrería: requests\nrequests permite enviar solicitudes a servicios web y APIs desde Python.\nFunciones utilizadas\n\nrequests.get(): Solicita información desde la URL especificada.\njson(): Convierte la respuesta de la API en un objeto de Python (diccionario o lista).\n\n\nimport requests\n\nurl = (\n    \"https://api.open-meteo.com/v1/forecast\"\n    \"?latitude=31.74&longitude=-106.49&current=temperature_2m\"\n)\n\nresponse = requests.get(url)\ndata = response.json()\n\n\ndata"
+    "objectID": "notebooks/index.html#modelos-no-paramétricos-y-ensambles",
+    "href": "notebooks/index.html#modelos-no-paramétricos-y-ensambles",
+    "title": "Notebooks",
+    "section": "",
+    "text": "\\(k\\)-Nearest Neighbors\nÁrboles de decisión\nRandom Forest\nBoosting\nRedes neuronales"
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-01.html#sitios-web",
-    "href": "notebooks/unidad-01/notebook-01.html#sitios-web",
-    "title": "Laboratorio 1. Adquisición y extracción de datos",
-    "section": "Sitios web",
-    "text": "Sitios web\nExtraigamos tablas publicadas en un sitio web y carguemos su contenido en un DataFrame.\nFunciones utilizadas\n\npd.read_html(): Extrae las tablas encontradas en una página web y las devuelve como una lista de DataFrames.\n\n\nurl = \"https://www.w3schools.com/html/html_tables.asp\"\ntables = pd.read_html(url)\n\n\ntables[0]"
+    "objectID": "notebooks/unidad-01/notebook-02.html",
+    "href": "notebooks/unidad-01/notebook-02.html",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "",
+    "text": "Antes de comenzar\nEste laboratorio está diseñado para ejecutarse en Google Colab.\nUna vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.\n!git clone https://github.com/urendacdenisse-hub/modelado-de-datos.git\n%cd modelado-de-datos"
   },
   {
-    "objectID": "notebooks/unidad-01/notebook-01.html#siguiente-lección",
-    "href": "notebooks/unidad-01/notebook-01.html#siguiente-lección",
-    "title": "Laboratorio 1. Adquisición y extracción de datos",
+    "objectID": "notebooks/unidad-01/notebook-02.html#objetivo",
+    "href": "notebooks/unidad-01/notebook-02.html#objetivo",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Objetivo",
+    "text": "Objetivo\nEn este notebook aplicaremos las técnicas vistas en la lección para explorar, limpiar y transformar un conjunto de datos utilizando Python y pandas.\n\nExplorar un conjunto de datos.\nLimpiar datos.\nTransformar variables.\nPreparar un conjunto de datos para su análisis."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#exploración-inicial",
+    "href": "notebooks/unidad-01/notebook-02.html#exploración-inicial",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Exploración inicial",
+    "text": "Exploración inicial\nCarguemos un conjunto de datos y realicemos una exploración inicial de su contenido.\n\nimport pandas as pd\n\ndf = pd.read_csv(\"modelado-de-datos/datos/sales.csv\")\n\nLibrería: pandas\npandas proporciona herramientas para explorar y resumir la información contenida en un DataFrame.\nFunciones utilizadas\n\ninfo(): Muestra la estructura del DataFrame, incluyendo el tipo de datos y los valores no nulos de cada columna.\nshape: Devuelve el número de filas y columnas del DataFrame.\nisna(): Identifica los valores faltantes en el DataFrame.\nsum(): Suma los valores de cada columna.\ndescribe(): Calcula estadísticas descriptivas de las variables numéricas.\n\n\ndf.info()\n\n\ndf.shape\n\n\ndf.isna().sum()\n\n\ndf.describe()"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#limpieza-de-datos",
+    "href": "notebooks/unidad-01/notebook-02.html#limpieza-de-datos",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Limpieza de datos",
+    "text": "Limpieza de datos\nEliminemos algunos problemas comunes antes de comenzar el análisis del conjunto de datos.\nFunciones utilizadas\n\ndrop_duplicates(): Elimina los registros duplicados.\nfillna(): Reemplaza los valores faltantes por un valor especificado.\ndropna(): Elimina los registros que contienen valores faltantes.\nclip(): Limita los valores de una columna a un intervalo definido.\n\n\ndf.drop_duplicates()\n\n\ndf.fillna(0)\n\n\ndf.dropna()\n\n\ndf[\"unit_price\"].clip(lower=0)"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#transformación-de-datos",
+    "href": "notebooks/unidad-01/notebook-02.html#transformación-de-datos",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Transformación de datos",
+    "text": "Transformación de datos\nTransformemos las variables del conjunto de datos para prepararlas para su análisis.\nFunciones utilizadas\n\nastype(): Convierte una columna al tipo de dato especificado.\nmean(): Calcula la media de una columna.\nstd(): Calcula la desviación estándar de una columna.\npd.to_datetime(): Convierte una columna al tipo de dato fecha y hora (datetime).\n\n\ndf.info()\n\n\ndf[\"quantity\"].astype(int)\n\n\n(df[\"unit_price\"] - df[\"unit_price\"].mean()) / df[\"unit_price\"].std()\n\n\ndf[\"quantity\"] * df[\"unit_price\"]\n\n\npd.to_datetime(df[\"date\"])"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#datos-listos-para-analizar",
+    "href": "notebooks/unidad-01/notebook-02.html#datos-listos-para-analizar",
+    "title": "Laboratorio 2. Preparación de datos",
+    "section": "Datos listos para analizar",
+    "text": "Datos listos para analizar\nGuardemos el conjunto de datos preparado para utilizarlo en etapas posteriores del análisis.\nFunciones utilizadas\n\nto_csv(): Guarda el contenido del DataFrame en un archivo CSV.\n\n\ndf.to_csv(\"modelado-de-datos/datos/clean_data.csv\", index=False)"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-02.html#siguiente-lección",
+    "href": "notebooks/unidad-01/notebook-02.html#siguiente-lección",
+    "title": "Laboratorio 2. Preparación de datos",
     "section": "Siguiente lección",
-    "text": "Siguiente lección\nUna vez completado este laboratorio, continúa con la siguiente lección del curso:\n➡️ Preparación de datos"
+    "text": "Siguiente lección\nUna vez completado este laboratorio, continúa con la siguiente lección del curso:\n➡️ Análisis exploratorio de datos"
   },
   {
     "objectID": "plantillas/lecciones.html#introducción",
@@ -705,467 +1174,5 @@
     "title": "Proyecto",
     "section": "Rúbrica 1. Planteamiento del problema y modelado supervisado",
     "text": "Rúbrica 1. Planteamiento del problema y modelado supervisado\nLa siguiente rúbrica describe los criterios de evaluación para el primer entregable del proyecto.\n\n\n\n\n\n\n\n\n\n\nCriterio\nNo entregado (0%)\nInsuficiente (40%)\nAceptable (70%)\nExcelente (100%)\n\n\n\n\nPlanteamiento del problema\nNo se presenta el planteamiento del problema.\nEl problema es poco claro o carece de justificación.\nEl problema está claramente definido y cuenta con una justificación básica.\nEl problema está claramente definido, bien justificado y demuestra una comprensión sólida del contexto y su relevancia.\n\n\nRevisión de literatura\nNo se presenta revisión de literatura.\nSe presentan menos de tres artículos o el análisis es superficial.\nSe presentan al menos tres artículos relevantes y se describe su relación con el problema.\nLos artículos son pertinentes, se analizan críticamente y se establece claramente su relación con el proyecto.\n\n\nDescripción del conjunto de datos\nNo se describe el conjunto de datos.\nLa descripción es incompleta o poco clara.\nSe describe el origen, las variables principales y las características generales del conjunto de datos.\nLa descripción es completa, organizada y justifica la selección del conjunto de datos para resolver el problema.\n\n\nAnálisis exploratorio de datos (EDA)\nNo se realiza el análisis exploratorio.\nEl análisis es limitado o las visualizaciones son escasas y poco interpretadas.\nSe presentan visualizaciones y estadísticas descriptivas que permiten comprender el conjunto de datos.\nEl análisis es profundo, utiliza visualizaciones apropiadas y genera conclusiones relevantes para el desarrollo del proyecto.\n\n\nImplementación de modelos supervisados\nNo se implementan modelos.\nSe implementan menos de tres modelos o presentan errores importantes en su desarrollo o entrenamiento.\nSe implementan y entrenan correctamente al menos tres modelos de aprendizaje supervisado.\nLos modelos están correctamente implementados, se justifica su selección y se siguen buenas prácticas en su desarrollo y entrenamiento.\n\n\nComparación de resultados\nNo se comparan los modelos.\nLa comparación es incompleta o utiliza métricas inadecuadas.\nLos modelos se comparan mediante métricas apropiadas y se identifica el mejor desempeño.\nLa comparación es rigurosa, interpreta adecuadamente las métricas y justifica de manera sólida la selección del modelo final.\n\n\nCalidad del reporte\nNo se entrega reporte.\nEl reporte presenta deficiencias importantes de organización, redacción o formato.\nEl reporte está bien organizado, redactado y documentado, con referencias adecuadas.\nEl reporte presenta una excelente organización, redacción técnica, figuras y tablas de calidad, así como referencias correctamente citadas."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#introducción",
-    "href": "lecciones/unidad-01/leccion-07.html#introducción",
-    "title": "Aprendizaje supervisado",
-    "section": "Introducción",
-    "text": "Introducción\nEl machine learning estudia métodos que permiten utilizar datos para aprender relaciones y patrones.\nA partir de un conjunto de observaciones, buscamos aprender cómo ciertas variables de entrada se relacionan con una variable de respuesta.\nEsta relación puede utilizarse para comprender los datos o realizar predicciones sobre nuevas observaciones."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#para-qué-estimamos-f",
-    "href": "lecciones/unidad-01/leccion-07.html#para-qué-estimamos-f",
-    "title": "Aprendizaje supervisado",
-    "section": "¿Para qué estimamos \\(f\\)?",
-    "text": "¿Para qué estimamos \\(f\\)?\nExisten dos objetivos principales:\n\n\n\n\n\n\n\nPredicción\nInferencia\n\n\n\n\nPredecir \\(Y\\) a partir de \\(X\\)\nComprender la relación entre \\(X\\) y \\(Y\\)\n\n\nImporta la precisión\nImporta la interpretación\n\n\n\\(f\\) puede tratarse como una caja negra\nNecesitamos entender la forma de \\(f\\)"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#predicción-y-error",
-    "href": "lecciones/unidad-01/leccion-07.html#predicción-y-error",
-    "title": "Aprendizaje supervisado",
-    "section": "Predicción y error",
-    "text": "Predicción y error\nIncluso si pudiéramos estimar perfectamente \\(f\\), la predicción tendría error debido a \\(\\varepsilon\\).\n\\[\nE(Y-\\hat{Y})^2\n=\n\\underbrace{[f(X)-\\hat{f}(X)]^2}_{\\text{Error reducible}}\n+\n\\underbrace{\\operatorname{Var}(\\varepsilon)}_{\\text{Error irreducible}}\n\\]\n\nError reducible: puede disminuirse mejorando \\(\\hat f\\).\nError irreducible: proviene de factores que no podemos observar o predecir."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#datos-de-entrenamiento",
-    "href": "lecciones/unidad-01/leccion-07.html#datos-de-entrenamiento",
-    "title": "Aprendizaje supervisado",
-    "section": "Datos de entrenamiento",
-    "text": "Datos de entrenamiento\nPara estimar \\(f\\) utilizamos un conjunto de datos de entrenamiento:\n\\[\n\\{(x_1,y_1),(x_2,y_2),\\ldots,(x_n,y_n)\\}\n\\]\ndonde cada observación contiene:\n\n\\(x_i\\): valores de las variables de entrada.\n\\(y_i\\): respuesta observada.\n\nEl objetivo es encontrar una función \\(\\hat f\\) tal que:\n\\[\nY \\approx \\hat f(X)\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#métodos-paramétricos",
-    "href": "lecciones/unidad-01/leccion-07.html#métodos-paramétricos",
-    "title": "Aprendizaje supervisado",
-    "section": "Métodos paramétricos",
-    "text": "Métodos paramétricos\nLos métodos paramétricos suponen una forma específica para \\(f\\).\nPor ejemplo, podemos asumir una relación lineal:\n\\[\nf(X)=\\beta_0+\\beta_1X_1+\\cdots+\\beta_pX_p\n\\]\nEl problema se reduce entonces a estimar:\n\\[\n\\beta_0,\\beta_1,\\ldots,\\beta_p\n\\]\nVentaja: simplifican el problema.\nDesventaja: si la forma elegida no representa adecuadamente la relación real, el modelo puede ser poco preciso."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#métodos-no-paramétricos",
-    "href": "lecciones/unidad-01/leccion-07.html#métodos-no-paramétricos",
-    "title": "Aprendizaje supervisado",
-    "section": "Métodos no paramétricos",
-    "text": "Métodos no paramétricos\nLos métodos no paramétricos no imponen una forma específica para \\(f\\).\nBuscan aproximarse a los datos con mayor flexibilidad.\nEjemplo: Para predecir \\(Y\\) para una nueva observación, \\(k\\)-NN busca las observaciones más cercanas y utiliza sus valores para obtener la predicción.\nNo suponemos previamente que \\(f\\) sea lineal, cuadrática, exponencial, etc.\n\nLa forma de \\(\\hat f\\) se adapta a los datos.\n\nVentaja: pueden representar relaciones más complejas.\nDesventaja: generalmente requieren más observaciones y pueden ajustarse demasiado a los datos."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#flexibilidad-del-modelo",
-    "href": "lecciones/unidad-01/leccion-07.html#flexibilidad-del-modelo",
-    "title": "Aprendizaje supervisado",
-    "section": "Flexibilidad del modelo",
-    "text": "Flexibilidad del modelo\nUn modelo más flexible puede representar relaciones más complejas.\nSin embargo:\n\nMayor flexibilidad no implica necesariamente mejores predicciones.\n\nUn modelo excesivamente flexible puede seguir demasiado de cerca los datos de entrenamiento, incluyendo el ruido."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#flexibilidad-e-interpretabilidad",
-    "href": "lecciones/unidad-01/leccion-07.html#flexibilidad-e-interpretabilidad",
-    "title": "Aprendizaje supervisado",
-    "section": "Flexibilidad e interpretabilidad",
-    "text": "Flexibilidad e interpretabilidad\nExiste un compromiso entre flexibilidad e interpretabilidad.\n\nModelos menos flexibles → generalmente más fáciles de interpretar.\nModelos más flexibles → pueden capturar relaciones más complejas, pero suelen ser más difíciles de interpretar.\n\nLa elección depende del objetivo:\n\nInferencia: puede favorecer modelos interpretables.\nPredicción: puede favorecer mayor flexibilidad."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#aprendizaje-supervisado",
-    "href": "lecciones/unidad-01/leccion-07.html#aprendizaje-supervisado",
-    "title": "Aprendizaje supervisado",
-    "section": "Aprendizaje supervisado",
-    "text": "Aprendizaje supervisado\nEn el aprendizaje supervisado, cada observación contiene:\n\\[\n(x_i,y_i)\n\\]\nEs decir, conocemos las variables de entrada \\(X\\) y la respuesta \\(Y\\).\nEl objetivo es aprender la relación entre ambas para:\n\npredecir nuevas respuestas,\no realizar inferencia sobre la relación entre las variables."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#regresión-y-clasificación",
-    "href": "lecciones/unidad-01/leccion-07.html#regresión-y-clasificación",
-    "title": "Aprendizaje supervisado",
-    "section": "Regresión y clasificación",
-    "text": "Regresión y clasificación\nLos problemas supervisados pueden distinguirse según el tipo de respuesta \\(Y\\).\n\n\n\n\nRegresión\nClasificación\n\n\n\n\nRespuesta\nCuantitativa\nCualitativa\n\n\nObjetivo\nPredecir un valor\nPredecir una clase\n\n\nEjemplo\nPrecio de una casa\nDiagnóstico positivo/negativo\n\n\n\nLa distinción depende principalmente de la variable de respuesta, no del tipo de predictores."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#aprendizaje-no-supervisado",
-    "href": "lecciones/unidad-01/leccion-07.html#aprendizaje-no-supervisado",
-    "title": "Aprendizaje supervisado",
-    "section": "Aprendizaje no supervisado",
-    "text": "Aprendizaje no supervisado\nEn el aprendizaje no supervisado observamos:\n\\[\nx_1,x_2,\\ldots,x_n\n\\]\npero no existe una respuesta \\(Y\\) conocida.\nPor lo tanto, no buscamos predecir una respuesta.\nBuscamos descubrir:\n\nrelaciones entre variables,\nsimilitudes entre observaciones,\nestructuras o grupos presentes en los datos."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#cómo-evaluamos-un-modelo",
-    "href": "lecciones/unidad-01/leccion-07.html#cómo-evaluamos-un-modelo",
-    "title": "Aprendizaje supervisado",
-    "section": "¿Cómo evaluamos un modelo?",
-    "text": "¿Cómo evaluamos un modelo?\nEl objetivo no es únicamente que un modelo funcione bien con los datos utilizados para entrenarlo, sino que también funcione bien con datos nuevos.\nPor ello, distinguimos entre:\n\nDatos de entrenamiento (train): se utilizan para ajustar el modelo.\nDatos de prueba (test): se utilizan para evaluar su desempeño en datos que no ha visto.\n\n\nUn buen modelo debe ser capaz de generalizar a nuevos datos."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#entrenamiento-vs.-prueba",
-    "href": "lecciones/unidad-01/leccion-07.html#entrenamiento-vs.-prueba",
-    "title": "Aprendizaje supervisado",
-    "section": "Entrenamiento vs. prueba",
-    "text": "Entrenamiento vs. prueba\nEn aprendizaje supervisado, no buscamos únicamente un error pequeño sobre los datos de entrenamiento.\nQueremos que el modelo funcione bien sobre datos que no ha visto anteriormente.\n\nTraining error: error sobre los datos utilizados para ajustar el modelo.\nTest error: error sobre nuevas observaciones.\n\n\nEl objetivo es obtener un test error bajo."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#overfitting",
-    "href": "lecciones/unidad-01/leccion-07.html#overfitting",
-    "title": "Aprendizaje supervisado",
-    "section": "Overfitting",
-    "text": "Overfitting\nUn modelo presenta overfitting cuando se ajusta demasiado a los datos de entrenamiento.\nPuede obtener:\n\nerror de entrenamiento muy bajo,\nerror de prueba elevado.\n\nEsto ocurre cuando el modelo aprende características particulares o ruido del conjunto de entrenamiento que no se generalizan a nuevos datos."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#complejidad-y-error",
-    "href": "lecciones/unidad-01/leccion-07.html#complejidad-y-error",
-    "title": "Aprendizaje supervisado",
-    "section": "Complejidad y error",
-    "text": "Complejidad y error\nAl aumentar la flexibilidad del modelo:\n\nel error de entrenamiento generalmente disminuye,\npero el error de prueba no necesariamente disminuye.\n\nEl error de prueba puede:\n\ndisminuir inicialmente,\nalcanzar un mínimo,\naumentar cuando el modelo comienza a sobreajustarse.\n\nPor ello, el modelo con menor error de entrenamiento no necesariamente es el mejor modelo."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#sesgo-y-varianza",
-    "href": "lecciones/unidad-01/leccion-07.html#sesgo-y-varianza",
-    "title": "Aprendizaje supervisado",
-    "section": "Sesgo y varianza",
-    "text": "Sesgo y varianza\nEl error esperado de prueba puede descomponerse como:\n\\[\nE\\left[(Y-\\hat f(X))^2\\right]\n=\n\\operatorname{Var}(\\hat f(X))\n+\n[\\operatorname{Bias}(\\hat f(X))]^2\n+\n\\operatorname{Var}(\\varepsilon)\n\\]\nEsto introduce tres componentes:\n\nVarianza: cuánto cambia \\(\\hat f\\) ante diferentes conjuntos de entrenamiento.\nSesgo: error producido al aproximar una relación compleja mediante un modelo más simple.\nError irreducible: variabilidad asociada a \\(\\varepsilon\\)."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#compromiso-sesgo-varianza",
-    "href": "lecciones/unidad-01/leccion-07.html#compromiso-sesgo-varianza",
-    "title": "Aprendizaje supervisado",
-    "section": "Compromiso sesgo-varianza",
-    "text": "Compromiso sesgo-varianza\nEn general, al aumentar la flexibilidad:\n\\[\n\\text{Sesgo} \\downarrow\n\\qquad\n\\text{Varianza} \\uparrow\n\\]\nUn modelo demasiado simple puede tener alto sesgo.\nUn modelo demasiado flexible puede tener alta varianza.\nEl objetivo es encontrar un equilibrio que produzca buen desempeño sobre datos nuevos."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#resumen",
-    "href": "lecciones/unidad-01/leccion-07.html#resumen",
-    "title": "Aprendizaje supervisado",
-    "section": "Resumen",
-    "text": "Resumen\n\nMachine learning busca estimar relaciones entre variables a partir de datos.\nEl objetivo puede ser predicción o inferencia.\nLos métodos pueden ser paramétricos o no paramétricos.\nMayor flexibilidad permite representar relaciones más complejas, pero puede reducir la interpretabilidad.\nEl aprendizaje puede ser supervisado o no supervisado.\nEn aprendizaje supervisado distinguimos problemas de regresión y clasificación.\nEl desempeño debe evaluarse sobre datos no utilizados para entrenar el modelo.\nUn modelo demasiado flexible puede producir overfitting."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#referencias",
-    "href": "lecciones/unidad-01/leccion-07.html#referencias",
-    "title": "Aprendizaje supervisado",
-    "section": "Referencias",
-    "text": "Referencias"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#preguntas",
-    "href": "lecciones/unidad-01/leccion-07.html#preguntas",
-    "title": "Aprendizaje supervisado",
-    "section": "Preguntas",
-    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#qué-sigue",
-    "href": "lecciones/unidad-01/leccion-07.html#qué-sigue",
-    "title": "Aprendizaje supervisado",
-    "section": "¿Qué sigue?",
-    "text": "¿Qué sigue?\nEn la siguiente sección comenzaremos a estudiar métodos de aprendizaje supervisado.\nIr a la siguiente sección →"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#introducción-1",
-    "href": "lecciones/unidad-01/leccion-07.html#introducción-1",
-    "title": "Aprendizaje supervisado",
-    "section": "Introducción",
-    "text": "Introducción\nEn general:\n\\[\nX = (X_1, X_2, \\ldots, X_p)\n\\]\n\n\\(X\\): variables de entrada (features o predictors).\n\\(Y\\): variable de respuesta (response).\n\nBuscamos aprender cómo las variables de entrada \\(X\\) se relacionan con la respuesta \\(Y\\).\nEsta relación puede representarse como:\n\\[\nY = f(X) + \\varepsilon\n\\]\ndonde:\n\n\\(f\\) representa la relación sistemática entre \\(X\\) y \\(Y\\).\n\\(\\varepsilon\\) representa el error aleatorio."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#un-ejemplo",
-    "href": "lecciones/unidad-01/leccion-07.html#un-ejemplo",
-    "title": "Aprendizaje supervisado",
-    "section": "Un ejemplo",
-    "text": "Un ejemplo\nSupongamos que queremos predecir el precio de una vivienda.\nTenemos como variables de entrada:\n\n\\(X_1\\): tamaño de la vivienda.\n\\(X_2\\): número de habitaciones.\n\\(X_3\\): ubicación.\n\nY como variable de respuesta:\n\\[\nY = \\text{precio de la vivienda}\n\\]\nBuscamos aprender la relación:\n\\[\n\\text{Precio}\n=\nf(\\text{tamaño, habitaciones, ubicación})\n+\n\\varepsilon\n\\]\nEl objetivo es utilizar los datos para estimar la función desconocida \\(f\\)."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#de-forma-general",
-    "href": "lecciones/unidad-01/leccion-07.html#de-forma-general",
-    "title": "Aprendizaje supervisado",
-    "section": "De forma general",
-    "text": "De forma general\nLas variables de entrada pueden representarse como:\n\\[\nX = (X_1, X_2, \\ldots, X_p)\n\\]\ndonde:\n\n\\(X\\): variables de entrada (features o predictors).\n\\(Y\\): variable de respuesta (response).\n\nLa relación entre las entradas y la respuesta se representa como:\n\\[\nY = f(X) + \\varepsilon\n\\]\ndonde:\n\n\\(f\\) representa la relación entre \\(X\\) y \\(Y\\).\n\\(\\varepsilon\\) representa el error aleatorio."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#predicción-e-inferencia",
-    "href": "lecciones/unidad-01/leccion-07.html#predicción-e-inferencia",
-    "title": "Aprendizaje supervisado",
-    "section": "Predicción e inferencia",
-    "text": "Predicción e inferencia\nExisten dos objetivos principales:\n\n\n\n\n\n\n\nPredicción\nInferencia\n\n\n\n\nPredecir \\(Y\\) a partir de \\(X\\)\nComprender la relación entre \\(X\\) y \\(Y\\)\n\n\nImporta la precisión\nImporta la interpretación\n\n\n\\(f\\) puede tratarse como una caja negra\nNecesitamos entender la forma de \\(f\\)"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#predicción-e-inferencia-1",
-    "href": "lecciones/unidad-01/leccion-07.html#predicción-e-inferencia-1",
-    "title": "Aprendizaje supervisado",
-    "section": "Predicción e inferencia",
-    "text": "Predicción e inferencia\nInferencia: Utilizamos \\(\\hat f\\) para entender cómo \\(X\\) se relaciona con \\(Y\\).\nEjemplo: estudiar cómo el tamaño, número de habitaciones y ubicación se relacionan con el precio de una vivienda.\nPreguntas de interés:\n\n¿Qué variables están asociadas con el precio?\n¿Cómo cambia el precio cuando cambia una variable?\n¿Qué forma tiene la relación?"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#section",
-    "href": "lecciones/unidad-01/leccion-07.html#section",
-    "title": "Aprendizaje supervisado",
-    "section": "",
-    "text": "Un ejemplo\nSupongamos que queremos predecir el precio de una vivienda.\nTenemos como variables de entrada:\n\n\\(X_1\\): tamaño de la vivienda.\n\\(X_2\\): número de habitaciones.\n\\(X_3\\): ubicación.\n\nY como variable de respuesta:\n\\[\nY = \\text{precio de la vivienda}\n\\]\nBuscamos aprender la relación:\n\\[\n\\text{Precio}\n=\nf(\\text{tamaño, habitaciones, ubicación})\n+\n\\varepsilon\n\\]\nEl objetivo es utilizar los datos para estimar la función desconocida \\(f\\)."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#section-1",
-    "href": "lecciones/unidad-01/leccion-07.html#section-1",
-    "title": "Aprendizaje supervisado",
-    "section": "",
-    "text": "De forma general\nLas variables de entrada pueden representarse como:\n\\[\nX = (X_1, X_2, \\ldots, X_p)\n\\]\ndonde:\n\n\\(X\\): variables de entrada (features o predictors).\n\\(Y\\): variable de respuesta (response).\n\nLa relación entre las entradas y la respuesta se representa como:\n\\[\nY = f(X) + \\varepsilon\n\\]\ndonde:\n\n\\(f\\) representa la relación entre \\(X\\) y \\(Y\\).\n\\(\\varepsilon\\) representa el error aleatorio."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#section-2",
-    "href": "lecciones/unidad-01/leccion-07.html#section-2",
-    "title": "Aprendizaje supervisado",
-    "section": "",
-    "text": "Predicción\nUtilizamos \\(\\hat f\\) para obtener una respuesta estimada:\n\\[\n\\hat{Y} = \\hat{f}(X)\n\\]\nEjemplo: predecir el precio de una vivienda a partir de sus características."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#section-3",
-    "href": "lecciones/unidad-01/leccion-07.html#section-3",
-    "title": "Aprendizaje supervisado",
-    "section": "",
-    "text": "Inferencia\nUtilizamos \\(\\hat f\\) para entender cómo \\(X\\) se relaciona con \\(Y\\).\nEjemplo: estudiar cómo el tamaño, número de habitaciones y ubicación se relacionan con el precio de una vivienda.\nPreguntas de interés:\n\n¿Qué variables están asociadas con el precio?\n¿Cómo cambia el precio cuando cambia una variable?\n¿Qué forma tiene la relación?"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#predicción",
-    "href": "lecciones/unidad-01/leccion-07.html#predicción",
-    "title": "Aprendizaje supervisado",
-    "section": "Predicción",
-    "text": "Predicción\nUtilizamos \\(\\hat f\\) para obtener una respuesta estimada:\n\\[\n\\hat{Y} = \\hat{f}(X)\n\\]\nEjemplo: predecir el precio de una vivienda a partir de sus características."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#inferencia",
-    "href": "lecciones/unidad-01/leccion-07.html#inferencia",
-    "title": "Aprendizaje supervisado",
-    "section": "Inferencia",
-    "text": "Inferencia\nUtilizamos \\(\\hat f\\) para entender cómo \\(X\\) se relaciona con \\(Y\\).\nEjemplo: estudiar cómo el tamaño, número de habitaciones y ubicación se relacionan con el precio de una vivienda.\nPreguntas de interés:\n\n¿Qué variables están asociadas con el precio?\n¿Cómo cambia el precio cuando cambia una variable?\n¿Qué forma tiene la relación?"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#machine-learning",
-    "href": "lecciones/unidad-01/leccion-07.html#machine-learning",
-    "title": "Aprendizaje supervisado",
-    "section": "Machine learning",
-    "text": "Machine learning\nEl machine learning estudia métodos que permiten utilizar datos para aprender relaciones y patrones.\nA partir de un conjunto de observaciones, buscamos aprender cómo ciertas variables de entrada se relacionan con una variable de respuesta.\nEsta relación puede utilizarse para comprender los datos o realizar predicciones sobre nuevas observaciones."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#evaluación-en-aprendizaje-supervisado",
-    "href": "lecciones/unidad-01/leccion-07.html#evaluación-en-aprendizaje-supervisado",
-    "title": "Aprendizaje supervisado",
-    "section": "Evaluación en aprendizaje supervisado",
-    "text": "Evaluación en aprendizaje supervisado\nEn aprendizaje supervisado conocemos la respuesta real \\(Y\\), por lo que podemos compararla con la respuesta predicha \\(\\hat{Y}\\).\nPor ejemplo, en regresión una medida común es el error cuadrático medio:\n\\[\nMSE = \\frac{1}{n}\\sum_{i=1}^{n}(y_i-\\hat{y}_i)^2\n\\]\nUn MSE pequeño indica que las predicciones se encuentran cerca de los valores reales.\n\nLa evaluación mide qué tan bien el modelo predice la respuesta."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#evaluación-en-aprendizaje-no-supervisado",
-    "href": "lecciones/unidad-01/leccion-07.html#evaluación-en-aprendizaje-no-supervisado",
-    "title": "Aprendizaje supervisado",
-    "section": "Evaluación en aprendizaje no supervisado",
-    "text": "Evaluación en aprendizaje no supervisado\nEn aprendizaje no supervisado no conocemos una respuesta \\(Y\\) con la cual comparar los resultados.\n\\[\nX \\longrightarrow \\text{estructura o patrones}\n\\]\nPor lo tanto, no podemos calcular directamente un error de predicción como en aprendizaje supervisado.\nLa evaluación depende de qué estructura estamos buscando."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo-k-means",
-    "href": "lecciones/unidad-01/leccion-07.html#ejemplo-k-means",
-    "title": "Aprendizaje supervisado",
-    "section": "Ejemplo: \\(K\\)-means",
-    "text": "Ejemplo: \\(K\\)-means\n\\(K\\)-means busca formar grupos de observaciones similares.\nPodemos evaluar el resultado midiendo, por ejemplo, qué tan cercanas están las observaciones al centro de su grupo:\n\\[\n\\sum_{k=1}^{K}\\sum_{x_i \\in C_k}\n\\|x_i-\\mu_k\\|^2\n\\]\nUn valor menor indica grupos más compactos.\n\nEn aprendizaje no supervisado, la forma de evaluar depende del objetivo del método."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#regresión-lineal",
-    "href": "lecciones/unidad-01/leccion-08.html#regresión-lineal",
-    "title": "Aprendizaje supervisado",
-    "section": "Regresión lineal",
-    "text": "Regresión lineal\nLa regresión lineal es un método de aprendizaje supervisado utilizado para estudiar la relación entre una respuesta cuantitativa \\(Y\\) y una o más variables de entrada \\(X\\).\nPuede utilizarse con dos objetivos:\n\nPredicción: estimar el valor de \\(Y\\) para nuevas observaciones.\nInferencia: estudiar cómo las variables de entrada se relacionan con \\(Y\\).\n\nComenzaremos con el caso más sencillo: una sola variable de entrada."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#el-modelo",
-    "href": "lecciones/unidad-01/leccion-08.html#el-modelo",
-    "title": "Aprendizaje supervisado",
-    "section": "El modelo",
-    "text": "El modelo\nSupongamos que tenemos una variable de entrada \\(X\\) y una respuesta cuantitativa \\(Y\\).\nLa regresión lineal simple supone que su relación puede aproximarse mediante:\n\\[\nY = \\beta_0 + \\beta_1X + \\varepsilon\n\\]\ndonde:\n\n\\(\\beta_0\\): intercepto.\n\\(\\beta_1\\): pendiente.\n\\(\\varepsilon\\): término de error.\n\nLa parte\n\\[\n\\beta_0+\\beta_1X\n\\]\nrepresenta la relación lineal entre \\(X\\) y \\(Y\\)."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#interpretación-de-los-coeficientes",
-    "href": "lecciones/unidad-01/leccion-08.html#interpretación-de-los-coeficientes",
-    "title": "Aprendizaje supervisado",
-    "section": "Interpretación de los coeficientes",
-    "text": "Interpretación de los coeficientes\nEn el modelo\n\\[\nY = \\beta_0+\\beta_1X+\\varepsilon\n\\]\nel intercepto \\(\\beta_0\\) representa el valor esperado de \\(Y\\) cuando:\n\\[\nX=0\n\\]\nLa pendiente \\(\\beta_1\\) representa el cambio promedio esperado en \\(Y\\) asociado con un incremento de una unidad en \\(X\\).\n\nEl significado de los coeficientes siempre depende del contexto y de las unidades de las variables."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#residuales",
-    "href": "lecciones/unidad-01/leccion-08.html#residuales",
-    "title": "Aprendizaje supervisado",
-    "section": "Residuales",
-    "text": "Residuales\nPara cada observación podemos obtener una predicción:\n\\[\n\\hat y_i=\\hat\\beta_0+\\hat\\beta_1x_i\n\\]\nEl residual es la diferencia entre el valor observado y el valor predicho:\n\\[\ne_i=y_i-\\hat y_i\n\\]\nPor lo tanto:\n\\[\ne_i=y_i-(\\hat\\beta_0+\\hat\\beta_1x_i)\n\\]\nLos residuales indican qué tan lejos se encuentra cada observación de la recta estimada."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados",
-    "href": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados",
-    "title": "Aprendizaje supervisado",
-    "section": "Mínimos cuadrados",
-    "text": "Mínimos cuadrados\nQueremos encontrar la recta que haga los residuales tan pequeños como sea posible.\nDefinimos la suma de cuadrados de los residuales:\n\\[\nRSS=\\sum_{i=1}^{n}e_i^2\n\\]\nSustituyendo el residual:\n\\[\nRSS(\\beta_0,\\beta_1)\n=\n\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nEl método de mínimos cuadrados elige los valores de \\(\\beta_0\\) y \\(\\beta_1\\) que minimizan esta cantidad."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#estimación-de-los-coeficientes",
-    "href": "lecciones/unidad-01/leccion-08.html#estimación-de-los-coeficientes",
-    "title": "Aprendizaje supervisado",
-    "section": "Estimación de los coeficientes",
-    "text": "Estimación de los coeficientes\nBuscamos:\n\\[\n\\min_{\\beta_0,\\beta_1}\n\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nPara encontrar el mínimo, derivamos con respecto a cada parámetro:\n\\[\n\\frac{\\partial RSS}{\\partial\\beta_0}\n=\n-2\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)\n\\]\n\\[\n\\frac{\\partial RSS}{\\partial\\beta_1}\n=\n-2\\sum_{i=1}^{n}\nx_i(y_i-\\beta_0-\\beta_1x_i)\n\\]\nEn el mínimo, ambas derivadas deben ser iguales a cero."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#ecuaciones-normales",
-    "href": "lecciones/unidad-01/leccion-08.html#ecuaciones-normales",
-    "title": "Aprendizaje supervisado",
-    "section": "Ecuaciones normales",
-    "text": "Ecuaciones normales\nIgualando las derivadas a cero:\n\\[\n\\sum_{i=1}^{n}\n(y_i-\\hat\\beta_0-\\hat\\beta_1x_i)=0\n\\]\n\\[\n\\sum_{i=1}^{n}\nx_i(y_i-\\hat\\beta_0-\\hat\\beta_1x_i)=0\n\\]\nDe la primera ecuación:\n\\[\n\\sum y_i=n\\hat\\beta_0+\\hat\\beta_1\\sum x_i\n\\]\nDividiendo entre \\(n\\):\n\\[\n\\bar y=\\hat\\beta_0+\\hat\\beta_1\\bar x\n\\]\npor lo tanto:\n\\[\n\\boxed{\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x}\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#estimación-de-la-pendiente",
-    "href": "lecciones/unidad-01/leccion-08.html#estimación-de-la-pendiente",
-    "title": "Aprendizaje supervisado",
-    "section": "Estimación de la pendiente",
-    "text": "Estimación de la pendiente\nSustituyendo el intercepto en la segunda ecuación y simplificando obtenemos:\n\\[\n\\boxed{\n\\hat\\beta_1=\n\\frac{\n\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})\n}{\n\\sum_{i=1}^{n}(x_i-\\bar{x})^2\n}\n}\n\\]\ny posteriormente:\n\\[\n\\boxed{\n\\hat\\beta_0=\\bar y-\\hat\\beta_1\\bar x\n}\n\\]\nEstos son los estimadores de mínimos cuadrados para la regresión lineal simple."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#precio-de-una-vivienda",
-    "href": "lecciones/unidad-01/leccion-08.html#precio-de-una-vivienda",
-    "title": "Aprendizaje supervisado",
-    "section": "Precio de una vivienda",
-    "text": "Precio de una vivienda\nSupongamos que queremos estudiar la relación entre:\n\\[\nX=\\text{tamaño de una vivienda}\n\\]\ny \\[\nY=\\text{precio de la vivienda}\n\\]\nTenemos las siguientes observaciones:\n\n\n\nTamaño \\(X\\) (m²)\nPrecio \\(Y\\) (miles de $)\n\n\n\n\n50\n120\n\n\n70\n150\n\n\n90\n180\n\n\n110\n210\n\n\n130\n260"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#existe-una-relación",
-    "href": "lecciones/unidad-01/leccion-08.html#existe-una-relación",
-    "title": "Aprendizaje supervisado",
-    "section": "¿Existe una relación?",
-    "text": "¿Existe una relación?\nEl modelo poblacional es:\n\\[\nY=\\beta_0+\\beta_1X+\\varepsilon\n\\]\nSi:\n\\[\n\\beta_1=0\n\\]\nentonces \\(X\\) no aporta información lineal sobre \\(Y\\).\nPodemos plantear:\n\\[\nH_0:\\beta_1=0\n\\]\nfrente a:\n\\[\nH_a:\\beta_1\\neq0\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#estadístico-t",
-    "href": "lecciones/unidad-01/leccion-08.html#estadístico-t",
-    "title": "Aprendizaje supervisado",
-    "section": "Estadístico \\(t\\)",
-    "text": "Estadístico \\(t\\)\nPara evaluar la hipótesis utilizamos:\n\\[\nt=\n\\frac{\\hat\\beta_1}\n{SE(\\hat\\beta_1)}\n\\]\nEl error estándar de la pendiente es:\n\\[\nSE(\\hat\\beta_1)^2\n=\n\\frac{\\sigma^2}\n{\\sum_{i=1}^{n}(x_i-\\bar{x})^2}\n\\]\nComo \\(\\sigma^2\\) es desconocida, debe estimarse a partir de los datos.\nUn valor de \\(|\\hat\\beta_1|\\) grande en relación con su error estándar proporciona evidencia contra \\(H_0\\)."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#error-estándar-residual",
-    "href": "lecciones/unidad-01/leccion-08.html#error-estándar-residual",
-    "title": "Aprendizaje supervisado",
-    "section": "Error estándar residual",
-    "text": "Error estándar residual\nLa variabilidad del término de error puede estimarse mediante el error estándar residual:\n\\[\nRSE=\n\\sqrt{\n\\frac{RSS}{n-2}\n}\n\\]\no equivalentemente:\n\\[\nRSE=\n\\sqrt{\n\\frac{1}{n-2}\n\\sum_{i=1}^{n}(y_i-\\hat y_i)^2\n}\n\\]\nEl RSE representa aproximadamente cuánto se desvían las observaciones de la recta de regresión."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#coeficiente-de-determinación",
-    "href": "lecciones/unidad-01/leccion-08.html#coeficiente-de-determinación",
-    "title": "Aprendizaje supervisado",
-    "section": "Coeficiente de determinación",
-    "text": "Coeficiente de determinación\nOtra medida de ajuste es:\n\\[\nR^2=\n\\frac{TSS-RSS}{TSS}\n=\n1-\\frac{RSS}{TSS}\n\\]\ndonde:\n\\[\nTSS=\\sum_{i=1}^{n}(y_i-\\bar y)^2\n\\]\n\\(R^2\\) representa la proporción de la variabilidad de \\(Y\\) explicada por el modelo.\n\\[\n0\\leq R^2\\leq1\n\\]\nUn valor cercano a 1 indica que una mayor proporción de la variabilidad de \\(Y\\) es explicada por la relación lineal."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#supuestos-del-modelo",
-    "href": "lecciones/unidad-01/leccion-08.html#supuestos-del-modelo",
-    "title": "Aprendizaje supervisado",
-    "section": "Supuestos del modelo",
-    "text": "Supuestos del modelo\nEl modelo\n\\[\nY=\\beta_0+\\beta_1X+\\varepsilon\n\\]\nrepresenta una aproximación de la relación entre \\(X\\) y \\(Y\\).\nPara realizar inferencia con el modelo se consideran supuestos sobre los errores, entre ellos:\n\nrelación aproximadamente lineal,\nerrores con media cero,\nerrores independientes,\nvarianza aproximadamente constante.\n\nAlgunos procedimientos inferenciales requieren además supuestos sobre la distribución de los errores."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#cuando-la-relación-no-es-lineal",
-    "href": "lecciones/unidad-01/leccion-08.html#cuando-la-relación-no-es-lineal",
-    "title": "Aprendizaje supervisado",
-    "section": "Cuando la relación no es lineal",
-    "text": "Cuando la relación no es lineal\nLa regresión lineal supone que la relación puede representarse adecuadamente mediante una recta.\nSi la relación real presenta una estructura diferente:\n\\[\nY \\neq \\beta_0+\\beta_1X+\\varepsilon\n\\]\nuna recta puede producir un ajuste inadecuado.\n\nUn modelo lineal es una aproximación; no implica que la relación real sea necesariamente lineal."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#correlación-no-implica-causalidad",
-    "href": "lecciones/unidad-01/leccion-08.html#correlación-no-implica-causalidad",
-    "title": "Aprendizaje supervisado",
-    "section": "Correlación no implica causalidad",
-    "text": "Correlación no implica causalidad\nEncontrar una asociación entre \\(X\\) y \\(Y\\) no implica que:\n\\[\nX\\longrightarrow Y\n\\]\nsea una relación causal.\nUna tercera variable puede estar relacionada con ambas.\nPor ejemplo:\n\\[\n\\text{ventas de helado}\n\\longleftrightarrow\n\\text{ataques de tiburón}\n\\]\npueden estar asociadas porque ambas aumentan cuando aumenta la temperatura.\n\nLa regresión describe asociaciones; por sí sola no demuestra causalidad."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#por-qué-necesitamos-más-predictores",
-    "href": "lecciones/unidad-01/leccion-08.html#por-qué-necesitamos-más-predictores",
-    "title": "Aprendizaje supervisado",
-    "section": "¿Por qué necesitamos más predictores?",
-    "text": "¿Por qué necesitamos más predictores?\nEn muchos problemas una respuesta depende de varias variables.\nPor ejemplo:\n\\[\nY=\\text{precio de una vivienda}\n\\]\npuede depender de:\n\\[\nX_1=\\text{tamaño}\n\\]\n\\[\nX_2=\\text{habitaciones}\n\\]\n\\[\nX_3=\\text{ubicación}\n\\]\nEn lugar de construir un modelo independiente para cada variable, podemos incorporarlas simultáneamente."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#el-modelo-múltiple",
-    "href": "lecciones/unidad-01/leccion-08.html#el-modelo-múltiple",
-    "title": "Aprendizaje supervisado",
-    "section": "El modelo múltiple",
-    "text": "El modelo múltiple\nCon \\(p\\) predictores:\n\\[\nY=\n\\beta_0+\n\\beta_1X_1+\n\\beta_2X_2+\n\\cdots+\n\\beta_pX_p+\n\\varepsilon\n\\]\nPara una observación:\n\\[\n\\hat y=\n\\hat\\beta_0+\n\\hat\\beta_1x_1+\n\\hat\\beta_2x_2+\n\\cdots+\n\\hat\\beta_px_p\n\\]\nAhora estimamos:\n\\[\n\\beta_0,\\beta_1,\\ldots,\\beta_p\n\\]\nsimultáneamente."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#interpretación-de-los-coeficientes-1",
-    "href": "lecciones/unidad-01/leccion-08.html#interpretación-de-los-coeficientes-1",
-    "title": "Aprendizaje supervisado",
-    "section": "Interpretación de los coeficientes",
-    "text": "Interpretación de los coeficientes\nEn regresión múltiple, \\(\\beta_j\\) representa el cambio promedio en \\(Y\\) asociado con un incremento de una unidad en \\(X_j\\):\n\nmanteniendo los demás predictores constantes.\n\nPor ejemplo:\n\\[\nY=\n\\beta_0+\n\\beta_1X_1+\n\\beta_2X_2+\n\\varepsilon\n\\]\n\\(\\beta_1\\) representa el cambio asociado con \\(X_1\\) cuando \\(X_2\\) se mantiene fijo.\nEsta interpretación distingue a la regresión múltiple de realizar varias regresiones simples por separado."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados-1",
-    "href": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados-1",
-    "title": "Aprendizaje supervisado",
-    "section": "Mínimos cuadrados",
-    "text": "Mínimos cuadrados\nLa idea es exactamente la misma que en regresión simple.\nPara cada observación:\n\\[\ne_i=\ny_i-\n\\left(\n\\beta_0+\n\\beta_1x_{i1}+\n\\cdots+\n\\beta_px_{ip}\n\\right)\n\\]\nDefinimos:\n\\[\nRSS=\n\\sum_{i=1}^{n}\n\\left(\ny_i-\n\\beta_0-\n\\sum_{j=1}^{p}\\beta_jx_{ij}\n\\right)^2\n\\]\nBuscamos los coeficientes que minimizan \\(RSS\\)."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#el-modelo-en-forma-matricial",
-    "href": "lecciones/unidad-01/leccion-08.html#el-modelo-en-forma-matricial",
-    "title": "Aprendizaje supervisado",
-    "section": "El modelo en forma matricial",
-    "text": "El modelo en forma matricial\nPodemos escribir la regresión múltiple como:\n\\[\n\\mathbf y=\\mathbf X\\boldsymbol\\beta+\\boldsymbol\\varepsilon\n\\]\ndonde:\n\\[\n\\mathbf y=\n\\begin{bmatrix}\ny_1\\\\\ny_2\\\\\n\\vdots\\\\\ny_n\n\\end{bmatrix}\n\\]\ny\n\\[\n\\boldsymbol\\beta=\n\\begin{bmatrix}\n\\beta_0\\\\\n\\beta_1\\\\\n\\vdots\\\\\n\\beta_p\n\\end{bmatrix}\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#matriz-de-diseño",
-    "href": "lecciones/unidad-01/leccion-08.html#matriz-de-diseño",
-    "title": "Aprendizaje supervisado",
-    "section": "Matriz de diseño",
-    "text": "Matriz de diseño\nLa matriz de predictores es:\n\\[\n\\mathbf X=\n\\begin{bmatrix}\n1 & x_{11} & x_{12} & \\cdots & x_{1p}\\\\\n1 & x_{21} & x_{22} & \\cdots & x_{2p}\\\\\n\\vdots & \\vdots & \\vdots & \\ddots & \\vdots\\\\\n1 & x_{n1} & x_{n2} & \\cdots & x_{np}\n\\end{bmatrix}\n\\]\nLa primera columna de unos corresponde al intercepto \\(\\beta_0\\).\nLa predicción puede escribirse como:\n\\[\n\\hat{\\mathbf y}=\\mathbf X\\hat{\\boldsymbol\\beta}\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados-en-forma-matricial",
-    "href": "lecciones/unidad-01/leccion-08.html#mínimos-cuadrados-en-forma-matricial",
-    "title": "Aprendizaje supervisado",
-    "section": "Mínimos cuadrados en forma matricial",
-    "text": "Mínimos cuadrados en forma matricial\nQueremos minimizar:\n\\[\nRSS=\n(\\mathbf y-\\mathbf X\\boldsymbol\\beta)^T\n(\\mathbf y-\\mathbf X\\boldsymbol\\beta)\n\\]\nExpandiendo:\n\\[\nRSS=\n\\mathbf y^T\\mathbf y\n-\n2\\boldsymbol\\beta^T\\mathbf X^T\\mathbf y\n+\n\\boldsymbol\\beta^T\\mathbf X^T\\mathbf X\\boldsymbol\\beta\n\\]\nDerivamos con respecto a \\(\\boldsymbol\\beta\\):\n\\[\n\\frac{\\partial RSS}{\\partial\\boldsymbol\\beta}\n=\n-2\\mathbf X^T\\mathbf y\n+\n2\\mathbf X^T\\mathbf X\\boldsymbol\\beta\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#ecuaciones-normales-1",
-    "href": "lecciones/unidad-01/leccion-08.html#ecuaciones-normales-1",
-    "title": "Aprendizaje supervisado",
-    "section": "Ecuaciones normales",
-    "text": "Ecuaciones normales\nIgualamos la derivada a cero:\n\\[\n-2\\mathbf X^T\\mathbf y\n+\n2\\mathbf X^T\\mathbf X\\hat{\\boldsymbol\\beta}\n=0\n\\]\npor lo tanto:\n\\[\n\\mathbf X^T\\mathbf X\\hat{\\boldsymbol\\beta}\n=\n\\mathbf X^T\\mathbf y\n\\]\nSi \\(\\mathbf X^T\\mathbf X\\) es invertible:\n\\[\n\\boxed{\n\\hat{\\boldsymbol\\beta}\n=\n(\\mathbf X^T\\mathbf X)^{-1}\n\\mathbf X^T\\mathbf y\n}\n\\]\nEsta es la solución de mínimos cuadrados para la regresión lineal múltiple."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#existe-alguna-relación",
-    "href": "lecciones/unidad-01/leccion-08.html#existe-alguna-relación",
-    "title": "Aprendizaje supervisado",
-    "section": "¿Existe alguna relación?",
-    "text": "¿Existe alguna relación?\nCon múltiples predictores podemos preguntar si al menos uno está relacionado con la respuesta.\nPlanteamos:\n\\[\nH_0:\n\\beta_1=\\beta_2=\\cdots=\\beta_p=0\n\\]\nfrente a:\n\\[\nH_a:\n\\text{al menos un }\\beta_j\\neq0\n\\]\nPara evaluar esta hipótesis utilizamos el estadístico \\(F\\)."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#estadístico-f",
-    "href": "lecciones/unidad-01/leccion-08.html#estadístico-f",
-    "title": "Aprendizaje supervisado",
-    "section": "Estadístico \\(F\\)",
-    "text": "Estadístico \\(F\\)\nEl estadístico se define como:\n\\[\nF=\n\\frac{(TSS-RSS)/p}\n{RSS/(n-p-1)}\n\\]\nSi \\(H_0\\) es cierta, esperamos un valor de \\(F\\) cercano a 1.\nUn valor suficientemente grande proporciona evidencia de que al menos uno de los predictores está relacionado con la respuesta."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#evaluación-individual",
-    "href": "lecciones/unidad-01/leccion-08.html#evaluación-individual",
-    "title": "Aprendizaje supervisado",
-    "section": "Evaluación individual",
-    "text": "Evaluación individual\nUna vez establecida una relación global, también podemos estudiar cada predictor.\nPara cada coeficiente:\n\\[\nH_0:\\beta_j=0\n\\]\nfrente a:\n\\[\nH_a:\\beta_j\\neq0\n\\]\nEl coeficiente \\(\\beta_j\\) debe interpretarse considerando que los demás predictores permanecen constantes."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#agregar-variables-no-siempre-mejora-el-modelo",
-    "href": "lecciones/unidad-01/leccion-08.html#agregar-variables-no-siempre-mejora-el-modelo",
-    "title": "Aprendizaje supervisado",
-    "section": "Agregar variables no siempre mejora el modelo",
-    "text": "Agregar variables no siempre mejora el modelo\nEn los datos de entrenamiento, agregar predictores nunca aumenta el RSS.\nPor lo tanto, \\(R^2\\) puede aumentar incluso cuando agregamos variables poco útiles.\nEsto significa que:\n\nUn \\(R^2\\) mayor no garantiza un mejor modelo para nuevas observaciones.\n\nLa capacidad de generalización debe evaluarse utilizando datos que no participaron en el ajuste."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#de-la-población-a-los-datos",
-    "href": "lecciones/unidad-01/leccion-08.html#de-la-población-a-los-datos",
-    "title": "Aprendizaje supervisado",
-    "section": "De la población a los datos",
-    "text": "De la población a los datos\nLos parámetros reales\n\\[\n\\beta_0,\\beta_1\n\\]\nson desconocidos.\nA partir de una muestra:\n\\[\n(x_1,y_1),(x_2,y_2),\\ldots,(x_n,y_n)\n\\]\nbuscamos estimarlos mediante:\n\\[\n\\hat{\\beta}_0,\\hat{\\beta}_1\n\\]\nobteniendo la recta estimada:\n\\[\n\\hat{Y}=\\hat{\\beta}_0+\\hat{\\beta}_1X\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-08.html#precio-de-una-vivienda-1",
-    "href": "lecciones/unidad-01/leccion-08.html#precio-de-una-vivienda-1",
-    "title": "Aprendizaje supervisado",
-    "section": "Precio de una vivienda",
-    "text": "Precio de una vivienda\nBuscamos estimar:\n\\[\n\\hat Y=\\hat\\beta_0+\\hat\\beta_1X\n\\]\ny utilizar el modelo para predecir el precio de una vivienda de:\n\\[\nX=100\\text{ m}^2\n\\]\n\nDesarrollo del ejemplo en el pizarrón."
   }
 ]
