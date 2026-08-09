@@ -154,4 +154,4 @@ En el laboratorio pondremos en práctica estas herramientas para obtener datos d
 - Extracción básica desde un sitio web.
 - Creación de un DataFrame.
 
-[**Ir al Notebook →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-01.ipynb**)
+[**Ir al Notebook →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-01.ipynb)

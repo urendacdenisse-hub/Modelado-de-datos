@@ -102,4 +102,4 @@ Podemos analizar:
 
 Ahora realizaremos un **análisis exploratorio de datos (EDA)** para conocer la estructura, características, calidad y principales patrones de un conjunto de datos.
 
-[**Ir al laboratorio →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-03.ipynb**)
+[**Ir al laboratorio →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-03.ipynb)
