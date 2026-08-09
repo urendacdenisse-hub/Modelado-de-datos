@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="es"><head>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -31,77 +31,10 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -218,7 +151,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Aprendizaje supervisado</h1>
-  <p class="subtitle">Preparación de datos</p>
+  <p class="subtitle">Introducción a machine learning</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -230,17 +163,13 @@ Dra. Denisse Urenda Castañeda
 
 </section><section id="TOC">
 <nav role="doc-toc"> 
-<h2 id="toc-title">Table of contents</h2>
+<h2 id="toc-title">Tabla de contenidos</h2>
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
-<li><a href="#/qué-es-la-preparación-de-datos" id="/toc-qué-es-la-preparación-de-datos">¿Qué es la preparación de datos?</a></li>
-<li><a href="#/exploración-inicial" id="/toc-exploración-inicial">Exploración inicial</a></li>
-<li><a href="#/exploración-inicial-con-python" id="/toc-exploración-inicial-con-python">Exploración inicial con Python</a></li>
-<li><a href="#/limpieza-de-datos" id="/toc-limpieza-de-datos">Limpieza de datos</a></li>
-<li><a href="#/limpieza-de-datos-con-python" id="/toc-limpieza-de-datos-con-python">Limpieza de datos con Python</a></li>
-<li><a href="#/transformación-de-datos" id="/toc-transformación-de-datos">Transformación de datos</a></li>
-<li><a href="#/transformación-de-datos-con-python" id="/toc-transformación-de-datos-con-python">Transformación de datos con Python</a></li>
-<li><a href="#/datos-listos-para-analizar" id="/toc-datos-listos-para-analizar">Datos listos para analizar</a></li>
+<li><a href="#/estimación-de-f" id="/toc-estimación-de-f">Estimación de <span class="math inline">\(f\)</span></a></li>
+<li><a href="#/tipos-de-métodos" id="/toc-tipos-de-métodos">Tipos de métodos</a></li>
+<li><a href="#/tipos-de-aprendizaje" id="/toc-tipos-de-aprendizaje">Tipos de aprendizaje</a></li>
+<li><a href="#/evaluación" id="/toc-evaluación">Evaluación</a></li>
 <li><a href="#/resumen" id="/toc-resumen">Resumen</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
@@ -248,149 +177,322 @@ Dra. Denisse Urenda Castañeda
 </ul>
 </nav>
 </section>
-<section id="introducción" class="slide level2">
-<h2>Introducción</h2>
-<p>Los datos obtenidos de diferentes fuentes rara vez están listos para analizarse. Antes de utilizarlos, es necesario prepararlos para mejorar su calidad y facilitar su procesamiento.</p>
+<section>
+<section id="introducción" class="title-slide slide level1 center">
+<h1>Introducción</h1>
+
 </section>
-<section id="qué-es-la-preparación-de-datos" class="slide level2">
-<h2>¿Qué es la preparación de datos?</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>La preparación de datos es el conjunto de actividades que transforman datos crudos en un conjunto de datos listo para su análisis.</p>
-<p>Su objetivo es mejorar la <strong>calidad</strong>, <strong>consistencia</strong> y <strong>utilidad</strong> de la información.</p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="../imagenes/preparacion-datos.png" style="width:100.0%"></p>
-</div><div class="figure-source">
-<p>Fuente: Imagen generada con ChatGPT.</p>
-</div>
-</div>
+<section id="machine-learning" class="slide level2">
+<h2>Machine learning</h2>
+<p>El <strong>machine learning</strong> estudia métodos que permiten utilizar datos para <strong>aprender relaciones y patrones</strong>.</p>
+<p>A partir de un conjunto de observaciones, buscamos aprender cómo ciertas <strong>variables de entrada</strong> se relacionan con una <strong>variable de respuesta</strong>.</p>
+<p>Esta relación puede utilizarse para <strong>comprender los datos o realizar predicciones</strong> sobre nuevas observaciones.</p>
 </section>
-<section id="exploración-inicial" class="slide level2">
-<h2>Exploración inicial</h2>
-<p>El primer paso consiste en comprender el conjunto de datos y detectar posibles problemas antes de realizar cualquier modificación.</p>
-<p><strong>Ejemplos</strong></p>
+<section id="un-ejemplo" class="slide level2">
+<h2>Un ejemplo</h2>
+<p>Supongamos que queremos <strong>predecir el precio de una vivienda</strong>.</p>
+<p>Tenemos como variables de entrada:</p>
 <ul>
-<li>Identificar el tipo de cada variable.</li>
-<li>Revisar el número de registros.</li>
-<li>Detectar valores faltantes.</li>
-<li>Buscar valores inusuales.</li>
+<li><span class="math inline">\(X_1\)</span>: tamaño de la vivienda.</li>
+<li><span class="math inline">\(X_2\)</span>: número de habitaciones.</li>
+<li><span class="math inline">\(X_3\)</span>: ubicación.</li>
 </ul>
+<p>Y como variable de respuesta:</p>
+<p><span class="math display">\[
+Y = \text{precio de la vivienda}
+\]</span></p>
+<p>Buscamos aprender la relación:</p>
+<p><span class="math display">\[
+\text{Precio}
+=
+f(\text{tamaño, habitaciones, ubicación})
++
+\varepsilon
+\]</span></p>
+<p>El objetivo es utilizar los datos para <strong>estimar la función desconocida <span class="math inline">\(f\)</span></strong>.</p>
 </section>
-<section id="exploración-inicial-con-python" class="slide level2">
-<h2>Exploración inicial con Python</h2>
-<p>Las bibliotecas de análisis de datos proporcionan funciones que permiten explorar rápidamente la estructura y calidad de un conjunto de datos.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>df.info()         <span class="co"># Muestra la estructura del conjunto de datos</span></span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>df.shape          <span class="co"># Obtiene el número de filas y columnas</span></span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a>df.isna().<span class="bu">sum</span>()   <span class="co"># Cuenta los valores faltantes</span></span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a>df.describe()     <span class="co"># Calcula estadísticas descriptivas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="limpieza-de-datos" class="slide level2">
-<h2>Limpieza de datos</h2>
-<p>La limpieza busca corregir problemas que puedan afectar la calidad de los datos y, por lo tanto, los resultados del análisis.</p>
-<p><strong>Ejemplos</strong></p>
+<section id="de-forma-general" class="slide level2">
+<h2>De forma general</h2>
+<p>Las variables de entrada pueden representarse como:</p>
+<p><span class="math display">\[
+X = (X_1, X_2, \ldots, X_p)
+\]</span></p>
+<p>donde:</p>
 <ul>
-<li>Eliminar registros duplicados.</li>
-<li>Corregir errores de captura.</li>
-<li>Tratar valores faltantes.</li>
-<li>Detectar valores atípicos.</li>
+<li><span class="math inline">\(X\)</span>: <strong>variables de entrada</strong> (<em>features</em> o <em>predictors</em>).</li>
+<li><span class="math inline">\(Y\)</span>: <strong>variable de respuesta</strong> (<em>response</em>).</li>
 </ul>
-</section>
-<section id="limpieza-de-datos-con-python" class="slide level2">
-<h2>Limpieza de datos con Python</h2>
-<p>Las bibliotecas de análisis de datos ofrecen funciones para corregir algunos de los problemas más comunes encontrados durante la exploración.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>df.drop_duplicates()   <span class="co"># Elimina registros duplicados</span></span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>df.fillna(<span class="dv">0</span>)           <span class="co"># Reemplaza valores faltantes por 0</span></span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a>df.dropna()            <span class="co"># Elimina registros con valores faltantes</span></span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a>df.clip(lower<span class="op">=</span><span class="dv">0</span>)       <span class="co"># Reemplaza valores menores que 0 por 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="transformación-de-datos" class="slide level2">
-<h2>Transformación de datos</h2>
-<p>Una vez limpios, los datos pueden transformarse para facilitar su análisis y procesamiento.</p>
-<p><strong>Ejemplos</strong></p>
+<p>La relación entre las entradas y la respuesta se representa como:</p>
+<p><span class="math display">\[
+Y = f(X) + \varepsilon
+\]</span></p>
+<p>donde:</p>
 <ul>
-<li>Convertir tipos de datos.</li>
-<li>Normalizar o escalar variables.</li>
-<li>Crear nuevas variables.</li>
-<li>Cambiar el formato de fechas.</li>
+<li><span class="math inline">\(f\)</span> representa la <strong>relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span></strong>.</li>
+<li><span class="math inline">\(\varepsilon\)</span> representa el <strong>error aleatorio</strong>.</li>
 </ul>
+</section></section>
+<section>
+<section id="estimación-de-f" class="title-slide slide level1 center">
+<h1>Estimación de <span class="math inline">\(f\)</span></h1>
+
 </section>
-<section id="transformación-de-datos-con-python" class="slide level2">
-<h2>Transformación de datos con Python</h2>
-<p>Las bibliotecas de análisis de datos permiten transformar la información para adaptarla a las necesidades de un análisis o modelo.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Convierte el tipo de dato a entero</span></span>
-<span id="cb3-2"><a></a>df[<span class="st">"edad"</span>] <span class="op">=</span> df[<span class="st">"edad"</span>].astype(<span class="bu">int</span>)</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a><span class="co"># Normaliza una variable</span></span>
-<span id="cb3-5"><a></a>df[<span class="st">"peso"</span>] <span class="op">=</span> (df[<span class="st">"peso"</span>] <span class="op">-</span> df[<span class="st">"peso"</span>].mean()) <span class="op">/</span> df[<span class="st">"peso"</span>].std()</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="co"># Crea una nueva variable</span></span>
-<span id="cb3-8"><a></a>df[<span class="st">"total"</span>] <span class="op">=</span> df[<span class="st">"precio"</span>] <span class="op">*</span> df[<span class="st">"cantidad"</span>]</span>
-<span id="cb3-9"><a></a></span>
-<span id="cb3-10"><a></a><span class="co"># Convierte una fecha</span></span>
-<span id="cb3-11"><a></a>df[<span class="st">"fecha"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"fecha"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="datos-listos-para-analizar" class="slide level2">
-<h2>Datos listos para analizar</h2>
-<p>Al finalizar la preparación, se obtiene un conjunto de datos consistente y confiable que puede utilizarse para generar estadísticas, visualizaciones o modelos de aprendizaje automático.</p>
+<section id="predicción-e-inferencia" class="slide level2">
+<h2>Predicción e inferencia</h2>
+<p>Existen dos objetivos principales:</p>
 <table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Transformación</th>
-<th style="text-align: left;">Ejemplo</th>
+<th>Predicción</th>
+<th>Inferencia</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Conversión de tipo</td>
-<td style="text-align: left;"><code>"25"</code> → <code>25</code></td>
+<td>Predecir <span class="math inline">\(Y\)</span> a partir de <span class="math inline">\(X\)</span></td>
+<td>Comprender la relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Corrección de texto</td>
-<td style="text-align: left;"><code>juarez</code> → <code>Juárez</code></td>
+<td>Importa la precisión</td>
+<td>Importa la interpretación</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Conversión de fecha</td>
-<td style="text-align: left;"><code>05/08/26</code> → <code>2026-08-05</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Creación de variables</td>
-<td style="text-align: left;"><code>precio × cantidad</code> → <code>total</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Conversión de unidades</td>
-<td style="text-align: left;"><code>25 °C</code> → <code>77 °F</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Codificación categórica</td>
-<td style="text-align: left;"><code>Sí/No</code> → <code>1/0</code></td>
+<td><span class="math inline">\(f\)</span> puede tratarse como una <em>caja negra</em></td>
+<td>Necesitamos entender la forma de <span class="math inline">\(f\)</span></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="resumen" class="slide level2">
-<h2>Resumen</h2>
+<section id="predicción" class="slide level2">
+<h2>Predicción</h2>
+<p>Utilizamos <span class="math inline">\(\hat f\)</span> para obtener una respuesta estimada:</p>
+<p><span class="math display">\[
+\hat{Y} = \hat{f}(X)
+\]</span></p>
+<p><em>Ejemplo:</em> predecir el precio de una vivienda a partir de sus características.</p>
+</section>
+<section id="inferencia" class="slide level2">
+<h2>Inferencia</h2>
+<p>Utilizamos <span class="math inline">\(\hat f\)</span> para <strong>entender cómo <span class="math inline">\(X\)</span> se relaciona con <span class="math inline">\(Y\)</span></strong>.</p>
+<p><em>Ejemplo:</em> estudiar cómo el tamaño, número de habitaciones y ubicación se relacionan con el precio de una vivienda.</p>
+<p>Preguntas de interés:</p>
 <ul>
-<li>La preparación de datos mejora la calidad de la información.</li>
-<li>El proceso incluye exploración, limpieza y transformación.</li>
-<li>Un conjunto de datos bien preparado facilita el análisis y la construcción de modelos.</li>
+<li>¿Qué variables están asociadas con el precio?</li>
+<li>¿Cómo cambia el precio cuando cambia una variable?</li>
+<li>¿Qué forma tiene la relación?</li>
 </ul>
 </section>
-<section id="referencias" class="slide level2 smaller scrollable">
-<h2>Referencias</h2>
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-ibm_preprocessing" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">S. Mushtaq, <span>“Data preprocessing in detail.”</span> Accessed: Aug. 05, 2026. [Online]. Available: <a href="https://developer.ibm.com/articles/data-preprocessing-in-detail/">https://developer.ibm.com/articles/data-preprocessing-in-detail/</a></div>
-</div>
+<section id="datos-de-entrenamiento" class="slide level2">
+<h2>Datos de entrenamiento</h2>
+<p>Para estimar <span class="math inline">\(f\)</span> utilizamos un conjunto de <strong>datos de entrenamiento</strong>:</p>
+<p><span class="math display">\[
+\{(x_1,y_1),(x_2,y_2),\ldots,(x_n,y_n)\}
+\]</span></p>
+<p>donde cada observación contiene:</p>
+<ul>
+<li><span class="math inline">\(x_i\)</span>: valores de las variables de entrada.</li>
+<li><span class="math inline">\(y_i\)</span>: respuesta observada.</li>
+</ul>
+<p>El objetivo es encontrar una función <span class="math inline">\(\hat f\)</span> tal que:</p>
+<p><span class="math display">\[
+Y \approx \hat f(X)
+\]</span></p>
+</section></section>
+<section>
+<section id="tipos-de-métodos" class="title-slide slide level1 center">
+<h1>Tipos de métodos</h1>
+
+</section>
+<section id="métodos-paramétricos" class="slide level2">
+<h2>Métodos paramétricos</h2>
+<p>Los métodos paramétricos suponen una <strong>forma específica para <span class="math inline">\(f\)</span></strong>.</p>
+<p>Por ejemplo, podemos asumir una relación lineal:</p>
+<p><span class="math display">\[
+f(X)=\beta_0+\beta_1X_1+\cdots+\beta_pX_p
+\]</span></p>
+<p>El problema se reduce entonces a estimar:</p>
+<p><span class="math display">\[
+\beta_0,\beta_1,\ldots,\beta_p
+\]</span></p>
+<p><strong>Ventaja:</strong> simplifican el problema.</p>
+<p><strong>Desventaja:</strong> si la forma elegida no representa adecuadamente la relación real, el modelo puede ser poco preciso.</p>
+</section>
+<section id="métodos-no-paramétricos" class="slide level2">
+<h2>Métodos no paramétricos</h2>
+<p>Los métodos no paramétricos <strong>no imponen una forma específica para <span class="math inline">\(f\)</span></strong>.</p>
+<p>Buscan aproximarse a los datos con mayor flexibilidad.</p>
+<p><em>Ejemplo</em>: Para predecir <span class="math inline">\(Y\)</span> para una nueva observación, <span class="math inline">\(k\)</span>-NN busca las observaciones más cercanas y utiliza sus valores para obtener la predicción.</p>
+<p>No suponemos previamente que <span class="math inline">\(f\)</span> sea lineal, cuadrática, exponencial, etc.</p>
+<blockquote>
+<p><strong>La forma de <span class="math inline">\(\hat f\)</span> se adapta a los datos.</strong></p>
+</blockquote>
+<p><strong>Ventaja:</strong> pueden representar relaciones más complejas.</p>
+<p><strong>Desventaja:</strong> generalmente requieren más observaciones y pueden ajustarse demasiado a los datos.</p>
+</section></section>
+<section>
+<section id="tipos-de-aprendizaje" class="title-slide slide level1 center">
+<h1>Tipos de aprendizaje</h1>
+
+</section>
+<section id="aprendizaje-supervisado" class="slide level2">
+<h2>Aprendizaje supervisado</h2>
+<p>En el <strong>aprendizaje supervisado</strong>, cada observación contiene:</p>
+<p><span class="math display">\[
+(x_i,y_i)
+\]</span></p>
+<p>Es decir, conocemos las variables de entrada <span class="math inline">\(X\)</span> y la respuesta <span class="math inline">\(Y\)</span>.</p>
+<p>El objetivo es aprender la relación entre ambas para:</p>
+<ul>
+<li><strong>predecir</strong> nuevas respuestas,</li>
+<li>o realizar <strong>inferencia</strong> sobre la relación entre las variables.</li>
+</ul>
+</section>
+<section id="regresión-y-clasificación" class="slide level2">
+<h2>Regresión y clasificación</h2>
+<p>Los problemas supervisados pueden distinguirse según el tipo de respuesta <span class="math inline">\(Y\)</span>.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Regresión</th>
+<th>Clasificación</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Respuesta</strong></td>
+<td>Cuantitativa</td>
+<td>Cualitativa</td>
+</tr>
+<tr class="even">
+<td><strong>Objetivo</strong></td>
+<td>Predecir un valor</td>
+<td>Predecir una clase</td>
+</tr>
+<tr class="odd">
+<td><strong>Ejemplo</strong></td>
+<td>Precio de una casa</td>
+<td>Diagnóstico positivo/negativo</td>
+</tr>
+</tbody>
+</table>
+<p>La distinción depende principalmente de la <strong>variable de respuesta</strong>, no del tipo de predictores.</p>
+</section>
+<section id="aprendizaje-no-supervisado" class="slide level2">
+<h2>Aprendizaje no supervisado</h2>
+<p>En el <strong>aprendizaje no supervisado</strong> observamos:</p>
+<p><span class="math display">\[
+x_1,x_2,\ldots,x_n
+\]</span></p>
+<p>pero <strong>no existe una respuesta <span class="math inline">\(Y\)</span> conocida</strong>.</p>
+<p>Por lo tanto, no buscamos predecir una respuesta.</p>
+<p>Buscamos descubrir:</p>
+<ul>
+<li>relaciones entre variables,</li>
+<li>similitudes entre observaciones,</li>
+<li>estructuras o grupos presentes en los datos.</li>
+</ul>
+</section></section>
+<section>
+<section id="evaluación" class="title-slide slide level1 center">
+<h1>Evaluación</h1>
+
+</section>
+<section id="cómo-evaluamos-un-modelo" class="slide level2">
+<h2>¿Cómo evaluamos un modelo?</h2>
+<p>El objetivo no es únicamente que un modelo funcione bien con los datos utilizados para <strong>entrenarlo</strong>, sino que también funcione bien con <strong>datos nuevos</strong>.</p>
+<p>Por ello, distinguimos entre:</p>
+<ul>
+<li><strong>Datos de entrenamiento (<em>train</em>):</strong> se utilizan para ajustar el modelo.</li>
+<li><strong>Datos de prueba (<em>test</em>):</strong> se utilizan para evaluar su desempeño en datos que no ha visto.</li>
+</ul>
+<blockquote>
+<p>Un buen modelo debe ser capaz de <strong>generalizar a nuevos datos</strong>.</p>
+</blockquote>
+</section>
+<section id="evaluación-en-aprendizaje-supervisado" class="slide level2">
+<h2>Evaluación en aprendizaje supervisado</h2>
+<p>En aprendizaje supervisado conocemos la <strong>respuesta real <span class="math inline">\(Y\)</span></strong>, por lo que podemos compararla con la respuesta predicha <span class="math inline">\(\hat{Y}\)</span>.</p>
+<p>Por ejemplo, en regresión una medida común es el <strong>error cuadrático medio</strong>:</p>
+<p><span class="math display">\[
+MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
+\]</span></p>
+<p>Un MSE pequeño indica que las predicciones se encuentran cerca de los valores reales.</p>
+<blockquote>
+<p>La evaluación mide qué tan bien el modelo <strong>predice la respuesta</strong>.</p>
+</blockquote>
+</section>
+<section id="entrenamiento-vs.-prueba" class="slide level2">
+<h2>Entrenamiento vs.&nbsp;prueba</h2>
+<p>En aprendizaje supervisado, no buscamos únicamente un error pequeño sobre los <strong>datos de entrenamiento</strong>.</p>
+<p>Queremos que el modelo funcione bien sobre <strong>datos que no ha visto anteriormente</strong>.</p>
+<ul>
+<li><strong>Training error:</strong> error sobre los datos utilizados para ajustar el modelo.</li>
+<li><strong>Test error:</strong> error sobre nuevas observaciones.</li>
+</ul>
+<blockquote>
+<p>El objetivo es obtener un <strong>test error bajo</strong>.</p>
+</blockquote>
+</section>
+<section id="overfitting" class="slide level2">
+<h2>Overfitting</h2>
+<p>Un modelo presenta <strong>overfitting</strong> cuando se ajusta demasiado a los datos de entrenamiento.</p>
+<p>Puede obtener:</p>
+<ul>
+<li>error de entrenamiento muy bajo,</li>
+<li>error de prueba elevado.</li>
+</ul>
+<p>Esto ocurre cuando el modelo aprende características particulares o ruido del conjunto de entrenamiento que <strong>no se generalizan a nuevos datos</strong>.</p>
+</section>
+<section id="evaluación-en-aprendizaje-no-supervisado" class="slide level2">
+<h2>Evaluación en aprendizaje no supervisado</h2>
+<p>En aprendizaje no supervisado <strong>no conocemos una respuesta <span class="math inline">\(Y\)</span></strong> con la cual comparar los resultados.</p>
+<p><span class="math display">\[
+X \longrightarrow \text{estructura o patrones}
+\]</span></p>
+<p>Por lo tanto, no podemos calcular directamente un <strong>error de predicción</strong> como en aprendizaje supervisado.</p>
+<p>La evaluación depende de <strong>qué estructura estamos buscando</strong>.</p>
+</section>
+<section id="ejemplo-k-means" class="slide level2">
+<h2>Ejemplo: <span class="math inline">\(K\)</span>-means</h2>
+<p><span class="math inline">\(K\)</span>-means busca formar grupos de observaciones similares.</p>
+<p>Podemos evaluar el resultado midiendo, por ejemplo, <strong>qué tan cercanas están las observaciones al centro de su grupo</strong>:</p>
+<p><span class="math display">\[
+\sum_{k=1}^{K}\sum_{x_i \in C_k}
+\|x_i-\mu_k\|^2
+\]</span></p>
+<p>Un valor menor indica grupos <strong>más compactos</strong>.</p>
+<blockquote>
+<p>En aprendizaje no supervisado, la forma de evaluar depende del objetivo del método.</p>
+</blockquote>
+</section></section>
+<section id="resumen" class="title-slide slide level1 center">
+<h1>Resumen</h1>
+<ul>
+<li>Machine learning permite <strong>aprender relaciones y patrones a partir de datos</strong>.</li>
+<li>Estimamos una función <span class="math inline">\(f\)</span> con objetivos de <strong>predicción o inferencia</strong>.</li>
+<li>Los métodos pueden ser <strong>paramétricos</strong> o <strong>no paramétricos</strong>.</li>
+<li>El aprendizaje puede ser <strong>supervisado</strong> o <strong>no supervisado</strong>; en el primero conocemos <span class="math inline">\(Y\)</span> y en el segundo buscamos estructuras sin una respuesta conocida.</li>
+<li>Los problemas supervisados pueden ser de <strong>regresión</strong> o <strong>clasificación</strong>.</li>
+<li>Un modelo supervisado debe evaluarse por su capacidad de <strong>generalizar a datos nuevos</strong>, no solo por su desempeño en entrenamiento.</li>
+<li>El <strong>overfitting</strong> ocurre cuando un modelo se ajusta demasiado al entrenamiento y pierde capacidad de generalización.</li>
+<li>En aprendizaje no supervisado, la evaluación depende de la <strong>estructura y del objetivo del método</strong>.</li>
+</ul>
+</section>
+
+<section id="referencias" class="title-slide slide level1 smaller scrollable">
+<h1>Referencias</h1>
+<div id="refs" role="list">
+
 </div>
 </section>
-<section id="preguntas" class="slide level2">
-<h2>Preguntas</h2>
+
+<section id="preguntas" class="title-slide slide level1 center">
+<h1>Preguntas</h1>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><img data-src="../imagenes/mister.jpg" style="width:95.0%"></p>
@@ -408,16 +510,11 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
 </div>
 </div></div>
 </section>
-<section id="qué-sigue" class="slide level2">
-<h2>¿Qué sigue?</h2>
-<p>En el laboratorio aplicaremos las técnicas vistas en esta lección para explorar, limpiar y transformar un conjunto de datos utilizando <strong>Python</strong> y <strong>pandas</strong>.</p>
-<ul>
-<li>Exploración inicial del conjunto de datos.</li>
-<li>Limpieza de datos.</li>
-<li>Transformación de variables.</li>
-<li>Preparación del conjunto de datos para su análisis.</li>
-</ul>
-<p><a href="../../notebooks/unidad-01/notebook-02.html"><strong>Ir al notebook →</strong></a></p>
+
+<section id="qué-sigue" class="title-slide slide level1 center">
+<h1>¿Qué sigue?</h1>
+<p>En la siguiente sección comenzaremos a estudiar métodos de <strong>aprendizaje supervisado</strong>.</p>
+<p><a href="nombre de leccion/laboratorio/proyecto"><strong>Ir a la siguiente sección →</strong></a></p>
 
 
 </section>
@@ -658,12 +755,12 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Copiado");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Copiado");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",
@@ -706,7 +803,7 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/urendacdenisse-hub\.github\.io\/Modelado-de-datos\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

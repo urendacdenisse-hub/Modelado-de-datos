@@ -14,11 +14,11 @@ title: "Lecciones"
 - [Tipos y fuentes de datos](unidad-01/leccion-03.qmd)
 - [Adquisicion y extracción de datos](unidad-01/leccion-04.qmd)
 - [Preparación de datos](unidad-01/leccion-05.qmd)
-- Analisis exporatorio de datos
+- [Analisis exporatorio de datos](unidad-01/leccion-06.qmd)
 
-## Introducción al aprendizaje supervisado
+## Introducción al machine learning
 
-- Introducción
+- [Introducción](unidad-01/leccion-07.qmd)
 
 ## Modelos paramétricos
 

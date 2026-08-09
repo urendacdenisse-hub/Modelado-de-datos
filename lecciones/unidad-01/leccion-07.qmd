@@ -1,0 +1,364 @@
+---
+title: "Aprendizaje supervisado"
+subtitle: "Introducción a machine learning"
+author: "Dra. Denisse Urenda Castañeda"
+
+bibliography: ../../recursos/referencias.bib
+csl: ../../recursos/ieee.csl
+
+lang: es
+
+nocite: |
+
+format:
+  revealjs:
+    css: ../../recursos/slides.css
+    include-after-body: 
+      text: |
+        <a href="../index.html" class="home-button">
+        📖 Lecciones
+        </a>
+    theme: simple
+    slide-number: c/t
+    transition: fade
+    toc: true
+    toc-depth: 1
+    incremental: false
+    center: false
+    footer: "Modelado de Datos · UACJ"
+---
+
+# Introducción
+
+## Machine learning
+
+El **machine learning** estudia métodos que permiten utilizar datos para **aprender relaciones y patrones**.
+
+A partir de un conjunto de observaciones, buscamos aprender cómo ciertas **variables de entrada** se relacionan con una **variable de respuesta**.
+
+Esta relación puede utilizarse para **comprender los datos o realizar predicciones** sobre nuevas observaciones.
+
+
+## Un ejemplo
+
+Supongamos que queremos **predecir el precio de una vivienda**.
+
+Tenemos como variables de entrada:
+
+- $X_1$: tamaño de la vivienda.
+- $X_2$: número de habitaciones.
+- $X_3$: ubicación.
+
+Y como variable de respuesta:
+
+$$
+Y = \text{precio de la vivienda}
+$$
+
+Buscamos aprender la relación:
+
+$$
+\text{Precio}
+=
+f(\text{tamaño, habitaciones, ubicación})
++
+\varepsilon
+$$
+
+El objetivo es utilizar los datos para **estimar la función desconocida $f$**.
+
+
+## De forma general
+
+Las variables de entrada pueden representarse como:
+
+$$
+X = (X_1, X_2, \ldots, X_p)
+$$
+
+donde:
+
+- $X$: **variables de entrada** (*features* o *predictors*).
+- $Y$: **variable de respuesta** (*response*).
+
+La relación entre las entradas y la respuesta se representa como:
+
+$$
+Y = f(X) + \varepsilon
+$$
+
+donde:
+
+- $f$ representa la **relación entre $X$ y $Y$**.
+- $\varepsilon$ representa el **error aleatorio**.
+
+
+# Estimación de $f$
+
+## Predicción e inferencia
+
+Existen dos objetivos principales:
+
+| Predicción | Inferencia |
+|---|---|
+| Predecir $Y$ a partir de $X$ | Comprender la relación entre $X$ y $Y$ |
+| Importa la precisión | Importa la interpretación |
+| $f$ puede tratarse como una *caja negra* | Necesitamos entender la forma de $f$ |
+
+
+## Predicción
+
+Utilizamos $\hat f$ para obtener una respuesta estimada:
+
+$$
+\hat{Y} = \hat{f}(X)
+$$
+
+*Ejemplo:* predecir el precio de una vivienda a partir de sus características.
+
+
+## Inferencia
+
+Utilizamos $\hat f$ para **entender cómo $X$ se relaciona con $Y$**.
+
+*Ejemplo:* estudiar cómo el tamaño, número de habitaciones y ubicación se relacionan con el precio de una vivienda.
+
+Preguntas de interés:
+
+- ¿Qué variables están asociadas con el precio?
+- ¿Cómo cambia el precio cuando cambia una variable?
+- ¿Qué forma tiene la relación?
+
+
+## Datos de entrenamiento
+
+Para estimar $f$ utilizamos un conjunto de **datos de entrenamiento**:
+
+$$
+\{(x_1,y_1),(x_2,y_2),\ldots,(x_n,y_n)\}
+$$
+
+donde cada observación contiene:
+
+- $x_i$: valores de las variables de entrada.
+- $y_i$: respuesta observada.
+
+El objetivo es encontrar una función $\hat f$ tal que:
+
+$$
+Y \approx \hat f(X)
+$$
+
+
+
+# Tipos de métodos
+
+## Métodos paramétricos
+
+Los métodos paramétricos suponen una **forma específica para $f$**.
+
+Por ejemplo, podemos asumir una relación lineal:
+
+$$
+f(X)=\beta_0+\beta_1X_1+\cdots+\beta_pX_p
+$$
+
+El problema se reduce entonces a estimar:
+
+$$
+\beta_0,\beta_1,\ldots,\beta_p
+$$
+
+**Ventaja:** simplifican el problema.
+
+**Desventaja:** si la forma elegida no representa adecuadamente la relación real, el modelo puede ser poco preciso.
+
+
+## Métodos no paramétricos
+
+Los métodos no paramétricos **no imponen una forma específica para $f$**.
+
+Buscan aproximarse a los datos con mayor flexibilidad.
+
+*Ejemplo*: Para predecir $Y$ para una nueva observación, $k$-NN busca las observaciones más cercanas y utiliza sus valores para obtener la predicción.
+
+No suponemos previamente que $f$ sea lineal, cuadrática, exponencial, etc.
+
+> **La forma de $\hat f$ se adapta a los datos.**
+
+**Ventaja:** pueden representar relaciones más complejas.
+
+**Desventaja:** generalmente requieren más observaciones y pueden ajustarse demasiado a los datos.
+
+
+# Tipos de aprendizaje
+
+## Aprendizaje supervisado
+
+En el **aprendizaje supervisado**, cada observación contiene:
+
+$$
+(x_i,y_i)
+$$
+
+Es decir, conocemos las variables de entrada $X$ y la respuesta $Y$.
+
+El objetivo es aprender la relación entre ambas para:
+
+- **predecir** nuevas respuestas,
+- o realizar **inferencia** sobre la relación entre las variables.
+
+
+## Regresión y clasificación
+
+Los problemas supervisados pueden distinguirse según el tipo de respuesta $Y$.
+
+| | Regresión | Clasificación |
+|---|---|---|
+| **Respuesta** | Cuantitativa | Cualitativa |
+| **Objetivo** | Predecir un valor | Predecir una clase |
+| **Ejemplo** | Precio de una casa | Diagnóstico positivo/negativo |
+
+La distinción depende principalmente de la **variable de respuesta**, no del tipo de predictores.
+
+
+
+## Aprendizaje no supervisado
+
+En el **aprendizaje no supervisado** observamos:
+
+$$
+x_1,x_2,\ldots,x_n
+$$
+
+pero **no existe una respuesta $Y$ conocida**.
+
+Por lo tanto, no buscamos predecir una respuesta.
+
+Buscamos descubrir:
+
+- relaciones entre variables,
+- similitudes entre observaciones,
+- estructuras o grupos presentes en los datos.
+
+# Evaluación
+
+## ¿Cómo evaluamos un modelo?
+
+El objetivo no es únicamente que un modelo funcione bien con los datos utilizados para **entrenarlo**, sino que también funcione bien con **datos nuevos**.
+
+Por ello, distinguimos entre:
+
+- **Datos de entrenamiento (*train*):** se utilizan para ajustar el modelo.
+- **Datos de prueba (*test*):** se utilizan para evaluar su desempeño en datos que no ha visto.
+
+> Un buen modelo debe ser capaz de **generalizar a nuevos datos**.
+
+## Evaluación en aprendizaje supervisado
+
+En aprendizaje supervisado conocemos la **respuesta real $Y$**, por lo que podemos compararla con la respuesta predicha $\hat{Y}$.
+
+Por ejemplo, en regresión una medida común es el **error cuadrático medio**:
+
+$$
+MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
+$$
+
+Un MSE pequeño indica que las predicciones se encuentran cerca de los valores reales.
+
+> La evaluación mide qué tan bien el modelo **predice la respuesta**.
+
+## Entrenamiento vs. prueba
+
+En aprendizaje supervisado, no buscamos únicamente un error pequeño sobre los **datos de entrenamiento**.
+
+Queremos que el modelo funcione bien sobre **datos que no ha visto anteriormente**.
+
+- **Training error:** error sobre los datos utilizados para ajustar el modelo.
+- **Test error:** error sobre nuevas observaciones.
+
+> El objetivo es obtener un **test error bajo**.
+
+## Overfitting
+
+Un modelo presenta **overfitting** cuando se ajusta demasiado a los datos de entrenamiento.
+
+Puede obtener:
+
+- error de entrenamiento muy bajo,
+- error de prueba elevado.
+
+Esto ocurre cuando el modelo aprende características particulares o ruido del conjunto de entrenamiento que **no se generalizan a nuevos datos**.
+
+## Evaluación en aprendizaje no supervisado
+
+En aprendizaje no supervisado **no conocemos una respuesta $Y$** con la cual comparar los resultados.
+
+$$
+X \longrightarrow \text{estructura o patrones}
+$$
+
+Por lo tanto, no podemos calcular directamente un **error de predicción** como en aprendizaje supervisado.
+
+La evaluación depende de **qué estructura estamos buscando**.
+
+## Ejemplo: $K$-means
+
+$K$-means busca formar grupos de observaciones similares.
+
+Podemos evaluar el resultado midiendo, por ejemplo, **qué tan cercanas están las observaciones al centro de su grupo**:
+
+$$
+\sum_{k=1}^{K}\sum_{x_i \in C_k}
+\|x_i-\mu_k\|^2
+$$
+
+Un valor menor indica grupos **más compactos**.
+
+> En aprendizaje no supervisado, la forma de evaluar depende del objetivo del método.
+
+
+# Resumen
+
+- Machine learning permite **aprender relaciones y patrones a partir de datos**.
+- Estimamos una función $f$ con objetivos de **predicción o inferencia**.
+- Los métodos pueden ser **paramétricos** o **no paramétricos**.
+- El aprendizaje puede ser **supervisado** o **no supervisado**; en el primero conocemos $Y$ y en el segundo buscamos estructuras sin una respuesta conocida.
+- Los problemas supervisados pueden ser de **regresión** o **clasificación**.
+- Un modelo supervisado debe evaluarse por su capacidad de **generalizar a datos nuevos**, no solo por su desempeño en entrenamiento.
+- El **overfitting** ocurre cuando un modelo se ajusta demasiado al entrenamiento y pierde capacidad de generalización.
+- En aprendizaje no supervisado, la evaluación depende de la **estructura y del objetivo del método**.
+
+# Referencias
+
+::: {#refs}
+:::
+
+# Preguntas
+
+:::: {.columns}
+
+::: {.column width="45%"}
+![](../imagenes/mister.jpg){width=95%}
+:::
+
+::: {.column width="55%"}
+::: {.vcenter}
+
+<div class="fragment"> ¿Seguro? 🤨 </div>
+
+<div class="fragment">Bueno...</div>
+
+<div class="fragment">Pregúntale a [ChatGPT](https://chatgpt.com) pues.</div>
+
+:::
+:::
+
+::::
+
+
+# ¿Qué sigue?
+
+En la siguiente sección comenzaremos a estudiar métodos de **aprendizaje supervisado**.
+
+[**Ir a la siguiente sección →**](nombre de leccion/laboratorio/proyecto)

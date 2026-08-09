@@ -14,45 +14,6 @@ En este sitio se publicarán gradualmente las lecciones, notebooks, conjuntos de
 Se recomienda revisar el **syllabus** para conocer los objetivos, la metodología, el esquema de evaluación y el cronograma del curso.
 :::
 
-## Material del curso
-
-<div class="grid">
-
-::: {.g-col-6}
-
-### Información del curso
-
-- [Syllabus](recursos/syllabus.qmd)
-
-:::
-
-::: {.g-col-6}
-
-### Recursos
-
-- Bibliografía
-- Conjuntos de datos
-- Material complementario
-
-:::
-
-::: {.g-col-6}
-
-### Lecciones
-
-Las diapositivas y notebooks se publicarán conforme avance el semestre.
-
-:::
-
-::: {.g-col-6}
-
-### Proyecto
-
-La información y los entregables del proyecto se publicarán durante el curso.
-
-:::
-
-</div>
 
 
 ## Repositorio

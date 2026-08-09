@@ -1,0 +1,105 @@
+---
+title: "Aprendizaje supervisado"
+subtitle: "Análisis exploratorio de datos"
+author: "Dra. Denisse Urenda Castañeda"
+
+bibliography: ../../recursos/referencias.bib
+csl: ../../recursos/ieee.csl
+
+nocite: |
+
+format:
+  revealjs:
+    css: ../../recursos/slides.css
+    include-after-body: 
+      text: |
+        <a href="../index.html" class="home-button">
+        📖 Lecciones
+        </a>
+    theme: simple
+    slide-number: c/t
+    transition: fade
+    toc: true
+    toc-depth: 2
+    incremental: false
+    center: false
+    footer: "Modelado de Datos · UACJ"
+---
+
+## Introducción
+
+El **análisis exploratorio de datos (EDA)** permite examinar un conjunto de datos para comprender sus principales características antes de construir un modelo.
+
+El objetivo es identificar **patrones, distribuciones, relaciones y posibles problemas** en los datos.
+
+
+## Estadística descriptiva
+
+La estadística descriptiva permite **resumir las características principales de los datos**.
+
+- Tendencia central.
+- Dispersión.
+- Posición.
+- Frecuencias.
+
+## Distribución de los datos
+
+Explorar la distribución permite comprender **cómo se comportan los valores de una variable**.
+
+Podemos observar:
+
+- Forma de la distribución.
+- Concentración de los valores.
+- Asimetría.
+- Valores atípicos.
+
+## Relaciones entre variables
+
+El EDA también permite explorar **cómo se relacionan las variables entre sí**.
+
+Podemos analizar:
+
+- Asociación entre variables numéricas.
+- Diferencias entre grupos.
+- Patrones conjuntos.
+
+## Resumen
+
+- El **EDA** permite comprender los datos antes de construir un modelo.
+- La **estadística descriptiva** resume sus características principales.
+- Las **distribuciones** muestran cómo se comportan las variables.
+- Las **relaciones entre variables** permiten descubrir patrones.
+
+## Referencias
+
+::: {#refs}
+:::
+
+## Preguntas
+
+:::: {.columns}
+
+::: {.column width="45%"}
+![](../imagenes/mister.jpg){width=95%}
+:::
+
+::: {.column width="55%"}
+::: {.vcenter}
+
+<div class="fragment"> ¿Seguro? 🤨 </div>
+
+<div class="fragment">Bueno...</div>
+
+<div class="fragment">Pregúntale a [ChatGPT](https://chatgpt.com) pues.</div>
+
+:::
+:::
+
+::::
+
+
+## ¿Qué sigue?
+
+Ahora realizaremos un **análisis exploratorio de datos (EDA)** para conocer la estructura, características, calidad y principales patrones de un conjunto de datos.
+
+[**Ir al laboratorio →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-03.ipynb**)
