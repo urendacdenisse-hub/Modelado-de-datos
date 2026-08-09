@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Laboratorio 2. Preparación de datos – Modelado de Datos</title>
+<title>Laboratorio 3. Análisis exploratorio de datos – Modelado de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -163,12 +163,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a></li>
-  <li><a href="#exploración-inicial" id="toc-exploración-inicial" class="nav-link" data-scroll-target="#exploración-inicial">Exploración inicial</a></li>
-  <li><a href="#limpieza-de-datos" id="toc-limpieza-de-datos" class="nav-link" data-scroll-target="#limpieza-de-datos">Limpieza de datos</a></li>
-  <li><a href="#transformación-de-datos" id="toc-transformación-de-datos" class="nav-link" data-scroll-target="#transformación-de-datos">Transformación de datos</a></li>
-  <li><a href="#datos-listos-para-analizar" id="toc-datos-listos-para-analizar" class="nav-link" data-scroll-target="#datos-listos-para-analizar">Datos listos para analizar</a></li>
-  <li><a href="#siguiente-lección" id="toc-siguiente-lección" class="nav-link" data-scroll-target="#siguiente-lección">Siguiente lección</a></li>
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a>
+  <ul class="collapse">
+  <li><a href="#conjunto-de-datos" id="toc-conjunto-de-datos" class="nav-link" data-scroll-target="#conjunto-de-datos">Conjunto de datos</a></li>
+  <li><a href="#carga-de-datos" id="toc-carga-de-datos" class="nav-link" data-scroll-target="#carga-de-datos">Carga de datos</a></li>
+  <li><a href="#estructura-de-los-datos" id="toc-estructura-de-los-datos" class="nav-link" data-scroll-target="#estructura-de-los-datos">Estructura de los datos</a></li>
+  <li><a href="#estadísticas-descriptivas" id="toc-estadísticas-descriptivas" class="nav-link" data-scroll-target="#estadísticas-descriptivas">Estadísticas descriptivas</a></li>
+  <li><a href="#calidad-de-los-datos" id="toc-calidad-de-los-datos" class="nav-link" data-scroll-target="#calidad-de-los-datos">Calidad de los datos</a></li>
+  <li><a href="#distribuciones" id="toc-distribuciones" class="nav-link" data-scroll-target="#distribuciones">Distribuciones</a></li>
+  <li><a href="#relaciones-entre-variables" id="toc-relaciones-entre-variables" class="nav-link" data-scroll-target="#relaciones-entre-variables">Relaciones entre variables</a></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones">Conclusiones</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -177,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Laboratorio 2. Preparación de datos</h1>
+<h1 class="title">Laboratorio 3. Análisis exploratorio de datos</h1>
 </div>
 
 
@@ -199,119 +204,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Este laboratorio está diseñado para ejecutarse en <strong>Google Colab</strong>.</p>
 <p>Una vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.</p>
 </blockquote>
-<div id="86676596" class="cell">
+<div id="805a79bd" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>urendacdenisse<span class="op">-</span>hub<span class="op">/</span>modelado<span class="op">-</span>de<span class="op">-</span>datos.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="f060bf89" class="cell">
+<div id="9b50b6c8" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd modelado<span class="op">-</span>de<span class="op">-</span>datos</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="objetivo" class="level2">
-<h2 class="anchored" data-anchor-id="objetivo">Objetivo</h2>
-<p>En este notebook aplicaremos las técnicas vistas en la lección para explorar, limpiar y transformar un conjunto de datos utilizando <strong>Python</strong> y <strong>pandas</strong>.</p>
-<ul>
-<li>Explorar un conjunto de datos.</li>
-<li>Limpiar datos.</li>
-<li>Transformar variables.</li>
-<li>Preparar un conjunto de datos para su análisis.</li>
-</ul>
+<section id="objetivo" class="level1">
+<h1>Objetivo</h1>
+<p>Explorar un conjunto de datos para <strong>comprender su estructura, contenido, calidad y principales características</strong> antes de realizar un análisis.</p>
+<section id="conjunto-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="conjunto-de-datos">Conjunto de datos</h2>
+<p>En este laboratorio realizaremos un <strong>análisis exploratorio de datos (EDA)</strong> utilizando el conjunto de datos <code>ventas.csv</code>, ubicado en la carpeta <code>datos</code>.</p>
+<p>El conjunto contiene información sobre <strong>ventas, clientes, productos y transacciones</strong>, que utilizaremos a lo largo de las diferentes etapas del análisis.</p>
 </section>
-<section id="exploración-inicial" class="level2">
-<h2 class="anchored" data-anchor-id="exploración-inicial">Exploración inicial</h2>
-<p>Carguemos un conjunto de datos y realicemos una exploración inicial de su contenido.</p>
-<div id="05a7a6f4" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"modelado-de-datos/datos/sales.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Librería:</strong> <code>pandas</code></p>
-<p><code>pandas</code> proporciona herramientas para explorar y resumir la información contenida en un DataFrame.</p>
-<p><strong>Funciones utilizadas</strong></p>
-<ul>
-<li><code>info()</code>: Muestra la estructura del DataFrame, incluyendo el tipo de datos y los valores no nulos de cada columna.</li>
-<li><code>shape</code>: Devuelve el número de filas y columnas del DataFrame.</li>
-<li><code>isna()</code>: Identifica los valores faltantes en el DataFrame.</li>
-<li><code>sum()</code>: Suma los valores de cada columna.</li>
-<li><code>describe()</code>: Calcula estadísticas descriptivas de las variables numéricas.</li>
-</ul>
-<div id="fd3bb1a5" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="1819fd0a" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="32e88181" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="ad591c05" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="carga-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="carga-de-datos">Carga de datos</h2>
+<p>Importaremos el conjunto de datos y realizaremos una primera inspección.</p>
 </section>
-<section id="limpieza-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="limpieza-de-datos">Limpieza de datos</h2>
-<p>Eliminemos algunos problemas comunes antes de comenzar el análisis del conjunto de datos.</p>
-<p><strong>Funciones utilizadas</strong></p>
-<ul>
-<li><code>drop_duplicates()</code>: Elimina los registros duplicados.</li>
-<li><code>fillna()</code>: Reemplaza los valores faltantes por un valor especificado.</li>
-<li><code>dropna()</code>: Elimina los registros que contienen valores faltantes.</li>
-<li><code>clip()</code>: Limita los valores de una columna a un intervalo definido.</li>
-</ul>
-<div id="859e740a" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.drop_duplicates()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="7041cec7" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.fillna(<span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="93c443a9" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df.dropna()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="823472de" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"unit_price"</span>].clip(lower<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="estructura-de-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-de-los-datos">Estructura de los datos</h2>
+<p>Identificaremos las <strong>dimensiones, variables y tipos de datos</strong>, distinguiendo entre variables <strong>numéricas, categóricas y temporales</strong>.</p>
 </section>
-<section id="transformación-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="transformación-de-datos">Transformación de datos</h2>
-<p>Transformemos las variables del conjunto de datos para prepararlas para su análisis.</p>
-<p><strong>Funciones utilizadas</strong></p>
-<ul>
-<li><code>astype()</code>: Convierte una columna al tipo de dato especificado.</li>
-<li><code>mean()</code>: Calcula la media de una columna.</li>
-<li><code>std()</code>: Calcula la desviación estándar de una columna.</li>
-<li><code>pd.to_datetime()</code>: Convierte una columna al tipo de dato fecha y hora (<code>datetime</code>).</li>
-</ul>
-<div id="3e26974a" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="a95ecb0e" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"quantity"</span>].astype(<span class="bu">int</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="0d106ebd" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(df[<span class="st">"unit_price"</span>] <span class="op">-</span> df[<span class="st">"unit_price"</span>].mean()) <span class="op">/</span> df[<span class="st">"unit_price"</span>].std()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="b17409de" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"quantity"</span>] <span class="op">*</span> df[<span class="st">"unit_price"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="8420ce75" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pd.to_datetime(df[<span class="st">"date"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="estadísticas-descriptivas" class="level2">
+<h2 class="anchored" data-anchor-id="estadísticas-descriptivas">Estadísticas descriptivas</h2>
+<p>Utilizaremos <strong>media, mediana y moda</strong> para describir valores típicos, <strong>desviación estándar y rango</strong> para estudiar la variabilidad, y <strong>frecuencias y proporciones</strong> para resumir variables categóricas.</p>
 </section>
-<section id="datos-listos-para-analizar" class="level2">
-<h2 class="anchored" data-anchor-id="datos-listos-para-analizar">Datos listos para analizar</h2>
-<p>Guardemos el conjunto de datos preparado para utilizarlo en etapas posteriores del análisis.</p>
-<p><strong>Funciones utilizadas</strong></p>
-<ul>
-<li><code>to_csv()</code>: Guarda el contenido del DataFrame en un archivo CSV.</li>
-</ul>
-<div id="6836934f" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">"modelado-de-datos/datos/clean_data.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="calidad-de-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="calidad-de-los-datos">Calidad de los datos</h2>
+<p>Identificaremos <strong>valores faltantes, registros duplicados, valores atípicos e inconsistencias</strong> en variables numéricas y categóricas.</p>
 </section>
-<section id="siguiente-lección" class="level2">
-<h2 class="anchored" data-anchor-id="siguiente-lección">Siguiente lección</h2>
-<p>Una vez completado este laboratorio, continúa con la siguiente lección del curso:</p>
-<p><strong>➡️ <a href="https://urendacdenisse-hub.github.io/Modelado-de-datos/lecciones/unidad-01/leccion-06.html#/title-slide">Análisis exploratorio de datos</a></strong></p>
+<section id="distribuciones" class="level2">
+<h2 class="anchored" data-anchor-id="distribuciones">Distribuciones</h2>
+<p>Analizaremos la <strong>distribución de las variables numéricas</strong> y la <strong>frecuencia de las categorías</strong> para identificar patrones, concentraciones y valores poco comunes.</p>
+</section>
+<section id="relaciones-entre-variables" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones-entre-variables">Relaciones entre variables</h2>
+<p>Exploraremos relaciones entre variables <strong>numéricas y categóricas</strong>, buscando asociaciones, diferencias entre grupos y posibles patrones.</p>
+</section>
+<section id="conclusiones" class="level2">
+<h2 class="anchored" data-anchor-id="conclusiones">Conclusiones</h2>
+<p>Resumiremos los principales <strong>patrones, características y problemas de calidad</strong> encontrados durante la exploración.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -31,77 +31,10 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -218,7 +151,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Aprendizaje supervisado</h1>
-  <p class="subtitle">Adquisición y extracción de datos</p>
+  <p class="subtitle">Análisis exploratorio de datos</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -233,12 +166,9 @@ Dra. Denisse Urenda Castañeda
 <h2 id="toc-title">Table of contents</h2>
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
-<li><a href="#/qué-es-la-adquisición-de-datos" id="/toc-qué-es-la-adquisición-de-datos">¿Qué es la adquisición de datos?</a></li>
-<li><a href="#/archivos" id="/toc-archivos">Archivos</a></li>
-<li><a href="#/bases-de-datos" id="/toc-bases-de-datos">Bases de datos</a></li>
-<li><a href="#/apis" id="/toc-apis">APIs</a></li>
-<li><a href="#/sitios-web" id="/toc-sitios-web">Sitios web</a></li>
-<li><a href="#/sensores-y-dispositivos" id="/toc-sensores-y-dispositivos">Sensores y dispositivos</a></li>
+<li><a href="#/estadística-descriptiva" id="/toc-estadística-descriptiva">Estadística descriptiva</a></li>
+<li><a href="#/distribución-de-los-datos" id="/toc-distribución-de-los-datos">Distribución de los datos</a></li>
+<li><a href="#/relaciones-entre-variables" id="/toc-relaciones-entre-variables">Relaciones entre variables</a></li>
 <li><a href="#/resumen" id="/toc-resumen">Resumen</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
@@ -248,86 +178,53 @@ Dra. Denisse Urenda Castañeda
 </section>
 <section id="introducción" class="slide level2">
 <h2>Introducción</h2>
-<p>Una vez identificadas las fuentes de datos, el siguiente paso consiste en obtener la información necesaria para su análisis.</p>
-<p>En esta lección conoceremos las principales formas de adquirir datos utilizando Python.</p>
+<p>El <strong>análisis exploratorio de datos (EDA)</strong> permite examinar un conjunto de datos para comprender sus principales características antes de construir un modelo.</p>
+<p>El objetivo es identificar <strong>patrones, distribuciones, relaciones y posibles problemas</strong> en los datos.</p>
 </section>
-<section id="qué-es-la-adquisición-de-datos" class="slide level2">
-<h2>¿Qué es la adquisición de datos?</h2>
-<p>La adquisición de datos es el proceso de obtener información desde una o varias fuentes para utilizarla en un proyecto de análisis de datos.</p>
-<p>Los datos pueden obtenerse desde:</p>
+<section id="estadística-descriptiva" class="slide level2">
+<h2>Estadística descriptiva</h2>
+<p>La estadística descriptiva permite <strong>resumir las características principales de los datos</strong>.</p>
 <ul>
-<li>Archivos.</li>
-<li>Bases de datos.</li>
-<li>APIs.</li>
-<li>Sitios web.</li>
-<li>Sensores y dispositivos</li>
+<li>Tendencia central.</li>
+<li>Dispersión.</li>
+<li>Posición.</li>
+<li>Frecuencias.</li>
 </ul>
 </section>
-<section id="archivos" class="slide level2">
-<h2>Archivos</h2>
-<p>Los datos suelen descargarse como archivos en formatos como CSV, Excel o JSON. En Python, estos pueden leerse fácilmente mediante la biblioteca <strong>pandas</strong>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a></a></span>
-<span id="cb1-3"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">"sales.csv"</span>)</span>
-<span id="cb1-4"><a></a>df <span class="op">=</span> pd.read_excel(<span class="st">"students.xlsx"</span>)</span>
-<span id="cb1-5"><a></a>df <span class="op">=</span> pd.read_json(<span class="st">"books.json"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="distribución-de-los-datos" class="slide level2">
+<h2>Distribución de los datos</h2>
+<p>Explorar la distribución permite comprender <strong>cómo se comportan los valores de una variable</strong>.</p>
+<p>Podemos observar:</p>
+<ul>
+<li>Forma de la distribución.</li>
+<li>Concentración de los valores.</li>
+<li>Asimetría.</li>
+<li>Valores atípicos.</li>
+</ul>
 </section>
-<section id="bases-de-datos" class="slide level2">
-<h2>Bases de datos</h2>
-<p>Muchas organizaciones almacenan sus datos en bases de datos relacionales. En Python, es posible consultar esta información mediante consultas <strong>SQL</strong>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="im">import</span> sqlite3</span>
-<span id="cb2-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb2-3"><a></a></span>
-<span id="cb2-4"><a></a>conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"chinook.sqlite"</span>)</span>
-<span id="cb2-5"><a></a></span>
-<span id="cb2-6"><a></a>df <span class="op">=</span> pd.read_sql_query(<span class="st">"SELECT * FROM Artist"</span>, conn)</span>
-<span id="cb2-7"><a></a>df.head()</span>
-<span id="cb2-8"><a></a></span>
-<span id="cb2-9"><a></a>conn.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="apis" class="slide level2">
-<h2>APIs</h2>
-<p>Muchas organizaciones ofrecen APIs para compartir información mediante Internet. En Python, es posible acceder a estos datos realizando solicitudes <strong>HTTP</strong>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> requests</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>url <span class="op">=</span> (</span>
-<span id="cb3-4"><a></a>    <span class="st">"https://api.open-meteo.com/v1/forecast"</span></span>
-<span id="cb3-5"><a></a>    <span class="st">"?latitude=31.74&amp;longitude=-106.49&amp;current=temperature_2m"</span></span>
-<span id="cb3-6"><a></a>)</span>
-<span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a>response <span class="op">=</span> requests.get(url)</span>
-<span id="cb3-9"><a></a>data <span class="op">=</span> response.json()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="sitios-web" class="slide level2">
-<h2>Sitios web</h2>
-<p>Cuando los datos no están disponibles para descarga o mediante una API, es posible extraer información directamente desde una página web.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-2"><a></a></span>
-<span id="cb4-3"><a></a>url <span class="op">=</span> <span class="st">"https://www.w3schools.com/html/html_tables.asp"</span></span>
-<span id="cb4-4"><a></a>tables <span class="op">=</span> pd.read_html(url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="sensores-y-dispositivos" class="slide level2">
-<h2>Sensores y dispositivos</h2>
-<p>En aplicaciones científicas e industriales, los datos pueden generarse directamente mediante sensores e instrumentos de medición.</p>
-
-<img data-src="../imagenes/flujo-sensor.png" class="quarto-figure quarto-figure-center r-stretch" style="width:90.0%"><div class="figure-source">
-<p>Fuente: Imagen generada con ChatGPT.</p>
-</div>
+<section id="relaciones-entre-variables" class="slide level2">
+<h2>Relaciones entre variables</h2>
+<p>El EDA también permite explorar <strong>cómo se relacionan las variables entre sí</strong>.</p>
+<p>Podemos analizar:</p>
+<ul>
+<li>Asociación entre variables numéricas.</li>
+<li>Diferencias entre grupos.</li>
+<li>Patrones conjuntos.</li>
+</ul>
 </section>
 <section id="resumen" class="slide level2">
 <h2>Resumen</h2>
 <ul>
-<li>Los datos pueden obtenerse desde múltiples fuentes.</li>
-<li>Python proporciona herramientas para acceder a estas fuentes.</li>
-<li>Estas técnicas se aplicarán en el primer laboratorio del curso.</li>
+<li>El <strong>EDA</strong> permite comprender los datos antes de construir un modelo.</li>
+<li>La <strong>estadística descriptiva</strong> resume sus características principales.</li>
+<li>Las <strong>distribuciones</strong> muestran cómo se comportan las variables.</li>
+<li>Las <strong>relaciones entre variables</strong> permiten descubrir patrones.</li>
 </ul>
 </section>
 <section id="referencias" class="slide level2 smaller scrollable">
 <h2>Referencias</h2>
-<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
-<div id="ref-ibm_acquisition" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">A. Jonker and T. Krantz, <span>“¿Qué es la adquisición de datos?”</span> Accessed: Aug. 05, 2026. [Online]. Available: <a href="https://www.ibm.com/mx-es/think/topics/data-acquisition">https://www.ibm.com/mx-es/think/topics/data-acquisition</a></div>
-</div>
+<div id="refs" role="list">
+
 </div>
 </section>
 <section id="preguntas" class="slide level2">
@@ -351,14 +248,8 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
 </section>
 <section id="qué-sigue" class="slide level2">
 <h2>¿Qué sigue?</h2>
-<p>En el laboratorio pondremos en práctica estas herramientas para obtener datos desde diferentes fuentes y construir nuestros primeros conjuntos de datos.</p>
-<ul>
-<li>Lectura de archivos CSV, Excel y JSON.</li>
-<li>Consumo de una API.</li>
-<li>Extracción básica desde un sitio web.</li>
-<li>Creación de un DataFrame.</li>
-</ul>
-<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-01.ipynb**"><strong>Ir al Notebook →</strong></a></p>
+<p>Ahora realizaremos un <strong>análisis exploratorio de datos (EDA)</strong> para conocer la estructura, características, calidad y principales patrones de un conjunto de datos.</p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-03.ipynb**"><strong>Ir al laboratorio →</strong></a></p>
 
 
 </section>
