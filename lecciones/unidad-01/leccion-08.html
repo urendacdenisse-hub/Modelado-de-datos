@@ -31,6 +31,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -165,16 +231,20 @@ Dra. Denisse Urenda Castañeda
 <nav role="doc-toc"> 
 <h2 id="toc-title">Tabla de contenidos</h2>
 <ul>
-<li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
-<li><a href="#/regresión-lineal-simple" id="/toc-regresión-lineal-simple">Regresión lineal simple</a></li>
-<li><a href="#/ejemplo" id="/toc-ejemplo">Ejemplo</a></li>
-<li><a href="#/evaluación-del-modelo" id="/toc-evaluación-del-modelo">Evaluación del modelo</a></li>
-<li><a href="#/supuestos-y-limitaciones" id="/toc-supuestos-y-limitaciones">Supuestos y limitaciones</a></li>
-<li><a href="#/regresión-lineal-múltiple" id="/toc-regresión-lineal-múltiple">Regresión lineal múltiple</a></li>
-<li><a href="#/formulación-matricial" id="/toc-formulación-matricial">Formulación matricial</a></li>
-<li><a href="#/evaluación-en-regresión-múltiple" id="/toc-evaluación-en-regresión-múltiple">Evaluación en regresión múltiple</a></li>
+<li><a href="#/regresión-lineal" id="/toc-regresión-lineal">Regresión lineal</a>
+<ul>
+<li><a href="#/formulación" id="/toc-formulación">Formulación</a></li>
+<li><a href="#/intuición-geométrica" id="/toc-intuición-geométrica">Intuición geométrica</a></li>
+<li><a href="#/caso-univariable" id="/toc-caso-univariable">Caso univariable</a></li>
+<li><a href="#/caso-multivariable" id="/toc-caso-multivariable">Caso multivariable</a></li>
+<li><a href="#/predicción" id="/toc-predicción">Predicción</a></li>
+<li><a href="#/intepretación" id="/toc-intepretación">Intepretación</a></li>
+<li><a href="#/inferencia" id="/toc-inferencia">Inferencia</a></li>
+<li><a href="#/métricas-de-evaluación" id="/toc-métricas-de-evaluación">Métricas de evaluación</a></li>
+<li><a href="#/supuestos" id="/toc-supuestos">Supuestos</a></li>
 <li><a href="#/limitaciones" id="/toc-limitaciones">Limitaciones</a></li>
-<li><a href="#/resumen" id="/toc-resumen">Resumen</a></li>
+<li><a href="#/implementación-en-python" id="/toc-implementación-en-python">Implementación en Python</a></li>
+</ul></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
 <li><a href="#/qué-sigue" id="/toc-qué-sigue">¿Qué sigue?</a></li>
@@ -182,658 +252,531 @@ Dra. Denisse Urenda Castañeda
 </nav>
 </section>
 <section>
-<section id="introducción" class="title-slide slide level1 center">
-<h1>Introducción</h1>
+<section id="regresión-lineal" class="title-slide slide level1 center">
+<h1>Regresión lineal</h1>
 
 </section>
-<section id="regresión-lineal" class="slide level2">
-<h2>Regresión lineal</h2>
-<p>La <strong>regresión lineal</strong> es un método de aprendizaje supervisado utilizado para estudiar la relación entre una <strong>respuesta cuantitativa</strong> <span class="math inline">\(Y\)</span> y una o más variables de entrada <span class="math inline">\(X\)</span>.</p>
-<p>Puede utilizarse con dos objetivos:</p>
-<ul>
-<li><strong>Predicción:</strong> estimar el valor de <span class="math inline">\(Y\)</span> para nuevas observaciones.</li>
-<li><strong>Inferencia:</strong> estudiar cómo las variables de entrada se relacionan con <span class="math inline">\(Y\)</span>.</li>
-</ul>
-<p>Comenzaremos con el caso más sencillo: una sola variable de entrada.</p>
-</section></section>
-<section>
-<section id="regresión-lineal-simple" class="title-slide slide level1 center">
-<h1>Regresión lineal simple</h1>
-
-</section>
-<section id="el-modelo" class="slide level2">
-<h2>El modelo</h2>
-<p>Supongamos que tenemos una variable de entrada <span class="math inline">\(X\)</span> y una respuesta cuantitativa <span class="math inline">\(Y\)</span>.</p>
-<p>La regresión lineal simple supone que su relación puede aproximarse mediante:</p>
+<section id="formulación" class="slide level2">
+<h2>Formulación</h2>
+<p>Partimos de la relación general entre las variables <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>:</p>
 <p><span class="math display">\[
-Y = \beta_0 + \beta_1X + \varepsilon
+Y = f(X) + \varepsilon
 \]</span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(\beta_0\)</span>: <strong>intercepto</strong>.</li>
-<li><span class="math inline">\(\beta_1\)</span>: <strong>pendiente</strong>.</li>
-<li><span class="math inline">\(\varepsilon\)</span>: término de error.</li>
-</ul>
-<p>La parte</p>
+<p>En la <strong>regresión lineal</strong> asumimos que la función <span class="math inline">\(f\)</span> tiene una forma lineal.</p>
+<p>Para una variable predictora:</p>
 <p><span class="math display">\[
-\beta_0+\beta_1X
+f(X) = \beta_0 + \beta_1 X
 \]</span></p>
-<p>representa la relación lineal entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>.</p>
-</section>
-<section id="interpretación-de-los-coeficientes" class="slide level2">
-<h2>Interpretación de los coeficientes</h2>
-<p>En el modelo</p>
+<p>por lo tanto:</p>
 <p><span class="math display">\[
-Y = \beta_0+\beta_1X+\varepsilon
+Y = \beta_0 + \beta_1 X + \varepsilon
 \]</span></p>
-<p>el intercepto <span class="math inline">\(\beta_0\)</span> representa el valor esperado de <span class="math inline">\(Y\)</span> cuando:</p>
+<p>donde <span class="math inline">\(\beta_0\)</span> es el <strong>intercepto</strong> y <span class="math inline">\(\beta_1\)</span> representa el cambio esperado en <span class="math inline">\(Y\)</span> asociado con un cambio de una unidad en <span class="math inline">\(X\)</span>.</p>
+<p>La función estimada a partir de los datos es:</p>
 <p><span class="math display">\[
-X=0
-\]</span></p>
-<p>La pendiente <span class="math inline">\(\beta_1\)</span> representa el cambio promedio esperado en <span class="math inline">\(Y\)</span> asociado con un incremento de una unidad en <span class="math inline">\(X\)</span>.</p>
-<blockquote>
-<p>El significado de los coeficientes siempre depende del contexto y de las unidades de las variables.</p>
-</blockquote>
-</section>
-<section id="de-la-población-a-los-datos" class="slide level2">
-<h2>De la población a los datos</h2>
-<p>Los parámetros reales</p>
-<p><span class="math display">\[
-\beta_0,\beta_1
-\]</span></p>
-<p>son desconocidos.</p>
-<p>A partir de una muestra:</p>
-<p><span class="math display">\[
-(x_1,y_1),(x_2,y_2),\ldots,(x_n,y_n)
-\]</span></p>
-<p>buscamos estimarlos mediante:</p>
-<p><span class="math display">\[
-\hat{\beta}_0,\hat{\beta}_1
-\]</span></p>
-<p>obteniendo la recta estimada:</p>
-<p><span class="math display">\[
-\hat{Y}=\hat{\beta}_0+\hat{\beta}_1X
+\hat{f}(X) = \hat{\beta}_0 + \hat{\beta}_1 X
 \]</span></p>
 </section>
-<section id="residuales" class="slide level2">
-<h2>Residuales</h2>
-<p>Para cada observación podemos obtener una predicción:</p>
+<section id="intuición-geométrica" class="slide level2">
+<h2>Intuición geométrica</h2>
+<p>En el caso univariable, cada observación <span class="math inline">\((x_i,y_i)\)</span> puede representarse como un punto en el plano.</p>
+<p>El objetivo es encontrar la recta que mejor represente la relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>.</p>
+<p>Para una observación, el <strong>residuo</strong> es:</p>
 <p><span class="math display">\[
-\hat y_i=\hat\beta_0+\hat\beta_1x_i
+e_i = y_i-\hat{y}_i
 \]</span></p>
-<p>El <strong>residual</strong> es la diferencia entre el valor observado y el valor predicho:</p>
+<p>El método de <strong>mínimos cuadrados ordinarios</strong> elige la recta que minimiza la suma de los residuos al cuadrado:</p>
 <p><span class="math display">\[
-e_i=y_i-\hat y_i
+RSS =
+\sum_{i=1}^{n}
+(y_i-\hat{y}_i)^2
 \]</span></p>
-<p>Por lo tanto:</p>
-<p><span class="math display">\[
-e_i=y_i-(\hat\beta_0+\hat\beta_1x_i)
-\]</span></p>
-<p>Los residuales indican qué tan lejos se encuentra cada observación de la recta estimada.</p>
 </section>
-<section id="mínimos-cuadrados" class="slide level2">
-<h2>Mínimos cuadrados</h2>
-<p>Queremos encontrar la recta que haga los residuales tan pequeños como sea posible.</p>
-<p>Definimos la <strong>suma de cuadrados de los residuales</strong>:</p>
-<p><span class="math display">\[
-RSS=\sum_{i=1}^{n}e_i^2
-\]</span></p>
-<p>Sustituyendo el residual:</p>
+<section id="caso-univariable" class="slide level2">
+<h2>Caso univariable</h2>
+<p>Queremos encontrar <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> que minimicen:</p>
 <p><span class="math display">\[
 RSS(\beta_0,\beta_1)
 =
 \sum_{i=1}^{n}
 (y_i-\beta_0-\beta_1x_i)^2
 \]</span></p>
-<p>El método de <strong>mínimos cuadrados</strong> elige los valores de <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> que minimizan esta cantidad.</p>
-</section>
-<section id="estimación-de-los-coeficientes" class="slide level2">
-<h2>Estimación de los coeficientes</h2>
-<p>Buscamos:</p>
-<p><span class="math display">\[
-\min_{\beta_0,\beta_1}
-\sum_{i=1}^{n}
-(y_i-\beta_0-\beta_1x_i)^2
-\]</span></p>
-<p>Para encontrar el mínimo, derivamos con respecto a cada parámetro:</p>
+<p>Derivamos respecto a <span class="math inline">\(\beta_0\)</span>:</p>
 <p><span class="math display">\[
 \frac{\partial RSS}{\partial\beta_0}
 =
 -2\sum_{i=1}^{n}
 (y_i-\beta_0-\beta_1x_i)
 \]</span></p>
+<p>Igualando a cero:</p>
+<p><span class="math display">\[
+\hat{\beta}_0
+=
+\bar{y}-\hat{\beta}_1\bar{x}
+\]</span></p>
+</section>
+<section id="caso-univariable-1" class="slide level2 unlisted">
+<h2>Caso univariable</h2>
+<p>Derivamos respecto a <span class="math inline">\(\beta_1\)</span>:</p>
 <p><span class="math display">\[
 \frac{\partial RSS}{\partial\beta_1}
 =
 -2\sum_{i=1}^{n}
 x_i(y_i-\beta_0-\beta_1x_i)
 \]</span></p>
-<p>En el mínimo, ambas derivadas deben ser iguales a cero.</p>
-</section>
-<section id="ecuaciones-normales" class="slide level2">
-<h2>Ecuaciones normales</h2>
-<p>Igualando las derivadas a cero:</p>
+<p>Igualando a cero y resolviendo:</p>
 <p><span class="math display">\[
-\sum_{i=1}^{n}
-(y_i-\hat\beta_0-\hat\beta_1x_i)=0
-\]</span></p>
-<p><span class="math display">\[
-\sum_{i=1}^{n}
-x_i(y_i-\hat\beta_0-\hat\beta_1x_i)=0
-\]</span></p>
-<p>De la primera ecuación:</p>
-<p><span class="math display">\[
-\sum y_i=n\hat\beta_0+\hat\beta_1\sum x_i
-\]</span></p>
-<p>Dividiendo entre <span class="math inline">\(n\)</span>:</p>
-<p><span class="math display">\[
-\bar y=\hat\beta_0+\hat\beta_1\bar x
-\]</span></p>
-<p>por lo tanto:</p>
-<p><span class="math display">\[
-\boxed{\hat\beta_0=\bar y-\hat\beta_1\bar x}
-\]</span></p>
-</section>
-<section id="estimación-de-la-pendiente" class="slide level2">
-<h2>Estimación de la pendiente</h2>
-<p>Sustituyendo el intercepto en la segunda ecuación y simplificando obtenemos:</p>
-<p><span class="math display">\[
-\boxed{
-\hat\beta_1=
+\hat{\beta}_1
+=
 \frac{
 \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})
 }{
 \sum_{i=1}^{n}(x_i-\bar{x})^2
 }
-}
 \]</span></p>
-<p>y posteriormente:</p>
+<p>Finalmente:</p>
 <p><span class="math display">\[
-\boxed{
-\hat\beta_0=\bar y-\hat\beta_1\bar x
-}
-\]</span></p>
-<p>Estos son los estimadores de <strong>mínimos cuadrados</strong> para la regresión lineal simple.</p>
-</section></section>
-<section>
-<section id="ejemplo" class="title-slide slide level1 center">
-<h1>Ejemplo</h1>
-
-</section>
-<section id="precio-de-una-vivienda" class="slide level2">
-<h2>Precio de una vivienda</h2>
-<p>Supongamos que queremos estudiar la relación entre:</p>
-<p><span class="math display">\[
-X=\text{tamaño de una vivienda}
-\]</span></p>
-<p>y <span class="math display">\[
-Y=\text{precio de la vivienda}
-\]</span></p>
-<p>Tenemos las siguientes observaciones:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Tamaño <span class="math inline">\(X\)</span> (m²)</th>
-<th style="text-align: right;">Precio <span class="math inline">\(Y\)</span> (miles de $)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">120</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">70</td>
-<td style="text-align: right;">150</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">90</td>
-<td style="text-align: right;">180</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">110</td>
-<td style="text-align: right;">210</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">130</td>
-<td style="text-align: right;">260</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="precio-de-una-vivienda-1" class="slide level2">
-<h2>Precio de una vivienda</h2>
-<p>Buscamos estimar:</p>
-<p><span class="math display">\[
-\hat Y=\hat\beta_0+\hat\beta_1X
-\]</span></p>
-<p>y utilizar el modelo para predecir el precio de una vivienda de:</p>
-<p><span class="math display">\[
-X=100\text{ m}^2
-\]</span></p>
-<blockquote>
-<p><strong>Desarrollo del ejemplo en el pizarrón.</strong></p>
-</blockquote>
-</section></section>
-<section>
-<section id="evaluación-del-modelo" class="title-slide slide level1 center">
-<h1>Evaluación del modelo</h1>
-
-</section>
-<section id="existe-una-relación" class="slide level2">
-<h2>¿Existe una relación?</h2>
-<p>El modelo poblacional es:</p>
-<p><span class="math display">\[
-Y=\beta_0+\beta_1X+\varepsilon
-\]</span></p>
-<p>Si:</p>
-<p><span class="math display">\[
-\beta_1=0
-\]</span></p>
-<p>entonces <span class="math inline">\(X\)</span> no aporta información lineal sobre <span class="math inline">\(Y\)</span>.</p>
-<p>Podemos plantear:</p>
-<p><span class="math display">\[
-H_0:\beta_1=0
-\]</span></p>
-<p>frente a:</p>
-<p><span class="math display">\[
-H_a:\beta_1\neq0
-\]</span></p>
-</section>
-<section id="estadístico-t" class="slide level2">
-<h2>Estadístico <span class="math inline">\(t\)</span></h2>
-<p>Para evaluar la hipótesis utilizamos:</p>
-<p><span class="math display">\[
-t=
-\frac{\hat\beta_1}
-{SE(\hat\beta_1)}
-\]</span></p>
-<p>El error estándar de la pendiente es:</p>
-<p><span class="math display">\[
-SE(\hat\beta_1)^2
+\hat{f}(X)
 =
-\frac{\sigma^2}
-{\sum_{i=1}^{n}(x_i-\bar{x})^2}
+\hat{\beta}_0+\hat{\beta}_1X
 \]</span></p>
-<p>Como <span class="math inline">\(\sigma^2\)</span> es desconocida, debe estimarse a partir de los datos.</p>
-<p>Un valor de <span class="math inline">\(|\hat\beta_1|\)</span> grande en relación con su error estándar proporciona evidencia contra <span class="math inline">\(H_0\)</span>.</p>
 </section>
-<section id="error-estándar-residual" class="slide level2">
-<h2>Error estándar residual</h2>
-<p>La variabilidad del término de error puede estimarse mediante el <strong>error estándar residual</strong>:</p>
-<p><span class="math display">\[
-RSE=
-\sqrt{
-\frac{RSS}{n-2}
-}
-\]</span></p>
-<p>o equivalentemente:</p>
-<p><span class="math display">\[
-RSE=
-\sqrt{
-\frac{1}{n-2}
-\sum_{i=1}^{n}(y_i-\hat y_i)^2
-}
-\]</span></p>
-<p>El RSE representa aproximadamente cuánto se desvían las observaciones de la recta de regresión.</p>
-</section>
-<section id="coeficiente-de-determinación" class="slide level2">
-<h2>Coeficiente de determinación</h2>
-<p>Otra medida de ajuste es:</p>
-<p><span class="math display">\[
-R^2=
-\frac{TSS-RSS}{TSS}
-=
-1-\frac{RSS}{TSS}
-\]</span></p>
-<p>donde:</p>
-<p><span class="math display">\[
-TSS=\sum_{i=1}^{n}(y_i-\bar y)^2
-\]</span></p>
-<p><span class="math inline">\(R^2\)</span> representa la <strong>proporción de la variabilidad de <span class="math inline">\(Y\)</span> explicada por el modelo</strong>.</p>
-<p><span class="math display">\[
-0\leq R^2\leq1
-\]</span></p>
-<p>Un valor cercano a 1 indica que una mayor proporción de la variabilidad de <span class="math inline">\(Y\)</span> es explicada por la relación lineal.</p>
-</section></section>
-<section>
-<section id="supuestos-y-limitaciones" class="title-slide slide level1 center">
-<h1>Supuestos y limitaciones</h1>
-
-</section>
-<section id="supuestos-del-modelo" class="slide level2">
-<h2>Supuestos del modelo</h2>
-<p>El modelo</p>
-<p><span class="math display">\[
-Y=\beta_0+\beta_1X+\varepsilon
-\]</span></p>
-<p>representa una aproximación de la relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>.</p>
-<p>Para realizar inferencia con el modelo se consideran supuestos sobre los errores, entre ellos:</p>
+<section id="caso-univariable-2" class="slide level2 unlisted">
+<h2>Caso univariable</h2>
+<h3 id="ejemplo">Ejemplo</h3>
+<p>Queremos modelar la relación entre:</p>
 <ul>
-<li>relación aproximadamente <strong>lineal</strong>,</li>
-<li>errores con <strong>media cero</strong>,</li>
-<li>errores <strong>independientes</strong>,</li>
-<li>varianza aproximadamente <strong>constante</strong>.</li>
+<li><span class="math inline">\(X\)</span>: superficie de una vivienda en <span class="math inline">\(\text{m}^2\)</span>.</li>
+<li><span class="math inline">\(Y\)</span>: precio de venta en miles de pesos.</li>
 </ul>
-<p>Algunos procedimientos inferenciales requieren además supuestos sobre la distribución de los errores.</p>
+<p>Tenemos observaciones como:</p>
+<p><span class="math display">\[
+(80,1450),\quad
+(100,1750),\quad
+(120,2100),\quad
+(150,2550)
+\]</span></p>
+<p><strong>Objetivo:</strong> encontrar la recta que mejor represente la relación entre la superficie y el precio de las viviendas.</p>
 </section>
-<section id="cuando-la-relación-no-es-lineal" class="slide level2">
-<h2>Cuando la relación no es lineal</h2>
-<p>La regresión lineal supone que la relación puede representarse adecuadamente mediante una recta.</p>
-<p>Si la relación real presenta una estructura diferente:</p>
+<section id="caso-multivariable" class="slide level2">
+<h2>Caso multivariable</h2>
+<p>Cuando tenemos <span class="math inline">\(p\)</span> variables predictoras, asumimos que <span class="math inline">\(f\)</span> tiene la forma:</p>
 <p><span class="math display">\[
-Y \neq \beta_0+\beta_1X+\varepsilon
-\]</span></p>
-<p>una recta puede producir un ajuste inadecuado.</p>
-<blockquote>
-<p>Un modelo lineal es una aproximación; no implica que la relación real sea necesariamente lineal.</p>
-</blockquote>
-</section>
-<section id="correlación-no-implica-causalidad" class="slide level2">
-<h2>Correlación no implica causalidad</h2>
-<p>Encontrar una asociación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> no implica que:</p>
-<p><span class="math display">\[
-X\longrightarrow Y
-\]</span></p>
-<p>sea una relación causal.</p>
-<p>Una tercera variable puede estar relacionada con ambas.</p>
-<p>Por ejemplo:</p>
-<p><span class="math display">\[
-\text{ventas de helado}
-\longleftrightarrow
-\text{ataques de tiburón}
-\]</span></p>
-<p>pueden estar asociadas porque ambas aumentan cuando aumenta la temperatura.</p>
-<blockquote>
-<p>La regresión describe asociaciones; por sí sola no demuestra causalidad.</p>
-</blockquote>
-</section></section>
-<section>
-<section id="regresión-lineal-múltiple" class="title-slide slide level1 center">
-<h1>Regresión lineal múltiple</h1>
-
-</section>
-<section id="por-qué-necesitamos-más-predictores" class="slide level2">
-<h2>¿Por qué necesitamos más predictores?</h2>
-<p>En muchos problemas una respuesta depende de varias variables.</p>
-<p>Por ejemplo:</p>
-<p><span class="math display">\[
-Y=\text{precio de una vivienda}
-\]</span></p>
-<p>puede depender de:</p>
-<p><span class="math display">\[
-X_1=\text{tamaño}
-\]</span></p>
-<p><span class="math display">\[
-X_2=\text{habitaciones}
-\]</span></p>
-<p><span class="math display">\[
-X_3=\text{ubicación}
-\]</span></p>
-<p>En lugar de construir un modelo independiente para cada variable, podemos incorporarlas simultáneamente.</p>
-</section>
-<section id="el-modelo-múltiple" class="slide level2">
-<h2>El modelo múltiple</h2>
-<p>Con <span class="math inline">\(p\)</span> predictores:</p>
-<p><span class="math display">\[
-Y=
+f(X)
+=
 \beta_0+
 \beta_1X_1+
 \beta_2X_2+
+\cdots+
+\beta_pX_p
+\]</span></p>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[
+Y
+=
+\beta_0+
+\beta_1X_1+
 \cdots+
 \beta_pX_p+
 \varepsilon
 \]</span></p>
-<p>Para una observación:</p>
+<p>En forma matricial:</p>
 <p><span class="math display">\[
-\hat y=
-\hat\beta_0+
-\hat\beta_1x_1+
-\hat\beta_2x_2+
-\cdots+
-\hat\beta_px_p
+\mathbf{y}
+=
+\mathbf{X}\boldsymbol{\beta}
++
+\boldsymbol{\varepsilon}
 \]</span></p>
-<p>Ahora estimamos:</p>
+<p>El problema de mínimos cuadrados es:</p>
 <p><span class="math display">\[
-\beta_0,\beta_1,\ldots,\beta_p
-\]</span></p>
-<p>simultáneamente.</p>
-</section>
-<section id="interpretación-de-los-coeficientes-1" class="slide level2">
-<h2>Interpretación de los coeficientes</h2>
-<p>En regresión múltiple, <span class="math inline">\(\beta_j\)</span> representa el cambio promedio en <span class="math inline">\(Y\)</span> asociado con un incremento de una unidad en <span class="math inline">\(X_j\)</span>:</p>
-<blockquote>
-<p><strong>manteniendo los demás predictores constantes.</strong></p>
-</blockquote>
-<p>Por ejemplo:</p>
-<p><span class="math display">\[
-Y=
-\beta_0+
-\beta_1X_1+
-\beta_2X_2+
-\varepsilon
-\]</span></p>
-<p><span class="math inline">\(\beta_1\)</span> representa el cambio asociado con <span class="math inline">\(X_1\)</span> cuando <span class="math inline">\(X_2\)</span> se mantiene fijo.</p>
-<p>Esta interpretación distingue a la regresión múltiple de realizar varias regresiones simples por separado.</p>
-</section>
-<section id="mínimos-cuadrados-1" class="slide level2">
-<h2>Mínimos cuadrados</h2>
-<p>La idea es exactamente la misma que en regresión simple.</p>
-<p>Para cada observación:</p>
-<p><span class="math display">\[
-e_i=
-y_i-
-\left(
-\beta_0+
-\beta_1x_{i1}+
-\cdots+
-\beta_px_{ip}
-\right)
-\]</span></p>
-<p>Definimos:</p>
-<p><span class="math display">\[
-RSS=
-\sum_{i=1}^{n}
-\left(
-y_i-
-\beta_0-
-\sum_{j=1}^{p}\beta_jx_{ij}
-\right)^2
-\]</span></p>
-<p>Buscamos los coeficientes que minimizan <span class="math inline">\(RSS\)</span>.</p>
-</section></section>
-<section>
-<section id="formulación-matricial" class="title-slide slide level1 center">
-<h1>Formulación matricial</h1>
-
-</section>
-<section id="el-modelo-en-forma-matricial" class="slide level2">
-<h2>El modelo en forma matricial</h2>
-<p>Podemos escribir la regresión múltiple como:</p>
-<p><span class="math display">\[
-\mathbf y=\mathbf X\boldsymbol\beta+\boldsymbol\varepsilon
-\]</span></p>
-<p>donde:</p>
-<p><span class="math display">\[
-\mathbf y=
-\begin{bmatrix}
-y_1\\
-y_2\\
-\vdots\\
-y_n
-\end{bmatrix}
-\]</span></p>
-<p>y</p>
-<p><span class="math display">\[
-\boldsymbol\beta=
-\begin{bmatrix}
-\beta_0\\
-\beta_1\\
-\vdots\\
-\beta_p
-\end{bmatrix}
+RSS(\boldsymbol{\beta})
+=
+(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T
+(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})
 \]</span></p>
 </section>
-<section id="matriz-de-diseño" class="slide level2">
-<h2>Matriz de diseño</h2>
-<p>La matriz de predictores es:</p>
-<p><span class="math display">\[
-\mathbf X=
-\begin{bmatrix}
-1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p}\\
-1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2p}\\
-\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-1 &amp; x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{np}
-\end{bmatrix}
-\]</span></p>
-<p>La primera columna de unos corresponde al intercepto <span class="math inline">\(\beta_0\)</span>.</p>
-<p>La predicción puede escribirse como:</p>
-<p><span class="math display">\[
-\hat{\mathbf y}=\mathbf X\hat{\boldsymbol\beta}
-\]</span></p>
-</section>
-<section id="mínimos-cuadrados-en-forma-matricial" class="slide level2">
-<h2>Mínimos cuadrados en forma matricial</h2>
-<p>Queremos minimizar:</p>
-<p><span class="math display">\[
-RSS=
-(\mathbf y-\mathbf X\boldsymbol\beta)^T
-(\mathbf y-\mathbf X\boldsymbol\beta)
-\]</span></p>
+<section id="caso-multivariable-1" class="slide level2 unlisted">
+<h2>Caso multivariable</h2>
 <p>Expandiendo:</p>
 <p><span class="math display">\[
-RSS=
-\mathbf y^T\mathbf y
--
-2\boldsymbol\beta^T\mathbf X^T\mathbf y
-+
-\boldsymbol\beta^T\mathbf X^T\mathbf X\boldsymbol\beta
-\]</span></p>
-<p>Derivamos con respecto a <span class="math inline">\(\boldsymbol\beta\)</span>:</p>
-<p><span class="math display">\[
-\frac{\partial RSS}{\partial\boldsymbol\beta}
+RSS
 =
--2\mathbf X^T\mathbf y
+\mathbf{y}^T\mathbf{y}
+-
+2\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{y}
 +
-2\mathbf X^T\mathbf X\boldsymbol\beta
+\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}
+\]</span></p>
+<p>Derivamos respecto a <span class="math inline">\(\boldsymbol{\beta}\)</span>:</p>
+<p><span class="math display">\[
+\frac{\partial RSS}{\partial\boldsymbol{\beta}}
+=
+-2\mathbf{X}^T\mathbf{y}
++
+2\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}
+\]</span></p>
+<p>Igualando a cero:</p>
+<p><span class="math display">\[
+\mathbf{X}^T\mathbf{X}\hat{\boldsymbol{\beta}}
+=
+\mathbf{X}^T\mathbf{y}
+\]</span></p>
+<p>Si <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> es invertible:</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\beta}}
+=
+(\mathbf{X}^T\mathbf{X})^{-1}
+\mathbf{X}^T\mathbf{y}
 \]</span></p>
 </section>
-<section id="ecuaciones-normales-1" class="slide level2">
-<h2>Ecuaciones normales</h2>
-<p>Igualamos la derivada a cero:</p>
+<section id="caso-multivariable-2" class="slide level2 unlisted">
+<h2>Caso multivariable</h2>
+<h3 id="ejemplo-1">Ejemplo</h3>
+<p>Queremos modelar el <strong>precio de una vivienda</strong> utilizando dos variables:</p>
+<ul>
+<li><span class="math inline">\(X_1\)</span>: superficie, medida en decenas de <span class="math inline">\(\text{m}^2\)</span>.</li>
+<li><span class="math inline">\(X_2\)</span>: número de habitaciones.</li>
+<li><span class="math inline">\(Y\)</span>: precio, en miles de pesos.</li>
+</ul>
+<p>Tenemos las siguientes observaciones:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Superficie <span class="math inline">\(X_1\)</span></th>
+<th style="text-align: right;">Habitaciones <span class="math inline">\(X_2\)</span></th>
+<th style="text-align: right;">Precio <span class="math inline">\(Y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1450</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1850</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1850</td>
+</tr>
+</tbody>
+</table>
+<p>El modelo que queremos estimar es:</p>
 <p><span class="math display">\[
--2\mathbf X^T\mathbf y
+Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \varepsilon
+\]</span></p>
+</section>
+<section id="predicción" class="slide level2">
+<h2>Predicción</h2>
+<p>Del ejemplo anterior obtuvimos el modelo:</p>
+<p><span class="math display">\[
+\hat{Y}
+=
+250
 +
-2\mathbf X^T\mathbf X\hat{\boldsymbol\beta}
-=0
+100X_1
++
+200X_2
 \]</span></p>
-<p>por lo tanto:</p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(X_1\)</span>: superficie en decenas de <span class="math inline">\(\text{m}^2\)</span>.</li>
+<li><span class="math inline">\(X_2\)</span>: número de habitaciones.</li>
+<li><span class="math inline">\(\hat{Y}\)</span>: precio en miles de pesos.</li>
+</ul>
+<p><strong>¿Cuál sería el precio estimado de una vivienda de <span class="math inline">\(110\)</span> <span class="math inline">\(\text{m}^2\)</span> y <span class="math inline">\(3\)</span> habitaciones?</strong></p>
+</section>
+<section id="intepretación" class="slide level2">
+<h2>Intepretación</h2>
+<p>Del ejemplo anterior obtuvimos:</p>
 <p><span class="math display">\[
-\mathbf X^T\mathbf X\hat{\boldsymbol\beta}
+\hat{Y}
 =
-\mathbf X^T\mathbf y
+250
++
+100X_1
++
+200X_2
 \]</span></p>
-<p>Si <span class="math inline">\(\mathbf X^T\mathbf X\)</span> es invertible:</p>
+<p>donde <span class="math inline">\(X_1\)</span> representa la superficie en decenas de <span class="math inline">\(\text{m}^2\)</span> y <span class="math inline">\(X_2\)</span> el número de habitaciones.</p>
+<p>El coeficiente:</p>
 <p><span class="math display">\[
-\boxed{
-\hat{\boldsymbol\beta}
+\hat{\beta}_1 = 100
+\]</span></p>
+<p>indica que, <strong>manteniendo constante el número de habitaciones</strong>, un incremento de <span class="math inline">\(10\)</span> <span class="math inline">\(\text{m}^2\)</span> de superficie está asociado con un incremento promedio de <strong>100 mil pesos</strong> en el precio.</p>
+<p>El coeficiente:</p>
+<p><span class="math display">\[
+\hat{\beta}_2 = 200
+\]</span></p>
+<p>indica que, <strong>manteniendo constante la superficie</strong>, una habitación adicional está asociada con un incremento promedio de <strong>200 mil pesos</strong> en el precio.</p>
+</section>
+<section id="inferencia" class="slide level2">
+<h2>Inferencia</h2>
+<p>Además de realizar predicciones, podemos utilizar la regresión lineal para evaluar la relación entre cada predictor y la variable respuesta.</p>
+<p>Para cada coeficiente podemos plantear:</p>
+<p><span class="math display">\[
+H_0:\beta_j=0
+\qquad \text{vs.} \qquad
+H_1:\beta_j\neq0
+\]</span></p>
+<p>La pregunta es:</p>
+<blockquote>
+<p><strong>¿El valor estimado de <span class="math inline">\(\beta_j\)</span> es suficientemente distinto de cero o podría explicarse por la variabilidad de los datos?</strong></p>
+</blockquote>
+<p>Para responder necesitamos conocer la <strong>distribución de los coeficientes estimados</strong>.</p>
+</section>
+<section id="inferencia-1" class="slide level2 unlisted">
+<h2>Inferencia</h2>
+<h3 id="distribución-de-los-errores">Distribución de los errores</h3>
+<p>En el modelo de regresión lineal asumimos:</p>
+<p><span class="math display">\[
+\boldsymbol{\varepsilon}
+\sim
+N(\mathbf{0},\sigma^2\mathbf{I})
+\]</span></p>
+<p>La varianza <span class="math inline">\(\sigma^2\)</span> es desconocida y, al igual que los coeficientes de regresión, debe estimarse utilizando los datos.</p>
+<p>La estimamos a partir de los residuos es</p>
+<p><span class="math display">\[
+\hat{\sigma}^2
 =
-(\mathbf X^T\mathbf X)^{-1}
-\mathbf X^T\mathbf y
+\frac{RSS}{n-p-1}
+=
+\frac{
+\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
+}{
+n-p-1
 }
 \]</span></p>
-<p>Esta es la solución de mínimos cuadrados para la regresión lineal múltiple.</p>
-</section></section>
-<section>
-<section id="evaluación-en-regresión-múltiple" class="title-slide slide level1 center">
-<h1>Evaluación en regresión múltiple</h1>
-
+<p>donde <span class="math inline">\(p\)</span> es el número de variables predictoras.</p>
 </section>
-<section id="existe-alguna-relación" class="slide level2">
-<h2>¿Existe alguna relación?</h2>
-<p>Con múltiples predictores podemos preguntar si <strong>al menos uno</strong> está relacionado con la respuesta.</p>
-<p>Planteamos:</p>
+<section id="inferencia-2" class="slide level2 unlisted">
+<h2>Inferencia</h2>
+<h3 id="distribución-de-los-coeficientes">Distribución de los coeficientes</h3>
+<p>Bajo el supuesto de normalidad de los errores:</p>
 <p><span class="math display">\[
-H_0:
-\beta_1=\beta_2=\cdots=\beta_p=0
+\hat{\boldsymbol{\beta}}
+\sim
+N\left(
+\boldsymbol{\beta},
+\sigma^2(\mathbf{X}^T\mathbf{X})^{-1}
+\right)
 \]</span></p>
-<p>frente a:</p>
+<p>Por lo tanto, para cada coeficiente:</p>
 <p><span class="math display">\[
-H_a:
-\text{al menos un }\beta_j\neq0
+SE(\hat{\beta}_j)
+=
+\sqrt{
+\hat{\sigma}^2
+\left[
+(\mathbf{X}^T\mathbf{X})^{-1}
+\right]_{jj}
+}
 \]</span></p>
-<p>Para evaluar esta hipótesis utilizamos el <strong>estadístico <span class="math inline">\(F\)</span></strong>.</p>
-</section>
-<section id="estadístico-f" class="slide level2">
-<h2>Estadístico <span class="math inline">\(F\)</span></h2>
-<p>El estadístico se define como:</p>
-<p><span class="math display">\[
-F=
-\frac{(TSS-RSS)/p}
-{RSS/(n-p-1)}
-\]</span></p>
-<p>Si <span class="math inline">\(H_0\)</span> es cierta, esperamos un valor de <span class="math inline">\(F\)</span> cercano a 1.</p>
-<p>Un valor suficientemente grande proporciona evidencia de que <strong>al menos uno de los predictores está relacionado con la respuesta</strong>.</p>
-</section>
-<section id="evaluación-individual" class="slide level2">
-<h2>Evaluación individual</h2>
-<p>Una vez establecida una relación global, también podemos estudiar cada predictor.</p>
-<p>Para cada coeficiente:</p>
+<p>Podemos evaluar:</p>
 <p><span class="math display">\[
 H_0:\beta_j=0
 \]</span></p>
-<p>frente a:</p>
+<p>utilizando:</p>
 <p><span class="math display">\[
-H_a:\beta_j\neq0
+t=
+\frac{\hat{\beta}_j}
+{SE(\hat{\beta}_j)}
 \]</span></p>
-<p>El coeficiente <span class="math inline">\(\beta_j\)</span> debe interpretarse considerando que los <strong>demás predictores permanecen constantes</strong>.</p>
-</section></section>
-<section>
-<section id="limitaciones" class="title-slide slide level1 center">
-<h1>Limitaciones</h1>
-
+<p>que, bajo <span class="math inline">\(H_0\)</span>, sigue una distribución <span class="math inline">\(t\)</span> con <span class="math inline">\(n-p-1\)</span> grados de libertad.</p>
 </section>
-<section id="agregar-variables-no-siempre-mejora-el-modelo" class="slide level2">
-<h2>Agregar variables no siempre mejora el modelo</h2>
-<p>En los datos de entrenamiento, agregar predictores nunca aumenta el RSS.</p>
-<p>Por lo tanto, <span class="math inline">\(R^2\)</span> puede aumentar incluso cuando agregamos variables poco útiles.</p>
-<p>Esto significa que:</p>
+<section id="inferencia-3" class="slide level2 unlisted">
+<h2>Inferencia</h2>
+<h3 id="ejemplo-2">Ejemplo</h3>
+<p>Del modelo de precios de viviendas obtuvimos:</p>
+<p><span class="math display">\[
+\hat{\beta}_1=100
+\]</span></p>
+<p>para la superficie de la vivienda.</p>
+<p>Supongamos que:</p>
+<p><span class="math display">\[
+SE(\hat{\beta}_1)=25
+\]</span></p>
+<p>Queremos determinar si la <strong>superficie de la vivienda está asociada con su precio</strong>.</p>
+<p><span class="math display">\[
+H_0:\beta_1=0
+\qquad \text{vs.} \qquad
+H_1:\beta_1\neq0
+\]</span></p>
+<p>Utilizando:</p>
+<p><span class="math display">\[
+t=
+\frac{\hat{\beta}_1}
+{SE(\hat{\beta}_1)}
+\]</span></p>
+<p><strong>¿Existe evidencia suficiente para rechazar <span class="math inline">\(H_0\)</span> con un nivel de significancia <span class="math inline">\(\alpha=0.05\)</span>?</strong></p>
+</section>
+<section id="métricas-de-evaluación" class="slide level2">
+<h2>Métricas de evaluación</h2>
+<p>Para evaluar <strong>qué tan bien se ajusta el modelo a nuestros datos</strong>, podemos comparar los valores observados <span class="math inline">\(y_i\)</span> con las predicciones <span class="math inline">\(\hat{y}_i\)</span>.</p>
+<p>Una forma de hacerlo es medir el tamaño de los <strong>errores de predicción</strong>:</p>
+<p><span class="math display">\[
+e_i = y_i-\hat{y}_i
+\]</span></p>
+<h3 id="error-absoluto-medio-mae">Error absoluto medio (MAE)</h3>
+<p><span class="math display">\[
+MAE=
+\frac{1}{n}
+\sum_{i=1}^{n}
+|y_i-\hat{y}_i|
+\]</span></p>
+<p>Representa la <strong>magnitud promedio de los errores</strong>, en las mismas unidades que <span class="math inline">\(Y\)</span>.</p>
+<h3 id="error-cuadrático-medio-mse">Error cuadrático medio (MSE)</h3>
+<p><span class="math display">\[
+MSE=
+\frac{1}{n}
+\sum_{i=1}^{n}
+(y_i-\hat{y}_i)^2
+\]</span></p>
+<p>Penaliza con mayor fuerza los errores grandes debido al término cuadrático.</p>
+</section>
+<section id="métricas-de-evaluación-1" class="slide level2 unlisted">
+<h2>Métricas de evaluación</h2>
+<h3 id="raíz-del-error-cuadrático-medio-rmse">Raíz del error cuadrático medio (RMSE)</h3>
+<p><span class="math display">\[
+RMSE=
+\sqrt{
+\frac{1}{n}
+\sum_{i=1}^{n}
+(y_i-\hat{y}_i)^2
+}
+\]</span></p>
+<p>Al tomar la raíz del MSE, el error vuelve a expresarse en las <strong>mismas unidades que <span class="math inline">\(Y\)</span></strong>.</p>
+<h3 id="coeficiente-de-determinación-r2">Coeficiente de determinación (<span class="math inline">\(R^2\)</span>)</h3>
+<p><span class="math display">\[
+R^2=
+1-
+\frac{
+\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
+}{
+\sum_{i=1}^{n}(y_i-\bar{y})^2
+}
+\]</span></p>
+<p>Compara el error del modelo con el error que obtendríamos si utilizáramos simplemente <span class="math inline">\(\bar{y}\)</span> como predicción.</p>
+<ul>
+<li><span class="math inline">\(R^2=1\)</span>: ajuste perfecto.</li>
+<li><span class="math inline">\(R^2=0\)</span>: el modelo no mejora la predicción basada en la media.</li>
+<li><span class="math inline">\(R^2&lt;0\)</span>: el modelo tiene un desempeño peor que predecir la media.</li>
+</ul>
+</section>
+<section id="métricas-de-evaluación-2" class="slide level2 unlisted">
+<h2>Métricas de evaluación</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Métrica</th>
+<th>¿Qué mide?</th>
+<th>¿Para qué sirve?</th>
+<th style="text-align: center;">Mejor valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>MAE</strong></td>
+<td>Error absoluto promedio</td>
+<td>Interpretar el error típico de forma directa</td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>MSE</strong></td>
+<td>Error cuadrático promedio</td>
+<td>Penalizar fuertemente los errores grandes</td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>RMSE</strong></td>
+<td>Raíz del error cuadrático promedio</td>
+<td>Penalizar errores grandes manteniendo las unidades de <span class="math inline">\(Y\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td><strong><span class="math inline">\(R^2\)</span></strong></td>
+<td>Variabilidad explicada respecto a la media</td>
+<td>Evaluar qué tanto mejora el modelo sobre una predicción básica</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="supuestos" class="slide level2">
+<h2>Supuestos</h2>
+<p>Para que el modelo de regresión lineal y su inferencia sean adecuados, consideramos los siguientes supuestos:</p>
+<ul>
+<li><p><strong>Linealidad:</strong> la relación entre los predictores y el valor esperado de <span class="math inline">\(Y\)</span> puede representarse mediante una función lineal.</p></li>
+<li><p><strong>Independencia:</strong> los errores de distintas observaciones no están relacionados entre sí.</p></li>
+<li><p><strong>Homocedasticidad:</strong> la varianza de los errores es aproximadamente constante para diferentes valores de los predictores.</p></li>
+<li><p><strong>Normalidad de los errores:</strong> para realizar la inferencia clásica, suponemos que los errores siguen una distribución normal.</p></li>
+<li><p><strong>Ausencia de multicolinealidad perfecta:</strong> ningún predictor puede expresarse exactamente como combinación lineal de los demás.</p></li>
+</ul>
 <blockquote>
-<p>Un <span class="math inline">\(R^2\)</span> mayor no garantiza un mejor modelo para nuevas observaciones.</p>
+<p><strong>Multicolinealidad:</strong> ocurre cuando dos o más variables predictoras están fuertemente relacionadas entre sí. Esto puede dificultar separar el efecto individual de cada predictor.</p>
 </blockquote>
-<p>La capacidad de generalización debe evaluarse utilizando datos que no participaron en el ajuste.</p>
-</section></section>
-<section id="resumen" class="title-slide slide level1 center">
-<h1>Resumen</h1>
+</section>
+<section id="limitaciones" class="slide level2">
+<h2>Limitaciones</h2>
+<p>Incluso cuando el modelo puede ajustarse a los datos, debemos considerar algunas limitaciones:</p>
 <ul>
-<li>La regresión lineal modela una <strong>respuesta cuantitativa</strong> como función de una o más variables de entrada.</li>
-<li>En regresión simple:</li>
-</ul>
-<p><span class="math display">\[
-Y=\beta_0+\beta_1X+\varepsilon
-\]</span></p>
-<ul>
-<li>Los coeficientes se estiman minimizando la <strong>suma de cuadrados de los residuales</strong>.</li>
-<li><span class="math inline">\(RSE\)</span> y <span class="math inline">\(R^2\)</span> permiten estudiar el ajuste del modelo.</li>
-<li>La regresión múltiple extiende el modelo a varios predictores:</li>
-</ul>
-<p><span class="math display">\[
-Y=\beta_0+\beta_1X_1+\cdots+\beta_pX_p+\varepsilon
-\]</span></p>
-<ul>
-<li>En regresión múltiple, cada coeficiente se interpreta <strong>manteniendo constantes los demás predictores</strong>.</li>
-<li>En forma matricial, la solución de mínimos cuadrados es:</li>
-</ul>
-<p><span class="math display">\[
-\hat{\boldsymbol\beta}
-=
-(\mathbf X^T\mathbf X)^{-1}\mathbf X^T\mathbf y
-\]</span></p>
-<ul>
-<li>Un buen ajuste a los datos de entrenamiento no garantiza una buena <strong>generalización</strong>.</li>
+<li><p><strong>Relaciones no lineales:</strong> una función lineal puede ser insuficiente para representar patrones más complejos.</p></li>
+<li><p><strong>Valores atípicos:</strong> observaciones extremas pueden modificar considerablemente la recta o el plano estimado.</p></li>
+<li><p><strong>Multicolinealidad:</strong> predictores altamente relacionados pueden producir coeficientes inestables y dificultar su interpretación.</p></li>
+<li><p><strong>Extrapolación:</strong> realizar predicciones fuera del rango de los datos observados puede producir resultados poco confiables.</p></li>
+<li><p><strong>Variables omitidas:</strong> dejar fuera variables relevantes puede afectar los coeficientes y las predicciones del modelo.</p></li>
+<li><p><strong>Asociación no implica causalidad:</strong> encontrar una relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> no significa que cambios en <span class="math inline">\(X\)</span> sean la causa de cambios en <span class="math inline">\(Y\)</span>.</p></li>
 </ul>
 </section>
-
+<section id="implementación-en-python" class="slide level2">
+<h2>Implementación en Python</h2>
+<h3 id="ajuste-de-coeficientes">Ajuste de coeficientes</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a>model.fit(X_train, y_train)</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a>y_pred <span class="op">=</span> model.predict(X_test)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Los parámetros estimados se obtienen con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>model.intercept_</span>
+<span id="cb2-2"><a></a>model.coef_</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="implementación-en-python-1" class="slide level2 unlisted">
+<h2>Implementación en Python</h2>
+<h3 id="evaluación">Evaluación</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_absolute_error</span>
+<span id="cb3-2"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
+<span id="cb3-3"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> r2_score</span>
+<span id="cb3-4"><a></a></span>
+<span id="cb3-5"><a></a>mae <span class="op">=</span> mean_absolute_error(y_test, y_pred)</span>
+<span id="cb3-6"><a></a>mse <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
+<span id="cb3-7"><a></a>rmse <span class="op">=</span> mse <span class="op">**</span> <span class="fl">0.5</span></span>
+<span id="cb3-8"><a></a>r2 <span class="op">=</span> r2_score(y_test, y_pred)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="implementación-en-python-2" class="slide level2 unlisted">
+<h2>Implementación en Python</h2>
+<h3 id="inferencia-4">Inferencia</h3>
+<p>Para realizar inferencia estadística podemos utilizar <code>statsmodels</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>X <span class="op">=</span> sm.add_constant(X)</span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a>model <span class="op">=</span> sm.OLS(y, X).fit()</span>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a><span class="bu">print</span>(model.summary())</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section></section>
 <section id="referencias" class="title-slide slide level1 smaller scrollable">
 <h1>Referencias</h1>
 <div id="refs" role="list">
