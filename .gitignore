@@ -21,4 +21,6 @@ Thumbs.db
 **/*.quarto_ipynb
 
 
-lecciones/unidad-01/leccion-08.qmd
+
+lecciones/unidad-01/estructura.txt
+lecciones/unidad-01/math.py

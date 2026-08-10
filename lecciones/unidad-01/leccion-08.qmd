@@ -1,0 +1,649 @@
+---
+title: "Aprendizaje supervisado"
+subtitle: "Regresion lineal"
+author: "Dra. Denisse Urenda Castañeda"
+
+lang: es
+
+bibliography: ../../recursos/referencias.bib
+csl: ../../recursos/ieee.csl
+
+nocite: |
+
+format:
+  revealjs:
+    css: ../../recursos/slides.css
+    include-after-body: 
+      text: |
+        <a href="../index.html" class="home-button">
+        📖 Lecciones
+        </a>
+    theme: simple
+    slide-number: c/t
+    transition: fade
+    toc: true
+    toc-depth: 2
+    incremental: false
+    center: false
+    footer: "Modelado de Datos · UACJ"
+---
+
+# Regresión lineal
+
+## Formulación
+
+Partimos de la relación general entre las variables $X$ y $Y$:
+
+$$
+Y = f(X) + \varepsilon
+$$
+
+En la **regresión lineal** asumimos que la función $f$ tiene una forma lineal.
+
+Para una variable predictora:
+
+$$
+f(X) = \beta_0 + \beta_1 X
+$$
+
+por lo tanto:
+
+$$
+Y = \beta_0 + \beta_1 X + \varepsilon
+$$
+
+donde $\beta_0$ es el **intercepto** y $\beta_1$ representa el cambio esperado en $Y$ asociado con un cambio de una unidad en $X$.
+
+La función estimada a partir de los datos es:
+
+$$
+\hat{f}(X) = \hat{\beta}_0 + \hat{\beta}_1 X
+$$
+
+
+
+## Intuición geométrica
+
+En el caso univariable, cada observación $(x_i,y_i)$ puede representarse como un punto en el plano.
+
+El objetivo es encontrar la recta que mejor represente la relación entre $X$ y $Y$.
+
+Para una observación, el **residuo** es:
+
+$$
+e_i = y_i-\hat{y}_i
+$$
+
+El método de **mínimos cuadrados ordinarios** elige la recta que minimiza la suma de los residuos al cuadrado:
+
+$$
+RSS =
+\sum_{i=1}^{n}
+(y_i-\hat{y}_i)^2
+$$
+
+
+
+## Caso univariable
+
+Queremos encontrar $\beta_0$ y $\beta_1$ que minimicen:
+
+$$
+RSS(\beta_0,\beta_1)
+=
+\sum_{i=1}^{n}
+(y_i-\beta_0-\beta_1x_i)^2
+$$
+
+Derivamos respecto a $\beta_0$:
+
+$$
+\frac{\partial RSS}{\partial\beta_0}
+=
+-2\sum_{i=1}^{n}
+(y_i-\beta_0-\beta_1x_i)
+$$
+
+Igualando a cero:
+
+$$
+\hat{\beta}_0
+=
+\bar{y}-\hat{\beta}_1\bar{x}
+$$
+
+
+## Caso univariable {.unlisted}
+
+Derivamos respecto a $\beta_1$:
+
+$$
+\frac{\partial RSS}{\partial\beta_1}
+=
+-2\sum_{i=1}^{n}
+x_i(y_i-\beta_0-\beta_1x_i)
+$$
+
+Igualando a cero y resolviendo:
+
+$$
+\hat{\beta}_1
+=
+\frac{
+\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})
+}{
+\sum_{i=1}^{n}(x_i-\bar{x})^2
+}
+$$
+
+Finalmente:
+
+$$
+\hat{f}(X)
+=
+\hat{\beta}_0+\hat{\beta}_1X
+$$
+
+## Caso univariable {.unlisted}
+### Ejemplo
+
+Queremos modelar la relación entre:
+
+- $X$: superficie de una vivienda en $\text{m}^2$.
+- $Y$: precio de venta en miles de pesos.
+
+Tenemos observaciones como:
+
+$$
+(80,1450),\quad
+(100,1750),\quad
+(120,2100),\quad
+(150,2550)
+$$
+
+**Objetivo:** encontrar la recta que mejor represente la relación entre la superficie y el precio de las viviendas.
+
+
+
+## Caso multivariable
+
+Cuando tenemos $p$ variables predictoras, asumimos que $f$ tiene la forma:
+
+$$
+f(X)
+=
+\beta_0+
+\beta_1X_1+
+\beta_2X_2+
+\cdots+
+\beta_pX_p
+$$
+
+Por lo tanto:
+
+$$
+Y
+=
+\beta_0+
+\beta_1X_1+
+\cdots+
+\beta_pX_p+
+\varepsilon
+$$
+
+En forma matricial:
+
+$$
+\mathbf{y}
+=
+\mathbf{X}\boldsymbol{\beta}
++
+\boldsymbol{\varepsilon}
+$$
+
+El problema de mínimos cuadrados es:
+
+$$
+RSS(\boldsymbol{\beta})
+=
+(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T
+(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})
+$$
+
+
+## Caso multivariable {.unlisted}
+
+Expandiendo:
+
+$$
+RSS
+=
+\mathbf{y}^T\mathbf{y}
+-
+2\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{y}
++
+\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}
+$$
+
+Derivamos respecto a $\boldsymbol{\beta}$:
+
+$$
+\frac{\partial RSS}{\partial\boldsymbol{\beta}}
+=
+-2\mathbf{X}^T\mathbf{y}
++
+2\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}
+$$
+
+Igualando a cero:
+
+$$
+\mathbf{X}^T\mathbf{X}\hat{\boldsymbol{\beta}}
+=
+\mathbf{X}^T\mathbf{y}
+$$
+
+Si $\mathbf{X}^T\mathbf{X}$ es invertible:
+
+$$
+\hat{\boldsymbol{\beta}}
+=
+(\mathbf{X}^T\mathbf{X})^{-1}
+\mathbf{X}^T\mathbf{y}
+$$
+
+## Caso multivariable {.unlisted}
+### Ejemplo
+
+Queremos modelar el **precio de una vivienda** utilizando dos variables:
+
+- $X_1$: superficie, medida en decenas de $\text{m}^2$.
+- $X_2$: número de habitaciones.
+- $Y$: precio, en miles de pesos.
+
+Tenemos las siguientes observaciones:
+
+| Superficie $X_1$ | Habitaciones $X_2$ | Precio $Y$ |
+|---:|---:|---:|
+| 8 | 2 | 1450 |
+| 10 | 3 | 1850 |
+| 12 | 2 | 1850 |
+
+El modelo que queremos estimar es:
+
+$$
+Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \varepsilon
+$$
+
+## Predicción
+
+Del ejemplo anterior obtuvimos el modelo:
+
+$$
+\hat{Y}
+=
+250
++
+100X_1
++
+200X_2
+$$
+
+donde:
+
+- $X_1$: superficie en decenas de $\text{m}^2$.
+- $X_2$: número de habitaciones.
+- $\hat{Y}$: precio en miles de pesos.
+
+**¿Cuál sería el precio estimado de una vivienda de $110$ $\text{m}^2$ y $3$ habitaciones?**
+
+
+## Intepretación
+
+Del ejemplo anterior obtuvimos:
+
+$$
+\hat{Y}
+=
+250
++
+100X_1
++
+200X_2
+$$
+
+donde $X_1$ representa la superficie en decenas de $\text{m}^2$ y $X_2$ el número de habitaciones.
+
+El coeficiente:
+
+$$
+\hat{\beta}_1 = 100
+$$
+
+indica que, **manteniendo constante el número de habitaciones**, un incremento de $10$ $\text{m}^2$ de superficie está asociado con un incremento promedio de **100 mil pesos** en el precio.
+
+El coeficiente:
+
+$$
+\hat{\beta}_2 = 200
+$$
+
+indica que, **manteniendo constante la superficie**, una habitación adicional está asociada con un incremento promedio de **200 mil pesos** en el precio.
+
+
+## Inferencia
+
+Además de realizar predicciones, podemos utilizar la regresión lineal para evaluar la relación entre cada predictor y la variable respuesta.
+
+Para cada coeficiente podemos plantear:
+
+$$
+H_0:\beta_j=0
+\qquad \text{vs.} \qquad
+H_1:\beta_j\neq0
+$$
+
+La pregunta es:
+
+> **¿El valor estimado de $\beta_j$ es suficientemente distinto de cero o podría explicarse por la variabilidad de los datos?**
+
+Para responder necesitamos conocer la **distribución de los coeficientes estimados**.
+
+
+## Inferencia {.unlisted}
+### Distribución de los errores
+
+En el modelo de regresión lineal asumimos:
+
+$$
+\boldsymbol{\varepsilon}
+\sim
+N(\mathbf{0},\sigma^2\mathbf{I})
+$$
+
+La varianza $\sigma^2$ es desconocida y, al igual que los coeficientes de regresión, debe estimarse utilizando los datos.
+
+La estimamos a partir de los residuos es
+
+$$
+\hat{\sigma}^2
+=
+\frac{RSS}{n-p-1}
+=
+\frac{
+\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
+}{
+n-p-1
+}
+$$
+
+donde $p$ es el número de variables predictoras.
+
+## Inferencia {.unlisted}
+### Distribución de los coeficientes
+
+Bajo el supuesto de normalidad de los errores:
+
+$$
+\hat{\boldsymbol{\beta}}
+\sim
+N\left(
+\boldsymbol{\beta},
+\sigma^2(\mathbf{X}^T\mathbf{X})^{-1}
+\right)
+$$
+
+Por lo tanto, para cada coeficiente:
+
+$$
+SE(\hat{\beta}_j)
+=
+\sqrt{
+\hat{\sigma}^2
+\left[
+(\mathbf{X}^T\mathbf{X})^{-1}
+\right]_{jj}
+}
+$$
+
+Podemos evaluar:
+
+$$
+H_0:\beta_j=0
+$$
+
+utilizando:
+
+$$
+t=
+\frac{\hat{\beta}_j}
+{SE(\hat{\beta}_j)}
+$$
+
+que, bajo $H_0$, sigue una distribución $t$ con $n-p-1$ grados de libertad.
+
+## Inferencia {.unlisted}
+### Ejemplo
+
+Del modelo de precios de viviendas obtuvimos:
+
+$$
+\hat{\beta}_1=100
+$$
+
+para la superficie de la vivienda.
+
+Supongamos que:
+
+$$
+SE(\hat{\beta}_1)=25
+$$
+
+Queremos determinar si la **superficie de la vivienda está asociada con su precio**.
+
+$$
+H_0:\beta_1=0
+\qquad \text{vs.} \qquad
+H_1:\beta_1\neq0
+$$
+
+Utilizando:
+
+$$
+t=
+\frac{\hat{\beta}_1}
+{SE(\hat{\beta}_1)}
+$$
+
+**¿Existe evidencia suficiente para rechazar $H_0$ con un nivel de significancia $\alpha=0.05$?**
+
+
+## Métricas de evaluación
+
+Para evaluar **qué tan bien se ajusta el modelo a nuestros datos**, podemos comparar los valores observados $y_i$ con las predicciones $\hat{y}_i$.
+
+Una forma de hacerlo es medir el tamaño de los **errores de predicción**:
+
+$$
+e_i = y_i-\hat{y}_i
+$$
+
+### Error absoluto medio (MAE)
+
+$$
+MAE=
+\frac{1}{n}
+\sum_{i=1}^{n}
+|y_i-\hat{y}_i|
+$$
+
+Representa la **magnitud promedio de los errores**, en las mismas unidades que $Y$.
+
+### Error cuadrático medio (MSE)
+
+$$
+MSE=
+\frac{1}{n}
+\sum_{i=1}^{n}
+(y_i-\hat{y}_i)^2
+$$
+
+Penaliza con mayor fuerza los errores grandes debido al término cuadrático.
+
+
+## Métricas de evaluación {.unlisted}
+
+### Raíz del error cuadrático medio (RMSE)
+
+$$
+RMSE=
+\sqrt{
+\frac{1}{n}
+\sum_{i=1}^{n}
+(y_i-\hat{y}_i)^2
+}
+$$
+
+Al tomar la raíz del MSE, el error vuelve a expresarse en las **mismas unidades que $Y$**.
+
+### Coeficiente de determinación ($R^2$)
+
+$$
+R^2=
+1-
+\frac{
+\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
+}{
+\sum_{i=1}^{n}(y_i-\bar{y})^2
+}
+$$
+
+Compara el error del modelo con el error que obtendríamos si utilizáramos simplemente $\bar{y}$ como predicción.
+
+- $R^2=1$: ajuste perfecto.
+- $R^2=0$: el modelo no mejora la predicción basada en la media.
+- $R^2<0$: el modelo tiene un desempeño peor que predecir la media.
+
+## Métricas de evaluación {.unlisted}
+
+| Métrica | ¿Qué mide? | ¿Para qué sirve? | Mejor valor |
+|---|---|---|:---:|
+| **MAE** | Error absoluto promedio | Interpretar el error típico de forma directa | $0$ |
+| **MSE** | Error cuadrático promedio | Penalizar fuertemente los errores grandes | $0$ |
+| **RMSE** | Raíz del error cuadrático promedio | Penalizar errores grandes manteniendo las unidades de $Y$ | $0$ |
+| **$R^2$** | Variabilidad explicada respecto a la media | Evaluar qué tanto mejora el modelo sobre una predicción básica | $1$ |
+
+
+## Supuestos
+
+Para que el modelo de regresión lineal y su inferencia sean adecuados, consideramos los siguientes supuestos:
+
+- **Linealidad:** la relación entre los predictores y el valor esperado de $Y$ puede representarse mediante una función lineal.
+
+- **Independencia:** los errores de distintas observaciones no están relacionados entre sí.
+
+- **Homocedasticidad:** la varianza de los errores es aproximadamente constante para diferentes valores de los predictores.
+
+- **Normalidad de los errores:** para realizar la inferencia clásica, suponemos que los errores siguen una distribución normal.
+
+- **Ausencia de multicolinealidad perfecta:** ningún predictor puede expresarse exactamente como combinación lineal de los demás.
+
+> **Multicolinealidad:** ocurre cuando dos o más variables predictoras están fuertemente relacionadas entre sí. Esto puede dificultar separar el efecto individual de cada predictor.
+
+## Limitaciones
+
+Incluso cuando el modelo puede ajustarse a los datos, debemos considerar algunas limitaciones:
+
+- **Relaciones no lineales:** una función lineal puede ser insuficiente para representar patrones más complejos.
+
+- **Valores atípicos:** observaciones extremas pueden modificar considerablemente la recta o el plano estimado.
+
+- **Multicolinealidad:** predictores altamente relacionados pueden producir coeficientes inestables y dificultar su interpretación.
+
+- **Extrapolación:** realizar predicciones fuera del rango de los datos observados puede producir resultados poco confiables.
+
+- **Variables omitidas:** dejar fuera variables relevantes puede afectar los coeficientes y las predicciones del modelo.
+
+- **Asociación no implica causalidad:** encontrar una relación entre $X$ y $Y$ no significa que cambios en $X$ sean la causa de cambios en $Y$.
+
+## Implementación en Python
+### Ajuste de coeficientes
+
+```python
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+```
+
+Los parámetros estimados se obtienen con:
+
+```python
+model.intercept_
+model.coef_
+```
+
+## Implementación en Python {.unlisted}
+### Evaluación
+
+```python
+from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
+
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+rmse = mse ** 0.5
+r2 = r2_score(y_test, y_pred)
+```
+## Implementación en Python {.unlisted}
+### Inferencia
+
+Para realizar inferencia estadística podemos utilizar `statsmodels`:
+
+```python
+import statsmodels.api as sm
+
+X = sm.add_constant(X)
+
+model = sm.OLS(y, X).fit()
+
+print(model.summary())
+```
+
+# Referencias
+
+::: {#refs}
+:::
+
+# Preguntas
+
+:::: {.columns}
+
+::: {.column width="45%"}
+![](../imagenes/mister.jpg){width=95%}
+:::
+
+::: {.column width="55%"}
+::: {.vcenter}
+
+<div class="fragment"> ¿Seguro? 🤨 </div>
+
+<div class="fragment">Bueno...</div>
+
+<div class="fragment">Pregúntale a [ChatGPT](https://chatgpt.com) pues.</div>
+
+:::
+:::
+
+::::
+
+
+# ¿Qué sigue?
+
+Descripcion breve
+
+[**Ir a la siguiente sección →**](nombre de leccion/laboratorio/proyecto)
