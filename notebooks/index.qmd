@@ -12,7 +12,7 @@ title: "Notebooks"
 
 ## Modelos paramétricos
 
-- Regresión lineal
+- [Regresión lineal](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-04.ipynb)
 - Regularización: Ridge y Lasso
 - Regresion logística
 - Support vector machines
