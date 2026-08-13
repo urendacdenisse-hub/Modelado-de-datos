@@ -162,4 +162,4 @@ En la siguiente sesión conoceremos el flujo general del análisis de datos, des
 - Preparación de datos.
 - Análisis exploratorio de datos.
 
-[**Ir a la siguiente lección →**](leccion-02.qmd)
+[**Ir a la lección →**](leccion-02.qmd)

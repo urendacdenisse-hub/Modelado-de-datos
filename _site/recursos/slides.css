@@ -2,6 +2,10 @@
 :root {
     --r-main-font: "Aptos", sans-serif;
     --r-heading-font: "Aptos Display", sans-serif;
+    --primary: #4F79A5;
+    --primary-light: #DCE6ED;
+    --secondary: #74808A;
+    --light: #F6F8FA;
 }
 
 .small-table table {
@@ -167,4 +171,38 @@ blockquote {
 .reveal .home-button:hover {
   background: #eeeeee;
   color: #003366;
+}
+
+
+.formula {
+  border-left: 5px solid var(--primary);
+  background-color: var(--primary-light);
+  padding: 0.8em 1em;
+  margin: 1em 0;
+  border-radius: 6px;
+}
+
+.example {
+  border-left: 5px solid var(--secondary);
+  background-color: var(--light);
+  padding: 0.8em 1em;
+  margin: 1em 0;
+  border-radius: 6px;
+}
+
+.example::before {
+  content: "Ejemplo";
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.important {
+  margin: 0.8em 0;
+  padding-left: 0.8em;
+  border-left: 0.2em solid var(--primary);
 }

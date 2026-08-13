@@ -151,4 +151,4 @@ Fuente: QuestionPro, *Análisis de datos*.
 
 En la siguiente sesión aprenderemos a identificar los principales **tipos de datos** y las **fuentes de información** utilizadas en proyectos de análisis de datos.
 
-[**Ir a la siguiente lección →**](leccion-03.qmd)
+[**Ir a la lección →**](leccion-03.qmd)

@@ -179,21 +179,21 @@
     "href": "lecciones/unidad-01/leccion-08.html#intuición-geométrica",
     "title": "Aprendizaje supervisado",
     "section": "Intuición geométrica",
-    "text": "Intuición geométrica\nEn el caso univariable, cada observación \\((x_i,y_i)\\) puede representarse como un punto en el plano.\nEl objetivo es encontrar la recta que mejor represente la relación entre \\(X\\) y \\(Y\\).\nPara una observación, el residuo es:\n\\[\ne_i = y_i-\\hat{y}_i\n\\]\nEl método de mínimos cuadrados ordinarios elige la recta que minimiza la suma de los residuos al cuadrado:\n\\[\nRSS =\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n\\]"
+    "text": "Intuición geométrica\nEn el caso univariable, cada observación \\((x_i,y_i)\\) puede representarse como un punto en el plano.\nEl objetivo es encontrar la recta que mejor represente la relación entre \\(X\\) y \\(Y\\).\nPara una observación, el residuo es:\n\\[\ne_i = y_i-\\hat{y}_i\n\\]\nEl método de mínimos cuadrados ordinarios elige la recta que minimiza la suma de los residuos al cuadrado:\n\\[\n\\text{RSS} =\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#caso-univariable",
     "href": "lecciones/unidad-01/leccion-08.html#caso-univariable",
     "title": "Aprendizaje supervisado",
     "section": "Caso univariable",
-    "text": "Caso univariable\nQueremos encontrar \\(\\beta_0\\) y \\(\\beta_1\\) que minimicen:\n\\[\nRSS(\\beta_0,\\beta_1)\n=\n\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nDerivamos respecto a \\(\\beta_0\\):\n\\[\n\\frac{\\partial RSS}{\\partial\\beta_0}\n=\n-2\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)\n\\]\nIgualando a cero:\n\\[\n\\hat{\\beta}_0\n=\n\\bar{y}-\\hat{\\beta}_1\\bar{x}\n\\]"
+    "text": "Caso univariable\nQueremos encontrar \\(\\beta_0\\) y \\(\\beta_1\\) que minimicen:\n\\[\n\\text{RSS}(\\beta_0,\\beta_1)\n=\n\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nDerivamos respecto a \\(\\beta_0\\):\n\\[\n\\frac{\\partial \\text{RSS}}{\\partial\\beta_0}\n=\n-2\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)\n\\]\nIgualando a cero:\n\\[\n\\hat{\\beta}_0\n=\n\\bar{y}-\\hat{\\beta}_1\\bar{x}\n\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#caso-univariable-1",
     "href": "lecciones/unidad-01/leccion-08.html#caso-univariable-1",
     "title": "Aprendizaje supervisado",
     "section": "Caso univariable",
-    "text": "Caso univariable\nDerivamos respecto a \\(\\beta_1\\):\n\\[\n\\frac{\\partial RSS}{\\partial\\beta_1}\n=\n-2\\sum_{i=1}^{n}\nx_i(y_i-\\beta_0-\\beta_1x_i)\n\\]\nIgualando a cero y resolviendo:\n\\[\n\\hat{\\beta}_1\n=\n\\frac{\n\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})\n}{\n\\sum_{i=1}^{n}(x_i-\\bar{x})^2\n}\n\\]\nFinalmente:\n\\[\n\\hat{f}(X)\n=\n\\hat{\\beta}_0+\\hat{\\beta}_1X\n\\]"
+    "text": "Caso univariable\nDerivamos respecto a \\(\\beta_1\\):\n\\[\n\\frac{\\partial \\text{RSS}}{\\partial\\beta_1}\n=\n-2\\sum_{i=1}^{n}\nx_i(y_i-\\beta_0-\\beta_1x_i)\n\\]\nIgualando a cero y resolviendo:\n\\[\n\\hat{\\beta}_1\n=\n\\frac{\n\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})\n}{\n\\sum_{i=1}^{n}(x_i-\\bar{x})^2\n}\n\\]\nFinalmente:\n\\[\n\\hat{f}(X)\n=\n\\hat{\\beta}_0+\\hat{\\beta}_1X\n\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#caso-univariable-2",
@@ -207,21 +207,21 @@
     "href": "lecciones/unidad-01/leccion-08.html#caso-multivariable",
     "title": "Aprendizaje supervisado",
     "section": "Caso multivariable",
-    "text": "Caso multivariable\nCuando tenemos \\(p\\) variables predictoras, asumimos que \\(f\\) tiene la forma:\n\\[\nf(X)\n=\n\\beta_0+\n\\beta_1X_1+\n\\beta_2X_2+\n\\cdots+\n\\beta_pX_p\n\\]\nPor lo tanto:\n\\[\nY\n=\n\\beta_0+\n\\beta_1X_1+\n\\cdots+\n\\beta_pX_p+\n\\varepsilon\n\\]\nEn forma matricial:\n\\[\n\\mathbf{y}\n=\n\\mathbf{X}\\boldsymbol{\\beta}\n+\n\\boldsymbol{\\varepsilon}\n\\]\nEl problema de mínimos cuadrados es:\n\\[\nRSS(\\boldsymbol{\\beta})\n=\n(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta})^T\n(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta})\n\\]"
+    "text": "Caso multivariable\nCuando tenemos \\(p\\) variables predictoras, asumimos que \\(f\\) tiene la forma:\n\\[\nf(\\mathbf X)\n=\n\\beta_0+\n\\beta_1X_1+\n\\beta_2X_2+\n\\cdots+\n\\beta_pX_p\n\\]\nPor lo tanto:\n\\[\nY\n=\n\\beta_0+\n\\beta_1X_1+\n\\cdots+\n\\beta_pX_p+\n\\varepsilon\n\\]\nEn forma matricial:\n\\[\n\\mathbf{y}\n=\n\\mathbf{X}\\boldsymbol{\\beta}\n+\n\\boldsymbol{\\varepsilon}\n\\]\nEl problema de mínimos cuadrados es:\n\\[\n\\text{RSS}(\\boldsymbol{\\beta})\n=\n(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta})^T\n(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta})\n\\]\n\nEn la formulación matricial, \\(\\mathbf X\\) representa la matriz de diseño, que incluye una primera columna de unos para incorporar el intercepto \\(\\beta_0\\). Por lo tanto, \\(\\mathbf X \\in \\mathbb{R}^{n\\times(p+1)}\\)."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#caso-multivariable-1",
     "href": "lecciones/unidad-01/leccion-08.html#caso-multivariable-1",
     "title": "Aprendizaje supervisado",
     "section": "Caso multivariable",
-    "text": "Caso multivariable\nExpandiendo:\n\\[\nRSS\n=\n\\mathbf{y}^T\\mathbf{y}\n-\n2\\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y}\n+\n\\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\n\\]\nDerivamos respecto a \\(\\boldsymbol{\\beta}\\):\n\\[\n\\frac{\\partial RSS}{\\partial\\boldsymbol{\\beta}}\n=\n-2\\mathbf{X}^T\\mathbf{y}\n+\n2\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\n\\]\nIgualando a cero:\n\\[\n\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\n=\n\\mathbf{X}^T\\mathbf{y}\n\\]\nSi \\(\\mathbf{X}^T\\mathbf{X}\\) es invertible:\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\mathbf{X}^T\\mathbf{y}\n\\]"
+    "text": "Caso multivariable\nExpandiendo:\n\\[\n\\text{RSS}\n=\n\\mathbf{y}^T\\mathbf{y}\n-\n2\\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y}\n+\n\\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\n\\]\nDerivamos respecto a \\(\\boldsymbol{\\beta}\\):\n\\[\n\\frac{\\partial \\text{RSS}}{\\partial\\boldsymbol{\\beta}}\n=\n-2\\mathbf{X}^T\\mathbf{y}\n+\n2\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\n\\]\nIgualando a cero:\n\\[\n\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\n=\n\\mathbf{X}^T\\mathbf{y}\n\\]\nSi \\(\\mathbf{X}^T\\mathbf{X}\\) es invertible:\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\mathbf{X}^T\\mathbf{y}\n\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#caso-multivariable-2",
     "href": "lecciones/unidad-01/leccion-08.html#caso-multivariable-2",
     "title": "Aprendizaje supervisado",
     "section": "Caso multivariable",
-    "text": "Caso multivariable\nEjemplo\nQueremos modelar el precio de una vivienda utilizando dos variables:\n\n\\(X_1\\): superficie, medida en decenas de \\(\\text{m}^2\\).\n\\(X_2\\): número de habitaciones.\n\\(Y\\): precio, en miles de pesos.\n\nTenemos las siguientes observaciones:\n\n\n\nSuperficie \\(X_1\\)\nHabitaciones \\(X_2\\)\nPrecio \\(Y\\)\n\n\n\n\n8\n2\n1450\n\n\n10\n3\n1850\n\n\n12\n2\n1850\n\n\n\nEl modelo que queremos estimar es:\n\\[\nY = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\varepsilon\n\\]"
+    "text": "Caso multivariable\nEjemplo\nQueremos modelar el precio de una vivienda utilizando dos variables:\n\n\\(X_1\\): superficie, medida en decenas de \\(\\text{m}^2\\).\n\\(X_2\\): número de habitaciones.\n\\(Y\\): precio, en miles de pesos.\n\nTenemos las siguientes observaciones:\n\n\n\nSuperficie \\(X_1\\)\nHabitaciones \\(X_2\\)\nPrecio \\(Y\\)\n\n\n\n\n8\n2\n1450\n\n\n10\n3\n1850\n\n\n12\n2\n1850\n\n\n14\n4\n2300\n\n\n\nEl modelo que queremos estimar es:\n\\[\nY = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\varepsilon\n\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#predicción",
@@ -249,35 +249,35 @@
     "href": "lecciones/unidad-01/leccion-08.html#inferencia-1",
     "title": "Aprendizaje supervisado",
     "section": "Inferencia",
-    "text": "Inferencia\nDistribución de los errores\nEn el modelo de regresión lineal asumimos:\n\\[\n\\boldsymbol{\\varepsilon}\n\\sim\nN(\\mathbf{0},\\sigma^2\\mathbf{I})\n\\]\nLa varianza \\(\\sigma^2\\) es desconocida y, al igual que los coeficientes de regresión, debe estimarse utilizando los datos.\nLa estimamos a partir de los residuos es\n\\[\n\\hat{\\sigma}^2\n=\n\\frac{RSS}{n-p-1}\n=\n\\frac{\n\\sum_{i=1}^{n}(y_i-\\hat{y}_i)^2\n}{\nn-p-1\n}\n\\]\ndonde \\(p\\) es el número de variables predictoras."
+    "text": "Inferencia\nDistribución de los errores\nEn el modelo de regresión lineal asumimos:\n\\[\n\\boldsymbol{\\varepsilon}\n\\sim\n\\mathcal N_n(\\mathbf{0},\\sigma^2\\mathbf{I})\n\\]\nLa varianza \\(\\sigma^2\\) es desconocida y, al igual que los coeficientes de regresión, debe estimarse utilizando los datos.\nLa estimamos a partir de los residuos es\n\\[\n\\hat{\\sigma}^2\n=\n\\frac{\\text{RSS}}{n-p-1}\n=\n\\frac{\n(\\mathbf y-\\hat{\\mathbf y})^T\n(\\mathbf y-\\hat{\\mathbf y})\n}{\nn-p-1\n}\n\\]\ndonde \\(p\\) es el número de variables predictoras."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#inferencia-2",
     "href": "lecciones/unidad-01/leccion-08.html#inferencia-2",
     "title": "Aprendizaje supervisado",
     "section": "Inferencia",
-    "text": "Inferencia\nDistribución de los coeficientes\nBajo el supuesto de normalidad de los errores:\n\\[\n\\hat{\\boldsymbol{\\beta}}\n\\sim\nN\\left(\n\\boldsymbol{\\beta},\n\\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\right)\n\\]\nPor lo tanto, para cada coeficiente:\n\\[\nSE(\\hat{\\beta}_j)\n=\n\\sqrt{\n\\hat{\\sigma}^2\n\\left[\n(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\right]_{jj}\n}\n\\]\nPodemos evaluar:\n\\[\nH_0:\\beta_j=0\n\\]\nutilizando:\n\\[\nt=\n\\frac{\\hat{\\beta}_j}\n{SE(\\hat{\\beta}_j)}\n\\]\nque, bajo \\(H_0\\), sigue una distribución \\(t\\) con \\(n-p-1\\) grados de libertad."
+    "text": "Inferencia\nDistribución de los coeficientes\nBajo el supuesto de normalidad de los errores:\n\\[\n\\hat{\\boldsymbol{\\beta}}\n\\sim\n\\mathcal N_{p+1}\\left(\n\\boldsymbol{\\beta},\n\\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\right)\n\\]\nPor lo tanto, para cada coeficiente:\n\\[\n\\text{SE}(\\hat{\\beta}_j)\n=\n\\sqrt{\n\\hat{\\sigma}^2\n\\left[\n(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\right]_{jj}\n}\n\\]\nPodemos evaluar:\n\\[\nH_0:\\beta_j=0\n\\]\nutilizando:\n\\[\nt=\n\\frac{\\hat{\\beta}_j}\n{\\text{SE}(\\hat{\\beta}_j)}\n\\]\nque, bajo \\(H_0\\), sigue una distribución \\(t\\) con \\(n-p-1\\) grados de libertad."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#inferencia-3",
     "href": "lecciones/unidad-01/leccion-08.html#inferencia-3",
     "title": "Aprendizaje supervisado",
     "section": "Inferencia",
-    "text": "Inferencia\nEjemplo\nDel modelo de precios de viviendas obtuvimos:\n\\[\n\\hat{\\beta}_1=100\n\\]\npara la superficie de la vivienda.\nSupongamos que:\n\\[\nSE(\\hat{\\beta}_1)=25\n\\]\nQueremos determinar si la superficie de la vivienda está asociada con su precio.\n\\[\nH_0:\\beta_1=0\n\\qquad \\text{vs.} \\qquad\nH_1:\\beta_1\\neq0\n\\]\nUtilizando:\n\\[\nt=\n\\frac{\\hat{\\beta}_1}\n{SE(\\hat{\\beta}_1)}\n\\]\n¿Existe evidencia suficiente para rechazar \\(H_0\\) con un nivel de significancia \\(\\alpha=0.05\\)?"
+    "text": "Inferencia\nEjemplo\nQueremos modelar el precio de una vivienda utilizando los siguientes datos, asumiendo una relación lineal con la superficie y el número de habitaciones.\n\n\n\nSuperficie \\(X_1\\)\nHabitaciones \\(X_2\\)\nPrecio \\(Y\\)\n\n\n\n\n8\n2\n1450\n\n\n9\n2\n1580\n\n\n10\n3\n1850\n\n\n11\n3\n1900\n\n\n12\n2\n1850\n\n\n13\n3\n2150\n\n\n14\n4\n2300\n\n\n15\n4\n2460\n\n\n\nConsideraremos el modelo\n\\[\n\\text{Precio}\n=\n\\beta_0\n+\n\\beta_1\\,\\text{Superficie}\n+\n\\beta_2\\,\\text{Habitaciones}\n+\n\\varepsilon.\n\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#métricas-de-evaluación",
     "href": "lecciones/unidad-01/leccion-08.html#métricas-de-evaluación",
     "title": "Aprendizaje supervisado",
     "section": "Métricas de evaluación",
-    "text": "Métricas de evaluación\nPara evaluar qué tan bien se ajusta el modelo a nuestros datos, podemos comparar los valores observados \\(y_i\\) con las predicciones \\(\\hat{y}_i\\).\nUna forma de hacerlo es medir el tamaño de los errores de predicción:\n\\[\ne_i = y_i-\\hat{y}_i\n\\]\nError absoluto medio (MAE)\n\\[\nMAE=\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n|y_i-\\hat{y}_i|\n\\]\nRepresenta la magnitud promedio de los errores, en las mismas unidades que \\(Y\\).\nError cuadrático medio (MSE)\n\\[\nMSE=\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n\\]\nPenaliza con mayor fuerza los errores grandes debido al término cuadrático."
+    "text": "Métricas de evaluación\nPara evaluar qué tan bien se ajusta el modelo a nuestros datos, podemos comparar los valores observados \\(y_i\\) con las predicciones \\(\\hat{y}_i\\).\nUna forma de hacerlo es medir el tamaño de los errores de predicción:\n\\[\ne_i = y_i-\\hat{y}_i\n\\]\nError absoluto medio (MAE)\n\\[\n\\text{MAE}=\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n|y_i-\\hat{y}_i|\n\\]\nRepresenta la magnitud promedio de los errores, en las mismas unidades que \\(Y\\).\nError cuadrático medio (MSE)\n\\[\n\\text{MSE}=\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n\\]\nPenaliza con mayor fuerza los errores grandes debido al término cuadrático."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#métricas-de-evaluación-1",
     "href": "lecciones/unidad-01/leccion-08.html#métricas-de-evaluación-1",
     "title": "Aprendizaje supervisado",
     "section": "Métricas de evaluación",
-    "text": "Métricas de evaluación\nRaíz del error cuadrático medio (RMSE)\n\\[\nRMSE=\n\\sqrt{\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n}\n\\]\nAl tomar la raíz del MSE, el error vuelve a expresarse en las mismas unidades que \\(Y\\).\nCoeficiente de determinación (\\(R^2\\))\n\\[\nR^2=\n1-\n\\frac{\n\\sum_{i=1}^{n}(y_i-\\hat{y}_i)^2\n}{\n\\sum_{i=1}^{n}(y_i-\\bar{y})^2\n}\n\\]\nCompara el error del modelo con el error que obtendríamos si utilizáramos simplemente \\(\\bar{y}\\) como predicción.\n\n\\(R^2=1\\): ajuste perfecto.\n\\(R^2=0\\): el modelo no mejora la predicción basada en la media.\n\\(R^2&lt;0\\): el modelo tiene un desempeño peor que predecir la media."
+    "text": "Métricas de evaluación\nRaíz del error cuadrático medio (RMSE)\n\\[\n\\text{RMSE}=\n\\sqrt{\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n}\n\\]\nAl tomar la raíz del MSE, el error vuelve a expresarse en las mismas unidades que \\(Y\\).\nCoeficiente de determinación (\\(R^2\\))\n\\[\nR^2=\n1-\n\\frac{\n\\sum_{i=1}^{n}(y_i-\\hat{y}_i)^2\n}{\n\\sum_{i=1}^{n}(y_i-\\bar{y})^2\n}\n\\]\nCompara el error del modelo con el error que obtendríamos si utilizáramos simplemente \\(\\bar{y}\\) como predicción.\n\n\\(R^2=1\\): ajuste perfecto.\n\\(R^2=0\\): el modelo no mejora la predicción basada en la media.\n\\(R^2&lt;0\\): el modelo tiene un desempeño peor que predecir la media."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#métricas-de-evaluación-2",
@@ -837,84 +837,84 @@
     "href": "lecciones/unidad-01/leccion-07.html#machine-learning",
     "title": "Aprendizaje supervisado",
     "section": "Machine learning",
-    "text": "Machine learning\nEl machine learning estudia métodos que permiten utilizar datos para aprender relaciones y patrones.\nA partir de un conjunto de observaciones, buscamos aprender cómo ciertas variables de entrada se relacionan con una variable de respuesta.\nEsta relación puede utilizarse para comprender los datos o realizar predicciones sobre nuevas observaciones."
+    "text": "Machine learning\nEl machine learning o aprendizaje automático estudia métodos que permiten utilizar datos para aprender relaciones, patrones y estructuras en los datos.\n\n\nEjemplos de tareas de aprendizaje automático: ajustar una función, separar observaciones en clases y descubrir grupos en los datos."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#un-ejemplo",
     "href": "lecciones/unidad-01/leccion-07.html#un-ejemplo",
     "title": "Aprendizaje supervisado",
     "section": "Un ejemplo",
-    "text": "Un ejemplo\nSupongamos que queremos predecir el precio de una vivienda.\nTenemos como variables de entrada:\n\n\\(X_1\\): tamaño de la vivienda.\n\\(X_2\\): número de habitaciones.\n\\(X_3\\): ubicación.\n\nY como variable de respuesta:\n\\[\nY = \\text{precio de la vivienda}\n\\]\nBuscamos aprender la relación:\n\\[\n\\text{Precio}\n=\nf(\\text{tamaño, habitaciones, ubicación})\n+\n\\varepsilon\n\\]\nEl objetivo es utilizar los datos para estimar la función desconocida \\(f\\)."
+    "text": "Un ejemplo\nSupongamos que queremos predecir el precio de una vivienda.\nTenemos como variables predictoras:\n\n\\(X_1\\): tamaño de la vivienda.\n\\(X_2\\): número de habitaciones.\n\\(X_3\\): ubicación.\n\nY como variable de respuesta:\n\\[\nY = \\text{precio de la vivienda}\n\\]\nBuscamos aprender la relación:\n\\[\n\\text{precio}\n=\nf(\\text{tamaño, habitaciones, ubicación})\n+\n\\varepsilon\n\\]\nEl objetivo es utilizar los datos para estimar la función desconocida \\(f\\)."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#de-forma-general",
     "href": "lecciones/unidad-01/leccion-07.html#de-forma-general",
     "title": "Aprendizaje supervisado",
     "section": "De forma general",
-    "text": "De forma general\nLas variables de entrada pueden representarse como:\n\\[\nX = (X_1, X_2, \\ldots, X_p)\n\\]\ndonde:\n\n\\(X\\): variables de entrada (features o predictors).\n\\(Y\\): variable de respuesta (response).\n\nLa relación entre las entradas y la respuesta se representa como:\n\\[\nY = f(X) + \\varepsilon\n\\]\ndonde:\n\n\\(f\\) representa la relación entre \\(X\\) y \\(Y\\).\n\\(\\varepsilon\\) representa el error aleatorio."
+    "text": "De forma general\nSea \\(\\mathbf X\\) el vector de variables predictoras\n\\[\n\\mathbf X = (X_1, X_2, \\ldots, X_p)^T,\n\\]\ny \\(Y\\) la variable de respuesta.\nLa relación entre las variables predictoras y la variable de respuesta se representa como\n\\[\nY = f(\\mathbf X) + \\varepsilon,\n\\]\ndonde:\n\n\\(f\\) representa la relación entre \\(\\mathbf X\\) y \\(Y\\).\n\\(\\varepsilon\\) representa el error aleatorio."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#predicción-e-inferencia",
     "href": "lecciones/unidad-01/leccion-07.html#predicción-e-inferencia",
     "title": "Aprendizaje supervisado",
     "section": "Predicción e inferencia",
-    "text": "Predicción e inferencia\nExisten dos objetivos principales:\n\n\n\n\n\n\n\nPredicción\nInferencia\n\n\n\n\nPredecir \\(Y\\) a partir de \\(X\\)\nComprender la relación entre \\(X\\) y \\(Y\\)\n\n\nImporta la precisión\nImporta la interpretación\n\n\n\\(f\\) puede tratarse como una caja negra\nNecesitamos entender la forma de \\(f\\)"
+    "text": "Predicción e inferencia\nCuando se quiere encontrar la relación entre \\(\\mathbf X\\) y \\(Y\\) se tienen dos objetivos principales:\n\n\n\n\n\n\n\nPredicción\nInferencia\n\n\n\n\nEstimar \\(Y\\) a partir de \\(\\mathbf X\\)  \\(\\hat{Y} \\approx Y\\)\nComprender la relación entre \\(\\mathbf X\\) y \\(Y\\)  \\(Y = f(\\mathbf X) + \\varepsilon\\)\n\n\nBuscar una función \\(\\hat{f}\\) que aproxime \\(Y\\)  \\(\\hat{Y} = \\hat{f}(\\mathbf X)\\)\nEstudiar la forma de \\(f\\)  \\(f: \\mathbf X \\rightarrow Y\\)\n\n\nMinimizar el error de predicción  \\(\\lvert Y - \\hat{f}(\\mathbf X) \\rvert \\approx 0\\)\nEntender el efecto de \\(\\mathbf X\\) sobre \\(Y\\)  \\(\\displaystyle \\frac{\\partial f}{\\partial X_j}\\)"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#predicción",
     "href": "lecciones/unidad-01/leccion-07.html#predicción",
     "title": "Aprendizaje supervisado",
     "section": "Predicción",
-    "text": "Predicción\nUtilizamos \\(\\hat f\\) para obtener una respuesta estimada:\n\\[\n\\hat{Y} = \\hat{f}(X)\n\\]\nEjemplo: predecir el precio de una vivienda a partir de sus características."
+    "text": "Predicción\nDados un vector de variables predictoras \\(\\mathbf X\\) y una variable de respuesta \\(Y\\), buscamos una función \\(\\hat f\\) tal que\n\\[\n\\hat Y = \\hat f(\\mathbf X) \\quad \\text{y} \\quad \\hat Y \\approx Y.\n\\]\nEquivalentemente,\n\\[\n\\left|Y - \\hat f(\\mathbf X)\\right| \\approx 0.\n\\]\n\nPredecir el precio de una vivienda a partir de características como los metros cuadrados construidos, número de habitaciones, número de baños y antigüedad."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#inferencia",
     "href": "lecciones/unidad-01/leccion-07.html#inferencia",
     "title": "Aprendizaje supervisado",
     "section": "Inferencia",
-    "text": "Inferencia\nUtilizamos \\(\\hat f\\) para entender cómo \\(X\\) se relaciona con \\(Y\\).\nEjemplo: estudiar cómo el tamaño, número de habitaciones y ubicación se relacionan con el precio de una vivienda.\nPreguntas de interés:\n\n¿Qué variables están asociadas con el precio?\n¿Cómo cambia el precio cuando cambia una variable?\n¿Qué forma tiene la relación?"
+    "text": "Inferencia\nPor otro lado, en inferencia buscamos utilizar \\(\\hat f\\) para comprender la relación entre \\(\\mathbf X\\) y \\(Y\\) y aproximar la forma de \\(f\\):\n\\[\nY = f(\\mathbf X) + \\varepsilon,\n\\qquad\n\\hat f \\approx f.\n\\]\nEn particular, nos interesa entender cómo cada variable \\(X_j\\) se relaciona con \\(Y\\).\n\nEstudiar cómo los metros cuadrados construidos, el número de habitaciones y la ubicación se relacionan con el precio de una vivienda.\n\n¿Qué variables están asociadas con el precio?\n¿Cómo cambia el precio al cambiar una variable?\n¿Qué forma tiene la relación entre cada variable y el precio?"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#datos-de-entrenamiento",
     "href": "lecciones/unidad-01/leccion-07.html#datos-de-entrenamiento",
     "title": "Aprendizaje supervisado",
     "section": "Datos de entrenamiento",
-    "text": "Datos de entrenamiento\nPara estimar \\(f\\) utilizamos un conjunto de datos de entrenamiento:\n\\[\n\\{(x_1,y_1),(x_2,y_2),\\ldots,(x_n,y_n)\\}\n\\]\ndonde cada observación contiene:\n\n\\(x_i\\): valores de las variables de entrada.\n\\(y_i\\): respuesta observada.\n\nEl objetivo es encontrar una función \\(\\hat f\\) tal que:\n\\[\nY \\approx \\hat f(X)\n\\]"
+    "text": "Datos de entrenamiento\nPara estimar \\(f\\) utilizamos un conjunto de datos de entrenamiento:\n\\[\n\\{(\\mathbf{x}_1,y_1),(\\mathbf{x}_2,y_2),\\ldots,(\\mathbf{x}_n,y_n)\\},\n\\]\ndonde\n\\[\n\\mathbf{x}_i = (x_{i1},x_{i2},\\ldots,x_{ip})\n\\]\nrepresenta los valores de las \\(p\\) variables predictoras para la observación \\(i\\), y \\(y_i\\) es su respuesta observada.\nA partir de estos datos buscamos estimar una función \\(\\hat f\\) tal que:\n\\[\n\\hat y_i = \\hat f(\\mathbf{x}_i)\n\\qquad \\text{y} \\qquad\n\\hat y_i \\approx y_i.\n\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#métodos-paramétricos",
     "href": "lecciones/unidad-01/leccion-07.html#métodos-paramétricos",
     "title": "Aprendizaje supervisado",
     "section": "Métodos paramétricos",
-    "text": "Métodos paramétricos\nLos métodos paramétricos suponen una forma específica para \\(f\\).\nPor ejemplo, podemos asumir una relación lineal:\n\\[\nf(X)=\\beta_0+\\beta_1X_1+\\cdots+\\beta_pX_p\n\\]\nEl problema se reduce entonces a estimar:\n\\[\n\\beta_0,\\beta_1,\\ldots,\\beta_p\n\\]\nVentaja: simplifican el problema.\nDesventaja: si la forma elegida no representa adecuadamente la relación real, el modelo puede ser poco preciso."
+    "text": "Métodos paramétricos\nLos métodos paramétricos suponen una forma específica para \\(f\\).\n\nPodemos asumir una relación lineal entre \\(\\mathbf X\\) y \\(Y\\):\n\\[\nf(\\mathbf X)=\\beta_0+\\beta_1X_1+\\cdots+\\beta_pX_p\n\\]\nEl problema se reduce entonces a estimar:\n\\[\n\\beta_0,\\beta_1,\\ldots,\\beta_p\n\\]\n\nVentaja: simplifican el problema.\nDesventaja: si la forma elegida no representa adecuadamente la relación real, el modelo puede ser poco preciso."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#métodos-no-paramétricos",
     "href": "lecciones/unidad-01/leccion-07.html#métodos-no-paramétricos",
     "title": "Aprendizaje supervisado",
     "section": "Métodos no paramétricos",
-    "text": "Métodos no paramétricos\nLos métodos no paramétricos no imponen una forma específica para \\(f\\).\nBuscan aproximarse a los datos con mayor flexibilidad.\nEjemplo: Para predecir \\(Y\\) para una nueva observación, \\(k\\)-NN busca las observaciones más cercanas y utiliza sus valores para obtener la predicción.\nNo suponemos previamente que \\(f\\) sea lineal, cuadrática, exponencial, etc.\n\nLa forma de \\(\\hat f\\) se adapta a los datos.\n\nVentaja: pueden representar relaciones más complejas.\nDesventaja: generalmente requieren más observaciones y pueden ajustarse demasiado a los datos."
+    "text": "Métodos no paramétricos\nLos métodos no paramétricos no imponen una forma específica para \\(f\\).\nBuscan aproximarse a los datos con mayor flexibilidad.\n\nPara predecir \\(Y\\) para una nueva observación, \\(k\\)-NN busca las observaciones más cercanas y utiliza sus valores para obtener la predicción.\n\nNo suponemos previamente que \\(f\\) sea lineal, cuadrática, exponencial, etc.\n\nLa forma de \\(\\hat f\\) se adapta a los datos.\n\nVentaja: pueden representar relaciones más complejas.\nDesventaja: generalmente requieren más observaciones y pueden ajustarse demasiado a los datos."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#aprendizaje-supervisado",
     "href": "lecciones/unidad-01/leccion-07.html#aprendizaje-supervisado",
     "title": "Aprendizaje supervisado",
     "section": "Aprendizaje supervisado",
-    "text": "Aprendizaje supervisado\nEn el aprendizaje supervisado, cada observación contiene:\n\\[\n(x_i,y_i)\n\\]\nEs decir, conocemos las variables de entrada \\(X\\) y la respuesta \\(Y\\).\nEl objetivo es aprender la relación entre ambas para:\n\npredecir nuevas respuestas,\no realizar inferencia sobre la relación entre las variables."
+    "text": "Aprendizaje supervisado\nEn el aprendizaje supervisado buscamos aprender la relación entre un vector de variables predictoras \\(\\mathbf{X}\\) y una variable de respuesta \\(Y\\):\n\\[\nY = f(\\mathbf{X}) + \\varepsilon.\n\\]\nPara ello, observamos \\(n\\) pares:\n\\[\n\\mathcal D = \\left\\{(\\mathbf{x}_i,y_i)\\right\\}_{i=1}^{n}.\n\\]\nEl objetivo es aproximar la función desconocida \\(f\\) para:\n\npredecir la respuesta \\(Y\\) a partir de \\(\\mathbf{X}\\),\nrealizar inferencia sobre la relación entre \\(\\mathbf{X}\\) y \\(Y\\)."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#regresión-y-clasificación",
     "href": "lecciones/unidad-01/leccion-07.html#regresión-y-clasificación",
     "title": "Aprendizaje supervisado",
     "section": "Regresión y clasificación",
-    "text": "Regresión y clasificación\nLos problemas supervisados pueden distinguirse según el tipo de respuesta \\(Y\\).\n\n\n\n\nRegresión\nClasificación\n\n\n\n\nRespuesta\nCuantitativa\nCualitativa\n\n\nObjetivo\nPredecir un valor\nPredecir una clase\n\n\nEjemplo\nPrecio de una casa\nDiagnóstico positivo/negativo\n\n\n\nLa distinción depende principalmente de la variable de respuesta, no del tipo de predictores."
+    "text": "Regresión y clasificación\nLos problemas supervisados pueden distinguirse según el tipo de respuesta \\(Y\\).\n\n\n\n\n\n\n\n\n\nRegresión\nClasificación\n\n\n\n\nTipo de respuesta \\(Y\\)\nCuantitativa\nCualitativa\n\n\nValores de \\(Y\\)\nValores numéricos\nCategorías o clases\n\n\nObjetivo\nEstimar un valor\nAsignar una clase\n\n\nPredicción\n\\(\\hat y \\in \\mathbb R\\)\n\\(\\hat y \\in \\{C_1,\\ldots,C_K\\}\\)\n\n\nEjemplo de respuesta\nPrecio, temperatura, consumo\nPositivo/negativo, especie, categoría\n\n\nEjemplo de problema\nPredecir el precio de una vivienda\nClasificar un tumor como benigno o maligno\n\n\n\nLa distinción depende principalmente de la variable de respuesta \\(Y\\), no del tipo de variables predictoras."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#aprendizaje-no-supervisado",
     "href": "lecciones/unidad-01/leccion-07.html#aprendizaje-no-supervisado",
     "title": "Aprendizaje supervisado",
     "section": "Aprendizaje no supervisado",
-    "text": "Aprendizaje no supervisado\nEn el aprendizaje no supervisado observamos:\n\\[\nx_1,x_2,\\ldots,x_n\n\\]\npero no existe una respuesta \\(Y\\) conocida.\nPor lo tanto, no buscamos predecir una respuesta.\nBuscamos descubrir:\n\nrelaciones entre variables,\nsimilitudes entre observaciones,\nestructuras o grupos presentes en los datos."
+    "text": "Aprendizaje no supervisado\nEn el aprendizaje no supervisado observamos \\(n\\) realizaciones del vector de variables \\(\\mathbf X\\):\n\\[\n\\mathcal D = \\left\\{\\mathbf{x}_i\\right\\}_{i=1}^{n},\n\\]\npero no existe una variable de respuesta \\(Y\\) conocida.\nPor lo tanto, buscamos descubrir estructura presente en los datos, por ejemplo:\n\nrelaciones entre variables,\nsimilitudes entre observaciones,\ngrupos o patrones presentes en los datos."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#cómo-evaluamos-un-modelo",
@@ -1104,5 +1104,180 @@
     "title": "Proyecto",
     "section": "Rúbrica 1. Planteamiento del problema y modelado supervisado",
     "text": "Rúbrica 1. Planteamiento del problema y modelado supervisado\nLa siguiente rúbrica describe los criterios de evaluación para el primer entregable del proyecto.\n\n\n\n\n\n\n\n\n\n\nCriterio\nNo entregado (0%)\nInsuficiente (40%)\nAceptable (70%)\nExcelente (100%)\n\n\n\n\nPlanteamiento del problema\nNo se presenta el planteamiento del problema.\nEl problema es poco claro o carece de justificación.\nEl problema está claramente definido y cuenta con una justificación básica.\nEl problema está claramente definido, bien justificado y demuestra una comprensión sólida del contexto y su relevancia.\n\n\nRevisión de literatura\nNo se presenta revisión de literatura.\nSe presentan menos de tres artículos o el análisis es superficial.\nSe presentan al menos tres artículos relevantes y se describe su relación con el problema.\nLos artículos son pertinentes, se analizan críticamente y se establece claramente su relación con el proyecto.\n\n\nDescripción del conjunto de datos\nNo se describe el conjunto de datos.\nLa descripción es incompleta o poco clara.\nSe describe el origen, las variables principales y las características generales del conjunto de datos.\nLa descripción es completa, organizada y justifica la selección del conjunto de datos para resolver el problema.\n\n\nAnálisis exploratorio de datos (EDA)\nNo se realiza el análisis exploratorio.\nEl análisis es limitado o las visualizaciones son escasas y poco interpretadas.\nSe presentan visualizaciones y estadísticas descriptivas que permiten comprender el conjunto de datos.\nEl análisis es profundo, utiliza visualizaciones apropiadas y genera conclusiones relevantes para el desarrollo del proyecto.\n\n\nImplementación de modelos supervisados\nNo se implementan modelos.\nSe implementan menos de tres modelos o presentan errores importantes en su desarrollo o entrenamiento.\nSe implementan y entrenan correctamente al menos tres modelos de aprendizaje supervisado.\nLos modelos están correctamente implementados, se justifica su selección y se siguen buenas prácticas en su desarrollo y entrenamiento.\n\n\nComparación de resultados\nNo se comparan los modelos.\nLa comparación es incompleta o utiliza métricas inadecuadas.\nLos modelos se comparan mediante métricas apropiadas y se identifica el mejor desempeño.\nLa comparación es rigurosa, interpreta adecuadamente las métricas y justifica de manera sólida la selección del modelo final.\n\n\nCalidad del reporte\nNo se entrega reporte.\nEl reporte presenta deficiencias importantes de organización, redacción o formato.\nEl reporte está bien organizado, redactado y documentado, con referencias adecuadas.\nEl reporte presenta una excelente organización, redacción técnica, figuras y tablas de calidad, así como referencias correctamente citadas."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#variables-y-observaciones",
+    "href": "lecciones/unidad-01/leccion-07.html#variables-y-observaciones",
+    "title": "Aprendizaje supervisado",
+    "section": "Variables y observaciones",
+    "text": "Variables y observaciones\nSupongamos que estudiamos \\(p\\) variables:\n\\[\n\\mathbf{X} = (X_1, X_2, \\ldots, X_p)^T.\n\\]\nCada \\(X_j\\) representa una variable o característica medida.\nPara una observación \\(i\\), los valores observados de estas variables son:\n\\[\n\\mathbf{x}_i = (x_{i1}, x_{i2}, \\ldots, x_{ip})^T,\n\\qquad i=1,\\ldots,n.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#variables-y-observaciones-1",
+    "href": "lecciones/unidad-01/leccion-07.html#variables-y-observaciones-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Variables y observaciones",
+    "text": "Variables y observaciones\nPor tanto, un conjunto de datos con \\(n\\) observaciones y \\(p\\) variables puede representarse mediante:\n\\[\n\\mathbf{X} =\n\\begin{pmatrix}\nx_{11} & x_{12} & \\cdots & x_{1p}\\\\\nx_{21} & x_{22} & \\cdots & x_{2p}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\nx_{n1} & x_{n2} & \\cdots & x_{np}\n\\end{pmatrix}.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#conjunto-de-observaciones",
+    "href": "lecciones/unidad-01/leccion-07.html#conjunto-de-observaciones",
+    "title": "Aprendizaje supervisado",
+    "section": "Conjunto de observaciones",
+    "text": "Conjunto de observaciones\nUn conjunto de \\(n\\) observaciones de las \\(p\\) variables, también llamado conjunto de datos (dataset), puede representarse como\n\\[\n\\mathcal D\n=\n\\left\\{\n\\mathbf{x}_i\n\\right\\}_{i=1}^{n},\n\\]\ndonde cada observación es un vector\n\\[\n\\mathbf{x}_i\n=\n(x_{i1},x_{i2},\\ldots,x_{ip})^T.\n\\]\nEquivalentemente, podemos organizar las observaciones como las filas de una matriz:\n\\[\n\\mathcal D\n=\n\\begin{pmatrix}\n\\mathbf{x}_1^T\\\\\n\\mathbf{x}_2^T\\\\\n\\vdots\\\\\n\\mathbf{x}_n^T\n\\end{pmatrix}\n=\n\\begin{pmatrix}\nx_{11} & x_{12} & \\cdots & x_{1p}\\\\\nx_{21} & x_{22} & \\cdots & x_{2p}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\nx_{n1} & x_{n2} & \\cdots & x_{np}\n\\end{pmatrix}\n\\in \\mathbb{R}^{n\\times p}.\n\\]\nCada fila corresponde a una observación y cada columna a una variable."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#aprendizaje-por-refuerzo",
+    "href": "lecciones/unidad-01/leccion-07.html#aprendizaje-por-refuerzo",
+    "title": "Aprendizaje supervisado",
+    "section": "Aprendizaje por refuerzo",
+    "text": "Aprendizaje por refuerzo\nEn el aprendizaje por refuerzo, las observaciones\n\\[\n\\mathcal D = \\left\\{\\mathbf{x}_i\\right\\}_{i=1}^n\n\\]\ndescriben el estado de un entorno con el que interactúa un agente.\nA partir de cada observación \\(\\mathbf{x}_i\\), el agente selecciona una acción \\(a_i\\) y recibe una recompensa \\(r_i\\):\n\\[\n\\mathbf{x}_i\n\\longrightarrow\na_i\n\\longrightarrow\nr_i.\n\\]\nEl objetivo es aprender una estrategia o política que determine qué acción tomar para maximizar la recompensa acumulada.\nA diferencia del aprendizaje supervisado, no conocemos una respuesta correcta \\(y_i\\); el agente aprende a partir de las consecuencias de sus acciones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#conjunto-de-datos",
+    "href": "lecciones/unidad-01/leccion-07.html#conjunto-de-datos",
+    "title": "Aprendizaje supervisado",
+    "section": "Conjunto de datos",
+    "text": "Conjunto de datos\nUn conjunto de \\(n\\) observaciones de las \\(p\\) variables puede representarse como\n\\[\n\\left\\{\n\\mathbf{x}_i\n\\right\\}_{i=1}^{n}\n=\n\\left\\{\n(x_{i1},x_{i2},\\ldots,x_{ip})\n\\right\\}_{i=1}^{n}.\n\\]\nEquivalentemente, podemos organizar las observaciones en una matriz:\n\\[\n\\mathcal D = \\begin{pmatrix}\nx_{11} & x_{12} & \\cdots & x_{1p}\\\\\nx_{21} & x_{22} & \\cdots & x_{2p}\\\\\n\\vdots & \\vdots & \\ddots & \\vdots\\\\\nx_{n1} & x_{n2} & \\cdots & x_{np}\n\\end{pmatrix}\n\\in \\mathbb{R}^{n\\times p}.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo",
+    "href": "lecciones/unidad-01/leccion-07.html#ejemplo",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nSupongamos que queremos estudiar el precio de una vivienda a partir de algunas de sus características:\n\n\n\n\n\n\n\n\n\nSuperficie (m²)\nHabitaciones\nAntigüedad (años)\nPrecio (miles de pesos)\n\n\n\n\n80\n2\n15\n1450\n\n\n100\n3\n10\n1750\n\n\n120\n3\n8\n2100\n\n\n150\n4\n5\n2550\n\n\n\nEl vector de variables predictoras es\n\\[\n\\mathbf X =\n\\begin{pmatrix}\nX_1\\\\\nX_2\\\\\nX_3\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n\\text{Superficie}\\\\\n\\text{Habitaciones}\\\\\n\\text{Antigüedad}\n\\end{pmatrix},\n\\]\nmientras que la variable de respuesta es\n\\[\nY = \\text{Precio}.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo-1",
+    "href": "lecciones/unidad-01/leccion-07.html#ejemplo-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nPara cada vivienda observamos una realización \\((\\mathbf x_i,y_i)\\) de estas variables. Por ejemplo,\n\\[\n\\mathbf x_1 =\n\\begin{pmatrix}\n80\\\\\n2\\\\\n15\n\\end{pmatrix},\n\\qquad\ny_1 = 1450.\n\\]\nEl conjunto de datos observado puede representarse como\n\\[\n\\mathcal D =\n\\left(\n\\begin{array}{ccc|c}\n80  & 2 & 15 & 1450\\\\\n100 & 3 & 10 & 1750\\\\\n120 & 3 & 8  & 2100\\\\\n150 & 4 & 5  & 2550\n\\end{array}\n\\right)\n=\n(\\mathbf{X}_{\\text{obs}}\\mid\\mathbf{y}).\n\\]\nCada fila corresponde a una observación y cada columna a una variable."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo-2",
+    "href": "lecciones/unidad-01/leccion-07.html#ejemplo-2",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nSupongamos que tenemos información sobre clientes de una tienda:\n\n\n\nEdad\nIngreso mensual\nGasto mensual\n\n\n\n\n22\n12,000\n3,500\n\n\n25\n15,000\n4,200\n\n\n45\n38,000\n8,500\n\n\n48\n42,000\n9,100\n\n\n31\n24,000\n5,600\n\n\n\nEl vector de variables es\n\\[\n\\mathbf X\n=\n\\begin{pmatrix}\nX_1\\\\\nX_2\\\\\nX_3\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n\\text{Edad}\\\\\n\\text{Ingreso}\\\\\n\\text{Gasto}\n\\end{pmatrix}.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo-3",
+    "href": "lecciones/unidad-01/leccion-07.html#ejemplo-3",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nPor lo tanto, el conjunto de datos es\n\\[\n\\mathcal D\n=\n\\begin{pmatrix}\n22 & 12000 & 3500\\\\\n25 & 15000 & 4200\\\\\n45 & 38000 & 8500\\\\\n48 & 42000 & 9100\\\\\n31 & 24000 & 5600\n\\end{pmatrix}.\n\\]\nEn este caso no existe una variable de respuesta \\(Y\\). A partir de las variables observadas podemos buscar, por ejemplo, grupos de clientes con características similares o relaciones entre las variables."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo-4",
+    "href": "lecciones/unidad-01/leccion-07.html#ejemplo-4",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nSupongamos que observamos el estado de un vehículo a partir de las siguientes variables:\n\n\n\n\n\n\n\n\nDistancia al objetivo (m)\nDistancia al obstáculo (m)\nVelocidad (m/s)\n\n\n\n\n5.2\n1.3\n0.8\n\n\n4.5\n0.7\n0.9\n\n\n3.8\n2.1\n0.7\n\n\n2.4\n0.3\n1.0\n\n\n1.2\n1.5\n0.6\n\n\n\nEl vector de variables que describe el estado del entorno es\n\\[\n\\mathbf X\n=\n\\begin{pmatrix}\nX_1\\\\\nX_2\\\\\nX_3\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n\\text{Distancia al objetivo}\\\\\n\\text{Distancia al obstáculo}\\\\\n\\text{Velocidad}\n\\end{pmatrix}.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo-5",
+    "href": "lecciones/unidad-01/leccion-07.html#ejemplo-5",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nEn aprendizaje por refuerzo, cada observación \\(\\mathbf{x}_i\\) representa el estado del entorno a partir del cual el agente debe tomar una decisión.\nPor ejemplo, podemos definir las acciones disponibles como\n\\[\na_i \\in\n\\{\n\\text{avanzar},\n\\text{girar izquierda},\n\\text{girar derecha}\n\\}.\n\\]\nTambién definimos una recompensa que evalúa las consecuencias de las acciones, por ejemplo:\n\\[\nr_i =\n\\begin{cases}\n+10, & \\text{si alcanza el objetivo},\\\\\n-10, & \\text{si choca},\\\\\n+1, & \\text{si se acerca al objetivo}.\n\\end{cases}\n\\]\nAsí, la interacción puede representarse de forma simplificada como\n\\[\n\\mathbf{x}_i\n\\longrightarrow\na_i\n\\longrightarrow\nr_i.\n\\]\nEl objetivo es aprender una política que determine qué acción tomar en cada estado para maximizar la recompensa acumulada."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#notación",
+    "href": "lecciones/unidad-01/leccion-07.html#notación",
+    "title": "Aprendizaje supervisado",
+    "section": "Notación",
+    "text": "Notación\n\nA partir de este punto:\n\n\\(\\mathbf X = (X_1,\\ldots,X_p)^T\\) es el vector de variables predictoras.\n\\(Y\\) es la variable de respuesta.\n\\(\\mathbf{x}_i = (x_{i1},\\ldots,x_{ip})^T\\) es la observación \\(i\\) de las variables predictoras.\n\\(y_i\\) es la observación \\(i\\) de la variable de respuesta.\n\\(\\mathcal D = \\{(\\mathbf{x}_i,y_i)\\}_{i=1}^n\\) es el conjunto de datos."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#ejemplo-6",
+    "href": "lecciones/unidad-01/leccion-07.html#ejemplo-6",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nSupongamos que queremos predecir el precio de una vivienda a partir de su tamaño, número de habitaciones y ubicación.\nEl vector de variables predictoras es\n\\[\n\\mathbf X\n=\n\\begin{pmatrix}\nX_1\\\\\nX_2\\\\\nX_3\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n\\text{Tamaño}\\\\\n\\text{Habitaciones}\\\\\n\\text{Ubicación}\n\\end{pmatrix},\n\\]\ny la variable de respuesta es\n\\[\nY = \\text{Precio}.\n\\]\nPor lo tanto, planteamos el problema como\n\\[\n\\text{Precio}\n=\nf(\\text{Tamaño},\\text{Habitaciones},\\text{Ubicación})\n+\n\\varepsilon.\n\\]\nEl objetivo es utilizar datos para estimar la función desconocida \\(f\\) y utilizarla para predecir el precio de nuevas viviendas."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#estimación-de-f",
+    "href": "lecciones/unidad-01/leccion-07.html#estimación-de-f",
+    "title": "Aprendizaje supervisado",
+    "section": "Estimación de \\(f\\)",
+    "text": "Estimación de \\(f\\)\nLa función \\(f\\) es desconocida. A partir del conjunto de datos\n\\[\n\\mathcal D = \\{(\\mathbf{x}_i,y_i)\\}_{i=1}^n,\n\\]\nbuscamos obtener una estimación \\(\\hat f\\) de esta relación:\n\\[\n\\hat f(\\mathbf X) \\approx f(\\mathbf X).\n\\]\nLa estimación de \\(f\\) puede tener dos objetivos principales:\n\nPredicción: utilizar \\(\\hat f\\) para predecir nuevos valores de \\(Y\\).\nInferencia: utilizar \\(\\hat f\\) para comprender la relación entre \\(\\mathbf X\\) y \\(Y\\)."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#tipos-de-métodos",
+    "href": "lecciones/unidad-01/leccion-07.html#tipos-de-métodos",
+    "title": "Aprendizaje supervisado",
+    "section": "Tipos de métodos",
+    "text": "Tipos de métodos\nExisten diferentes métodos para estimar la función desconocida \\(f\\). De forma general, podemos distinguir entre:\n\nMétodos paramétricos: suponen cierta estructura para representar \\(f\\).\nMétodos no paramétricos: permiten estimar \\(f\\) de una forma más flexible."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#section",
+    "href": "lecciones/unidad-01/leccion-07.html#section",
+    "title": "Aprendizaje supervisado",
+    "section": "",
+    "text": "Para estimar \\(f\\) utilizamos un conjunto de datos de entrenamiento:\n\\[\n\\{(\\mathbf{x}_1,y_1),(\\mathbf{x}_2,y_2),\\ldots,(\\mathbf{x}_n,y_n)\\},\n\\]\ndonde\n\\[\n\\mathbf{x}_i = (x_{i1},x_{i2},\\ldots,x_{ip})\n\\]\nrepresenta los valores de las \\(p\\) variables predictoras para la observación \\(i\\), y \\(y_i\\) es su respuesta observada.\nA partir de estos datos buscamos estimar una función \\(\\hat f\\) tal que:\n\\[\n\\hat y_i = \\hat f(\\mathbf{x}_i)\n\\qquad \\text{y} \\qquad\n\\hat y_i \\approx y_i.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#entrenamiento",
+    "href": "lecciones/unidad-01/leccion-07.html#entrenamiento",
+    "title": "Aprendizaje supervisado",
+    "section": "Entrenamiento",
+    "text": "Entrenamiento\nPara construir y evaluar un modelo, el conjunto de datos \\(\\mathcal D\\) se divide en dos subconjuntos:\n\nConjunto de entrenamiento (train): se utiliza para estimar \\(\\hat f\\).\nConjunto de evaluación (test): se utiliza para evaluar el desempeño de \\(\\hat f\\) sobre datos que no fueron utilizados durante el entrenamiento.\n\n\\[\n\\mathcal D\n=\n\\mathcal D_{\\text{train}}\n\\cup\n\\mathcal D_{\\text{test}},\n\\qquad\n\\mathcal D_{\\text{train}}\n\\cap\n\\mathcal D_{\\text{test}}\n=\n\\varnothing.\n\\]\nEl objetivo es evaluar qué tan bien el modelo generaliza a nuevas observaciones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#entrenamiento-y-evaluación",
+    "href": "lecciones/unidad-01/leccion-07.html#entrenamiento-y-evaluación",
+    "title": "Aprendizaje supervisado",
+    "section": "Entrenamiento y evaluación",
+    "text": "Entrenamiento y evaluación\nPara construir y evaluar un modelo, el conjunto de datos \\(\\mathcal D\\) se divide en dos subconjuntos:\n\nConjunto de entrenamiento (train): se utiliza para estimar \\(\\hat f\\).\nConjunto de evaluación (test): se utiliza para evaluar el desempeño de \\(\\hat f\\) sobre datos que no fueron utilizados durante el entrenamiento.\n\n\\[\n\\mathcal D\n=\n\\mathcal D_{\\text{train}}\n\\cup\n\\mathcal D_{\\text{test}},\n\\qquad\n\\mathcal D_{\\text{train}}\n\\cap\n\\mathcal D_{\\text{test}}\n=\n\\varnothing.\n\\]\nEl objetivo es evaluar qué tan bien el modelo generaliza a nuevas observaciones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-07.html#evaluación",
+    "href": "lecciones/unidad-01/leccion-07.html#evaluación",
+    "title": "Aprendizaje supervisado",
+    "section": "Evaluación",
+    "text": "Evaluación\nEn aprendizaje supervisado conocemos la respuesta real \\(Y\\), por lo que podemos compararla con la respuesta predicha \\(\\hat Y\\).\nPor ejemplo, en regresión podemos medir el error mediante el error cuadrático medio:\n\\[\n\\text{MSE} = \\frac{1}{n}\\sum_{i=1}^{n}(y_i-\\hat y_i)^2.\n\\]\nSin embargo, no buscamos únicamente un error pequeño sobre los datos utilizados para entrenar el modelo:\n\nTraining error: error sobre los datos de entrenamiento.\nTest error: error sobre datos que el modelo no ha visto durante el entrenamiento.\n\n\nEl objetivo es obtener un test error bajo, es decir, que el modelo sea capaz de generalizar a nuevas observaciones."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#regresión-lineal-simple",
+    "href": "lecciones/unidad-01/leccion-08.html#regresión-lineal-simple",
+    "title": "Aprendizaje supervisado",
+    "section": "Regresión lineal simple",
+    "text": "Regresión lineal simple\n\nEstimadores de mínimos cuadrados\nPara el modelo\n\\[\nY = \\beta_0 + \\beta_1 X + \\varepsilon,\n\\]\nlos valores que minimizan\n\\[\n\\operatorname{RSS}(\\beta_0,\\beta_1)\n=\n\\sum_{i=1}^n\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nson\n\\[\n\\boxed{\n\\hat{\\beta}_1\n=\n\\frac{\n\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})\n}{\n\\sum_{i=1}^{n}(x_i-\\bar{x})^2\n},\n\\qquad\n\\hat{\\beta}_0\n=\n\\bar y-\\hat{\\beta}_1\\bar x\n}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html",
+    "href": "lecciones/unidad-01/leccion-08.html",
+    "title": "Aprendizaje supervisado",
+    "section": "",
+    "text": "Partimos de la relación general entre las variables \\(X\\) y \\(Y\\):\n\\[\nY = f(X) + \\varepsilon\n\\]\nEn la regresión lineal asumimos que la función \\(f\\) tiene una forma lineal.\nPara una variable predictora:\n\\[\nf(X) = \\beta_0 + \\beta_1 X\n\\]\npor lo tanto:\n\\[\nY = \\beta_0 + \\beta_1 X + \\varepsilon\n\\]\ndonde \\(\\beta_0\\) es el intercepto y \\(\\beta_1\\) representa el cambio esperado en \\(Y\\) asociado con un cambio de una unidad en \\(X\\).\nLa función estimada a partir de los datos es:\n\\[\n\\hat{f}(X) = \\hat{\\beta}_0 + \\hat{\\beta}_1 X\n\\]\n\n\n\nEn el caso univariable, cada observación \\((x_i,y_i)\\) puede representarse como un punto en el plano.\nEl objetivo es encontrar la recta que mejor represente la relación entre \\(X\\) y \\(Y\\).\nPara una observación, el residuo es:\n\\[\ne_i = y_i-\\hat{y}_i\n\\]\nEl método de mínimos cuadrados ordinarios elige la recta que minimiza la suma de los residuos al cuadrado:\n\\[\n\\text{RSS} =\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n\\]\n\n\n\nQueremos encontrar \\(\\beta_0\\) y \\(\\beta_1\\) que minimicen:\n\\[\n\\text{RSS}(\\beta_0,\\beta_1)\n=\n\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nDerivamos respecto a \\(\\beta_0\\):\n\\[\n\\frac{\\partial \\text{RSS}}{\\partial\\beta_0}\n=\n-2\\sum_{i=1}^{n}\n(y_i-\\beta_0-\\beta_1x_i)\n\\]\nIgualando a cero:\n\\[\n\\hat{\\beta}_0\n=\n\\bar{y}-\\hat{\\beta}_1\\bar{x}\n\\]\n\n\n\nDerivamos respecto a \\(\\beta_1\\):\n\\[\n\\frac{\\partial \\text{RSS}}{\\partial\\beta_1}\n=\n-2\\sum_{i=1}^{n}\nx_i(y_i-\\beta_0-\\beta_1x_i)\n\\]\nIgualando a cero y resolviendo:\n\\[\n\\hat{\\beta}_1\n=\n\\frac{\n\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})\n}{\n\\sum_{i=1}^{n}(x_i-\\bar{x})^2\n}\n\\]\nFinalmente:\n\\[\n\\hat{f}(X)\n=\n\\hat{\\beta}_0+\\hat{\\beta}_1X\n\\]\n\n\n\n\nEstimadores de mínimos cuadrados\nPara el modelo\n\\[\nY = \\beta_0 + \\beta_1 X + \\varepsilon,\n\\]\nlos valores que minimizan\n\\[\n\\operatorname{RSS}(\\beta_0,\\beta_1)\n=\n\\sum_{i=1}^n\n(y_i-\\beta_0-\\beta_1x_i)^2\n\\]\nson\n\\[\n\\boxed{\n\\hat{\\beta}_1\n=\n\\frac{\n\\sum_{i=1}^{n}(x_i-\\bar{x})(y_i-\\bar{y})\n}{\n\\sum_{i=1}^{n}(x_i-\\bar{x})^2\n},\n\\qquad\n\\hat{\\beta}_0\n=\n\\bar y-\\hat{\\beta}_1\\bar x\n}\n\\]\n\n\n\n\n\n\nQueremos modelar la relación entre:\n\n\\(X\\): superficie de una vivienda en \\(\\text{m}^2\\).\n\\(Y\\): precio de venta en miles de pesos.\n\nTenemos observaciones como:\n\\[\n(80,1450),\\quad\n(100,1750),\\quad\n(120,2100),\\quad\n(150,2550)\n\\]\nObjetivo: encontrar la recta que mejor represente la relación entre la superficie y el precio de las viviendas.\n\n\n\n\nCuando tenemos \\(p\\) variables predictoras, asumimos que \\(f\\) tiene la forma:\n\\[\nf(\\mathbf X)\n=\n\\beta_0+\n\\beta_1X_1+\n\\beta_2X_2+\n\\cdots+\n\\beta_pX_p\n\\]\nPor lo tanto:\n\\[\nY\n=\n\\beta_0+\n\\beta_1X_1+\n\\cdots+\n\\beta_pX_p+\n\\varepsilon\n\\]\nEn forma matricial:\n\\[\n\\mathbf{y}\n=\n\\mathbf{X}\\boldsymbol{\\beta}\n+\n\\boldsymbol{\\varepsilon}\n\\]\nEl problema de mínimos cuadrados es:\n\\[\n\\text{RSS}(\\boldsymbol{\\beta})\n=\n(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta})^T\n(\\mathbf{y}-\\mathbf{X}\\boldsymbol{\\beta})\n\\]\n\nEn la formulación matricial, \\(\\mathbf X\\) representa la matriz de diseño, que incluye una primera columna de unos para incorporar el intercepto \\(\\beta_0\\). Por lo tanto, \\(\\mathbf X \\in \\mathbb{R}^{n\\times(p+1)}\\).\n\n\n\n\nExpandiendo:\n\\[\n\\text{RSS}\n=\n\\mathbf{y}^T\\mathbf{y}\n-\n2\\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{y}\n+\n\\boldsymbol{\\beta}^T\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\n\\]\nDerivamos respecto a \\(\\boldsymbol{\\beta}\\):\n\\[\n\\frac{\\partial \\text{RSS}}{\\partial\\boldsymbol{\\beta}}\n=\n-2\\mathbf{X}^T\\mathbf{y}\n+\n2\\mathbf{X}^T\\mathbf{X}\\boldsymbol{\\beta}\n\\]\nIgualando a cero:\n\\[\n\\mathbf{X}^T\\mathbf{X}\\hat{\\boldsymbol{\\beta}}\n=\n\\mathbf{X}^T\\mathbf{y}\n\\]\nSi \\(\\mathbf{X}^T\\mathbf{X}\\) es invertible:\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\mathbf{X}^T\\mathbf{y}\n\\]\n\n\n\n\n\nQueremos modelar el precio de una vivienda utilizando dos variables:\n\n\\(X_1\\): superficie, medida en decenas de \\(\\text{m}^2\\).\n\\(X_2\\): número de habitaciones.\n\\(Y\\): precio, en miles de pesos.\n\nTenemos las siguientes observaciones:\n\n\n\nSuperficie \\(X_1\\)\nHabitaciones \\(X_2\\)\nPrecio \\(Y\\)\n\n\n\n\n8\n2\n1450\n\n\n10\n3\n1850\n\n\n12\n2\n1850\n\n\n\nEl modelo que queremos estimar es:\n\\[\nY = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\varepsilon\n\\]\n\n\n\n\nDel ejemplo anterior obtuvimos el modelo:\n\\[\n\\hat{Y}\n=\n250\n+\n100X_1\n+\n200X_2\n\\]\ndonde:\n\n\\(X_1\\): superficie en decenas de \\(\\text{m}^2\\).\n\\(X_2\\): número de habitaciones.\n\\(\\hat{Y}\\): precio en miles de pesos.\n\n¿Cuál sería el precio estimado de una vivienda de \\(110\\) \\(\\text{m}^2\\) y \\(3\\) habitaciones?\n\n\n\nDel ejemplo anterior obtuvimos:\n\\[\n\\hat{Y}\n=\n250\n+\n100X_1\n+\n200X_2\n\\]\ndonde \\(X_1\\) representa la superficie en decenas de \\(\\text{m}^2\\) y \\(X_2\\) el número de habitaciones.\nEl coeficiente:\n\\[\n\\hat{\\beta}_1 = 100\n\\]\nindica que, manteniendo constante el número de habitaciones, un incremento de \\(10\\) \\(\\text{m}^2\\) de superficie está asociado con un incremento promedio de 100 mil pesos en el precio.\nEl coeficiente:\n\\[\n\\hat{\\beta}_2 = 200\n\\]\nindica que, manteniendo constante la superficie, una habitación adicional está asociada con un incremento promedio de 200 mil pesos en el precio.\n\n\n\nAdemás de realizar predicciones, podemos utilizar la regresión lineal para evaluar la relación entre cada predictor y la variable respuesta.\nPara cada coeficiente podemos plantear:\n\\[\nH_0:\\beta_j=0\n\\qquad \\text{vs.} \\qquad\nH_1:\\beta_j\\neq0\n\\]\nLa pregunta es:\n\n¿El valor estimado de \\(\\beta_j\\) es suficientemente distinto de cero o podría explicarse por la variabilidad de los datos?\n\nPara responder necesitamos conocer la distribución de los coeficientes estimados.\n\n\n\n\n\nEn el modelo de regresión lineal asumimos:\n\\[\n\\boldsymbol{\\varepsilon}\n\\sim\nN(\\mathbf{0},\\sigma^2\\mathbf{I})\n\\]\nLa varianza \\(\\sigma^2\\) es desconocida y, al igual que los coeficientes de regresión, debe estimarse utilizando los datos.\nLa estimamos a partir de los residuos es\n\\[\n\\hat{\\sigma}^2\n=\n\\frac{RSS}{n-p-1}\n=\n\\frac{\n\\sum_{i=1}^{n}(y_i-\\hat{y}_i)^2\n}{\nn-p-1\n}\n\\]\ndonde \\(p\\) es el número de variables predictoras.\n\n\n\n\n\n\nBajo el supuesto de normalidad de los errores:\n\\[\n\\hat{\\boldsymbol{\\beta}}\n\\sim\nN\\left(\n\\boldsymbol{\\beta},\n\\sigma^2(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\right)\n\\]\nPor lo tanto, para cada coeficiente:\n\\[\nSE(\\hat{\\beta}_j)\n=\n\\sqrt{\n\\hat{\\sigma}^2\n\\left[\n(\\mathbf{X}^T\\mathbf{X})^{-1}\n\\right]_{jj}\n}\n\\]\nPodemos evaluar:\n\\[\nH_0:\\beta_j=0\n\\]\nutilizando:\n\\[\nt=\n\\frac{\\hat{\\beta}_j}\n{SE(\\hat{\\beta}_j)}\n\\]\nque, bajo \\(H_0\\), sigue una distribución \\(t\\) con \\(n-p-1\\) grados de libertad.\n\n\n\n\n\n\nDel modelo de precios de viviendas obtuvimos:\n\\[\n\\hat{\\beta}_1=100\n\\]\npara la superficie de la vivienda.\nSupongamos que:\n\\[\nSE(\\hat{\\beta}_1)=25\n\\]\nQueremos determinar si la superficie de la vivienda está asociada con su precio.\n\\[\nH_0:\\beta_1=0\n\\qquad \\text{vs.} \\qquad\nH_1:\\beta_1\\neq0\n\\]\nUtilizando:\n\\[\nt=\n\\frac{\\hat{\\beta}_1}\n{SE(\\hat{\\beta}_1)}\n\\]\n¿Existe evidencia suficiente para rechazar \\(H_0\\) con un nivel de significancia \\(\\alpha=0.05\\)?\n\n\n\n\nPara evaluar qué tan bien se ajusta el modelo a nuestros datos, podemos comparar los valores observados \\(y_i\\) con las predicciones \\(\\hat{y}_i\\).\nUna forma de hacerlo es medir el tamaño de los errores de predicción:\n\\[\ne_i = y_i-\\hat{y}_i\n\\]\n\n\n\\[\nMAE=\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n|y_i-\\hat{y}_i|\n\\]\nRepresenta la magnitud promedio de los errores, en las mismas unidades que \\(Y\\).\n\n\n\n\\[\nMSE=\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n\\]\nPenaliza con mayor fuerza los errores grandes debido al término cuadrático.\n\n\n\n\n\n\n\\[\nRMSE=\n\\sqrt{\n\\frac{1}{n}\n\\sum_{i=1}^{n}\n(y_i-\\hat{y}_i)^2\n}\n\\]\nAl tomar la raíz del MSE, el error vuelve a expresarse en las mismas unidades que \\(Y\\).\n\n\n\n\\[\nR^2=\n1-\n\\frac{\n\\sum_{i=1}^{n}(y_i-\\hat{y}_i)^2\n}{\n\\sum_{i=1}^{n}(y_i-\\bar{y})^2\n}\n\\]\nCompara el error del modelo con el error que obtendríamos si utilizáramos simplemente \\(\\bar{y}\\) como predicción.\n\n\\(R^2=1\\): ajuste perfecto.\n\\(R^2=0\\): el modelo no mejora la predicción basada en la media.\n\\(R^2&lt;0\\): el modelo tiene un desempeño peor que predecir la media.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMétrica\n¿Qué mide?\n¿Para qué sirve?\nMejor valor\n\n\n\n\nMAE\nError absoluto promedio\nInterpretar el error típico de forma directa\n\\(0\\)\n\n\nMSE\nError cuadrático promedio\nPenalizar fuertemente los errores grandes\n\\(0\\)\n\n\nRMSE\nRaíz del error cuadrático promedio\nPenalizar errores grandes manteniendo las unidades de \\(Y\\)\n\\(0\\)\n\n\n\\(R^2\\)\nVariabilidad explicada respecto a la media\nEvaluar qué tanto mejora el modelo sobre una predicción básica\n\\(1\\)\n\n\n\n\n\n\nPara que el modelo de regresión lineal y su inferencia sean adecuados, consideramos los siguientes supuestos:\n\nLinealidad: la relación entre los predictores y el valor esperado de \\(Y\\) puede representarse mediante una función lineal.\nIndependencia: los errores de distintas observaciones no están relacionados entre sí.\nHomocedasticidad: la varianza de los errores es aproximadamente constante para diferentes valores de los predictores.\nNormalidad de los errores: para realizar la inferencia clásica, suponemos que los errores siguen una distribución normal.\nAusencia de multicolinealidad perfecta: ningún predictor puede expresarse exactamente como combinación lineal de los demás.\n\n\nMulticolinealidad: ocurre cuando dos o más variables predictoras están fuertemente relacionadas entre sí. Esto puede dificultar separar el efecto individual de cada predictor.\n\n\n\n\nIncluso cuando el modelo puede ajustarse a los datos, debemos considerar algunas limitaciones:\n\nRelaciones no lineales: una función lineal puede ser insuficiente para representar patrones más complejos.\nValores atípicos: observaciones extremas pueden modificar considerablemente la recta o el plano estimado.\nMulticolinealidad: predictores altamente relacionados pueden producir coeficientes inestables y dificultar su interpretación.\nExtrapolación: realizar predicciones fuera del rango de los datos observados puede producir resultados poco confiables.\nVariables omitidas: dejar fuera variables relevantes puede afectar los coeficientes y las predicciones del modelo.\nAsociación no implica causalidad: encontrar una relación entre \\(X\\) y \\(Y\\) no significa que cambios en \\(X\\) sean la causa de cambios en \\(Y\\).\n\n\n\n\n\n\nfrom sklearn.linear_model import LinearRegression\n\nmodel = LinearRegression()\n\nmodel.fit(X_train, y_train)\n\ny_pred = model.predict(X_test)\nLos parámetros estimados se obtienen con:\nmodel.intercept_\nmodel.coef_\n\n\n\n\n\n\nfrom sklearn.metrics import mean_absolute_error\nfrom sklearn.metrics import mean_squared_error\nfrom sklearn.metrics import r2_score\n\nmae = mean_absolute_error(y_test, y_pred)\nmse = mean_squared_error(y_test, y_pred)\nrmse = mse ** 0.5\nr2 = r2_score(y_test, y_pred)\n\n\n\n\n\n\nPara realizar inferencia estadística podemos utilizar statsmodels:\nimport statsmodels.api as sm\n\nX = sm.add_constant(X)\n\nmodel = sm.OLS(y, X).fit()\n\nprint(model.summary())"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#regresión-lineal-múltiple",
+    "href": "lecciones/unidad-01/leccion-08.html#regresión-lineal-múltiple",
+    "title": "Aprendizaje supervisado",
+    "section": "Regresión lineal múltiple",
+    "text": "Regresión lineal múltiple\n\nEstimador de mínimos cuadrados\nPara el modelo\n\\[\n\\mathbf y\n=\n\\mathbf X\\boldsymbol{\\beta}\n+\n\\boldsymbol{\\varepsilon},\n\\]\nbuscamos el valor de \\(\\boldsymbol{\\beta}\\) que minimiza\n\\[\n\\operatorname{RSS}(\\boldsymbol{\\beta})\n=\n(\\mathbf y-\\mathbf X\\boldsymbol{\\beta})^T\n(\\mathbf y-\\mathbf X\\boldsymbol{\\beta}).\n\\]\nSi \\(\\mathbf X^T\\mathbf X\\) es invertible, la solución es\n\\[\n\\boxed{\n\\hat{\\boldsymbol{\\beta}}\n=\n(\\mathbf X^T\\mathbf X)^{-1}\\mathbf X^T\\mathbf y\n}\n\\]\n\n\nUna matriz cuadrada \\(\\mathbf A\\) es invertible si existe una matriz \\(\\mathbf B\\) tal que\n\\[\n\\mathbf A\\mathbf B\n=\n\\mathbf B\\mathbf A\n=\n\\mathbf I.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#inferencia-sobre-los-coeficientes",
+    "href": "lecciones/unidad-01/leccion-08.html#inferencia-sobre-los-coeficientes",
+    "title": "Aprendizaje supervisado",
+    "section": "Inferencia sobre los coeficientes",
+    "text": "Inferencia sobre los coeficientes\n\nDistribución de los estimadores\nSea el modelo de regresión lineal\n\\[\n\\mathbf y\n=\n\\mathbf X\\boldsymbol{\\beta}\n+\n\\boldsymbol{\\varepsilon},\n\\]\ndonde\n\\[\n\\boldsymbol{\\varepsilon}\n\\sim\n\\mathcal N_n\n\\left(\n\\mathbf 0,\n\\sigma^2\\mathbf I\n\\right).\n\\]\nEntonces, el estimador de mínimos cuadrados\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n(\\mathbf X^T\\mathbf X)^{-1}\\mathbf X^T\\mathbf y\n\\]\nsigue una distribución\n\\[\n\\boxed{\n\\hat{\\boldsymbol{\\beta}}\n\\sim\n\\mathcal N_{p+1}\n\\left(\n\\boldsymbol{\\beta},\n\\sigma^2(\\mathbf X^T\\mathbf X)^{-1}\n\\right)\n}.\n\\]\n\n\nContinúa →"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#inferencia-sobre-los-coeficientes-1",
+    "href": "lecciones/unidad-01/leccion-08.html#inferencia-sobre-los-coeficientes-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Inferencia sobre los coeficientes",
+    "text": "Inferencia sobre los coeficientes\n\nPara cada coeficiente \\(\\beta_j\\),\n\\[\n\\operatorname{SE}(\\hat\\beta_j)\n=\n\\sqrt{\n\\hat\\sigma^2\n\\left[\n(\\mathbf X^T\\mathbf X)^{-1}\n\\right]_{jj}\n}.\n\\]\nPodemos evaluar\n\\[\nH_0:\\beta_j=0\n\\qquad\\text{vs.}\\qquad\nH_1:\\beta_j\\neq0\n\\]\nmediante el estadístico\n\\[\nt\n=\n\\frac{\\hat\\beta_j}\n{\\operatorname{SE}(\\hat\\beta_j)}\n\\sim\nt_{n-p-1},\n\\qquad \\text{bajo }H_0.\n\\]\nUn intervalo de confianza de nivel \\(1-\\alpha\\) para \\(\\beta_j\\) es\n\\[\n\\boxed{\n\\hat\\beta_j\n\\pm\nt_{1-\\alpha/2,\\;n-p-1}\n\\operatorname{SE}(\\hat\\beta_j)\n}.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-08.html#inferencia-4",
+    "href": "lecciones/unidad-01/leccion-08.html#inferencia-4",
+    "title": "Aprendizaje supervisado",
+    "section": "Inferencia",
+    "text": "Inferencia\nEjemplo\nA partir de los datos y del modelo propuesto:\n\nEncuentra los estimadores\n\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n\\begin{pmatrix}\n\\hat\\beta_0\\\\\n\\hat\\beta_1\\\\\n\\hat\\beta_2\n\\end{pmatrix}.\n\\]\n\nPara el coeficiente asociado con la superficie, evalúa \\[\nH_0:\\beta_1=0\n\\qquad \\text{vs.} \\qquad\nH_1:\\beta_1\\neq0,\n\\]\nutilizando un nivel de significancia \\(\\alpha=0.05\\).\nConstruye un intervalo de confianza del 95% para \\(\\beta_1\\).\nInterpreta los resultados en el contexto del problema."
   }
 ]

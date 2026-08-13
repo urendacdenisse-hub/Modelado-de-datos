@@ -1,6 +1,6 @@
 ---
 title: "Aprendizaje supervisado"
-subtitle: "Regresion lineal"
+subtitle: "Regresión lineal"
 author: "Dra. Denisse Urenda Castañeda"
 
 lang: es
@@ -9,6 +9,8 @@ bibliography: ../../recursos/referencias.bib
 csl: ../../recursos/ieee.csl
 
 nocite: |
+  @hastie2009elements
+  @james2023islp
 
 format:
   revealjs:
@@ -74,10 +76,10 @@ $$
 e_i = y_i-\hat{y}_i
 $$
 
-El método de **mínimos cuadrados ordinarios** elige la recta que minimiza la suma de los residuos al cuadrado:
+El método de **mínimos cuadrados ordinarios** elige la recta que minimiza la **suma de los residuos al cuadrado**:
 
 $$
-RSS =
+\text{RSS} =
 \sum_{i=1}^{n}
 (y_i-\hat{y}_i)^2
 $$
@@ -89,7 +91,7 @@ $$
 Queremos encontrar $\beta_0$ y $\beta_1$ que minimicen:
 
 $$
-RSS(\beta_0,\beta_1)
+\text{RSS}(\beta_0,\beta_1)
 =
 \sum_{i=1}^{n}
 (y_i-\beta_0-\beta_1x_i)^2
@@ -98,7 +100,7 @@ $$
 Derivamos respecto a $\beta_0$:
 
 $$
-\frac{\partial RSS}{\partial\beta_0}
+\frac{\partial \text{RSS}}{\partial\beta_0}
 =
 -2\sum_{i=1}^{n}
 (y_i-\beta_0-\beta_1x_i)
@@ -118,7 +120,7 @@ $$
 Derivamos respecto a $\beta_1$:
 
 $$
-\frac{\partial RSS}{\partial\beta_1}
+\frac{\partial \text{RSS}}{\partial\beta_1}
 =
 -2\sum_{i=1}^{n}
 x_i(y_i-\beta_0-\beta_1x_i)
@@ -143,6 +145,46 @@ $$
 =
 \hat{\beta}_0+\hat{\beta}_1X
 $$
+
+
+## Regresión lineal simple
+
+:::{.formula}
+**Estimadores de mínimos cuadrados**
+
+Para el modelo
+
+$$
+Y = \beta_0 + \beta_1 X + \varepsilon,
+$$
+
+los valores que minimizan
+
+$$
+\operatorname{RSS}(\beta_0,\beta_1)
+=
+\sum_{i=1}^n
+(y_i-\beta_0-\beta_1x_i)^2
+$$
+
+son
+
+$$
+\boxed{
+\hat{\beta}_1
+=
+\frac{
+\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})
+}{
+\sum_{i=1}^{n}(x_i-\bar{x})^2
+},
+\qquad
+\hat{\beta}_0
+=
+\bar y-\hat{\beta}_1\bar x 
+}
+$$
+:::
 
 ## Caso univariable {.unlisted}
 ### Ejemplo
@@ -170,7 +212,7 @@ $$
 Cuando tenemos $p$ variables predictoras, asumimos que $f$ tiene la forma:
 
 $$
-f(X)
+f(\mathbf X)
 =
 \beta_0+
 \beta_1X_1+
@@ -204,19 +246,22 @@ $$
 El problema de mínimos cuadrados es:
 
 $$
-RSS(\boldsymbol{\beta})
+\text{RSS}(\boldsymbol{\beta})
 =
 (\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T
 (\mathbf{y}-\mathbf{X}\boldsymbol{\beta})
 $$
 
+:::{.important}
+En la formulación matricial, $\mathbf X$ representa la **matriz de diseño**, que incluye una primera columna de unos para incorporar el intercepto $\beta_0$. Por lo tanto, $\mathbf X \in \mathbb{R}^{n\times(p+1)}$.
+:::
 
 ## Caso multivariable {.unlisted}
 
 Expandiendo:
 
 $$
-RSS
+\text{RSS}
 =
 \mathbf{y}^T\mathbf{y}
 -
@@ -228,7 +273,7 @@ $$
 Derivamos respecto a $\boldsymbol{\beta}$:
 
 $$
-\frac{\partial RSS}{\partial\boldsymbol{\beta}}
+\frac{\partial \text{RSS}}{\partial\boldsymbol{\beta}}
 =
 -2\mathbf{X}^T\mathbf{y}
 +
@@ -252,6 +297,53 @@ $$
 \mathbf{X}^T\mathbf{y}
 $$
 
+## Regresión lineal múltiple
+
+:::{.formula}
+**Estimador de mínimos cuadrados**
+
+Para el modelo
+
+$$
+\mathbf y
+=
+\mathbf X\boldsymbol{\beta}
++
+\boldsymbol{\varepsilon},
+$$
+
+buscamos el valor de $\boldsymbol{\beta}$ que minimiza
+
+$$
+\operatorname{RSS}(\boldsymbol{\beta})
+=
+(\mathbf y-\mathbf X\boldsymbol{\beta})^T
+(\mathbf y-\mathbf X\boldsymbol{\beta}).
+$$
+
+Si $\mathbf X^T\mathbf X$ es invertible, la solución es
+
+$$
+\boxed{
+\hat{\boldsymbol{\beta}}
+=
+(\mathbf X^T\mathbf X)^{-1}\mathbf X^T\mathbf y
+}
+$$
+:::
+
+:::{.important}
+Una matriz cuadrada $\mathbf A$ es **invertible** si existe una matriz $\mathbf B$ tal que
+
+$$
+\mathbf A\mathbf B
+=
+\mathbf B\mathbf A
+=
+\mathbf I.
+$$
+:::
+
 ## Caso multivariable {.unlisted}
 ### Ejemplo
 
@@ -265,9 +357,10 @@ Tenemos las siguientes observaciones:
 
 | Superficie $X_1$ | Habitaciones $X_2$ | Precio $Y$ |
 |---:|---:|---:|
-| 8 | 2 | 1450 |
+| 8  | 2 | 1450 |
 | 10 | 3 | 1850 |
 | 12 | 2 | 1850 |
+| 14 | 4 | 2300 |
 
 El modelo que queremos estimar es:
 
@@ -358,7 +451,7 @@ En el modelo de regresión lineal asumimos:
 $$
 \boldsymbol{\varepsilon}
 \sim
-N(\mathbf{0},\sigma^2\mathbf{I})
+\mathcal N_n(\mathbf{0},\sigma^2\mathbf{I})
 $$
 
 La varianza $\sigma^2$ es desconocida y, al igual que los coeficientes de regresión, debe estimarse utilizando los datos.
@@ -368,10 +461,11 @@ La estimamos a partir de los residuos es
 $$
 \hat{\sigma}^2
 =
-\frac{RSS}{n-p-1}
+\frac{\text{RSS}}{n-p-1}
 =
 \frac{
-\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
+(\mathbf y-\hat{\mathbf y})^T
+(\mathbf y-\hat{\mathbf y})
 }{
 n-p-1
 }
@@ -387,7 +481,7 @@ Bajo el supuesto de normalidad de los errores:
 $$
 \hat{\boldsymbol{\beta}}
 \sim
-N\left(
+\mathcal N_{p+1}\left(
 \boldsymbol{\beta},
 \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}
 \right)
@@ -396,7 +490,7 @@ $$
 Por lo tanto, para cada coeficiente:
 
 $$
-SE(\hat{\beta}_j)
+\text{SE}(\hat{\beta}_j)
 =
 \sqrt{
 \hat{\sigma}^2
@@ -417,45 +511,173 @@ utilizando:
 $$
 t=
 \frac{\hat{\beta}_j}
-{SE(\hat{\beta}_j)}
+{\text{SE}(\hat{\beta}_j)}
 $$
 
 que, bajo $H_0$, sigue una distribución $t$ con $n-p-1$ grados de libertad.
 
+
+## Inferencia sobre los coeficientes
+
+:::{.formula}
+**Distribución de los estimadores**
+
+Sea el modelo de regresión lineal
+
+$$
+\mathbf y
+=
+\mathbf X\boldsymbol{\beta}
++
+\boldsymbol{\varepsilon},
+$$
+
+donde
+
+$$
+\boldsymbol{\varepsilon}
+\sim
+\mathcal N_n
+\left(
+\mathbf 0,
+\sigma^2\mathbf I
+\right).
+$$
+
+Entonces, el estimador de mínimos cuadrados
+
+$$
+\hat{\boldsymbol{\beta}}
+=
+(\mathbf X^T\mathbf X)^{-1}\mathbf X^T\mathbf y
+$$
+
+sigue una distribución
+
+$$
+\boxed{
+\hat{\boldsymbol{\beta}}
+\sim
+\mathcal N_{p+1}
+\left(
+\boldsymbol{\beta},
+\sigma^2(\mathbf X^T\mathbf X)^{-1}
+\right)
+}.
+$$
+:::
+<div style="text-align: right;">*Continúa →*</div>
+
+
+## Inferencia sobre los coeficientes {.unlisted}
+
+
+:::{.formula}
+Para cada coeficiente $\beta_j$,
+
+$$
+\operatorname{SE}(\hat\beta_j)
+=
+\sqrt{
+\hat\sigma^2
+\left[
+(\mathbf X^T\mathbf X)^{-1}
+\right]_{jj}
+}.
+$$
+
+Podemos evaluar
+
+$$
+H_0:\beta_j=0
+\qquad\text{vs.}\qquad
+H_1:\beta_j\neq0
+$$
+
+mediante el estadístico
+
+$$
+t
+=
+\frac{\hat\beta_j}
+{\operatorname{SE}(\hat\beta_j)}
+\sim
+t_{n-p-1},
+\qquad \text{bajo }H_0.
+$$
+
+Un intervalo de confianza de nivel $1-\alpha$ para $\beta_j$ es
+
+$$
+\boxed{
+\hat\beta_j
+\pm
+t_{1-\alpha/2,\;n-p-1}
+\operatorname{SE}(\hat\beta_j)
+}.
+$$
+:::
+
+
 ## Inferencia {.unlisted}
 ### Ejemplo
 
-Del modelo de precios de viviendas obtuvimos:
+Queremos modelar el **precio de una vivienda** utilizando los siguientes datos, asumiendo una relación lineal con la superficie y el número de habitaciones.
+
+| Superficie $X_1$ | Habitaciones $X_2$ | Precio $Y$ |
+|---:|---:|---:|
+| 8  | 2 | 1450 |
+| 9  | 2 | 1580 |
+| 10 | 3 | 1850 |
+| 11 | 3 | 1900 |
+| 12 | 2 | 1850 |
+| 13 | 3 | 2150 |
+| 14 | 4 | 2300 |
+| 15 | 4 | 2460 |
+
+Consideraremos el modelo
 
 $$
-\hat{\beta}_1=100
+\text{Precio}
+=
+\beta_0
++
+\beta_1\,\text{Superficie}
++
+\beta_2\,\text{Habitaciones}
++
+\varepsilon.
 $$
 
-para la superficie de la vivienda.
+## Inferencia {.unlisted}
+### Ejemplo
 
-Supongamos que:
+A partir de los datos y del modelo propuesto:
+
+1. Encuentra los estimadores
 
 $$
-SE(\hat{\beta}_1)=25
+\hat{\boldsymbol{\beta}}
+=
+\begin{pmatrix}
+\hat\beta_0\\
+\hat\beta_1\\
+\hat\beta_2
+\end{pmatrix}.
 $$
 
-Queremos determinar si la **superficie de la vivienda está asociada con su precio**.
-
+2. Para el coeficiente asociado con la **superficie**, evalúa
 $$
 H_0:\beta_1=0
 \qquad \text{vs.} \qquad
-H_1:\beta_1\neq0
+H_1:\beta_1\neq0,
 $$
 
-Utilizando:
+    utilizando un nivel de significancia $\alpha=0.05$.
 
-$$
-t=
-\frac{\hat{\beta}_1}
-{SE(\hat{\beta}_1)}
-$$
+3. Construye un **intervalo de confianza del 95\%** para $\beta_1$.
 
-**¿Existe evidencia suficiente para rechazar $H_0$ con un nivel de significancia $\alpha=0.05$?**
+4. Interpreta los resultados en el contexto del problema.
 
 
 ## Métricas de evaluación
@@ -471,7 +693,7 @@ $$
 ### Error absoluto medio (MAE)
 
 $$
-MAE=
+\text{MAE}=
 \frac{1}{n}
 \sum_{i=1}^{n}
 |y_i-\hat{y}_i|
@@ -482,7 +704,7 @@ Representa la **magnitud promedio de los errores**, en las mismas unidades que $
 ### Error cuadrático medio (MSE)
 
 $$
-MSE=
+\text{MSE}=
 \frac{1}{n}
 \sum_{i=1}^{n}
 (y_i-\hat{y}_i)^2
@@ -496,7 +718,7 @@ Penaliza con mayor fuerza los errores grandes debido al término cuadrático.
 ### Raíz del error cuadrático medio (RMSE)
 
 $$
-RMSE=
+\text{RMSE}=
 \sqrt{
 \frac{1}{n}
 \sum_{i=1}^{n}
@@ -644,6 +866,6 @@ print(model.summary())
 
 # ¿Qué sigue?
 
-Descripcion breve
+En el siguiente notebook aplicaremos **regresión lineal simple y múltiple** en Python y analizaremos, mediante diferentes conjuntos de datos, el cumplimiento y la violación de los **supuestos del modelo**.
 
-[**Ir a la siguiente sección →**](nombre de leccion/laboratorio/proyecto)
+[**Ir al notebook →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-04.ipynb)

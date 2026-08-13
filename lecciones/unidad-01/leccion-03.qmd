@@ -182,4 +182,4 @@ Nota: Los ejemplos fueron recopilados con apoyo de ChatGPT y verificados mediant
 
 En la siguiente lección conoceremos las principales técnicas para obtener datos desde archivos, bases de datos, APIs y otras fuentes de información.
 
-[**Ir a la siguiente lección →**](leccion-04.qmd)
+[**Ir a la lección →**](leccion-04.qmd)
