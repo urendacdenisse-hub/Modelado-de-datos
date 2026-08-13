@@ -101,6 +101,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -217,7 +218,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Aprendizaje supervisado</h1>
-  <p class="subtitle">Regresion lineal</p>
+  <p class="subtitle">Regresión lineal</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -236,10 +237,13 @@ Dra. Denisse Urenda Castañeda
 <li><a href="#/formulación" id="/toc-formulación">Formulación</a></li>
 <li><a href="#/intuición-geométrica" id="/toc-intuición-geométrica">Intuición geométrica</a></li>
 <li><a href="#/caso-univariable" id="/toc-caso-univariable">Caso univariable</a></li>
+<li><a href="#/regresión-lineal-simple" id="/toc-regresión-lineal-simple">Regresión lineal simple</a></li>
 <li><a href="#/caso-multivariable" id="/toc-caso-multivariable">Caso multivariable</a></li>
+<li><a href="#/regresión-lineal-múltiple" id="/toc-regresión-lineal-múltiple">Regresión lineal múltiple</a></li>
 <li><a href="#/predicción" id="/toc-predicción">Predicción</a></li>
 <li><a href="#/intepretación" id="/toc-intepretación">Intepretación</a></li>
 <li><a href="#/inferencia" id="/toc-inferencia">Inferencia</a></li>
+<li><a href="#/inferencia-sobre-los-coeficientes" id="/toc-inferencia-sobre-los-coeficientes">Inferencia sobre los coeficientes</a></li>
 <li><a href="#/métricas-de-evaluación" id="/toc-métricas-de-evaluación">Métricas de evaluación</a></li>
 <li><a href="#/supuestos" id="/toc-supuestos">Supuestos</a></li>
 <li><a href="#/limitaciones" id="/toc-limitaciones">Limitaciones</a></li>
@@ -285,9 +289,9 @@ Y = \beta_0 + \beta_1 X + \varepsilon
 <p><span class="math display">\[
 e_i = y_i-\hat{y}_i
 \]</span></p>
-<p>El método de <strong>mínimos cuadrados ordinarios</strong> elige la recta que minimiza la suma de los residuos al cuadrado:</p>
+<p>El método de <strong>mínimos cuadrados ordinarios</strong> elige la recta que minimiza la <strong>suma de los residuos al cuadrado</strong>:</p>
 <p><span class="math display">\[
-RSS =
+\text{RSS} =
 \sum_{i=1}^{n}
 (y_i-\hat{y}_i)^2
 \]</span></p>
@@ -296,14 +300,14 @@ RSS =
 <h2>Caso univariable</h2>
 <p>Queremos encontrar <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> que minimicen:</p>
 <p><span class="math display">\[
-RSS(\beta_0,\beta_1)
+\text{RSS}(\beta_0,\beta_1)
 =
 \sum_{i=1}^{n}
 (y_i-\beta_0-\beta_1x_i)^2
 \]</span></p>
 <p>Derivamos respecto a <span class="math inline">\(\beta_0\)</span>:</p>
 <p><span class="math display">\[
-\frac{\partial RSS}{\partial\beta_0}
+\frac{\partial \text{RSS}}{\partial\beta_0}
 =
 -2\sum_{i=1}^{n}
 (y_i-\beta_0-\beta_1x_i)
@@ -319,7 +323,7 @@ RSS(\beta_0,\beta_1)
 <h2>Caso univariable</h2>
 <p>Derivamos respecto a <span class="math inline">\(\beta_1\)</span>:</p>
 <p><span class="math display">\[
-\frac{\partial RSS}{\partial\beta_1}
+\frac{\partial \text{RSS}}{\partial\beta_1}
 =
 -2\sum_{i=1}^{n}
 x_i(y_i-\beta_0-\beta_1x_i)
@@ -340,6 +344,39 @@ x_i(y_i-\beta_0-\beta_1x_i)
 =
 \hat{\beta}_0+\hat{\beta}_1X
 \]</span></p>
+</section>
+<section id="regresión-lineal-simple" class="slide level2">
+<h2>Regresión lineal simple</h2>
+<div class="formula">
+<p><strong>Estimadores de mínimos cuadrados</strong></p>
+<p>Para el modelo</p>
+<p><span class="math display">\[
+Y = \beta_0 + \beta_1 X + \varepsilon,
+\]</span></p>
+<p>los valores que minimizan</p>
+<p><span class="math display">\[
+\operatorname{RSS}(\beta_0,\beta_1)
+=
+\sum_{i=1}^n
+(y_i-\beta_0-\beta_1x_i)^2
+\]</span></p>
+<p>son</p>
+<p><span class="math display">\[
+\boxed{
+\hat{\beta}_1
+=
+\frac{
+\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})
+}{
+\sum_{i=1}^{n}(x_i-\bar{x})^2
+},
+\qquad
+\hat{\beta}_0
+=
+\bar y-\hat{\beta}_1\bar x
+}
+\]</span></p>
+</div>
 </section>
 <section id="caso-univariable-2" class="slide level2 unlisted">
 <h2>Caso univariable</h2>
@@ -362,7 +399,7 @@ x_i(y_i-\beta_0-\beta_1x_i)
 <h2>Caso multivariable</h2>
 <p>Cuando tenemos <span class="math inline">\(p\)</span> variables predictoras, asumimos que <span class="math inline">\(f\)</span> tiene la forma:</p>
 <p><span class="math display">\[
-f(X)
+f(\mathbf X)
 =
 \beta_0+
 \beta_1X_1+
@@ -390,17 +427,20 @@ Y
 \]</span></p>
 <p>El problema de mínimos cuadrados es:</p>
 <p><span class="math display">\[
-RSS(\boldsymbol{\beta})
+\text{RSS}(\boldsymbol{\beta})
 =
 (\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T
 (\mathbf{y}-\mathbf{X}\boldsymbol{\beta})
 \]</span></p>
+<div class="important">
+<p>En la formulación matricial, <span class="math inline">\(\mathbf X\)</span> representa la <strong>matriz de diseño</strong>, que incluye una primera columna de unos para incorporar el intercepto <span class="math inline">\(\beta_0\)</span>. Por lo tanto, <span class="math inline">\(\mathbf X \in \mathbb{R}^{n\times(p+1)}\)</span>.</p>
+</div>
 </section>
 <section id="caso-multivariable-1" class="slide level2 unlisted">
 <h2>Caso multivariable</h2>
 <p>Expandiendo:</p>
 <p><span class="math display">\[
-RSS
+\text{RSS}
 =
 \mathbf{y}^T\mathbf{y}
 -
@@ -410,7 +450,7 @@ RSS
 \]</span></p>
 <p>Derivamos respecto a <span class="math inline">\(\boldsymbol{\beta}\)</span>:</p>
 <p><span class="math display">\[
-\frac{\partial RSS}{\partial\boldsymbol{\beta}}
+\frac{\partial \text{RSS}}{\partial\boldsymbol{\beta}}
 =
 -2\mathbf{X}^T\mathbf{y}
 +
@@ -429,6 +469,45 @@ RSS
 (\mathbf{X}^T\mathbf{X})^{-1}
 \mathbf{X}^T\mathbf{y}
 \]</span></p>
+</section>
+<section id="regresión-lineal-múltiple" class="slide level2">
+<h2>Regresión lineal múltiple</h2>
+<div class="formula">
+<p><strong>Estimador de mínimos cuadrados</strong></p>
+<p>Para el modelo</p>
+<p><span class="math display">\[
+\mathbf y
+=
+\mathbf X\boldsymbol{\beta}
++
+\boldsymbol{\varepsilon},
+\]</span></p>
+<p>buscamos el valor de <span class="math inline">\(\boldsymbol{\beta}\)</span> que minimiza</p>
+<p><span class="math display">\[
+\operatorname{RSS}(\boldsymbol{\beta})
+=
+(\mathbf y-\mathbf X\boldsymbol{\beta})^T
+(\mathbf y-\mathbf X\boldsymbol{\beta}).
+\]</span></p>
+<p>Si <span class="math inline">\(\mathbf X^T\mathbf X\)</span> es invertible, la solución es</p>
+<p><span class="math display">\[
+\boxed{
+\hat{\boldsymbol{\beta}}
+=
+(\mathbf X^T\mathbf X)^{-1}\mathbf X^T\mathbf y
+}
+\]</span></p>
+</div>
+<div class="important">
+<p>Una matriz cuadrada <span class="math inline">\(\mathbf A\)</span> es <strong>invertible</strong> si existe una matriz <span class="math inline">\(\mathbf B\)</span> tal que</p>
+<p><span class="math display">\[
+\mathbf A\mathbf B
+=
+\mathbf B\mathbf A
+=
+\mathbf I.
+\]</span></p>
+</div>
 </section>
 <section id="caso-multivariable-2" class="slide level2 unlisted">
 <h2>Caso multivariable</h2>
@@ -463,6 +542,11 @@ RSS
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">1850</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2300</td>
 </tr>
 </tbody>
 </table>
@@ -537,17 +621,18 @@ H_1:\beta_j\neq0
 <p><span class="math display">\[
 \boldsymbol{\varepsilon}
 \sim
-N(\mathbf{0},\sigma^2\mathbf{I})
+\mathcal N_n(\mathbf{0},\sigma^2\mathbf{I})
 \]</span></p>
 <p>La varianza <span class="math inline">\(\sigma^2\)</span> es desconocida y, al igual que los coeficientes de regresión, debe estimarse utilizando los datos.</p>
 <p>La estimamos a partir de los residuos es</p>
 <p><span class="math display">\[
 \hat{\sigma}^2
 =
-\frac{RSS}{n-p-1}
+\frac{\text{RSS}}{n-p-1}
 =
 \frac{
-\sum_{i=1}^{n}(y_i-\hat{y}_i)^2
+(\mathbf y-\hat{\mathbf y})^T
+(\mathbf y-\hat{\mathbf y})
 }{
 n-p-1
 }
@@ -561,14 +646,14 @@ n-p-1
 <p><span class="math display">\[
 \hat{\boldsymbol{\beta}}
 \sim
-N\left(
+\mathcal N_{p+1}\left(
 \boldsymbol{\beta},
 \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}
 \right)
 \]</span></p>
 <p>Por lo tanto, para cada coeficiente:</p>
 <p><span class="math display">\[
-SE(\hat{\beta}_j)
+\text{SE}(\hat{\beta}_j)
 =
 \sqrt{
 \hat{\sigma}^2
@@ -585,35 +670,190 @@ H_0:\beta_j=0
 <p><span class="math display">\[
 t=
 \frac{\hat{\beta}_j}
-{SE(\hat{\beta}_j)}
+{\text{SE}(\hat{\beta}_j)}
 \]</span></p>
 <p>que, bajo <span class="math inline">\(H_0\)</span>, sigue una distribución <span class="math inline">\(t\)</span> con <span class="math inline">\(n-p-1\)</span> grados de libertad.</p>
+</section>
+<section id="inferencia-sobre-los-coeficientes" class="slide level2">
+<h2>Inferencia sobre los coeficientes</h2>
+<div class="formula">
+<p><strong>Distribución de los estimadores</strong></p>
+<p>Sea el modelo de regresión lineal</p>
+<p><span class="math display">\[
+\mathbf y
+=
+\mathbf X\boldsymbol{\beta}
++
+\boldsymbol{\varepsilon},
+\]</span></p>
+<p>donde</p>
+<p><span class="math display">\[
+\boldsymbol{\varepsilon}
+\sim
+\mathcal N_n
+\left(
+\mathbf 0,
+\sigma^2\mathbf I
+\right).
+\]</span></p>
+<p>Entonces, el estimador de mínimos cuadrados</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\beta}}
+=
+(\mathbf X^T\mathbf X)^{-1}\mathbf X^T\mathbf y
+\]</span></p>
+<p>sigue una distribución</p>
+<p><span class="math display">\[
+\boxed{
+\hat{\boldsymbol{\beta}}
+\sim
+\mathcal N_{p+1}
+\left(
+\boldsymbol{\beta},
+\sigma^2(\mathbf X^T\mathbf X)^{-1}
+\right)
+}.
+\]</span></p>
+</div>
+<div style="text-align: right;">
+<em>Continúa →</em>
+</div>
+</section>
+<section id="inferencia-sobre-los-coeficientes-1" class="slide level2 unlisted">
+<h2>Inferencia sobre los coeficientes</h2>
+<div class="formula">
+<p>Para cada coeficiente <span class="math inline">\(\beta_j\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{SE}(\hat\beta_j)
+=
+\sqrt{
+\hat\sigma^2
+\left[
+(\mathbf X^T\mathbf X)^{-1}
+\right]_{jj}
+}.
+\]</span></p>
+<p>Podemos evaluar</p>
+<p><span class="math display">\[
+H_0:\beta_j=0
+\qquad\text{vs.}\qquad
+H_1:\beta_j\neq0
+\]</span></p>
+<p>mediante el estadístico</p>
+<p><span class="math display">\[
+t
+=
+\frac{\hat\beta_j}
+{\operatorname{SE}(\hat\beta_j)}
+\sim
+t_{n-p-1},
+\qquad \text{bajo }H_0.
+\]</span></p>
+<p>Un intervalo de confianza de nivel <span class="math inline">\(1-\alpha\)</span> para <span class="math inline">\(\beta_j\)</span> es</p>
+<p><span class="math display">\[
+\boxed{
+\hat\beta_j
+\pm
+t_{1-\alpha/2,\;n-p-1}
+\operatorname{SE}(\hat\beta_j)
+}.
+\]</span></p>
+</div>
 </section>
 <section id="inferencia-3" class="slide level2 unlisted">
 <h2>Inferencia</h2>
 <h3 id="ejemplo-2">Ejemplo</h3>
-<p>Del modelo de precios de viviendas obtuvimos:</p>
+<p>Queremos modelar el <strong>precio de una vivienda</strong> utilizando los siguientes datos, asumiendo una relación lineal con la superficie y el número de habitaciones.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Superficie <span class="math inline">\(X_1\)</span></th>
+<th style="text-align: right;">Habitaciones <span class="math inline">\(X_2\)</span></th>
+<th style="text-align: right;">Precio <span class="math inline">\(Y\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1450</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1580</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1850</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1900</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1850</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2150</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2300</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2460</td>
+</tr>
+</tbody>
+</table>
+<p>Consideraremos el modelo</p>
 <p><span class="math display">\[
-\hat{\beta}_1=100
+\text{Precio}
+=
+\beta_0
++
+\beta_1\,\text{Superficie}
++
+\beta_2\,\text{Habitaciones}
++
+\varepsilon.
 \]</span></p>
-<p>para la superficie de la vivienda.</p>
-<p>Supongamos que:</p>
+</section>
+<section id="inferencia-4" class="slide level2 unlisted">
+<h2>Inferencia</h2>
+<h3 id="ejemplo-3">Ejemplo</h3>
+<p>A partir de los datos y del modelo propuesto:</p>
+<ol type="1">
+<li>Encuentra los estimadores</li>
+</ol>
 <p><span class="math display">\[
-SE(\hat{\beta}_1)=25
+\hat{\boldsymbol{\beta}}
+=
+\begin{pmatrix}
+\hat\beta_0\\
+\hat\beta_1\\
+\hat\beta_2
+\end{pmatrix}.
 \]</span></p>
-<p>Queremos determinar si la <strong>superficie de la vivienda está asociada con su precio</strong>.</p>
-<p><span class="math display">\[
+<ol start="2" type="1">
+<li><p>Para el coeficiente asociado con la <strong>superficie</strong>, evalúa <span class="math display">\[
 H_0:\beta_1=0
 \qquad \text{vs.} \qquad
-H_1:\beta_1\neq0
+H_1:\beta_1\neq0,
 \]</span></p>
-<p>Utilizando:</p>
-<p><span class="math display">\[
-t=
-\frac{\hat{\beta}_1}
-{SE(\hat{\beta}_1)}
-\]</span></p>
-<p><strong>¿Existe evidencia suficiente para rechazar <span class="math inline">\(H_0\)</span> con un nivel de significancia <span class="math inline">\(\alpha=0.05\)</span>?</strong></p>
+<p>utilizando un nivel de significancia <span class="math inline">\(\alpha=0.05\)</span>.</p></li>
+<li><p>Construye un <strong>intervalo de confianza del 95%</strong> para <span class="math inline">\(\beta_1\)</span>.</p></li>
+<li><p>Interpreta los resultados en el contexto del problema.</p></li>
+</ol>
 </section>
 <section id="métricas-de-evaluación" class="slide level2">
 <h2>Métricas de evaluación</h2>
@@ -624,7 +864,7 @@ e_i = y_i-\hat{y}_i
 \]</span></p>
 <h3 id="error-absoluto-medio-mae">Error absoluto medio (MAE)</h3>
 <p><span class="math display">\[
-MAE=
+\text{MAE}=
 \frac{1}{n}
 \sum_{i=1}^{n}
 |y_i-\hat{y}_i|
@@ -632,7 +872,7 @@ MAE=
 <p>Representa la <strong>magnitud promedio de los errores</strong>, en las mismas unidades que <span class="math inline">\(Y\)</span>.</p>
 <h3 id="error-cuadrático-medio-mse">Error cuadrático medio (MSE)</h3>
 <p><span class="math display">\[
-MSE=
+\text{MSE}=
 \frac{1}{n}
 \sum_{i=1}^{n}
 (y_i-\hat{y}_i)^2
@@ -643,7 +883,7 @@ MSE=
 <h2>Métricas de evaluación</h2>
 <h3 id="raíz-del-error-cuadrático-medio-rmse">Raíz del error cuadrático medio (RMSE)</h3>
 <p><span class="math display">\[
-RMSE=
+\text{RMSE}=
 \sqrt{
 \frac{1}{n}
 \sum_{i=1}^{n}
@@ -767,7 +1007,7 @@ R^2=
 </section>
 <section id="implementación-en-python-2" class="slide level2 unlisted">
 <h2>Implementación en Python</h2>
-<h3 id="inferencia-4">Inferencia</h3>
+<h3 id="inferencia-5">Inferencia</h3>
 <p>Para realizar inferencia estadística podemos utilizar <code>statsmodels</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb4-2"><a></a></span>
@@ -779,8 +1019,13 @@ R^2=
 </section></section>
 <section id="referencias" class="title-slide slide level1 smaller scrollable">
 <h1>Referencias</h1>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-hastie2009elements" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">T. Hastie, R. Tibshirani, y J. Friedman, <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>, 2.ª ed. Springer, 2009. doi: <a href="https://doi.org/10.1007/978-0-387-84858-7">10.1007/978-0-387-84858-7</a>.</div>
+</div>
+<div id="ref-james2023islp" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">G. James, D. Witten, T. Hastie, R. Tibshirani, y J. Taylor, <em>An Introduction to Statistical Learning: With Applications in Python</em>. Springer, 2023. doi: <a href="https://doi.org/10.1007/978-3-031-38747-0">10.1007/978-3-031-38747-0</a>.</div>
+</div>
 </div>
 </section>
 
@@ -806,8 +1051,8 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
 
 <section id="qué-sigue" class="title-slide slide level1 center">
 <h1>¿Qué sigue?</h1>
-<p>Descripcion breve</p>
-<p><a href="nombre de leccion/laboratorio/proyecto"><strong>Ir a la siguiente sección →</strong></a></p>
+<p>En el siguiente notebook aplicaremos <strong>regresión lineal simple y múltiple</strong> en Python y analizaremos, mediante diferentes conjuntos de datos, el cumplimiento y la violación de los <strong>supuestos del modelo</strong>.</p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-04.ipynb"><strong>Ir al notebook →</strong></a></p>
 
 
 </section>
