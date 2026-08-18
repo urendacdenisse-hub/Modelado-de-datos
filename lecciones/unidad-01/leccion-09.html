@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
+
+  <meta name="author" content="Dra. Denisse Urenda Castañeda">
+  <title>Modelado de Datos – Aprendizaje supervisado</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
+  <link rel="stylesheet" href="../../recursos/slides.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Aprendizaje supervisado</h1>
+  <p class="subtitle">Regularización: Ridge y Lasso</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dra. Denisse Urenda Castañeda 
+</div>
+</div>
+</div>
+
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Tabla de contenidos</h2>
+<ul>
+<li><a href="#/regresión-regularizada" id="/toc-regresión-regularizada">Regresión regularizada</a></li>
+<li><a href="#/regresión-ridge" id="/toc-regresión-ridge">Regresión Ridge</a></li>
+<li><a href="#/regresión-lasso" id="/toc-regresión-lasso">Regresión Lasso</a></li>
+<li><a href="#/validación-cruzada" id="/toc-validación-cruzada">Validación cruzada</a></li>
+<li><a href="#/inferencia" id="/toc-inferencia">Inferencia</a></li>
+<li><a href="#/flujo-de-trabajo" id="/toc-flujo-de-trabajo">Flujo de trabajo</a></li>
+<li><a href="#/resumen" id="/toc-resumen">Resumen</a></li>
+<li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
+<li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
+<li><a href="#/qué-sigue" id="/toc-qué-sigue">¿Qué sigue?</a></li>
+</ul>
+</nav>
+</section>
+<section>
+<section id="regresión-regularizada" class="title-slide slide level1 center">
+<h1>Regresión regularizada</h1>
+
+</section>
+<section id="regresión-lineal" class="slide level2">
+<h2>Regresión lineal</h2>
+<p>En regresión lineal estimamos los coeficientes minimizando</p>
+<p><span class="math display">\[
+\boxed{
+RSS=\sum_{i=1}^{n}(y_i-\hat y_i)^2
+}
+\]</span></p>
+<p>obteniendo el modelo que mejor se ajusta a los datos de entrenamiento.</p>
+<p>Sin embargo, un mejor ajuste no necesariamente implica un mejor desempeño sobre nuevas observaciones.</p>
+<div class="text-center">
+<p><strong>¿Podemos controlar la complejidad del modelo durante el ajuste?</strong></p>
+</div>
+</section>
+<section id="regularización" class="slide level2">
+<h2>Regularización</h2>
+<p>La <strong>regularización</strong> agrega una penalización al criterio de ajuste:</p>
+<p><span class="math display">\[
+\boxed{
+RSS
++
+\lambda\,P(\boldsymbol{\beta})
+}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(RSS\)</span> mide el error de ajuste;</li>
+<li><span class="math inline">\(P(\boldsymbol{\beta})\)</span> penaliza la complejidad;</li>
+<li><span class="math inline">\(\lambda\geq0\)</span> controla la intensidad de la penalización.</li>
+</ul>
+<p>Buscamos un equilibrio entre</p>
+<p><span class="math display">\[
+\text{ajuste}
+\qquad\longleftrightarrow\qquad
+\text{complejidad}.
+\]</span></p>
+</section>
+<section id="el-parámetro-de-regularización" class="slide level2">
+<h2>El parámetro de regularización</h2>
+<p>El parámetro <span class="math inline">\(\lambda\)</span> determina cuánto penalizamos la complejidad:</p>
+<p><span class="math display">\[
+RSS+\lambda P(\boldsymbol{\beta}).
+\]</span></p>
+<p>Si</p>
+<p><span class="math display">\[
+\lambda=0,
+\]</span></p>
+<p>no existe penalización y recuperamos mínimos cuadrados.</p>
+<p>Si <span class="math inline">\(\lambda\)</span> aumenta,</p>
+<p><span class="math display">\[
+\lambda\uparrow
+\qquad\Longrightarrow\qquad
+\text{mayor regularización}.
+\]</span></p>
+<div class="formula">
+<p>Regularizar implica aceptar cierto sacrificio en el ajuste para controlar la complejidad del modelo.</p>
+</div>
+</section></section>
+<section>
+<section id="regresión-ridge" class="title-slide slide level1 center">
+<h1>Regresión Ridge</h1>
+
+</section>
+<section id="una-primera-propuesta" class="slide level2">
+<h2>Una primera propuesta</h2>
+<p>Una forma de controlar la complejidad es limitar la magnitud de los coeficientes:</p>
+<p><span class="math display">\[
+\boxed{
+\beta_1^2+\beta_2^2+\cdots+\beta_p^2\leq t
+}
+\]</span></p>
+<p>donde <span class="math inline">\(t\geq0\)</span> determina qué tan grandes pueden ser los coeficientes en conjunto.</p>
+<div class="text-center">
+<p><strong>¿Qué efecto tiene esta restricción sobre la solución?</strong></p>
+</div>
+</section>
+<section id="interpretación-geométrica" class="slide level2">
+<h2>Interpretación geométrica</h2>
+<p>Consideremos solamente dos coeficientes:</p>
+<p><span class="math display">\[
+\beta_1,\qquad\beta_2.
+\]</span></p>
+<p>La restricción Ridge es</p>
+<p><span class="math display">\[
+\boxed{
+\beta_1^2+\beta_2^2\leq t
+}
+\]</span></p>
+<p>que representa un disco de radio <span class="math inline">\(\sqrt{t}\)</span>.</p>
+<p>Por lo tanto, la solución debe encontrarse dentro de la región permitida.</p>
+</section>
+<section id="interpretación-geométrica-1" class="slide level2 unlisted">
+<h2>Interpretación geométrica</h2>
+<p>Las curvas de nivel representan combinaciones de</p>
+<p><span class="math display">\[
+(\beta_1,\beta_2)
+\]</span></p>
+<p>que producen el mismo valor de <span class="math inline">\(RSS\)</span>.</p>
+<p>El centro corresponde a la solución de mínimos cuadrados:</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\beta}}_{OLS}.
+\]</span></p>
+<p>La solución Ridge será el punto dentro de la región permitida que produzca el menor <span class="math inline">\(RSS\)</span> posible.</p>
+</section>
+<section id="shrinkage" class="slide level2">
+<h2>Shrinkage</h2>
+<p>La restricción impide que los coeficientes tomen valores arbitrariamente grandes.</p>
+<p>Como resultado, la solución Ridge es desplazada hacia el origen:</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\beta}}_{Ridge}
+\longrightarrow
+\mathbf 0.
+\]</span></p>
+<p>Este efecto se conoce como <strong>shrinkage</strong>.</p>
+<div class="formula">
+<p>Ridge sacrifica parte del ajuste para obtener coeficientes de menor magnitud.</p>
+</div>
+</section>
+<section id="formulación-matemática" class="slide level2">
+<h2>Formulación matemática</h2>
+<p>La regresión Ridge estima los coeficientes minimizando</p>
+<p><span class="math display">\[
+\boxed{
+RSS
++
+\lambda
+\sum_{j=1}^{p}\beta_j^2
+}
+\]</span></p>
+<p>La penalización</p>
+<p><span class="math display">\[
+\sum_{j=1}^{p}\beta_j^2
+\]</span></p>
+<p>favorece soluciones con coeficientes de menor magnitud.</p>
+<p>El intercepto <span class="math inline">\(\beta_0\)</span> <strong>no se penaliza</strong>.</p>
+</section>
+<section id="dos-formas-de-ridge" class="slide level2">
+<h2>Dos formas de Ridge</h2>
+<p>Podemos expresar Ridge mediante una penalización:</p>
+<p><span class="math display">\[
+\boxed{
+\min
+\left[
+RSS+\lambda\sum_{j=1}^{p}\beta_j^2
+\right]
+}
+\]</span></p>
+<p>o mediante una restricción:</p>
+<p><span class="math display">\[
+\boxed{
+\min RSS
+\qquad
+\text{sujeto a}
+\qquad
+\sum_{j=1}^{p}\beta_j^2\leq t.
+}
+\]</span></p>
+<p>Ambas formulaciones representan el mismo principio:</p>
+<p><span class="math display">\[
+\text{controlar la magnitud de los coeficientes}.
+\]</span></p>
+</section>
+<section id="solución-ridge" class="slide level2">
+<h2>Solución Ridge</h2>
+<p>En forma matricial,</p>
+<p><span class="math display">\[
+RSS
+=
+\|\mathbf y-X\boldsymbol{\beta}\|_2^2.
+\]</span></p>
+<p>Por lo tanto, Ridge minimiza</p>
+<p><span class="math display">\[
+\|\mathbf y-X\boldsymbol{\beta}\|_2^2
++
+\lambda\|\boldsymbol{\beta}\|_2^2.
+\]</span></p>
+<p>Derivando e igualando a cero:</p>
+<p><span class="math display">\[
+-2X^\top(\mathbf y-X\boldsymbol{\beta})
++
+2\lambda\boldsymbol{\beta}
+=
+0.
+\]</span></p>
+<p>Entonces,</p>
+<p><span class="math display">\[
+(X^\top X+\lambda I)\boldsymbol{\beta}
+=
+X^\top\mathbf y.
+\]</span></p>
+<p>Por lo tanto,</p>
+<p><span class="math display">\[
+\boxed{
+\hat{\boldsymbol{\beta}}_{Ridge}
+=
+(X^\top X+\lambda I)^{-1}X^\top\mathbf y
+}
+\]</span></p>
+</section>
+<section id="ridge-vs.-mínimos-cuadrados" class="slide level2">
+<h2>Ridge vs.&nbsp;mínimos cuadrados</h2>
+<p>En mínimos cuadrados,</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\beta}}_{OLS}
+=
+(X^\top X)^{-1}X^\top\mathbf y.
+\]</span></p>
+<p>En Ridge,</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\beta}}_{Ridge}
+=
+(X^\top X+\lambda I)^{-1}X^\top\mathbf y.
+\]</span></p>
+<p>La diferencia está en</p>
+<p><span class="math display">\[
+\boxed{
+X^\top X
+\quad\longrightarrow\quad
+X^\top X+\lambda I
+}
+\]</span></p>
+<p>Cuando</p>
+<p><span class="math display">\[
+\lambda=0,
+\]</span></p>
+<p>recuperamos la solución de mínimos cuadrados.</p>
+</section>
+<section id="efecto-de-lambda" class="slide level2">
+<h2>Efecto de <span class="math inline">\(\lambda\)</span></h2>
+<p>El parámetro <span class="math inline">\(\lambda\)</span> controla la intensidad del <em>shrinkage</em>:</p>
+<p><span class="math display">\[
+\lambda=0
+\qquad\Longrightarrow\qquad
+\hat{\boldsymbol{\beta}}_{Ridge}
+=
+\hat{\boldsymbol{\beta}}_{OLS}.
+\]</span></p>
+<p>A medida que <span class="math inline">\(\lambda\)</span> aumenta,</p>
+<p><span class="math display">\[
+\lambda\uparrow
+\qquad\Longrightarrow\qquad
+\|\hat{\boldsymbol{\beta}}_{Ridge}\|_2\downarrow.
+\]</span></p>
+<p>En el límite,</p>
+<p><span class="math display">\[
+\lambda\rightarrow\infty
+\qquad\Longrightarrow\qquad
+\hat{\boldsymbol{\beta}}_{Ridge}\rightarrow\mathbf 0.
+\]</span></p>
+<div class="formula">
+<p>Ridge reduce progresivamente la magnitud de los coeficientes, pero generalmente <strong>no los hace exactamente cero</strong>.</p>
+</div>
+</section></section>
+<section>
+<section id="regresión-lasso" class="title-slide slide level1 center">
+<h1>Regresión Lasso</h1>
+
+</section>
+<section id="una-segunda-propuesta" class="slide level2">
+<h2>Una segunda propuesta</h2>
+<p>En lugar de restringir la suma de los cuadrados, podemos restringir la suma de las magnitudes:</p>
+<p><span class="math display">\[
+\boxed{
+|\beta_1|+|\beta_2|+\cdots+|\beta_p|\leq t
+}
+\]</span></p>
+<p>donde <span class="math inline">\(t\geq0\)</span> controla la magnitud permitida de los coeficientes.</p>
+<p>Para dos coeficientes,</p>
+<p><span class="math display">\[
+|\beta_1|+|\beta_2|\leq t,
+\]</span></p>
+<p>la región permitida tiene forma de <strong>diamante</strong>.</p>
+<div class="text-center">
+<p><strong>¿Qué diferencia produce esta geometría?</strong></p>
+</div>
+</section>
+<section id="shrinkage-y-sparsity" class="slide level2">
+<h2>Shrinkage y sparsity</h2>
+<p>Lasso también contrae los coeficientes hacia cero:</p>
+<p><span class="math display">\[
+\hat{\boldsymbol{\beta}}_{Lasso}
+\longrightarrow
+\mathbf 0.
+\]</span></p>
+<p>Sin embargo, algunos coeficientes pueden llegar a ser <strong>exactamente cero</strong>:</p>
+<p><span class="math display">\[
+\boxed{
+\hat\beta_j=0.
+}
+\]</span></p>
+<p>Cuando esto ocurre, el predictor <span class="math inline">\(X_j\)</span> deja de contribuir al modelo.</p>
+<div class="formula">
+<p>Lasso produce modelos <strong>sparse</strong>: modelos en los que solo una parte de los predictores tiene coeficientes distintos de cero.</p>
+</div>
+</section>
+<section id="formulación-matemática-1" class="slide level2">
+<h2>Formulación matemática</h2>
+<p>La regresión Lasso estima los coeficientes minimizando</p>
+<p><span class="math display">\[
+\boxed{
+RSS
++
+\lambda
+\sum_{j=1}^{p}|\beta_j|
+}
+\]</span></p>
+<p>La penalización</p>
+<p><span class="math display">\[
+\sum_{j=1}^{p}|\beta_j|
+\]</span></p>
+<p>se conoce como penalización <span class="math inline">\(L_1\)</span>.</p>
+<p>El intercepto <span class="math inline">\(\beta_0\)</span> <strong>no se penaliza</strong>.</p>
+</section>
+<section id="ridge-vs.-lasso" class="slide level2">
+<h2>Ridge vs.&nbsp;Lasso</h2>
+<p><strong>Ridge</strong></p>
+<p><span class="math display">\[
+RSS+\lambda\sum_{j=1}^{p}\beta_j^2
+\]</span></p>
+<p>contrae los coeficientes hacia cero, pero generalmente</p>
+<p><span class="math display">\[
+\hat\beta_j\neq0.
+\]</span></p>
+<p><strong>Lasso</strong></p>
+<p><span class="math display">\[
+RSS+\lambda\sum_{j=1}^{p}|\beta_j|
+\]</span></p>
+<p>puede producir</p>
+<p><span class="math display">\[
+\boxed{\hat\beta_j=0}.
+\]</span></p>
+<div class="formula">
+<p>Ambos métodos regularizan el modelo, pero Lasso además puede eliminar efectivamente algunos predictores.</p>
+</div>
+</section>
+<section id="cómo-se-resuelve-lasso" class="slide level2">
+<h2>¿Cómo se resuelve Lasso?</h2>
+<p>A diferencia de Ridge, la función</p>
+<p><span class="math display">\[
+|\beta_j|
+\]</span></p>
+<p>no es diferenciable en</p>
+<p><span class="math display">\[
+\beta_j=0.
+\]</span></p>
+<p>Por esta razón, Lasso no tiene una solución cerrada simple como</p>
+<p><span class="math display">\[
+(X^\top X+\lambda I)^{-1}X^\top y.
+\]</span></p>
+<p>En la práctica, los coeficientes se obtienen mediante métodos de optimización iterativos.</p>
+<div class="formula">
+<p>Lasso se resuelve numéricamente, actualizando los coeficientes hasta encontrar la solución que minimiza el criterio penalizado.</p>
+</div>
+</section></section>
+<section>
+<section id="validación-cruzada" class="title-slide slide level1 center">
+<h1>Validación cruzada</h1>
+
+</section>
+<section id="cómo-elegimos-lambda" class="slide level2">
+<h2>¿Cómo elegimos <span class="math inline">\(\lambda\)</span>?</h2>
+<p>Podemos probar diferentes valores:</p>
+<p><span class="math display">\[
+\lambda_1,\lambda_2,\ldots,\lambda_m.
+\]</span></p>
+<p>Pero necesitamos decidir cuál produce el mejor desempeño sobre <strong>datos no utilizados para ajustar el modelo</strong>.</p>
+<p>Una primera estrategia consiste en dividir los datos en:</p>
+<p><span class="math display">\[
+\boxed{
+\text{entrenamiento}
+\quad+\quad
+\text{validación}
+}
+\]</span></p>
+<ul>
+<li><strong>Entrenamiento:</strong> estimamos los coeficientes.</li>
+<li><strong>Validación:</strong> evaluamos diferentes valores de <span class="math inline">\(\lambda\)</span>.</li>
+</ul>
+<p>Seleccionamos el valor con menor error de validación.</p>
+</section>
+<section id="y-si-la-división-cambia" class="slide level2">
+<h2>¿Y si la división cambia?</h2>
+<p>El resultado puede depender de qué observaciones quedaron en entrenamiento y cuáles en validación.</p>
+<p>Una sola división puede producir una estimación inestable del desempeño.</p>
+<div class="text-center">
+<p><strong>¿Podemos utilizar los datos de manera más eficiente?</strong></p>
+</div>
+</section>
+<section id="k-fold-cross-validation" class="slide level2">
+<h2><span class="math inline">\(K\)</span>-fold cross-validation</h2>
+<p>Dividimos el conjunto de datos en <span class="math inline">\(K\)</span> bloques:</p>
+<p><span class="math display">\[
+D=D_1\cup D_2\cup\cdots\cup D_K.
+\]</span></p>
+<p>En cada iteración:</p>
+<ol type="1">
+<li>utilizamos <span class="math inline">\(K-1\)</span> bloques para entrenar;</li>
+<li>utilizamos el bloque restante para validar;</li>
+<li>calculamos el error de validación.</li>
+</ol>
+<p>Cada bloque se utiliza <strong>una vez para validación</strong> y <span class="math inline">\(K-1\)</span> veces para entrenamiento.</p>
+</section>
+<section id="selección-de-lambda-mediante-cv" class="slide level2">
+<h2>Selección de <span class="math inline">\(\lambda\)</span> mediante CV</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {text} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>para cada bloque Dᵢ:</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>    entrenamiento ← D - Dᵢ</span>
+<span id="cb1-4"><a></a>    validación    ← Dᵢ</span>
+<span id="cb1-5"><a></a></span>
+<span id="cb1-6"><a></a>    para cada λⱼ:</span>
+<span id="cb1-7"><a></a></span>
+<span id="cb1-8"><a></a>        ajustar modelo usando entrenamiento y λⱼ</span>
+<span id="cb1-9"><a></a>        evaluar modelo en validación</span>
+<span id="cb1-10"><a></a>        guardar error Eᵢⱼ</span>
+<span id="cb1-11"><a></a></span>
+<span id="cb1-12"><a></a>para cada λⱼ:</span>
+<span id="cb1-13"><a></a></span>
+<span id="cb1-14"><a></a>    CV(λⱼ) ← promedio de E₁ⱼ, ..., Eₖⱼ</span>
+<span id="cb1-15"><a></a></span>
+<span id="cb1-16"><a></a>seleccionar λ* con el menor CV(λⱼ)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ajuste-del-modelo-final" class="slide level2">
+<h2>Ajuste del modelo final</h2>
+<p>Una vez seleccionado el hiperparámetro</p>
+<p><span class="math display">\[
+\lambda^*,
+\]</span></p>
+<p>lo consideramos <strong>fijo</strong> y utilizamos todos los datos de entrenamiento para estimar los coeficientes:</p>
+<p><span class="math display">\[
+\boxed{
+\hat{\boldsymbol{\beta}}
+=
+\underset{\boldsymbol{\beta}}{\operatorname{argmin}}
+\left[
+RSS
++
+\lambda^*P(\boldsymbol{\beta})
+\right]
+}
+\]</span></p>
+<p>Por lo tanto, tenemos dos tareas diferentes:</p>
+<p><span class="math display">\[
+\boxed{
+\text{seleccionar }\lambda
+\quad\longrightarrow\quad
+\text{estimar }\boldsymbol{\beta}
+}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span>: <strong>hiperparámetro</strong>, seleccionado mediante validación cruzada.</li>
+<li><span class="math inline">\(\boldsymbol{\beta}\)</span>: <strong>parámetros</strong>, estimados durante el ajuste del modelo.</li>
+</ul>
+</section>
+<section id="estandarización-de-los-predictores" class="slide level2">
+<h2>Estandarización de los predictores</h2>
+<p>Ridge y Lasso penalizan directamente la magnitud de los coeficientes:</p>
+<p><span class="math display">\[
+\sum_{j=1}^{p}\beta_j^2
+\qquad\text{o}\qquad
+\sum_{j=1}^{p}|\beta_j|.
+\]</span></p>
+<p>Por lo tanto, la penalización depende de la <strong>escala de los predictores</strong>.</p>
+<p>Antes de ajustar el modelo, normalmente estandarizamos:</p>
+<p><span class="math display">\[
+\boxed{
+Z_j
+=
+\frac{X_j-\bar X_j}{s_j}
+}
+\]</span></p>
+<p>de modo que cada predictor tenga</p>
+<p><span class="math display">\[
+\text{media}=0,
+\qquad
+\text{desviación estándar}=1.
+\]</span></p>
+<div class="formula">
+<p>La estandarización permite que la penalización actúe de manera comparable sobre todos los coeficientes.</p>
+</div>
+</section></section>
+<section>
+<section id="inferencia" class="title-slide slide level1 center">
+<h1>Inferencia</h1>
+
+</section>
+<section id="qué-ocurre-con-la-inferencia" class="slide level2">
+<h2>¿Qué ocurre con la inferencia?</h2>
+<p>En regresión lineal clásica utilizamos los coeficientes estimados para realizar inferencia mediante:</p>
+<p><span class="math display">\[
+SE(\hat\beta_j),\qquad
+CI,\qquad
+p\text{-values}.
+\]</span></p>
+<p>En Ridge y Lasso, los coeficientes son estimados bajo una penalización:</p>
+<p><span class="math display">\[
+RSS+\lambda P(\boldsymbol{\beta}).
+\]</span></p>
+<p>Como consecuencia, los estimadores son <strong>sesgados</strong> y la inferencia clásica de mínimos cuadrados no puede aplicarse directamente.</p>
+<div class="formula">
+<p>Ridge y Lasso se utilizan principalmente para mejorar la <strong>predicción y estabilidad del modelo</strong>, no para realizar inferencia clásica sobre los coeficientes.</p>
+</div>
+<p>Existen métodos específicos para realizar inferencia en modelos regularizados, como <strong>bootstrap</strong> y <strong>inferencia post-selección</strong>.</p>
+</section></section>
+<section id="flujo-de-trabajo" class="title-slide slide level1 center">
+<h1>Flujo de trabajo</h1>
+
+</section>
+
+<section id="resumen" class="title-slide slide level1 center">
+<h1>Resumen</h1>
+<ul>
+<li>Idea clave 1.</li>
+<li>Idea clave 2.</li>
+<li>Idea clave 3.</li>
+</ul>
+</section>
+
+<section id="referencias" class="title-slide slide level1 smaller scrollable">
+<h1>Referencias</h1>
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
+<div id="ref-hastie2009elements" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">T. Hastie, R. Tibshirani, y J. Friedman, <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>, 2.ª ed. Springer, 2009. doi: <a href="https://doi.org/10.1007/978-0-387-84858-7">10.1007/978-0-387-84858-7</a>.</div>
+</div>
+<div id="ref-james2023islp" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">G. James, D. Witten, T. Hastie, R. Tibshirani, y J. Taylor, <em>An Introduction to Statistical Learning: With Applications in Python</em>. Springer, 2023. doi: <a href="https://doi.org/10.1007/978-3-031-38747-0">10.1007/978-3-031-38747-0</a>.</div>
+</div>
+</div>
+</section>
+
+<section id="preguntas" class="title-slide slide level1 center">
+<h1>Preguntas</h1>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><img data-src="../imagenes/mister.jpg" style="width:95.0%"></p>
+</div><div class="column" style="width:55%;">
+<div class="vcenter">
+<div class="fragment">
+¿Seguro? 🤨
+</div>
+<div class="fragment">
+Bueno…
+</div>
+<div class="fragment">
+Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
+</div>
+</div>
+</div></div>
+</section>
+
+<section id="qué-sigue" class="title-slide slide level1 center">
+<h1>¿Qué sigue?</h1>
+<p>Descripcion breve</p>
+<p><a href="nombre de leccion/laboratorio/proyecto"><strong>Ir a la siguiente sección →</strong></a></p>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Modelado de Datos · UACJ</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiado");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiado");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/urendacdenisse-hub\.github\.io\/Modelado-de-datos\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    <a href="../index.html" class="home-button">
+    📖 Lecciones
+    </a>
+    
+
+</body></html>

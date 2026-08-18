@@ -263,106 +263,77 @@ Dra. Denisse Urenda Castañeda
 <section id="formulación" class="slide level2">
 <h2>Formulación</h2>
 <p>Partimos de la relación general entre las variables <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>:</p>
-<p><span class="math display">\[
-Y = f(X) + \varepsilon
-\]</span></p>
+<p><span class="math display">\[Y = f(X) + \varepsilon\]</span></p>
 <p>En la <strong>regresión lineal</strong> asumimos que la función <span class="math inline">\(f\)</span> tiene una forma lineal.</p>
 <p>Para una variable predictora:</p>
-<p><span class="math display">\[
-f(X) = \beta_0 + \beta_1 X
-\]</span></p>
+<p><span class="math display">\[f(X) = \beta_0 + \beta_1 X\]</span></p>
 <p>por lo tanto:</p>
-<p><span class="math display">\[
-Y = \beta_0 + \beta_1 X + \varepsilon
-\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X + \varepsilon\]</span></p>
 <p>donde <span class="math inline">\(\beta_0\)</span> es el <strong>intercepto</strong> y <span class="math inline">\(\beta_1\)</span> representa el cambio esperado en <span class="math inline">\(Y\)</span> asociado con un cambio de una unidad en <span class="math inline">\(X\)</span>.</p>
 <p>La función estimada a partir de los datos es:</p>
-<p><span class="math display">\[
-\hat{f}(X) = \hat{\beta}_0 + \hat{\beta}_1 X
-\]</span></p>
+<p><span class="math display">\[\hat{f}(X) = \hat{\beta}_0 + \hat{\beta}_1 X\]</span></p>
 </section>
 <section id="intuición-geométrica" class="slide level2">
 <h2>Intuición geométrica</h2>
 <p>En el caso univariable, cada observación <span class="math inline">\((x_i,y_i)\)</span> puede representarse como un punto en el plano.</p>
 <p>El objetivo es encontrar la recta que mejor represente la relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>.</p>
 <p>Para una observación, el <strong>residuo</strong> es:</p>
-<p><span class="math display">\[
-e_i = y_i-\hat{y}_i
-\]</span></p>
+<p><span class="math display">\[e_i = y_i-\hat{y}_i\]</span></p>
 <p>El método de <strong>mínimos cuadrados ordinarios</strong> elige la recta que minimiza la <strong>suma de los residuos al cuadrado</strong>:</p>
-<p><span class="math display">\[
-\text{RSS} =
+<p><span class="math display">\[\text{RSS} =
 \sum_{i=1}^{n}
-(y_i-\hat{y}_i)^2
-\]</span></p>
+(y_i-\hat{y}_i)^2\]</span></p>
 </section>
 <section id="caso-univariable" class="slide level2">
 <h2>Caso univariable</h2>
 <p>Queremos encontrar <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> que minimicen:</p>
-<p><span class="math display">\[
-\text{RSS}(\beta_0,\beta_1)
+<p><span class="math display">\[\text{RSS}(\beta_0,\beta_1)
 =
 \sum_{i=1}^{n}
-(y_i-\beta_0-\beta_1x_i)^2
-\]</span></p>
+(y_i-\beta_0-\beta_1x_i)^2\]</span></p>
 <p>Derivamos respecto a <span class="math inline">\(\beta_0\)</span>:</p>
-<p><span class="math display">\[
-\frac{\partial \text{RSS}}{\partial\beta_0}
+<p><span class="math display">\[\frac{\partial \text{RSS}}{\partial\beta_0}
 =
 -2\sum_{i=1}^{n}
-(y_i-\beta_0-\beta_1x_i)
-\]</span></p>
+(y_i-\beta_0-\beta_1x_i)\]</span></p>
 <p>Igualando a cero:</p>
-<p><span class="math display">\[
-\hat{\beta}_0
+<p><span class="math display">\[\hat{\beta}_0
 =
-\bar{y}-\hat{\beta}_1\bar{x}
-\]</span></p>
+\bar{y}-\hat{\beta}_1\bar{x}\]</span></p>
 </section>
 <section id="caso-univariable-1" class="slide level2 unlisted">
 <h2>Caso univariable</h2>
 <p>Derivamos respecto a <span class="math inline">\(\beta_1\)</span>:</p>
-<p><span class="math display">\[
-\frac{\partial \text{RSS}}{\partial\beta_1}
+<p><span class="math display">\[\frac{\partial \text{RSS}}{\partial\beta_1}
 =
 -2\sum_{i=1}^{n}
-x_i(y_i-\beta_0-\beta_1x_i)
-\]</span></p>
+x_i(y_i-\beta_0-\beta_1x_i)\]</span></p>
 <p>Igualando a cero y resolviendo:</p>
-<p><span class="math display">\[
-\hat{\beta}_1
+<p><span class="math display">\[\hat{\beta}_1
 =
 \frac{
 \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})
 }{
 \sum_{i=1}^{n}(x_i-\bar{x})^2
-}
-\]</span></p>
+}\]</span></p>
 <p>Finalmente:</p>
-<p><span class="math display">\[
-\hat{f}(X)
+<p><span class="math display">\[\hat{f}(X)
 =
-\hat{\beta}_0+\hat{\beta}_1X
-\]</span></p>
+\hat{\beta}_0+\hat{\beta}_1X\]</span></p>
 </section>
 <section id="regresión-lineal-simple" class="slide level2">
 <h2>Regresión lineal simple</h2>
 <div class="formula">
 <p><strong>Estimadores de mínimos cuadrados</strong></p>
 <p>Para el modelo</p>
-<p><span class="math display">\[
-Y = \beta_0 + \beta_1 X + \varepsilon,
-\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X + \varepsilon,\]</span></p>
 <p>los valores que minimizan</p>
-<p><span class="math display">\[
-\operatorname{RSS}(\beta_0,\beta_1)
+<p><span class="math display">\[\operatorname{RSS}(\beta_0,\beta_1)
 =
 \sum_{i=1}^n
-(y_i-\beta_0-\beta_1x_i)^2
-\]</span></p>
+(y_i-\beta_0-\beta_1x_i)^2\]</span></p>
 <p>son</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \hat{\beta}_1
 =
 \frac{
@@ -374,8 +345,7 @@ Y = \beta_0 + \beta_1 X + \varepsilon,
 \hat{\beta}_0
 =
 \bar y-\hat{\beta}_1\bar x
-}
-\]</span></p>
+}\]</span></p>
 </div>
 </section>
 <section id="caso-univariable-2" class="slide level2 unlisted">
@@ -387,51 +357,41 @@ Y = \beta_0 + \beta_1 X + \varepsilon,
 <li><span class="math inline">\(Y\)</span>: precio de venta en miles de pesos.</li>
 </ul>
 <p>Tenemos observaciones como:</p>
-<p><span class="math display">\[
-(80,1450),\quad
+<p><span class="math display">\[(80,1450),\quad
 (100,1750),\quad
 (120,2100),\quad
-(150,2550)
-\]</span></p>
+(150,2550)\]</span></p>
 <p><strong>Objetivo:</strong> encontrar la recta que mejor represente la relación entre la superficie y el precio de las viviendas.</p>
 </section>
 <section id="caso-multivariable" class="slide level2">
 <h2>Caso multivariable</h2>
 <p>Cuando tenemos <span class="math inline">\(p\)</span> variables predictoras, asumimos que <span class="math inline">\(f\)</span> tiene la forma:</p>
-<p><span class="math display">\[
-f(\mathbf X)
+<p><span class="math display">\[f(\mathbf X)
 =
 \beta_0+
 \beta_1X_1+
 \beta_2X_2+
 \cdots+
-\beta_pX_p
-\]</span></p>
+\beta_pX_p\]</span></p>
 <p>Por lo tanto:</p>
-<p><span class="math display">\[
-Y
+<p><span class="math display">\[Y
 =
 \beta_0+
 \beta_1X_1+
 \cdots+
 \beta_pX_p+
-\varepsilon
-\]</span></p>
+\varepsilon\]</span></p>
 <p>En forma matricial:</p>
-<p><span class="math display">\[
-\mathbf{y}
+<p><span class="math display">\[\mathbf{y}
 =
 \mathbf{X}\boldsymbol{\beta}
 +
-\boldsymbol{\varepsilon}
-\]</span></p>
+\boldsymbol{\varepsilon}\]</span></p>
 <p>El problema de mínimos cuadrados es:</p>
-<p><span class="math display">\[
-\text{RSS}(\boldsymbol{\beta})
+<p><span class="math display">\[\text{RSS}(\boldsymbol{\beta})
 =
 (\mathbf{y}-\mathbf{X}\boldsymbol{\beta})^T
-(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})
-\]</span></p>
+(\mathbf{y}-\mathbf{X}\boldsymbol{\beta})\]</span></p>
 <div class="important">
 <p>En la formulación matricial, <span class="math inline">\(\mathbf X\)</span> representa la <strong>matriz de diseño</strong>, que incluye una primera columna de unos para incorporar el intercepto <span class="math inline">\(\beta_0\)</span>. Por lo tanto, <span class="math inline">\(\mathbf X \in \mathbb{R}^{n\times(p+1)}\)</span>.</p>
 </div>
@@ -439,74 +399,58 @@ Y
 <section id="caso-multivariable-1" class="slide level2 unlisted">
 <h2>Caso multivariable</h2>
 <p>Expandiendo:</p>
-<p><span class="math display">\[
-\text{RSS}
+<p><span class="math display">\[\text{RSS}
 =
 \mathbf{y}^T\mathbf{y}
 -
 2\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{y}
 +
-\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}
-\]</span></p>
+\boldsymbol{\beta}^T\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}\]</span></p>
 <p>Derivamos respecto a <span class="math inline">\(\boldsymbol{\beta}\)</span>:</p>
-<p><span class="math display">\[
-\frac{\partial \text{RSS}}{\partial\boldsymbol{\beta}}
+<p><span class="math display">\[\frac{\partial \text{RSS}}{\partial\boldsymbol{\beta}}
 =
 -2\mathbf{X}^T\mathbf{y}
 +
-2\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}
-\]</span></p>
+2\mathbf{X}^T\mathbf{X}\boldsymbol{\beta}\]</span></p>
 <p>Igualando a cero:</p>
-<p><span class="math display">\[
-\mathbf{X}^T\mathbf{X}\hat{\boldsymbol{\beta}}
+<p><span class="math display">\[\mathbf{X}^T\mathbf{X}\hat{\boldsymbol{\beta}}
 =
-\mathbf{X}^T\mathbf{y}
-\]</span></p>
+\mathbf{X}^T\mathbf{y}\]</span></p>
 <p>Si <span class="math inline">\(\mathbf{X}^T\mathbf{X}\)</span> es invertible:</p>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}
 =
 (\mathbf{X}^T\mathbf{X})^{-1}
-\mathbf{X}^T\mathbf{y}
-\]</span></p>
+\mathbf{X}^T\mathbf{y}\]</span></p>
 </section>
 <section id="regresión-lineal-múltiple" class="slide level2">
 <h2>Regresión lineal múltiple</h2>
 <div class="formula">
 <p><strong>Estimador de mínimos cuadrados</strong></p>
 <p>Para el modelo</p>
-<p><span class="math display">\[
-\mathbf y
+<p><span class="math display">\[\mathbf y
 =
 \mathbf X\boldsymbol{\beta}
 +
-\boldsymbol{\varepsilon},
-\]</span></p>
+\boldsymbol{\varepsilon},\]</span></p>
 <p>buscamos el valor de <span class="math inline">\(\boldsymbol{\beta}\)</span> que minimiza</p>
-<p><span class="math display">\[
-\operatorname{RSS}(\boldsymbol{\beta})
+<p><span class="math display">\[\operatorname{RSS}(\boldsymbol{\beta})
 =
 (\mathbf y-\mathbf X\boldsymbol{\beta})^T
-(\mathbf y-\mathbf X\boldsymbol{\beta}).
-\]</span></p>
+(\mathbf y-\mathbf X\boldsymbol{\beta}).\]</span></p>
 <p>Si <span class="math inline">\(\mathbf X^T\mathbf X\)</span> es invertible, la solución es</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \hat{\boldsymbol{\beta}}
 =
 (\mathbf X^T\mathbf X)^{-1}\mathbf X^T\mathbf y
-}
-\]</span></p>
+}\]</span></p>
 </div>
 <div class="important">
 <p>Una matriz cuadrada <span class="math inline">\(\mathbf A\)</span> es <strong>invertible</strong> si existe una matriz <span class="math inline">\(\mathbf B\)</span> tal que</p>
-<p><span class="math display">\[
-\mathbf A\mathbf B
+<p><span class="math display">\[\mathbf A\mathbf B
 =
 \mathbf B\mathbf A
 =
-\mathbf I.
-\]</span></p>
+\mathbf I.\]</span></p>
 </div>
 </section>
 <section id="caso-multivariable-2" class="slide level2 unlisted">
@@ -551,66 +495,42 @@ Y
 </tbody>
 </table>
 <p>El modelo que queremos estimar es:</p>
-<p><span class="math display">\[
-Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \varepsilon
-\]</span></p>
+<p><span class="math display">\[Y = \beta_0 + \beta_1X_1 + \beta_2X_2 + \varepsilon\]</span></p>
 </section>
 <section id="predicción" class="slide level2">
 <h2>Predicción</h2>
 <p>Del ejemplo anterior obtuvimos el modelo:</p>
-<p><span class="math display">\[
-\hat{Y}
-=
-250
-+
-100X_1
-+
-200X_2
-\]</span></p>
+<p><span class="math display">\[\hat{Y}=460+90X_1+150X_2\]</span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(X_1\)</span>: superficie en decenas de <span class="math inline">\(\text{m}^2\)</span>.</li>
 <li><span class="math inline">\(X_2\)</span>: número de habitaciones.</li>
 <li><span class="math inline">\(\hat{Y}\)</span>: precio en miles de pesos.</li>
 </ul>
-<p><strong>¿Cuál sería el precio estimado de una vivienda de <span class="math inline">\(110\)</span> <span class="math inline">\(\text{m}^2\)</span> y <span class="math inline">\(3\)</span> habitaciones?</strong></p>
+<p><strong>¿Cuál sería el precio estimado de una vivienda de</strong> <span class="math inline">\(110\)</span> <span class="math inline">\(\text{m}^2\)</span> y <span class="math inline">\(3\)</span> habitaciones?</p>
 </section>
 <section id="intepretación" class="slide level2">
 <h2>Intepretación</h2>
 <p>Del ejemplo anterior obtuvimos:</p>
-<p><span class="math display">\[
-\hat{Y}
-=
-250
-+
-100X_1
-+
-200X_2
-\]</span></p>
+<p><span class="math display">\[\hat{Y}=460+90X_1+150X_2\]</span></p>
 <p>donde <span class="math inline">\(X_1\)</span> representa la superficie en decenas de <span class="math inline">\(\text{m}^2\)</span> y <span class="math inline">\(X_2\)</span> el número de habitaciones.</p>
 <p>El coeficiente:</p>
-<p><span class="math display">\[
-\hat{\beta}_1 = 100
-\]</span></p>
-<p>indica que, <strong>manteniendo constante el número de habitaciones</strong>, un incremento de <span class="math inline">\(10\)</span> <span class="math inline">\(\text{m}^2\)</span> de superficie está asociado con un incremento promedio de <strong>100 mil pesos</strong> en el precio.</p>
+<p><span class="math display">\[\hat{\beta}_1 = 90\]</span></p>
+<p>indica que, <strong>manteniendo constante el número de habitaciones</strong>, un incremento de <span class="math inline">\(10\)</span> <span class="math inline">\(\text{m}^2\)</span> de superficie está asociado con un incremento promedio de <strong>90 mil pesos</strong> en el precio.</p>
 <p>El coeficiente:</p>
-<p><span class="math display">\[
-\hat{\beta}_2 = 200
-\]</span></p>
-<p>indica que, <strong>manteniendo constante la superficie</strong>, una habitación adicional está asociada con un incremento promedio de <strong>200 mil pesos</strong> en el precio.</p>
+<p><span class="math display">\[\hat{\beta}_2 = 150\]</span></p>
+<p>indica que, <strong>manteniendo constante la superficie</strong>, una habitación adicional está asociada con un incremento promedio de <strong>150 mil pesos</strong> en el precio.</p>
 </section>
 <section id="inferencia" class="slide level2">
 <h2>Inferencia</h2>
 <p>Además de realizar predicciones, podemos utilizar la regresión lineal para evaluar la relación entre cada predictor y la variable respuesta.</p>
 <p>Para cada coeficiente podemos plantear:</p>
-<p><span class="math display">\[
-H_0:\beta_j=0
+<p><span class="math display">\[H_0:\beta_j=0
 \qquad \text{vs.} \qquad
-H_1:\beta_j\neq0
-\]</span></p>
+H_1:\beta_j\neq0\]</span></p>
 <p>La pregunta es:</p>
 <blockquote>
-<p><strong>¿El valor estimado de <span class="math inline">\(\beta_j\)</span> es suficientemente distinto de cero o podría explicarse por la variabilidad de los datos?</strong></p>
+<p><strong>¿El valor estimado de</strong> <span class="math inline">\(\beta_j\)</span> es suficientemente distinto de cero o podría explicarse por la variabilidad de los datos?</p>
 </blockquote>
 <p>Para responder necesitamos conocer la <strong>distribución de los coeficientes estimados</strong>.</p>
 </section>
@@ -618,15 +538,12 @@ H_1:\beta_j\neq0
 <h2>Inferencia</h2>
 <h3 id="distribución-de-los-errores">Distribución de los errores</h3>
 <p>En el modelo de regresión lineal asumimos:</p>
-<p><span class="math display">\[
-\boldsymbol{\varepsilon}
+<p><span class="math display">\[\boldsymbol{\varepsilon}
 \sim
-\mathcal N_n(\mathbf{0},\sigma^2\mathbf{I})
-\]</span></p>
+\mathcal N_n(\mathbf{0},\sigma^2\mathbf{I})\]</span></p>
 <p>La varianza <span class="math inline">\(\sigma^2\)</span> es desconocida y, al igual que los coeficientes de regresión, debe estimarse utilizando los datos.</p>
 <p>La estimamos a partir de los residuos es</p>
-<p><span class="math display">\[
-\hat{\sigma}^2
+<p><span class="math display">\[\hat{\sigma}^2
 =
 \frac{\text{RSS}}{n-p-1}
 =
@@ -635,43 +552,34 @@ H_1:\beta_j\neq0
 (\mathbf y-\hat{\mathbf y})
 }{
 n-p-1
-}
-\]</span></p>
+}\]</span></p>
 <p>donde <span class="math inline">\(p\)</span> es el número de variables predictoras.</p>
 </section>
 <section id="inferencia-2" class="slide level2 unlisted">
 <h2>Inferencia</h2>
 <h3 id="distribución-de-los-coeficientes">Distribución de los coeficientes</h3>
 <p>Bajo el supuesto de normalidad de los errores:</p>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}
 \sim
 \mathcal N_{p+1}\left(
 \boldsymbol{\beta},
 \sigma^2(\mathbf{X}^T\mathbf{X})^{-1}
-\right)
-\]</span></p>
+\right)\]</span></p>
 <p>Por lo tanto, para cada coeficiente:</p>
-<p><span class="math display">\[
-\text{SE}(\hat{\beta}_j)
+<p><span class="math display">\[\text{SE}(\hat{\beta}_j)
 =
 \sqrt{
 \hat{\sigma}^2
 \left[
 (\mathbf{X}^T\mathbf{X})^{-1}
 \right]_{jj}
-}
-\]</span></p>
+}\]</span></p>
 <p>Podemos evaluar:</p>
-<p><span class="math display">\[
-H_0:\beta_j=0
-\]</span></p>
+<p><span class="math display">\[H_0:\beta_j=0\]</span></p>
 <p>utilizando:</p>
-<p><span class="math display">\[
-t=
+<p><span class="math display">\[t=
 \frac{\hat{\beta}_j}
-{\text{SE}(\hat{\beta}_j)}
-\]</span></p>
+{\text{SE}(\hat{\beta}_j)}\]</span></p>
 <p>que, bajo <span class="math inline">\(H_0\)</span>, sigue una distribución <span class="math inline">\(t\)</span> con <span class="math inline">\(n-p-1\)</span> grados de libertad.</p>
 </section>
 <section id="inferencia-sobre-los-coeficientes" class="slide level2">
@@ -679,32 +587,25 @@ t=
 <div class="formula">
 <p><strong>Distribución de los estimadores</strong></p>
 <p>Sea el modelo de regresión lineal</p>
-<p><span class="math display">\[
-\mathbf y
+<p><span class="math display">\[\mathbf y
 =
 \mathbf X\boldsymbol{\beta}
 +
-\boldsymbol{\varepsilon},
-\]</span></p>
+\boldsymbol{\varepsilon},\]</span></p>
 <p>donde</p>
-<p><span class="math display">\[
-\boldsymbol{\varepsilon}
+<p><span class="math display">\[\boldsymbol{\varepsilon}
 \sim
 \mathcal N_n
 \left(
 \mathbf 0,
 \sigma^2\mathbf I
-\right).
-\]</span></p>
+\right).\]</span></p>
 <p>Entonces, el estimador de mínimos cuadrados</p>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}
 =
-(\mathbf X^T\mathbf X)^{-1}\mathbf X^T\mathbf y
-\]</span></p>
+(\mathbf X^T\mathbf X)^{-1}\mathbf X^T\mathbf y\]</span></p>
 <p>sigue una distribución</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \hat{\boldsymbol{\beta}}
 \sim
 \mathcal N_{p+1}
@@ -712,52 +613,43 @@ t=
 \boldsymbol{\beta},
 \sigma^2(\mathbf X^T\mathbf X)^{-1}
 \right)
-}.
-\]</span></p>
+}.\]</span></p>
 </div>
 <div style="text-align: right;">
-<em>Continúa →</em>
+<p><em>Continúa →</em></p>
 </div>
 </section>
 <section id="inferencia-sobre-los-coeficientes-1" class="slide level2 unlisted">
 <h2>Inferencia sobre los coeficientes</h2>
 <div class="formula">
 <p>Para cada coeficiente <span class="math inline">\(\beta_j\)</span>,</p>
-<p><span class="math display">\[
-\operatorname{SE}(\hat\beta_j)
+<p><span class="math display">\[\operatorname{SE}(\hat\beta_j)
 =
 \sqrt{
 \hat\sigma^2
 \left[
 (\mathbf X^T\mathbf X)^{-1}
 \right]_{jj}
-}.
-\]</span></p>
+}.\]</span></p>
 <p>Podemos evaluar</p>
-<p><span class="math display">\[
-H_0:\beta_j=0
+<p><span class="math display">\[H_0:\beta_j=0
 \qquad\text{vs.}\qquad
-H_1:\beta_j\neq0
-\]</span></p>
+H_1:\beta_j\neq0\]</span></p>
 <p>mediante el estadístico</p>
-<p><span class="math display">\[
-t
+<p><span class="math display">\[t
 =
 \frac{\hat\beta_j}
 {\operatorname{SE}(\hat\beta_j)}
 \sim
 t_{n-p-1},
-\qquad \text{bajo }H_0.
-\]</span></p>
+\qquad \text{bajo }H_0.\]</span></p>
 <p>Un intervalo de confianza de nivel <span class="math inline">\(1-\alpha\)</span> para <span class="math inline">\(\beta_j\)</span> es</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \hat\beta_j
 \pm
 t_{1-\alpha/2,\;n-p-1}
 \operatorname{SE}(\hat\beta_j)
-}.
-\]</span></p>
+}.\]</span></p>
 </div>
 </section>
 <section id="inferencia-3" class="slide level2 unlisted">
@@ -816,8 +708,7 @@ t_{1-\alpha/2,\;n-p-1}
 </tbody>
 </table>
 <p>Consideraremos el modelo</p>
-<p><span class="math display">\[
-\text{Precio}
+<p><span class="math display">\[\text{Precio}
 =
 \beta_0
 +
@@ -825,8 +716,7 @@ t_{1-\alpha/2,\;n-p-1}
 +
 \beta_2\,\text{Habitaciones}
 +
-\varepsilon.
-\]</span></p>
+\varepsilon.\]</span></p>
 </section>
 <section id="inferencia-4" class="slide level2 unlisted">
 <h2>Inferencia</h2>
@@ -835,21 +725,17 @@ t_{1-\alpha/2,\;n-p-1}
 <ol type="1">
 <li>Encuentra los estimadores</li>
 </ol>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}
 =
 \begin{pmatrix}
 \hat\beta_0\\
 \hat\beta_1\\
 \hat\beta_2
-\end{pmatrix}.
-\]</span></p>
+\end{pmatrix}.\]</span></p>
 <ol start="2" type="1">
-<li><p>Para el coeficiente asociado con la <strong>superficie</strong>, evalúa <span class="math display">\[
-H_0:\beta_1=0
+<li><p>Para el coeficiente asociado con la <strong>superficie</strong>, evalúa <span class="math display">\[H_0:\beta_1=0
 \qquad \text{vs.} \qquad
-H_1:\beta_1\neq0,
-\]</span></p>
+H_1:\beta_1\neq0,\]</span></p>
 <p>utilizando un nivel de significancia <span class="math inline">\(\alpha=0.05\)</span>.</p></li>
 <li><p>Construye un <strong>intervalo de confianza del 95%</strong> para <span class="math inline">\(\beta_1\)</span>.</p></li>
 <li><p>Interpreta los resultados en el contexto del problema.</p></li>
@@ -859,48 +745,38 @@ H_1:\beta_1\neq0,
 <h2>Métricas de evaluación</h2>
 <p>Para evaluar <strong>qué tan bien se ajusta el modelo a nuestros datos</strong>, podemos comparar los valores observados <span class="math inline">\(y_i\)</span> con las predicciones <span class="math inline">\(\hat{y}_i\)</span>.</p>
 <p>Una forma de hacerlo es medir el tamaño de los <strong>errores de predicción</strong>:</p>
-<p><span class="math display">\[
-e_i = y_i-\hat{y}_i
-\]</span></p>
+<p><span class="math display">\[e_i = y_i-\hat{y}_i\]</span></p>
 <h3 id="error-absoluto-medio-mae">Error absoluto medio (MAE)</h3>
-<p><span class="math display">\[
-\text{MAE}=
+<p><span class="math display">\[\text{MAE}=
 \frac{1}{n}
 \sum_{i=1}^{n}
-|y_i-\hat{y}_i|
-\]</span></p>
+|y_i-\hat{y}_i|\]</span></p>
 <p>Representa la <strong>magnitud promedio de los errores</strong>, en las mismas unidades que <span class="math inline">\(Y\)</span>.</p>
 <h3 id="error-cuadrático-medio-mse">Error cuadrático medio (MSE)</h3>
-<p><span class="math display">\[
-\text{MSE}=
+<p><span class="math display">\[\text{MSE}=
 \frac{1}{n}
 \sum_{i=1}^{n}
-(y_i-\hat{y}_i)^2
-\]</span></p>
+(y_i-\hat{y}_i)^2\]</span></p>
 <p>Penaliza con mayor fuerza los errores grandes debido al término cuadrático.</p>
 </section>
 <section id="métricas-de-evaluación-1" class="slide level2 unlisted">
 <h2>Métricas de evaluación</h2>
 <h3 id="raíz-del-error-cuadrático-medio-rmse">Raíz del error cuadrático medio (RMSE)</h3>
-<p><span class="math display">\[
-\text{RMSE}=
+<p><span class="math display">\[\text{RMSE}=
 \sqrt{
 \frac{1}{n}
 \sum_{i=1}^{n}
 (y_i-\hat{y}_i)^2
-}
-\]</span></p>
-<p>Al tomar la raíz del MSE, el error vuelve a expresarse en las <strong>mismas unidades que <span class="math inline">\(Y\)</span></strong>.</p>
+}\]</span></p>
+<p>Al tomar la raíz del MSE, el error vuelve a expresarse en las <strong>mismas unidades que</strong> <span class="math inline">\(Y\)</span>.</p>
 <h3 id="coeficiente-de-determinación-r2">Coeficiente de determinación (<span class="math inline">\(R^2\)</span>)</h3>
-<p><span class="math display">\[
-R^2=
+<p><span class="math display">\[R^2=
 1-
 \frac{
 \sum_{i=1}^{n}(y_i-\hat{y}_i)^2
 }{
 \sum_{i=1}^{n}(y_i-\bar{y})^2
-}
-\]</span></p>
+}\]</span></p>
 <p>Compara el error del modelo con el error que obtendríamos si utilizáramos simplemente <span class="math inline">\(\bar{y}\)</span> como predicción.</p>
 <ul>
 <li><span class="math inline">\(R^2=1\)</span>: ajuste perfecto.</li>
@@ -912,10 +788,10 @@ R^2=
 <h2>Métricas de evaluación</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 21%">
-<col style="width: 35%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -945,7 +821,7 @@ R^2=
 <td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 </tr>
 <tr class="even">
-<td><strong><span class="math inline">\(R^2\)</span></strong></td>
+<td><span class="math inline">\(R^2\)</span></td>
 <td>Variabilidad explicada respecto a la media</td>
 <td>Evaluar qué tanto mejora el modelo sobre una predicción básica</td>
 <td style="text-align: center;"><span class="math inline">\(1\)</span></td>
@@ -1037,13 +913,13 @@ R^2=
 </div><div class="column" style="width:55%;">
 <div class="vcenter">
 <div class="fragment">
-¿Seguro? 🤨
+<p>¿Seguro? 🤨</p>
 </div>
 <div class="fragment">
-Bueno…
+<p>Bueno…</p>
 </div>
 <div class="fragment">
-Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
+<p>Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.</p>
 </div>
 </div>
 </div></div>

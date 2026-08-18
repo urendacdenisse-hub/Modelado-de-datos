@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Laboratorio x. titutlo – Modelado de Datos</title>
+<title>metricas-regresion – Modelado de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,6 +72,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -167,59 +161,202 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a>
+  <li><a href="#métricas-de-regresión" id="toc-métricas-de-regresión" class="nav-link active" data-scroll-target="#métricas-de-regresión">Métricas de regresión</a>
   <ul class="collapse">
-  <li><a href="#tema" id="toc-tema" class="nav-link" data-scroll-target="#tema">Tema</a></li>
+  <li><a href="#métricas-basadas-en-el-error" id="toc-métricas-basadas-en-el-error" class="nav-link" data-scroll-target="#métricas-basadas-en-el-error">Métricas basadas en el error</a></li>
+  <li><a href="#coeficiente-de-determinación" id="toc-coeficiente-de-determinación" class="nav-link" data-scroll-target="#coeficiente-de-determinación">Coeficiente de determinación</a></li>
+  <li><a href="#r2-ajustado" id="toc-r2-ajustado" class="nav-link" data-scroll-target="#r2-ajustado"><span class="math inline">\(R^2\)</span> ajustado</a></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Laboratorio x. titutlo</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<blockquote class="blockquote">
-<p><strong>Antes de comenzar</strong></p>
-<p>Este laboratorio está diseñado para ejecutarse en <strong>Google Colab</strong>.</p>
-<p>Una vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.</p>
-</blockquote>
-<div id="805a79bd" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>urendacdenisse<span class="op">-</span>hub<span class="op">/</span>modelado<span class="op">-</span>de<span class="op">-</span>datos.git</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="9b50b6c8" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd modelado<span class="op">-</span>de<span class="op">-</span>datos</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="objetivo" class="level1">
-<h1>Objetivo</h1>
-<p>…</p>
-<section id="tema" class="level2">
-<h2 class="anchored" data-anchor-id="tema">Tema</h2>
-<div id="4aed1ca5" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Funciones utilizadas</strong></p>
+<section id="métricas-de-regresión" class="level1">
+<h1>Métricas de regresión</h1>
+<p>Las métricas de regresión permiten evaluar qué tan cercanas son las predicciones del modelo a los valores observados.</p>
+<p>Sea:</p>
 <ul>
-<li>…</li>
-<li>…</li>
+<li><span class="math inline">\(y_i\)</span>: valor observado.</li>
+<li><span class="math inline">\(\hat{y}_i\)</span>: valor predicho por el modelo.</li>
+<li><span class="math inline">\(\bar{y}\)</span>: media de los valores observados.</li>
+<li><span class="math inline">\(n\)</span>: número de observaciones.</li>
 </ul>
+<p>El error o residuo de una observación es:</p>
+<p><span class="math display">\[
+e_i = y_i-\hat{y}_i
+\]</span></p>
+<section id="métricas-basadas-en-el-error" class="level2">
+<h2 class="anchored" data-anchor-id="métricas-basadas-en-el-error">Métricas basadas en el error</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Métrica</th>
+<th>Fórmula</th>
+<th>¿Qué mide?</th>
+<th>Interpretación</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>MAE</strong></td>
+<td><span class="math inline">\(\displaystyle \frac{1}{n}\sum_{i=1}^n \left|y_i-\hat{y}_i\right|\)</span></td>
+<td>Error absoluto promedio</td>
+<td>Error promedio en las mismas unidades de <span class="math inline">\(Y\)</span>. Menor es mejor.</td>
+<td><code>mean_absolute_error(y, y_hat)</code></td>
+</tr>
+<tr class="even">
+<td><strong>MSE</strong></td>
+<td><span class="math inline">\(\displaystyle \frac{1}{n}\sum_{i=1}^n (y_i-\hat{y}_i)^2\)</span></td>
+<td>Error cuadrático promedio</td>
+<td>Penaliza más fuertemente los errores grandes. Menor es mejor.</td>
+<td><code>mean_squared_error(y, y_hat)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>RMSE</strong></td>
+<td><span class="math inline">\(\displaystyle \sqrt{\frac{1}{n}\sum_{i=1}^n (y_i-\hat{y}_i)^2}\)</span></td>
+<td>Raíz del error cuadrático promedio</td>
+<td>Similar al MSE, pero expresado en las mismas unidades de <span class="math inline">\(Y\)</span>. Menor es mejor.</td>
+<td><code>root_mean_squared_error(y, y_hat)</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="coeficiente-de-determinación" class="level2">
+<h2 class="anchored" data-anchor-id="coeficiente-de-determinación">Coeficiente de determinación</h2>
+<p>El coeficiente de determinación compara el error del modelo con el error que obtendríamos al utilizar la media <span class="math inline">\(\bar{y}\)</span> como predicción.</p>
+<p>Definimos:</p>
+<p><span class="math display">\[
+\text{RSS} = \sum_{i=1}^n (y_i-\hat{y}_i)^2
+\]</span></p>
+<p><span class="math display">\[
+\text{TSS} = \sum_{i=1}^n (y_i-\bar{y})^2
+\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[
+R^2
+=
+1-\frac{\text{RSS}}{\text{TSS}}
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Métrica</th>
+<th>¿Qué mide?</th>
+<th>Interpretación</th>
+<th>Mejor valor</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(R^2\)</span></td>
+<td>Desempeño del modelo respecto a predecir siempre <span class="math inline">\(\bar{y}\)</span></td>
+<td><span class="math inline">\(R^2=1\)</span>: predicción perfecta. <span class="math inline">\(R^2=0\)</span>: desempeño igual a usar la media. <span class="math inline">\(R^2&lt;0\)</span>: peor que usar la media.</td>
+<td><span class="math inline">\(1\)</span></td>
+<td><code>r2_score(y, y_hat)</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="r2-ajustado" class="level2">
+<h2 class="anchored" data-anchor-id="r2-ajustado"><span class="math inline">\(R^2\)</span> ajustado</h2>
+<p>En regresión múltiple, agregar predictores nunca disminuye el <span class="math inline">\(R^2\)</span> del conjunto utilizado para ajustar el modelo. Por ello puede utilizarse el <span class="math inline">\(R^2\)</span> ajustado, que penaliza la inclusión de predictores adicionales.</p>
+<p><span class="math display">\[
+R^2_{\text{adj}}
+=
+1-\frac{(1-R^2)(n-1)}{n-p-1}
+\]</span></p>
+<p>donde <span class="math inline">\(p\)</span> es el número de predictores.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Métrica</th>
+<th>¿Qué mide?</th>
+<th>Interpretación</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(R^2\)</span> ajustado</td>
+<td>Variabilidad explicada considerando el número de predictores</td>
+<td>Solo aumenta si el nuevo predictor mejora suficientemente el ajuste para compensar la penalización.</td>
+<td><code>statsmodels</code> / cálculo directo</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resumen" class="level2">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Métrica</th>
+<th>Unidades</th>
+<th>Sensible a errores grandes</th>
+<th>Mejor valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>MAE</strong></td>
+<td>Mismas unidades que <span class="math inline">\(Y\)</span></td>
+<td>Menos</td>
+<td><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>MSE</strong></td>
+<td>Unidades de <span class="math inline">\(Y\)</span> al cuadrado</td>
+<td>Sí</td>
+<td><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>RMSE</strong></td>
+<td>Mismas unidades que <span class="math inline">\(Y\)</span></td>
+<td>Sí</td>
+<td><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R^2\)</span></td>
+<td>Sin unidades</td>
+<td>—</td>
+<td><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(R^2\)</span> ajustado</td>
+<td>Sin unidades</td>
+<td>—</td>
+<td><span class="math inline">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

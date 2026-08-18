@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Laboratorio x. titutlo – Modelado de Datos</title>
+<title>Notebooks – Modelado de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -148,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Proyecto</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../recursos/index.html"> 
+    <a class="nav-link active" href="../recursos/index.html" aria-current="page"> 
 <span class="menu-text">Recursos</span></a>
   </li>  
 </ul>
@@ -167,10 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a>
-  <ul class="collapse">
-  <li><a href="#tema" id="toc-tema" class="nav-link" data-scroll-target="#tema">Tema</a></li>
-  </ul></li>
+  <li><a href="#unidad-i.-aprendizaje-supervisado" id="toc-unidad-i.-aprendizaje-supervisado" class="nav-link active" data-scroll-target="#unidad-i.-aprendizaje-supervisado">Unidad I. Aprendizaje supervisado</a></li>
   </ul>
 </nav>
     </div>
@@ -179,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Laboratorio x. titutlo</h1>
+<h1 class="title">Notebooks</h1>
 </div>
 
 
@@ -196,33 +158,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<blockquote class="blockquote">
-<p><strong>Antes de comenzar</strong></p>
-<p>Este laboratorio está diseñado para ejecutarse en <strong>Google Colab</strong>.</p>
-<p>Una vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.</p>
-</blockquote>
-<div id="805a79bd" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>urendacdenisse<span class="op">-</span>hub<span class="op">/</span>modelado<span class="op">-</span>de<span class="op">-</span>datos.git</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="9b50b6c8" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd modelado<span class="op">-</span>de<span class="op">-</span>datos</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="objetivo" class="level1">
-<h1>Objetivo</h1>
-<p>…</p>
-<section id="tema" class="level2">
-<h2 class="anchored" data-anchor-id="tema">Tema</h2>
-<div id="4aed1ca5" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Funciones utilizadas</strong></p>
+<section id="unidad-i.-aprendizaje-supervisado" class="level1">
+<h1>Unidad I. Aprendizaje supervisado</h1>
 <ul>
-<li>…</li>
-<li>…</li>
+<li><a href="../recursos/supuestos-regresion.html">Supuestos de regresión lineal</a></li>
+<li><a href="../recursos/distribuciones-regresion.html">Distribuciones e IC en regresión lineal</a></li>
+<li><a href="../recursos/metricas-regresion.html">Métricas para regresión</a></li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

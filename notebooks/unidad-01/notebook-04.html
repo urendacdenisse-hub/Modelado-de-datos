@@ -150,6 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../proyecto/index.html"> 
 <span class="menu-text">Proyecto</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../recursos/index.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -277,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>varianza aproximadamente constante de los residuos;</li>
 <li>observaciones independientes.</li>
 </ul>
-<div id="4aed1ca5" class="cell" data-execution_count="8">
+<div id="4aed1ca5" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ruta <span class="op">=</span> <span class="st">"../../datos/datasets_regresion_lineal.xlsx"</span></span>
@@ -285,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(ruta, sheet_name<span class="op">=</span><span class="st">"01_relaciones_mixtas"</span> )</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[[<span class="st">"horas_estudio"</span>, <span class="st">"puntaje_examen"</span>]]</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -355,10 +359,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>ausencia de multicolinealidad fuerte;</li>
 <li>observaciones independientes.</li>
 </ul>
-<div id="e890b44f" class="cell">
+<div id="e890b44f" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(ruta, sheet_name<span class="op">=</span><span class="st">"02_supuestos_ok"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
@@ -446,10 +450,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>La estructura del modelo continúa siendo lineal, pero los errores no siguen una distribución normal.</p></li>
 <li><p>Esperamos observar desviaciones de la normalidad al analizar los residuos del modelo.</p></li>
 </ul>
-<div id="7829f1a2" class="cell" data-execution_count="3">
+<div id="7829f1a2" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(ruta, sheet_name<span class="op">=</span><span class="st">"03_no_normalidad"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
 
@@ -532,10 +536,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>La relación entre los predictores y la respuesta continúa siendo aproximadamente lineal, pero la variabilidad de los errores no es constante.</p></li>
 <li><p>En particular, esperamos que la dispersión aumente conforme aumenta el nivel de ingreso.</p></li>
 </ul>
-<div id="02886fc6" class="cell" data-execution_count="4">
+<div id="02886fc6" class="cell" data-execution_count="48">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(ruta, sheet_name<span class="op">=</span><span class="st">"04_heteroscedasticidad"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <div>
 
 
@@ -620,10 +624,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>un patrón temporal en los residuos.</li>
 </ul>
 <p>Este comportamiento se conoce como autocorrelación.</p>
-<div id="7fdd09ff" class="cell" data-execution_count="5">
+<div id="7fdd09ff" class="cell" data-execution_count="52">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(ruta, sheet_name<span class="op">=</span><span class="st">"05_dependencia_residuos"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <div>
 
 
@@ -704,10 +708,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>dificultad para separar sus efectos individuales;</li>
 <li>posibles problemas en la estimación e interpretación de los coeficientes.</li>
 </ul>
-<div id="6bcfbfb7" class="cell" data-execution_count="6">
+<div id="6bcfbfb7" class="cell" data-execution_count="60">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(ruta, sheet_name<span class="op">=</span><span class="st">"06_multicolinealidad"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="60">
 <div>
 
 
@@ -794,10 +798,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="qué-debemos-esperar-6">¿Qué debemos esperar?</h3>
 <p>En este conjunto de datos, no todas las relaciones entre los predictores y la respuesta son lineales.</p>
 <p>Aunque un modelo de regresión lineal múltiple puede capturar parte de la variabilidad del consumo de energía, esperamos encontrar <strong>estructura sistemática en los residuos</strong>, indicando que existe información que el modelo no logró capturar.</p>
-<div id="1037b509" class="cell" data-execution_count="15">
+<div id="1037b509" class="cell" data-execution_count="65">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(ruta, sheet_name<span class="op">=</span><span class="st">"07_multiple_no_lineal"</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="65">
 <div>
 
 

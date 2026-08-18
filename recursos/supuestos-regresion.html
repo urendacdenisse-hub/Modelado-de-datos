@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Laboratorio x. titutlo – Modelado de Datos</title>
+<title>supuestos-regresion – Modelado de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,6 +72,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -167,62 +161,132 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a>
-  <ul class="collapse">
-  <li><a href="#tema" id="toc-tema" class="nav-link" data-scroll-target="#tema">Tema</a></li>
-  </ul></li>
+  <li><a href="#supuestos-de-regresión-lineal" id="toc-supuestos-de-regresión-lineal" class="nav-link active" data-scroll-target="#supuestos-de-regresión-lineal">Supuestos de regresión lineal</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Laboratorio x. titutlo</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
+<section id="supuestos-de-regresión-lineal" class="level1">
+<h1>Supuestos de regresión lineal</h1>
+<p>El modelo de regresión lineal se expresa como:</p>
+<p><span class="math display">\[
+\mathbf{Y}
+=
+\mathbf{X}\beta
++
+\varepsilon
+\]</span></p>
+<p>Si asumimos que los errores son independientes, tienen media cero, varianza constante y siguen una distribución normal:</p>
+<p><span class="math display">\[
+\varepsilon
+\sim
+\mathcal{N}_n(\mathbf{0},\sigma^2 I_n)
+\]</span></p>
+<p>entonces la distribución de la variable respuesta es:</p>
+<p><span class="math display">\[
+\mathbf{Y}\mid\mathbf{X}
+\sim
+\mathcal{N}_n
+\left(
+\mathbf{X}\beta,
+\sigma^2 I_n
+\right)
+\]</span></p>
+<p>Equivalentemente, para cada observación:</p>
+<p><span class="math display">\[
+Y_i\mid\mathbf{x}_i
+\sim
+\mathcal{N}
+\left(
+\mathbf{x}_i^T\beta,
+\sigma^2
+\right)
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 27%">
+<col style="width: 29%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Suposición</th>
+<th>¿Qué verificar?</th>
+<th>¿Qué esperamos?</th>
+<th>Herramienta</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Linealidad</strong></td>
+<td>Relación entre predictores y respuesta</td>
+<td>Residuos sin patrones sistemáticos ni curvatura</td>
+<td><code>plt.scatter(y_hat, residuals)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Linealidad por predictor</strong></td>
+<td>Si algún predictor presenta estructura no lineal</td>
+<td>Residuos sin patrón respecto a cada predictor</td>
+<td><code>plt.scatter(X_j, residuals)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Normalidad</strong></td>
+<td>Distribución de los residuos</td>
+<td>Aproximadamente normal</td>
+<td><code>stats.probplot(residuals)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Normalidad</strong></td>
+<td>Evidencia estadística de normalidad</td>
+<td>(p &gt; 0.05): no rechazamos normalidad</td>
+<td><code>shapiro(residuals)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Homocedasticidad</strong></td>
+<td>Varianza de los residuos</td>
+<td>Dispersión aproximadamente constante, sin forma de abanico</td>
+<td><code>plt.scatter(y_hat, residuals)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Homocedasticidad</strong></td>
+<td>Evidencia estadística de varianza constante</td>
+<td>(p &gt; 0.05): no hay evidencia de heterocedasticidad</td>
+<td><code>het_breuschpagan()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Independencia</strong></td>
+<td>Autocorrelación de los residuos</td>
+<td>Autocorrelaciones cercanas a 0</td>
+<td><code>plot_acf(residuals)</code></td>
+</tr>
+<tr class="even">
+<td><strong>Independencia</strong></td>
+<td>Autocorrelación entre residuos consecutivos</td>
+<td>Durbin-Watson cercano a 2</td>
+<td><code>durbin_watson(residuals)</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Multicolinealidad</strong></td>
+<td>Correlación entre predictores</td>
+<td>Evitar correlaciones muy altas entre (X_j)</td>
+<td><code>X.corr()</code></td>
+</tr>
+<tr class="even">
+<td><strong>Multicolinealidad</strong></td>
+<td>Cuánto puede explicarse cada predictor con los demás</td>
+<td>VIF bajo; idealmente &lt; 5</td>
+<td><code>variance_inflation_factor()</code></td>
+</tr>
+</tbody>
+</table>
 
 
-</header>
-
-
-<blockquote class="blockquote">
-<p><strong>Antes de comenzar</strong></p>
-<p>Este laboratorio está diseñado para ejecutarse en <strong>Google Colab</strong>.</p>
-<p>Una vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.</p>
-</blockquote>
-<div id="805a79bd" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>urendacdenisse<span class="op">-</span>hub<span class="op">/</span>modelado<span class="op">-</span>de<span class="op">-</span>datos.git</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="9b50b6c8" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd modelado<span class="op">-</span>de<span class="op">-</span>datos</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="objetivo" class="level1">
-<h1>Objetivo</h1>
-<p>…</p>
-<section id="tema" class="level2">
-<h2 class="anchored" data-anchor-id="tema">Tema</h2>
-<div id="4aed1ca5" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Funciones utilizadas</strong></p>
-<ul>
-<li>…</li>
-<li>…</li>
-</ul>
-
-
-</section>
 </section>
 
 </main> <!-- /main -->
