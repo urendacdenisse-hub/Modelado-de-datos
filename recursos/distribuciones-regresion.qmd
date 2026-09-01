@@ -1,0 +1,198 @@
+# Regresión lineal
+
+## Regresión lineal simple
+
+$$
+Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i,
+\qquad
+\varepsilon_i \sim \mathcal N(0,\sigma^2)
+$$
+
+| Cantidad | Expresión |
+|-------------|----------------------------------------------------------|
+| Pendiente | $\displaystyle \hat{\beta}_1 = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}$ |
+| Intercepto | $\displaystyle \hat{\beta}_0 = \bar{y}-\hat{\beta}_1\bar{x}$ |
+| Predicción | $\displaystyle \hat{y}_0=\hat{\beta}_0+\hat{\beta}_1x_0$ |
+| Residuos | $\displaystyle e_i=y_i-\hat{y}_i$ |
+| RSS | $\displaystyle \text{RSS}=\sum e_i^2$ |
+
+### Distribuciones de los estimadores
+
+
+
+$$
+\hat{\beta}_1 \sim \mathcal N\left(\beta_1,\frac{\sigma^2}{S_{xx}}\right),
+\quad
+\hat{\beta}_0 \sim \mathcal N\left(\beta_0,\sigma^2\left[\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}\right]\right)
+$$
+donde
+$$
+S_{xx}=\sum_{i=1}^n (x_i-\bar{x})^2
+$$
+
+| Cantidad | $\sigma^2$ conocida | $\sigma^2$ desconocida |
+|---------------|------------------------------|---------------------------|
+| Estadístico para $\beta_1$ | $\displaystyle \frac{\hat{\beta}_1-\beta_1}{\sigma/\sqrt{S_{xx}}}\sim \mathcal N(0,1)$ | $\displaystyle \frac{\hat{\beta}_1-\beta_1}{s/\sqrt{S_{xx}}}\sim t_{n-2}$ |
+| Estadístico para $\beta_0$ | $\displaystyle \frac{\hat{\beta}_0-\beta_0}{\sigma\sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}}\sim \mathcal N(0,1)$ | $\displaystyle \frac{\hat{\beta}_0-\beta_0}{s\sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}}\sim t_{n-2}$ |
+| IC para $\beta_1$ | $\displaystyle \hat{\beta}_1 \pm z_{\alpha/2}\frac{\sigma}{\sqrt{S_{xx}}}$ | $\displaystyle \hat{\beta}_1 \pm t_{\alpha/2,n-2}\frac{s}{\sqrt{S_{xx}}}$ |
+| IC para $\beta_0$ | $\displaystyle \hat{\beta}_0 \pm z_{\alpha/2}\sigma\sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}$ | $\displaystyle \hat{\beta}_0 \pm t_{\alpha/2,n-2}s\sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}$ |
+
+donde
+$$
+s^2=\frac{\text{RSS}}{n-2}
+$$
+
+
+### Distribución de la respuesta media y de una nueva observación
+
+Para un valor dado $x_0$:
+
+$$
+\mu_{Y|x_0}=E(Y|X=x_0)=\beta_0+\beta_1x_0
+$$
+
+y su estimación es:
+
+$$
+\hat{\mu}_{Y|x_0}=\hat{y}_0=\hat{\beta}_0+\hat{\beta}_1x_0.
+$$
+
+
+Distribución de $\hat{\mu}_{Y\mid x_0}$:
+
+$$
+\hat{\mu}_{Y\mid x_0}\sim \mathcal N\left(\mu_{Y\mid x_0},\sigma^2\left[\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}\right]\right)
+$$
+
+Distribución de $Y_0$:
+$$
+Y_0\mid x_0\sim \mathcal N\left(\mu_{Y\mid x_0},\sigma^2\right)
+$$
+
+Distribución del error de predicción:
+$$
+Y_0-\hat{y}_0\sim \mathcal N\left(0,\sigma^2\left[1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}\right]\right)
+$$
+
+
+| Cantidad | $\sigma^2$ conocida | $\sigma^2$ desconocida |
+|---|---|---|
+| Estadístico para $\mu_{Y\mid x_0}$ | $\displaystyle \frac{\hat{\mu}_{Y\mid x_0}-\mu_{Y\mid x_0}}{\sigma\sqrt{\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}}\sim \mathcal N(0,1)$ | $\displaystyle \frac{\hat{\mu}_{Y\mid x_0}-\mu_{Y\mid x_0}}{s\sqrt{\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}}\sim t_{n-2}$ |
+| IC para $\mu_{Y\mid x_0}$ | $\displaystyle \hat{\mu}_{Y\mid x_0}\pm z_{\alpha/2}\sigma\sqrt{\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}$ | $\displaystyle \hat{\mu}_{Y\mid x_0}\pm t_{\alpha/2,n-2}s\sqrt{\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}$ |
+| Estadístico para $Y_0$ | $\displaystyle \frac{Y_0-\hat{y}_0}{\sigma\sqrt{1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}}\sim \mathcal N(0,1)$ | $\displaystyle \frac{Y_0-\hat{y}_0}{s\sqrt{1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}}\sim t_{n-2}$ |
+| Intervalo de predicción para $Y_0$ | $\displaystyle \hat{y}_0\pm z_{\alpha/2}\sigma\sqrt{1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}$ | $\displaystyle \hat{y}_0\pm t_{\alpha/2,n-2}s\sqrt{1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}$ |
+
+## Regresión lineal múltiple
+
+$$
+\mathbf{Y}
+=\mathbf{X}{\beta}
++
+{\varepsilon},
+\qquad
+{\varepsilon}
+\sim
+\mathcal N_n(\mathbf{0}_n,\sigma^2I_n)
+$$
+donde
+$$
+\mathbf{X}
+=
+\begin{bmatrix}
+1 & x_{11} & x_{12} & \cdots & x_{1p}\\
+1 & x_{21} & x_{22} & \cdots & x_{2p}\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+1 & x_{n1} & x_{n2} & \cdots & x_{np}
+\end{bmatrix},
+\quad
+
+\beta
+=
+\begin{bmatrix}
+\beta_0\\
+\beta_1\\
+\beta_2\\
+\vdots\\
+\beta_p
+\end{bmatrix}
+$$
+
+| Cantidad     | Expresión                                                  |
+|--------------|------------------------------------------------------------|
+| Coeficientes | $\displaystyle \hat{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^TY$|
+| Predicción   | $\displaystyle \hat{\mathbf{Y}}=\mathbf{X}\hat{{\beta}}$   |
+| Residuos     | $\displaystyle \mathbf{e}=\mathbf{Y}-\hat{\mathbf{Y}}$     |
+| RSS          | $\displaystyle \text{RSS}=\mathbf{e}^T\mathbf{e}$          |
+
+### Distribuciones de los estimadores
+
+$$
+\hat{{\beta}}\sim \mathcal N_{p+1}\left({\beta},\sigma^2(\mathbf{X}^T\mathbf{X})^{-1}\right),
+\quad
+\hat{\beta}_j\sim \mathcal N\left(\beta_j,\sigma^2[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}\right)
+$$
+
+
+| Cantidad | $\sigma^2$ conocida | $\sigma^2$ desconocida |
+|----------------|------------------------------|--------------------------|
+| Error estándar de $\hat{\beta}_j$ | $\displaystyle \sigma\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}$ | $\displaystyle s\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}$ |
+| Estadístico | $\displaystyle \frac{\hat{\beta}_j-\beta_j}{\sigma\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}}\sim \mathcal N(0,1)$ | $\displaystyle \frac{\hat{\beta}_j-\beta_j}{s\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}}\sim t_{n-p-1}$ |
+| IC para $\beta_j$ | $\displaystyle \hat{\beta}_j \pm z_{\alpha/2}\sigma\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}$ | $\displaystyle \hat{\beta}_j \pm t_{\alpha/2,n-p-1}s\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}$ |
+
+donde
+$$
+s^2 = \frac{\text{RSS}}{n-p-1}
+$$
+
+### Distribución de la respuesta media y de una nueva observación
+
+Para un vector de predictores dado:
+
+$$
+\mathbf{x}_0=
+\begin{bmatrix}
+1 & x_{01} & x_{02} & \cdots & x_{0p}
+\end{bmatrix}^T
+$$
+
+la respuesta media es:
+
+$$
+\mu_{Y|\mathbf{x}_0}
+=
+E(Y|\mathbf{X}=\mathbf{x}_0)
+=
+\mathbf{x}_0^T{\beta}
+$$
+
+y su estimación es:
+
+$$
+\hat{\mu}_{Y|\mathbf{x}_0}
+=
+\hat{y}_0
+=
+\mathbf{x}_0^T\hat{{\beta}}
+$$
+
+Distribución de $\hat{\mu}_{Y\mid\mathbf{x}_0}$
+$$
+\hat{\mu}_{Y\mid\mathbf{x}_0}\sim \mathcal N\left(\mu_{Y\mid\mathbf{x}_0},\sigma^2\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0\right)
+$$
+
+Distribución de $Y_0$
+$$
+Y_0\mid\mathbf{x}_0\sim \mathcal N\left(\mu_{Y\mid\mathbf{x}_0},\sigma^2\right)
+$$
+
+Distribución del error de predicción
+$$
+Y_0-\hat{y}_0\sim \mathcal N\left(0,\sigma^2\left[1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0\right]\right)
+$$
+
+| Cantidad | $\sigma^2$ conocida | $\sigma^2$ desconocida |
+|---|---|---|
+| Estadístico para $\mu_{Y\mid\mathbf{x}_0}$ | $\displaystyle \frac{\hat{\mu}_{Y\mid\mathbf{x}_0}-\mu_{Y\mid\mathbf{x}_0}}{\sigma\sqrt{\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}}\sim \mathcal N(0,1)$ | $\displaystyle \frac{\hat{\mu}_{Y\mid\mathbf{x}_0}-\mu_{Y\mid\mathbf{x}_0}}{s\sqrt{\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}}\sim t_{n-p-1}$ |
+| IC para $\mu_{Y\mid\mathbf{x}_0}$ | $\displaystyle \hat{\mu}_{Y\mid\mathbf{x}_0}\pm z_{\alpha/2}\sigma\sqrt{\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}$ | $\displaystyle \hat{\mu}_{Y\mid\mathbf{x}_0}\pm t_{\alpha/2,n-p-1}s\sqrt{\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}$ |
+| Estadístico para $Y_0$ | $\displaystyle \frac{Y_0-\hat{y}_0}{\sigma\sqrt{1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}}\sim \mathcal N(0,1)$ | $\displaystyle \frac{Y_0-\hat{y}_0}{s\sqrt{1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}}\sim t_{n-p-1}$ |
+| Intervalo de predicción para $Y_0$ | $\displaystyle \hat{y}_0\pm z_{\alpha/2}\sigma\sqrt{1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}$ | $\displaystyle \hat{y}_0\pm t_{\alpha/2,n-p-1}s\sqrt{1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}$ |

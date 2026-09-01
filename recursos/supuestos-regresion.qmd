@@ -1,0 +1,56 @@
+# Supuestos de regresión lineal
+
+El modelo de regresión lineal se expresa como:
+
+$$
+\mathbf{Y}
+=
+\mathbf{X}\beta
++
+\varepsilon
+$$
+
+Si asumimos que los errores son independientes, tienen media cero, varianza constante y siguen una distribución normal:
+
+$$
+\varepsilon
+\sim
+\mathcal{N}_n(\mathbf{0},\sigma^2 I_n)
+$$
+
+entonces la distribución de la variable respuesta es:
+
+$$
+\mathbf{Y}\mid\mathbf{X}
+\sim
+\mathcal{N}_n
+\left(
+\mathbf{X}\beta,
+\sigma^2 I_n
+\right)
+$$
+
+Equivalentemente, para cada observación:
+
+$$
+Y_i\mid\mathbf{x}_i
+\sim
+\mathcal{N}
+\left(
+\mathbf{x}_i^T\beta,
+\sigma^2
+\right)
+$$
+
+| Suposición | ¿Qué verificar? | ¿Qué esperamos? | Herramienta |
+|----------------|--------------------|----------------------|----------------|
+| **Linealidad** | Relación entre predictores y respuesta | Residuos sin patrones sistemáticos ni curvatura | `plt.scatter(y_hat, residuals)` |
+| **Linealidad por predictor** | Si algún predictor presenta estructura no lineal | Residuos sin patrón respecto a cada predictor | `plt.scatter(X_j, residuals)` |
+| **Normalidad** | Distribución de los residuos | Aproximadamente normal | `stats.probplot(residuals)` |
+| **Normalidad** | Evidencia estadística de normalidad | (p \> 0.05): no rechazamos normalidad | `shapiro(residuals)` |
+| **Homocedasticidad** | Varianza de los residuos | Dispersión aproximadamente constante, sin forma de abanico | `plt.scatter(y_hat, residuals)` |
+| **Homocedasticidad** | Evidencia estadística de varianza constante | (p \> 0.05): no hay evidencia de heterocedasticidad | `het_breuschpagan()` |
+| **Independencia** | Autocorrelación de los residuos | Autocorrelaciones cercanas a 0 | `plot_acf(residuals)` |
+| **Independencia** | Autocorrelación entre residuos consecutivos | Durbin-Watson cercano a 2 | `durbin_watson(residuals)` |
+| **Multicolinealidad** | Correlación entre predictores | Evitar correlaciones muy altas entre (X_j) | `X.corr()` |
+| **Multicolinealidad** | Cuánto puede explicarse cada predictor con los demás | VIF bajo; idealmente \< 5 | `variance_inflation_factor()` |

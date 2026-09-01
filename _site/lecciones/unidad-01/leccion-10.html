@@ -152,7 +152,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Aprendizaje supervisado</h1>
-  <p class="subtitle">Introducción a machine learning</p>
+  <p class="subtitle">Regresión logística</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -167,8 +167,33 @@ Dra. Denisse Urenda Castañeda
 <h2 id="toc-title">Tabla de contenidos</h2>
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
-<li><a href="#/tipos-de-aprendizaje" id="/toc-tipos-de-aprendizaje">Tipos de aprendizaje</a></li>
-<li><a href="#/aprendizaje-supervisado-1" id="/toc-aprendizaje-supervisado-1">Aprendizaje supervisado</a></li>
+<li><a href="#/formulación-del-problema" id="/toc-formulación-del-problema">Formulación del problema</a></li>
+<li><a href="#/por-qué-no-usar-regresión-lineal" id="/toc-por-qué-no-usar-regresión-lineal">¿Por qué no usar regresión lineal?</a></li>
+<li><a href="#/intuición-geométrica" id="/toc-intuición-geométrica">Intuición geométrica</a></li>
+<li><a href="#/derivación-simple" id="/toc-derivación-simple">Derivación simple</a></li>
+<li><a href="#/odds" id="/toc-odds">Odds</a></li>
+<li><a href="#/log-odds" id="/toc-log-odds">Log-odds</a></li>
+<li><a href="#/modelo-logístico" id="/toc-modelo-logístico">Modelo logístico</a></li>
+<li><a href="#/qué-estamos-modelando-realmente" id="/toc-qué-estamos-modelando-realmente">¿Qué estamos modelando realmente?</a></li>
+<li><a href="#/ejemplo-simple" id="/toc-ejemplo-simple">Ejemplo simple</a></li>
+<li><a href="#/de-probabilidades-a-clases" id="/toc-de-probabilidades-a-clases">De probabilidades a clases</a></li>
+<li><a href="#/extensión-al-caso-general" id="/toc-extensión-al-caso-general">Extensión al caso general</a></li>
+<li><a href="#/notación-matricial" id="/toc-notación-matricial">Notación matricial</a></li>
+<li><a href="#/modelo-multivariado" id="/toc-modelo-multivariado">Modelo multivariado</a></li>
+<li><a href="#/cómo-estimamos-los-coeficientes" id="/toc-cómo-estimamos-los-coeficientes">¿Cómo estimamos los coeficientes?</a></li>
+<li><a href="#/utilizando-la-distribución-de-y" id="/toc-utilizando-la-distribución-de-y">Utilizando la distribución de <span class="math inline">\(Y\)</span></a></li>
+<li><a href="#/función-de-verosimilitud" id="/toc-función-de-verosimilitud">Función de verosimilitud</a></li>
+<li><a href="#/máxima-verosimilitud" id="/toc-máxima-verosimilitud">Máxima verosimilitud</a></li>
+<li><a href="#/log-verosimilitud" id="/toc-log-verosimilitud">Log-verosimilitud</a></li>
+<li><a href="#/una-diferencia-importante" id="/toc-una-diferencia-importante">Una diferencia importante</a></li>
+<li><a href="#/predicción-y-clasificación" id="/toc-predicción-y-clasificación">Predicción y clasificación</a></li>
+<li><a href="#/interpretación-de-los-coeficientes" id="/toc-interpretación-de-los-coeficientes">Interpretación de los coeficientes</a></li>
+<li><a href="#/inferencia-sobre-los-coeficientes" id="/toc-inferencia-sobre-los-coeficientes">Inferencia sobre los coeficientes</a></li>
+<li><a href="#/métricas-de-clasificación" id="/toc-métricas-de-clasificación">Métricas de clasificación</a></li>
+<li><a href="#/métricas-de-clasificación-1" id="/toc-métricas-de-clasificación-1">Métricas de clasificación</a></li>
+<li><a href="#/el-umbral-importa" id="/toc-el-umbral-importa">El umbral importa</a></li>
+<li><a href="#/evaluación-probabilística" id="/toc-evaluación-probabilística">Evaluación probabilística</a></li>
+<li><a href="#/supuestos-y-limitaciones" id="/toc-supuestos-y-limitaciones">Supuestos y limitaciones</a></li>
 <li><a href="#/resumen" id="/toc-resumen">Resumen</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
@@ -176,640 +201,658 @@ Dra. Denisse Urenda Castañeda
 </ul>
 </nav>
 </section>
-<section>
-<section id="introducción" class="title-slide slide level1 center">
-<h1>Introducción</h1>
-
+<section id="introducción" class="slide level2">
+<h2>Introducción</h2>
+<p>En muchos problemas de aprendizaje supervisado, la variable respuesta no es cuantitativa sino <strong>cualitativa</strong>.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>¿Un cliente comprará un producto?</li>
+<li>¿Un paciente presenta una enfermedad?</li>
+<li>¿Un correo es spam?</li>
+<li>¿Un estudiante aprobará el curso?</li>
+</ul>
+<p>En el caso más sencillo tenemos dos posibles resultados:</p>
+<p><span class="math display">\[
+Y\in\{0,1\}.
+\]</span></p>
+<p>Nuestro objetivo será modelar la probabilidad de que ocurra uno de ellos.</p>
 </section>
-<section id="machine-learning" class="slide level2">
-<h2>Machine learning</h2>
-<p>El <strong>machine learning</strong> o <em>aprendizaje automático</em> estudia métodos que permiten utilizar datos para <strong>aprender relaciones, patrones y estructuras</strong> en los datos.</p>
-
-<img data-src="../imagenes/machine-learning.png" class="r-stretch"><div class="figure-note">
-<p><strong>Ejemplos de tareas de aprendizaje automático</strong>: ajustar una función, separar observaciones en clases y descubrir grupos en los datos.</p>
+<section id="formulación-del-problema" class="slide level2">
+<h2>Formulación del problema</h2>
+<p>Supongamos que observamos una variable predictora <span class="math inline">\(X\)</span> y una variable respuesta binaria <span class="math inline">\(Y\in\{0,1\}.\)</span></p>
+<p>Queremos modelar</p>
+<p><span class="math display">\[
+P(Y=1\mid X=x).
+\]</span></p>
+<p>Definimos</p>
+<p><span class="math display">\[
+p(x)=P(Y=1\mid X=x).
+\]</span></p>
+<p>Por lo tanto,</p>
+<p><span class="math display">\[
+P(Y=0\mid X=x)=1-p(x).
+\]</span></p>
+<div class="formula">
+<p>La regresión logística busca construir una función</p>
+<p><span class="math display">\[
+p(x)=f(x), \quad \text{tal que} \quad 0\leq p(x)\leq 1.
+\]</span></p>
 </div>
 </section>
-<section id="variables-y-observaciones" class="slide level2">
-<h2>Variables y observaciones</h2>
-<p>Supongamos que estudiamos <span class="math inline">\(p\)</span> variables:</p>
+<section id="por-qué-no-usar-regresión-lineal" class="slide level2">
+<h2>¿Por qué no usar regresión lineal?</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>Podríamos intentar modelar</p>
 <p><span class="math display">\[
-X = (X_1, X_2, \ldots, X_p)^T.
+p(x)=\beta_0+\beta_1x.
 \]</span></p>
-<p>Cada <span class="math inline">\(X_j\)</span> representa una <strong>variable</strong> o característica medida.</p>
-<p>Para una observación <span class="math inline">\(i\)</span>, los valores observados de estas variables son:</p>
+<p>Sin embargo, una función lineal puede producir valores menores que <span class="math inline">\(0\)</span> o mayores que <span class="math inline">\(1\)</span>.</p>
+<p>Por ejemplo,</p>
 <p><span class="math display">\[
-X_i = (x_{i1}, x_{i2}, \ldots, x_{ip})^T,
-\qquad i=1,\ldots,n.
+\beta_0+\beta_1x=1.4
+\]</span></p>
+<p>no puede interpretarse como una probabilidad.</p>
+</div><div class="column" style="width:45%;">
+<p><img data-src="../imagenes/regresion-lineal-clasificacion.png" style="width:100.0%"></p>
+</div></div>
+<div class="formula">
+<p>Necesitamos una función que transforme cualquier valor real en un número entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>.</p>
+</div>
+</section>
+<section id="intuición-geométrica" class="slide level2">
+<h2>Intuición geométrica</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>La regresión logística modela primero una combinación lineal</p>
+<p><span class="math display">\[
+z=\beta_0+\beta_1x.
+\]</span></p>
+<p>Pero en lugar de utilizar <span class="math inline">\(z\)</span> directamente como predicción, lo transforma mediante la <strong>función logística</strong>:</p>
+<p><span class="math display">\[
+p(x)
+=
+\frac{1}{1+e^{-z}}.
+\]</span></p>
+</div><div class="column" style="width:45%;">
+<p><img data-src="../imagenes/regresion-logistica.png" style="width:100.0%"></p>
+</div></div>
+<p>La función logística transforma cualquier número real en un valor entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, es decir, <span class="math inline">\(\sigma:\mathbb{R}\rightarrow(0,1)\)</span>.</p>
+<div class="formula">
+<p>Por lo tanto, modelamos la probabilidad de <span class="math inline">\(Y=1\)</span> como <span class="math display">\[
+p(x) = P(Y=0\mid X=x) =
+\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.
+\]</span></p>
+</div>
+</section>
+<section id="derivación-simple" class="slide level2">
+<h2>Derivación simple</h2>
+<p>Queremos relacionar una probabilidad <span class="math inline">\(p \in (0,1)\)</span> con una expresión lineal que pueda tomar cualquier en <span class="math inline">\(\mathbb R\)</span>. Es decir, una función <span class="math display">\[
+\sigma:(0,1) \rightarrow \mathbb R
+\]</span></p>
+<h3 id="primer-intento">Primer intento</h3>
+<p>Comenzamos con la razón conocida como <strong>odds</strong>: <span class="math display">\[
+\frac{p}{1-p}.
+\]</span></p>
+<p>Si <span class="math inline">\(p\in(0,1)\)</span> entonces</p>
+<p><span class="math display">\[
+\frac{p}{1-p}\in(0,\infty).
 \]</span></p>
 </section>
-<section id="conjunto-de-observaciones" class="slide level2">
-<h2>Conjunto de observaciones</h2>
-<p>Un conjunto de <span class="math inline">\(n\)</span> observaciones de las <span class="math inline">\(p\)</span> variables, también llamado <strong>conjunto de datos</strong> (<em>dataset</em>), puede representarse como</p>
+<section id="odds" class="slide level2">
+<h2>Odds</h2>
+<p>Los odds comparan la probabilidad de que ocurra un evento con la probabilidad de que no ocurra:</p>
 <p><span class="math display">\[
-\mathcal D
+\text{odds}
 =
-\left\{
-x_i
-\right\}_{i=1}^{n},
+\frac{p}{1-p}.
 \]</span></p>
-<p>donde cada observación es un vector</p>
+<p>Por ejemplo, si</p>
 <p><span class="math display">\[
-x_i
-=
-(x_{i1},x_{i2},\ldots,x_{ip})^T.
+p=0.8,
 \]</span></p>
-<p>Equivalentemente, podemos organizar las observaciones como las filas de una matriz:</p>
+<p>entonces</p>
 <p><span class="math display">\[
-\mathcal D
+\text{odds}
 =
-\begin{pmatrix}
-x_1^T\\
-x_2^T\\
-\vdots\\
-x_n^T
-\end{pmatrix}
+\frac{0.8}{0.2}
 =
-\begin{pmatrix}
-x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p}\\
-x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2p}\\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
-x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{np}
-\end{pmatrix}
-\in \mathbb{R}^{n\times p}.
+4.
 \]</span></p>
-<p>Cada <strong>fila</strong> corresponde a una observación y cada <strong>columna</strong> a una variable.</p>
-</section></section>
-<section>
-<section id="tipos-de-aprendizaje" class="title-slide slide level1 center">
-<h1>Tipos de aprendizaje</h1>
-
+<p>Esto significa que el evento es <strong>4 veces más probable que ocurra a que no ocurra</strong>.</p>
 </section>
-<section id="aprendizaje-supervisado" class="slide level2">
-<h2>Aprendizaje supervisado</h2>
-<p>En el <strong>aprendizaje supervisado</strong> buscamos aprender la relación entre un vector de variables <strong>predictoras</strong> <span class="math inline">\(X\)</span> y una variable de <strong>respuesta</strong> <span class="math inline">\(Y\)</span>:</p>
+<section id="log-odds" class="slide level2">
+<h2>Log-odds</h2>
+<p>Los odds todavía están restringidos a valores positivos.</p>
+<p>Aplicamos logaritmo:</p>
 <p><span class="math display">\[
-Y = f(X) + \varepsilon.
+\log\left(\frac{p}{1-p}\right).
 \]</span></p>
-<p>Para ello, observamos <span class="math inline">\(n\)</span> pares:</p>
+<p>Esta transformación puede tomar cualquier valor real:</p>
 <p><span class="math display">\[
-\mathcal D = \left\{(x_i,y_i)\right\}_{i=1}^{n}.
+-\infty
+&lt;
+\log\left(\frac{p}{1-p}\right)
+&lt;
+\infty.
 \]</span></p>
-<p>El objetivo es aproximar la función desconocida <span class="math inline">\(f\)</span> para:</p>
-<ul>
-<li><strong>predecir</strong> la respuesta <span class="math inline">\(Y\)</span> a partir de <span class="math inline">\(X\)</span>,</li>
-<li>realizar <strong>inferencia</strong> sobre la relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>.</li>
-</ul>
+<p>Esta cantidad se conoce como <strong>logit</strong> o <strong>log-odds</strong>.</p>
 </section>
-<section id="ejemplo" class="slide level2">
-<h2>Ejemplo</h2>
-<p>Supongamos que queremos estudiar el precio de una vivienda a partir de algunas de sus características:</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">Superficie (m²)</th>
-<th style="text-align: right;">Habitaciones</th>
-<th style="text-align: right;">Antigüedad (años)</th>
-<th style="text-align: right;">Precio (miles de pesos)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">80</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">1450</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">1750</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">120</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">2100</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">150</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2550</td>
-</tr>
-</tbody>
-</table>
-<p>El vector de <strong>variables predictoras</strong> es</p>
+<section id="modelo-logístico" class="slide level2">
+<h2>Modelo logístico</h2>
+<p>Ahora podemos modelar los log-odds mediante una función lineal:</p>
 <p><span class="math display">\[
-X =
-\begin{pmatrix}
-X_1\\
-X_2\\
-X_3
-\end{pmatrix}
-=
-\begin{pmatrix}
-\text{Superficie}\\
-\text{Habitaciones}\\
-\text{Antigüedad}
-\end{pmatrix},
-\]</span></p>
-<p>mientras que la <strong>variable de respuesta</strong> es</p>
-<p><span class="math display">\[
-Y = \text{Precio}.
-\]</span></p>
-</section>
-<section id="ejemplo-1" class="slide level2 unlisted">
-<h2>Ejemplo</h2>
-<p>Para cada vivienda observamos una <strong>realización</strong> <span class="math inline">\((x_i,y_i)\)</span> de estas variables. Por ejemplo,</p>
-<p><span class="math display">\[
-x_1 =
-\begin{pmatrix}
-80\\
-2\\
-15
-\end{pmatrix},
-\qquad
-y_1 = 1450.
-\]</span></p>
-<p>El conjunto de datos observado puede representarse como</p>
-<p><span class="math display">\[
-\mathcal D =
-\left(
-\begin{array}{ccc|c}
-80  &amp; 2 &amp; 15 &amp; 1450\\
-100 &amp; 3 &amp; 10 &amp; 1750\\
-120 &amp; 3 &amp; 8  &amp; 2100\\
-150 &amp; 4 &amp; 5  &amp; 2550
-\end{array}
+\log\left(
+\frac{p(x)}{1-p(x)}
 \right)
 =
-(X_{\text{obs}}\mid\mathbf{y}).
+\beta_0+\beta_1x.
 \]</span></p>
-<p>Cada <strong>fila</strong> corresponde a una observación y cada <strong>columna</strong> a una variable.</p>
-</section>
-<section id="aprendizaje-no-supervisado" class="slide level2">
-<h2>Aprendizaje no supervisado</h2>
-<p>En el <strong>aprendizaje no supervisado</strong> observamos <span class="math inline">\(n\)</span> realizaciones del vector de variables <span class="math inline">\(X\)</span>:</p>
+<p>Resolviendo para <span class="math inline">\(p(x)\)</span> obtenemos</p>
 <p><span class="math display">\[
-\mathcal D = \left\{x_i\right\}_{i=1}^{n},
+p(x)=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.
 \]</span></p>
-<p>pero <strong>no existe una variable de respuesta <span class="math inline">\(Y\)</span> conocida</strong>.</p>
-<p>Por lo tanto, buscamos descubrir estructura presente en los datos, por ejemplo:</p>
-<ul>
-<li><strong>relaciones</strong> entre variables,</li>
-<li><strong>similitudes</strong> entre observaciones,</li>
-<li><strong>grupos</strong> o patrones presentes en los datos.</li>
-</ul>
+<p>que es el modelo de <strong>regresión logística</strong>.</p>
 </section>
-<section id="ejemplo-2" class="slide level2">
-<h2>Ejemplo</h2>
-<p>Supongamos que tenemos información sobre clientes de una tienda:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Edad</th>
-<th style="text-align: right;">Ingreso mensual</th>
-<th style="text-align: right;">Gasto mensual</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">12,000</td>
-<td style="text-align: right;">3,500</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">15,000</td>
-<td style="text-align: right;">4,200</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">45</td>
-<td style="text-align: right;">38,000</td>
-<td style="text-align: right;">8,500</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">42,000</td>
-<td style="text-align: right;">9,100</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">24,000</td>
-<td style="text-align: right;">5,600</td>
-</tr>
-</tbody>
-</table>
-<p>El vector de variables es</p>
+<section id="qué-estamos-modelando-realmente" class="slide level2">
+<h2>¿Qué estamos modelando realmente?</h2>
+<p>La relación entre <span class="math inline">\(X\)</span> y la probabilidad no es lineal:</p>
 <p><span class="math display">\[
-X
+p(x)
 =
-\begin{pmatrix}
-X_1\\
-X_2\\
-X_3
-\end{pmatrix}
+\frac{1}
+{1+e^{-(\beta_0+\beta_1x)}}.
+\]</span></p>
+<p>Lo que sí es lineal es</p>
+<p><span class="math display">\[
+\boxed{
+\log\left(
+\frac{p(x)}{1-p(x)}
+\right)
 =
-\begin{pmatrix}
-\text{Edad}\\
-\text{Ingreso}\\
-\text{Gasto}
-\end{pmatrix}.
+\beta_0+\beta_1x
+}
 \]</span></p>
+<p>Es decir, la regresión logística es lineal en los <strong>log-odds</strong>.</p>
 </section>
-<section id="ejemplo-3" class="slide level2 unlisted">
-<h2>Ejemplo</h2>
-<p>Por lo tanto, el conjunto de datos es</p>
+<section id="ejemplo-simple" class="slide level2">
+<h2>Ejemplo simple</h2>
+<div class="example">
+<p>Supongamos que queremos modelar la probabilidad de aprobar un examen según las <strong>horas de estudio</strong>.</p>
+<p>Sea</p>
 <p><span class="math display">\[
-\mathcal D
-=
-\begin{pmatrix}
-22 &amp; 12000 &amp; 3500\\
-25 &amp; 15000 &amp; 4200\\
-45 &amp; 38000 &amp; 8500\\
-48 &amp; 42000 &amp; 9100\\
-31 &amp; 24000 &amp; 5600
-\end{pmatrix}.
-\]</span></p>
-<p>En este caso <strong>no existe una variable de respuesta <span class="math inline">\(Y\)</span></strong>. A partir de las variables observadas podemos buscar, por ejemplo, grupos de clientes con características similares o relaciones entre las variables.</p>
-</section>
-<section id="aprendizaje-por-refuerzo" class="slide level2">
-<h2>Aprendizaje por refuerzo</h2>
-<p>En el <strong>aprendizaje por refuerzo</strong>, las observaciones</p>
-<p><span class="math display">\[
-\mathcal D = \left\{x_i\right\}_{i=1}^n
-\]</span></p>
-<p>describen el <strong>estado de un entorno</strong> con el que interactúa un agente.</p>
-<p>A partir de cada observación <span class="math inline">\(x_i\)</span>, el agente selecciona una acción <span class="math inline">\(a_i\)</span> y recibe una recompensa <span class="math inline">\(r_i\)</span>:</p>
-<p><span class="math display">\[
-x_i
-\longrightarrow
-a_i
-\longrightarrow
-r_i.
-\]</span></p>
-<p>El objetivo es aprender una estrategia o <strong>política</strong> que determine qué acción tomar para maximizar la recompensa acumulada.</p>
-<p>A diferencia del aprendizaje supervisado, <strong>no conocemos una respuesta correcta <span class="math inline">\(y_i\)</span></strong>; el agente aprende a partir de las consecuencias de sus acciones.</p>
-</section>
-<section id="ejemplo-4" class="slide level2">
-<h2>Ejemplo</h2>
-<p>Supongamos que observamos el estado de un vehículo a partir de las siguientes variables:</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">Distancia al objetivo (m)</th>
-<th style="text-align: right;">Distancia al obstáculo (m)</th>
-<th style="text-align: right;">Velocidad (m/s)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">5.2</td>
-<td style="text-align: right;">1.3</td>
-<td style="text-align: right;">0.8</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4.5</td>
-<td style="text-align: right;">0.7</td>
-<td style="text-align: right;">0.9</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3.8</td>
-<td style="text-align: right;">2.1</td>
-<td style="text-align: right;">0.7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2.4</td>
-<td style="text-align: right;">0.3</td>
-<td style="text-align: right;">1.0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1.2</td>
-<td style="text-align: right;">1.5</td>
-<td style="text-align: right;">0.6</td>
-</tr>
-</tbody>
-</table>
-<p>El vector de variables que describe el estado del entorno es</p>
-<p><span class="math display">\[
-X
-=
-\begin{pmatrix}
-X_1\\
-X_2\\
-X_3
-\end{pmatrix}
-=
-\begin{pmatrix}
-\text{Distancia al objetivo}\\
-\text{Distancia al obstáculo}\\
-\text{Velocidad}
-\end{pmatrix}.
-\]</span></p>
-</section>
-<section id="ejemplo-5" class="slide level2 unlisted">
-<h2>Ejemplo</h2>
-<p>En aprendizaje por refuerzo, cada observación <span class="math inline">\(x_i\)</span> representa el <strong>estado del entorno</strong> a partir del cual el agente debe tomar una decisión.</p>
-<p>Por ejemplo, podemos definir las acciones disponibles como</p>
-<p><span class="math display">\[
-a_i \in
-\{
-\text{avanzar},
-\text{girar izquierda},
-\text{girar derecha}
-\}.
-\]</span></p>
-<p>También definimos una recompensa que evalúa las consecuencias de las acciones, por ejemplo:</p>
-<p><span class="math display">\[
-r_i =
+Y=
 \begin{cases}
-+10, &amp; \text{si alcanza el objetivo},\\
--10, &amp; \text{si choca},\\
-+1, &amp; \text{si se acerca al objetivo}.
+1, &amp; \text{aprueba},\\
+0, &amp; \text{no aprueba}.
 \end{cases}
 \]</span></p>
-<p>Así, la interacción puede representarse de forma simplificada como</p>
+<p>Ajustamos el modelo de regresión logística y obtenemos</p>
 <p><span class="math display">\[
-x_i
-\longrightarrow
-a_i
-\longrightarrow
-r_i.
+\beta_0 = -4,\quad \beta_1 = 1
 \]</span></p>
-<p>El objetivo es aprender una política que determine qué acción tomar en cada estado para maximizar la recompensa acumulada.</p>
-</section></section>
-<section>
-<section id="aprendizaje-supervisado-1" class="title-slide slide level1 center">
-<h1>Aprendizaje supervisado</h1>
-
-</section>
-<section id="notación" class="slide level2">
-<h2>Notación</h2>
-<div class="formula">
-<p>A partir de este punto:</p>
 <ul>
-<li><span class="math inline">\(X = (X_1,\ldots,X_p)^T\)</span> es el vector de <strong>variables predictoras</strong>.</li>
-<li><span class="math inline">\(Y\)</span> es la <strong>variable de respuesta</strong>.</li>
-<li><span class="math inline">\(x_i = (x_{i1},\ldots,x_{ip})^T\)</span> es la observación <span class="math inline">\(i\)</span> de las variables predictoras.</li>
-<li><span class="math inline">\(y_i\)</span> es la observación <span class="math inline">\(i\)</span> de la variable de respuesta.</li>
-<li><span class="math inline">\(\mathcal D = \{(x_i,y_i)\}_{i=1}^n\)</span> es el <strong>conjunto de datos</strong>.</li>
+<li>¿Cuál es la probabilidad de aprobar si un estudiante estudia 3 horas? ¿Y si estudia 5 horas?</li>
+<li>¿Cómo podemos convertir estas probabilidades en una decisión: aprueba o no aprueba?</li>
+<li>¿A partir de cuántas horas de estudio el modelo clasifica a un estudiante como aprobado?</li>
 </ul>
 </div>
 </section>
-<section id="regresión-y-clasificación" class="slide level2">
-<h2>Regresión y clasificación</h2>
-<p>Los problemas supervisados pueden distinguirse según el tipo de respuesta <span class="math inline">\(Y\)</span>.</p>
+<section id="de-probabilidades-a-clases" class="slide level2">
+<h2>De probabilidades a clases</h2>
+<p>La regresión logística estima</p>
+<p><span class="math display">\[
+p(x)=P(Y=1\mid X=x).
+\]</span></p>
+<p>Para obtener una clase debemos elegir un <strong>umbral de decisión</strong> <span class="math inline">\(c\)</span>:</p>
+<p><span class="math display">\[
+\hat y=
+\begin{cases}
+1, &amp; p(x)\geq c,\\
+0, &amp; p(x)&lt;c.
+\end{cases}
+\]</span></p>
+<p>El valor <span class="math inline">\(c=0.5\)</span> es una elección común, pero <strong>no necesariamente es la mejor</strong>.</p>
+<div class="formula">
+<p>La elección del umbral depende del problema y del costo de cometer diferentes tipos de error.</p>
+</div>
+<p>La <strong>frontera de decisión</strong> corresponde a los valores de <span class="math inline">\(x\)</span> donde</p>
+<p><span class="math display">\[
+p(x)=c.
+\]</span></p>
+</section>
+<section id="extensión-al-caso-general" class="slide level2">
+<h2>Extensión al caso general</h2>
+<p>Sea <span class="math inline">\(Y\in\{0,1\}\)</span> una variable respuesta binaria y sean</p>
+<p><span class="math display">\[
+X_1,X_2,\ldots,X_p
+\]</span></p>
+<p>las <span class="math inline">\(p\)</span> variables predictoras.</p>
+<p>Queremos modelar la probabilidad condicional</p>
+<p><span class="math display">\[
+p(x_1,\ldots,x_p)
+=
+P(Y=1\mid X_1=x_1,\ldots,X_p=x_p).
+\]</span></p>
+<p>La regresión logística supone que los <strong>log-odds</strong> de esta probabilidad son una función lineal de los predictores:</p>
+<div class="formula">
+<p><span class="math display">\[
+\log\left(
+\frac{p(x_1,\ldots,x_p)}
+{1-p(x_1,\ldots,x_p)}
+\right)
+=
+\beta_0+\beta_1x_1+\cdots+\beta_px_p.
+\]</span></p>
+</div>
+</section>
+<section id="notación-matricial" class="slide level2">
+<h2>Notación matricial</h2>
+<p>Para incluir el intercepto, definimos</p>
+<p><span class="math display">\[
+\mathbf x
+=
+(1,x_1,\ldots,x_p)^T,
+\qquad
+\boldsymbol\beta
+=
+(\beta_0,\beta_1,\ldots,\beta_p)^T.
+\]</span></p>
+<p>Entonces,</p>
+<p><span class="math display">\[
+\beta_0+\beta_1x_1+\cdots+\beta_px_p
+=
+\mathbf x^T\boldsymbol\beta.
+\]</span></p>
+<p>Por lo tanto, el modelo puede escribirse como</p>
+<p><span class="math display">\[
+\log\left(
+\frac{p(\mathbf x)}
+{1-p(\mathbf x)}
+\right)
+=
+\mathbf x^T\boldsymbol\beta.
+\]</span></p>
+<p>Despejando <span class="math inline">\(p(\mathbf x)\)</span>,</p>
+<p><span class="math display">\[
+p(\mathbf x)
+=
+\frac{e^{\mathbf x^T\boldsymbol\beta}}
+{1+e^{\mathbf x^T\boldsymbol\beta}}.
+\]</span></p>
+</section>
+<section id="modelo-multivariado" class="slide level2">
+<h2>Modelo multivariado</h2>
+<div class="formula">
+<p><strong>Modelo de regresión logística</strong></p>
+<p>Sea <span class="math inline">\(Y\in\{0,1\}\)</span> una variable respuesta binaria y sean</p>
+<p><span class="math display">\[
+\mathbf x=(1,x_1,\ldots,x_p)^T,
+\qquad
+\boldsymbol\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T,
+\]</span></p>
+<p>el vector de predictores y el vector de parámetros, respectivamente.</p>
+<p>La probabilidad condicional de <span class="math inline">\(Y=1\)</span> está dada por</p>
+<p><span class="math display">\[
+\boxed{
+p(\mathbf x)
+=
+P(Y=1\mid \mathbf x)
+=
+\frac{1}
+{1+e^{-\mathbf x^T\boldsymbol\beta}}
+}.
+\]</span></p>
+</div>
+</section>
+<section id="cómo-estimamos-los-coeficientes" class="slide level2">
+<h2>¿Cómo estimamos los coeficientes?</h2>
+<p>Recordemos que en regresión lineal estimamos</p>
+<p><span class="math display">\[
+\hat{\boldsymbol\beta}
+=
+\underset{\boldsymbol\beta}{\arg\min}\;
+\text{RSS}(\boldsymbol\beta)
+=
+\underset{\boldsymbol\beta}{\arg\min}\;
+(\mathbf y-\mathbf X\boldsymbol\beta)^T
+(\mathbf y-\mathbf X\boldsymbol\beta).
+\]</span></p>
+<p>Podríamos plantear un criterio similar para regresión logística:</p>
+<p><span class="math display">\[
+\underset{\boldsymbol\beta}{\arg\min}
+\sum_{i=1}^n
+\left(y_i-p_i\right)^2, \qquad p_i=P(Y_i=1\mid \mathbf x_i).
+\]</span></p>
+<p>Sin embargo, ahora sabemos que nuestra variable respuesta sigue una distribución</p>
+<p><span class="math display">\[
+Y_i\mid\mathbf x_i
+\sim\operatorname{Bernoulli}(p_i).
+\]</span></p>
+<div class="formula">
+<p>En lugar de minimizar errores cuadrados, utilizaremos la <strong>distribución de <span class="math inline">\(Y_i\)</span></strong> para estimar los parámetros del modelo.</p>
+</div>
+</section>
+<section id="utilizando-la-distribución-de-y" class="slide level2">
+<h2>Utilizando la distribución de <span class="math inline">\(Y\)</span></h2>
+<p>Sabemos que</p>
+<p><span class="math display">\[
+Y_i\mid\mathbf x_i
+\sim
+\operatorname{Bernoulli}(p_i).
+\]</span></p>
+<div class="fragment">
+<p>Por lo tanto,</p>
+<p><span class="math display">\[
+P(Y_i=y_i\mid\mathbf x_i)
+=
+\begin{cases}
+p_i, &amp; y_i=1,\\
+1-p_i, &amp; y_i=0.
+\end{cases}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Esto puede escribirse de forma compacta como</p>
+<p><span class="math display">\[
+P(Y_i=y_i\mid\mathbf x_i)
+=
+p_i^{y_i}(1-p_i)^{1-y_i}.
+\]</span></p>
+</div>
+<div class="formula fragment">
+<p>Esta expresión nos dice qué tan probable es observar <span class="math inline">\(y_i\)</span> para un valor dado de <span class="math inline">\(p_i\)</span>.</p>
+</div>
+</section>
+<section id="función-de-verosimilitud" class="slide level2">
+<h2>Función de verosimilitud</h2>
+<p>Para cada observación tenemos</p>
+<p><span class="math display">\[
+P(Y_i=y_i\mid\mathbf x_i)
+=
+p_i^{y_i}(1-p_i)^{1-y_i}.
+\]</span></p>
+<div class="fragment">
+<p>Si suponemos que las observaciones son independientes, la probabilidad conjunta de observar</p>
+<p><span class="math display">\[
+y_1,y_2,\ldots,y_n
+\]</span></p>
+<p>es el producto de las probabilidades individuales:</p>
+<p><span class="math display">\[
+L(\boldsymbol\beta)
+=
+\prod_{i=1}^{n}
+p_i^{y_i}(1-p_i)^{1-y_i}.
+\]</span></p>
+</div>
+<div class="formula fragment">
+<p>La <strong>función de verosimilitud</strong> mide qué tan compatibles son los parámetros <span class="math inline">\(\boldsymbol\beta\)</span> con los datos observados.</p>
+</div>
+</section>
+<section id="máxima-verosimilitud" class="slide level2">
+<h2>Máxima verosimilitud</h2>
+<p>Queremos encontrar los valores de <span class="math inline">\(\boldsymbol\beta\)</span> que hagan <strong>más probable observar los datos que obtuvimos</strong>.</p>
+<p>Por lo tanto,</p>
+<p><span class="math display">\[
+\hat{\boldsymbol\beta}
+=
+\underset{\boldsymbol\beta}{\arg\max}
+\;L(\boldsymbol\beta).
+\]</span></p>
+<div class="fragment">
+<p>Como</p>
+<p><span class="math display">\[
+L(\boldsymbol\beta)
+=
+\prod_{i=1}^{n}
+p_i^{y_i}(1-p_i)^{1-y_i},
+\]</span></p>
+<p>maximizar la verosimilitud significa encontrar los coeficientes que asignen probabilidades altas a los resultados observados.</p>
+</div>
+<div class="formula fragment">
+<div class="text-center">
+<p>Los coeficientes de la regresión logística se estiman mediante <strong>máxima verosimilitud</strong>.</p>
+</div>
+</div>
+</section>
+<section id="log-verosimilitud" class="slide level2">
+<h2>Log-verosimilitud</h2>
+<p>Queremos maximizar la función de verosimilitud</p>
+<p><span class="math display">\[
+L(\boldsymbol\beta)
+=
+\prod_{i=1}^{n}
+p_i^{y_i}(1-p_i)^{1-y_i}.
+\]</span></p>
+<div class="fragment">
+<p>Sin embargo, esta expresión contiene un producto. Como la función logarítmica transforma productos en sumas y además es estrictamente creciente, definimos <span class="math inline">\(\ell(\boldsymbol\beta) = \log L(\boldsymbol\beta).\)</span></p>
+<p>Entonces,</p>
+<p><span class="math display">\[
+\underset{\boldsymbol\beta}{\arg\max}\;L(\boldsymbol\beta)
+=
+\underset{\boldsymbol\beta}{\arg\max}\;\ell(\boldsymbol\beta).
+\]</span></p>
+</div>
+<div class="formula fragment">
+<p><strong>Estimación por máxima verosimilitud</strong></p>
+<p><span class="math display">\[
+\hat{\boldsymbol\beta}
+=
+\underset{\boldsymbol\beta}{\arg\max}\;
+\left[\sum_{i=1}^{n}
+\left[
+y_i\log(p_i)
++
+(1-y_i)\log(1-p_i)
+\right]\right].
+\]</span></p>
+</div>
+</section>
+<section id="una-diferencia-importante" class="slide level2">
+<h2>Una diferencia importante</h2>
+<p>En regresión lineal obtuvimos una solución cerrada:</p>
+<p><span class="math display">\[
+\hat{\boldsymbol\beta}
+=
+(\mathbf X^T\mathbf X)^{-1}
+\mathbf X^T\mathbf y.
+\]</span></p>
+<p>En regresión logística, en general, no existe una solución cerrada equivalente para</p>
+<p><span class="math display">\[
+\hat{\boldsymbol\beta}
+=
+\underset{\boldsymbol\beta}{\arg\max}\;
+\ell(\boldsymbol\beta).
+\]</span></p>
+<p>Por lo tanto, los coeficientes se obtienen mediante <strong>optimización numérica</strong>.</p>
+<div class="example">
+<p><strong>Newton-Raphson</strong> es un método iterativo que, aplicado a la maximización de la log-verosimilitud, produce la actualización</p>
+<p><span class="math display">\[
+\boldsymbol\beta^{(t+1)}
+=
+\boldsymbol\beta^{(t)}
+-
+\left[
+\nabla^2\ell(\boldsymbol\beta^{(t)})
+\right]^{-1}
+\nabla\ell(\boldsymbol\beta^{(t)}).
+\]</span></p>
+</div>
+</section>
+<section id="predicción-y-clasificación" class="slide level2">
+<h2>Predicción y clasificación</h2>
+<p>Una vez estimados los parámetros, para una nueva observación <span class="math inline">\(\mathbf x_*\)</span> calculamos</p>
+<p><span class="math display">\[
+\hat p
+=
+\frac{1}
+{1+e^{-\mathbf x_*^T\hat{\boldsymbol\beta}}}.
+\]</span></p>
+<p>Esta es una <strong>predicción probabilística</strong>.</p>
+<p>Para obtener una clase, elegimos un umbral <span class="math inline">\(c\)</span>:</p>
+<p><span class="math display">\[
+\hat y
+=
+\begin{cases}
+1, &amp; \hat p\geq c,\\
+0, &amp; \hat p&lt;c.
+\end{cases}
+\]</span></p>
+<div class="note">
+<p>Un valor común es <span class="math inline">\(c=0.5\)</span>, pero el umbral depende del problema.</p>
+</div>
+</section>
+<section id="interpretación-de-los-coeficientes" class="slide level2">
+<h2>Interpretación de los coeficientes</h2>
+<p>Recordemos que</p>
+<p><span class="math display">\[
+\log\left(\frac{p}{1-p}\right)
+=
+\beta_0+\beta_1x_1+\cdots+\beta_px_p.
+\]</span></p>
+<p>Manteniendo las demás variables constantes, aumentar <span class="math inline">\(x_j\)</span> una unidad cambia los <strong>log-odds</strong> en</p>
+<p><span class="math display">\[
+\beta_j.
+\]</span></p>
+<p>Equivalentemente, los odds se multiplican por</p>
+<div class="formula">
+<p><span class="math display">\[
+\boxed{e^{\beta_j}}
+\]</span></p>
+<p>Esta cantidad se conoce como <strong>odds ratio</strong>.</p>
+</div>
+<p>Por ejemplo, si <span class="math inline">\(e^{\beta_j}=2\)</span>, los odds se multiplican por <span class="math inline">\(2\)</span>.</p>
+</section>
+<section id="inferencia-sobre-los-coeficientes" class="slide level2">
+<h2>Inferencia sobre los coeficientes</h2>
+<p>Para muestras suficientemente grandes,</p>
+<p><span class="math display">\[
+\hat\beta_j
+\approx
+\mathcal N\left(
+\beta_j,
+\operatorname{SE}(\hat\beta_j)^2
+\right).
+\]</span></p>
+<p>Esto permite construir <strong>intervalos de confianza</strong> y realizar pruebas de hipótesis, por ejemplo,</p>
+<p><span class="math display">\[
+H_0:\beta_j=0
+\qquad\text{vs.}\qquad
+H_1:\beta_j\neq0.
+\]</span></p>
+<p>Una prueba común utiliza el estadístico de Wald:</p>
+<p><span class="math display">\[
+z=
+\frac{\hat\beta_j}
+{\operatorname{SE}(\hat\beta_j)}.
+\]</span></p>
+</section>
+<section id="métricas-de-clasificación" class="slide level2">
+<h2>Métricas de clasificación</h2>
+<p>Después de seleccionar un umbral, comparamos <span class="math inline">\(y_i\)</span> con <span class="math inline">\(\hat y_i\)</span>:</p>
 <table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="header">
 <th></th>
-<th><strong>Regresión</strong></th>
-<th><strong>Clasificación</strong></th>
+<th style="text-align: right;">Predicción <span class="math inline">\(1\)</span></th>
+<th style="text-align: right;">Predicción <span class="math inline">\(0\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Tipo de respuesta <span class="math inline">\(Y\)</span></strong></td>
-<td>Cuantitativa</td>
-<td>Cualitativa</td>
+<td>Real <span class="math inline">\(1\)</span></td>
+<td style="text-align: right;">TP</td>
+<td style="text-align: right;">FN</td>
 </tr>
 <tr class="even">
-<td><strong>Valores de <span class="math inline">\(Y\)</span></strong></td>
-<td>Valores numéricos</td>
-<td>Categorías o clases</td>
-</tr>
-<tr class="odd">
-<td><strong>Objetivo</strong></td>
-<td>Estimar un valor</td>
-<td>Asignar una clase</td>
-</tr>
-<tr class="even">
-<td><strong>Predicción</strong></td>
-<td><span class="math inline">\(\hat y \in \mathbb R\)</span></td>
-<td><span class="math inline">\(\hat y \in \{C_1,\ldots,C_K\}\)</span></td>
-</tr>
-<tr class="odd">
-<td><strong>Ejemplo de respuesta</strong></td>
-<td>Precio, temperatura, consumo</td>
-<td>Positivo/negativo, especie, categoría</td>
-</tr>
-<tr class="even">
-<td><strong>Ejemplo de problema</strong></td>
-<td>Predecir el precio de una vivienda</td>
-<td>Clasificar un tumor como benigno o maligno</td>
+<td>Real <span class="math inline">\(0\)</span></td>
+<td style="text-align: right;">FP</td>
+<td style="text-align: right;">TN</td>
 </tr>
 </tbody>
 </table>
-<p>La distinción depende principalmente de la <strong>variable de respuesta <span class="math inline">\(Y\)</span></strong>, no del tipo de variables predictoras.</p>
+<p>A partir de la <strong>matriz de confusión</strong> podemos definir distintas métricas de desempeño.</p>
 </section>
-<section id="ejemplo-6" class="slide level2">
-<h2>Ejemplo</h2>
-<p>Supongamos que queremos <strong>predecir el precio de una vivienda</strong> a partir de su tamaño, número de habitaciones y ubicación.</p>
-<p>El vector de variables predictoras es</p>
+<section id="métricas-de-clasificación-1" class="slide level2">
+<h2>Métricas de clasificación</h2>
 <p><span class="math display">\[
-X
+\operatorname{Accuracy}
 =
-\begin{pmatrix}
-X_1\\
-X_2\\
-X_3
-\end{pmatrix}
-=
-\begin{pmatrix}
-\text{Tamaño}\\
-\text{Habitaciones}\\
-\text{Ubicación}
-\end{pmatrix},
+\frac{TP+TN}{TP+TN+FP+FN}
 \]</span></p>
-<p>y la variable de respuesta es</p>
 <p><span class="math display">\[
-Y = \text{Precio}.
-\]</span></p>
-<p>Por lo tanto, planteamos el problema como</p>
-<p><span class="math display">\[
-\text{Precio}
+\operatorname{Precision}
 =
-f(\text{Tamaño},\text{Habitaciones},\text{Ubicación})
+\frac{TP}{TP+FP},
+\qquad
+\operatorname{Recall}
+=
+\frac{TP}{TP+FN}.
+\]</span></p>
+<ul>
+<li><strong>Accuracy:</strong> ¿qué proporción clasificamos correctamente?</li>
+<li><strong>Precision:</strong> de los positivos predichos, ¿cuántos eran positivos?</li>
+<li><strong>Recall:</strong> de los positivos reales, ¿cuántos detectamos?</li>
+</ul>
+<div class="note">
+<p>La métrica adecuada depende del costo de los distintos tipos de error.</p>
+</div>
+</section>
+<section id="el-umbral-importa" class="slide level2">
+<h2>El umbral importa</h2>
+<p>Cambiar el umbral <span class="math inline">\(c\)</span> modifica las clases predichas y, por lo tanto, las métricas de clasificación.</p>
+<p>En general, disminuir <span class="math inline">\(c\)</span> produce más predicciones positivas:</p>
+<p><span class="math display">\[
+c\downarrow
+\quad\Rightarrow\quad
+\operatorname{Recall}\uparrow,
+\]</span></p>
+<p>pero también puede aumentar los falsos positivos.</p>
+<p>La <strong>curva ROC</strong> estudia el comportamiento del clasificador para distintos valores del umbral.</p>
+</section>
+<section id="evaluación-probabilística" class="slide level2">
+<h2>Evaluación probabilística</h2>
+<p>Las métricas anteriores evalúan las <strong>clases predichas</strong>. También podemos evaluar directamente las probabilidades <span class="math inline">\(\hat p_i\)</span>.</p>
+<p>La <strong>log-loss</strong> está dada por</p>
+<p><span class="math display">\[
+-\frac1n
+\sum_{i=1}^{n}
+\left[
+y_i\log(\hat p_i)
 +
-\varepsilon.
+(1-y_i)\log(1-\hat p_i)
+\right].
 \]</span></p>
-<p>El objetivo es utilizar datos para <strong>estimar la función desconocida <span class="math inline">\(f\)</span></strong> y utilizarla para predecir el precio de nuevas viviendas.</p>
-</section>
-<section id="de-forma-general" class="slide level2">
-<h2>De forma general</h2>
-<p>Sea <span class="math inline">\(X\)</span> el vector de variables predictoras</p>
-<p><span class="math display">\[
-X = (X_1, X_2, \ldots, X_p)^T,
-\]</span></p>
-<p>y <span class="math inline">\(Y\)</span> la variable de respuesta.</p>
-<p>La relación entre las variables predictoras y la variable de respuesta se representa como</p>
-<p><span class="math display">\[
-Y = f(X) + \varepsilon,
-\]</span></p>
-<p>donde:</p>
-<ul>
-<li><span class="math inline">\(f\)</span> representa la <strong>relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span></strong>.</li>
-<li><span class="math inline">\(\varepsilon\)</span> representa el <strong>error aleatorio</strong>.</li>
-</ul>
-</section>
-<section id="estimación-de-f" class="slide level2">
-<h2>Estimación de <span class="math inline">\(f\)</span></h2>
-<p>La función <span class="math inline">\(f\)</span> es <strong>desconocida</strong>. A partir del conjunto de datos</p>
-<p><span class="math display">\[
-\mathcal D = \{(x_i,y_i)\}_{i=1}^n,
-\]</span></p>
-<p>buscamos obtener una <strong>estimación</strong> <span class="math inline">\(\hat f\)</span> de esta relación:</p>
-<p><span class="math display">\[
-\hat f(X) \approx f(X).
-\]</span></p>
-<p>La estimación de <span class="math inline">\(f\)</span> puede tener dos objetivos principales:</p>
-<ul>
-<li><strong>Predicción:</strong> utilizar <span class="math inline">\(\hat f\)</span> para predecir nuevos valores de <span class="math inline">\(Y\)</span>.</li>
-<li><strong>Inferencia:</strong> utilizar <span class="math inline">\(\hat f\)</span> para comprender la relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>.</li>
-</ul>
-</section>
-<section id="predicción" class="slide level2">
-<h2>Predicción</h2>
-<p>Dados un vector de variables predictoras <span class="math inline">\(X\)</span> y una variable de respuesta <span class="math inline">\(Y\)</span>, buscamos una función <span class="math inline">\(\hat f\)</span> tal que</p>
-<p><span class="math display">\[
-\hat Y = \hat f(X) \quad \text{y} \quad \hat Y \approx Y.
-\]</span></p>
-<p>Equivalentemente,</p>
-<p><span class="math display">\[
-\left|Y - \hat f(X)\right| \approx 0.
-\]</span></p>
-<div class="example">
-<p>Predecir el precio de una vivienda a partir de características como los metros cuadrados construidos, número de habitaciones, número de baños y antigüedad.</p>
+<div class="formula">
+<p>La log-loss corresponde a la <strong>log-verosimilitud negativa promedio</strong>.</p>
+<p>Una menor log-loss indica mejores predicciones probabilísticas.</p>
 </div>
 </section>
-<section id="inferencia" class="slide level2">
-<h2>Inferencia</h2>
-<p>Por otro lado, en inferencia buscamos <strong>utilizar</strong> <span class="math inline">\(\hat f\)</span> para comprender la relación entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> y aproximar la forma de <span class="math inline">\(f\)</span>:</p>
-<p><span class="math display">\[
-Y = f(X) + \varepsilon,
-\qquad
-\hat f \approx f.
-\]</span></p>
-<p>En particular, nos interesa entender cómo cada variable <span class="math inline">\(X_j\)</span> se relaciona con <span class="math inline">\(Y\)</span>.</p>
-<div class="example">
-<p>Estudiar cómo los metros cuadrados construidos, el número de habitaciones y la ubicación se relacionan con el precio de una vivienda.</p>
+<section id="supuestos-y-limitaciones" class="slide level2">
+<h2>Supuestos y limitaciones</h2>
+<p>La regresión logística supone que:</p>
 <ul>
-<li>¿Qué variables están asociadas con el precio?</li>
-<li>¿Cómo cambia el precio al cambiar una variable?</li>
-<li>¿Qué forma tiene la relación entre cada variable y el precio?</li>
+<li>la respuesta es binaria;</li>
+<li>las observaciones son independientes;</li>
+<li>los <strong>log-odds</strong> tienen una relación lineal con los predictores;</li>
+<li>no existe multicolinealidad extrema;</li>
+<li>existe información suficiente para estimar los parámetros.</li>
 </ul>
+<div class="note">
+<p>No supone que los predictores sean normales ni que la probabilidad sea una función lineal de los predictores.</p>
 </div>
+<p>Además, puede presentar problemas cuando existe <strong>separación perfecta</strong> entre las clases.</p>
 </section>
-<section id="tipos-de-métodos" class="slide level2">
-<h2>Tipos de métodos</h2>
-<p>Existen diferentes métodos para estimar la función desconocida <span class="math inline">\(f\)</span>. De forma general, podemos distinguir entre:</p>
+<section id="resumen" class="slide level2">
+<h2>Resumen</h2>
 <ul>
-<li><strong>Métodos paramétricos:</strong> suponen cierta estructura para representar <span class="math inline">\(f\)</span>.</li>
-<li><strong>Métodos no paramétricos:</strong> permiten estimar <span class="math inline">\(f\)</span> de una forma más flexible.</li>
+<li>Idea clave 1.</li>
+<li>Idea clave 2.</li>
+<li>Idea clave 3.</li>
 </ul>
 </section>
-<section id="métodos-paramétricos" class="slide level2">
-<h2>Métodos paramétricos</h2>
-<p>Los métodos paramétricos suponen una <strong>forma específica para <span class="math inline">\(f\)</span></strong>.</p>
-<div class="example">
-<p>Podemos asumir una relación lineal entre <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>:</p>
-<p><span class="math display">\[
-f(X)=\beta_0+\beta_1X_1+\cdots+\beta_pX_p
-\]</span></p>
-<p>El problema se reduce entonces a estimar:</p>
-<p><span class="math display">\[
-\beta_0,\beta_1,\ldots,\beta_p
-\]</span></p>
-</div>
-<p><strong>Ventaja:</strong> simplifican el problema.</p>
-<p><strong>Desventaja:</strong> si la forma elegida no representa adecuadamente la relación real, el modelo puede ser poco preciso.</p>
-</section>
-<section id="métodos-no-paramétricos" class="slide level2">
-<h2>Métodos no paramétricos</h2>
-<p>Los métodos no paramétricos <strong>no imponen una forma específica para <span class="math inline">\(f\)</span></strong>.</p>
-<p>Buscan aproximarse a los datos con mayor flexibilidad.</p>
-<div class="example">
-<p>Para predecir <span class="math inline">\(Y\)</span> para una nueva observación, <span class="math inline">\(k\)</span>-NN busca las observaciones más cercanas y utiliza sus valores para obtener la predicción.</p>
-</div>
-<p>No suponemos previamente que <span class="math inline">\(f\)</span> sea lineal, cuadrática, exponencial, etc.</p>
-<div class="text-center">
-<p><strong>La forma de <span class="math inline">\(\hat f\)</span> se adapta a los datos.</strong></p>
-</div>
-<p><strong>Ventaja:</strong> pueden representar relaciones más complejas.</p>
-<p><strong>Desventaja:</strong> generalmente requieren más observaciones y pueden ajustarse demasiado a los datos.</p>
-</section>
-<section id="entrenamiento" class="slide level2">
-<h2>Entrenamiento</h2>
-<p>Para construir y evaluar un modelo, el conjunto de datos <span class="math inline">\(\mathcal D\)</span> se divide en dos subconjuntos:</p>
-<ul>
-<li><strong>Conjunto de entrenamiento</strong> (<em>train</em>): se utiliza para estimar <span class="math inline">\(\hat f\)</span>.</li>
-<li><strong>Conjunto de evaluación</strong> (<em>test</em>): se utiliza para evaluar el desempeño de <span class="math inline">\(\hat f\)</span> sobre datos que no fueron utilizados durante el entrenamiento.</li>
-</ul>
-<p><span class="math display">\[
-\mathcal D
-=
-\mathcal D_{\text{train}}
-\cup
-\mathcal D_{\text{test}},
-\qquad
-\mathcal D_{\text{train}}
-\cap
-\mathcal D_{\text{test}}
-=
-\varnothing.
-\]</span></p>
-<p>El objetivo es evaluar qué tan bien el modelo <strong>generaliza a nuevas observaciones</strong>.</p>
-</section>
-<section id="evaluación" class="slide level2">
-<h2>Evaluación</h2>
-<p>En aprendizaje supervisado conocemos la <strong>respuesta real <span class="math inline">\(Y\)</span></strong>, por lo que podemos compararla con la respuesta predicha <span class="math inline">\(\hat Y\)</span>.</p>
-<p>Por ejemplo, en regresión podemos medir el error mediante el <strong>error cuadrático medio</strong>:</p>
-<p><span class="math display">\[
-\text{MSE} = \frac{1}{n}\sum_{i=1}^{n}(y_i-\hat y_i)^2.
-\]</span></p>
-<p>Sin embargo, no buscamos únicamente un error pequeño sobre los datos utilizados para entrenar el modelo:</p>
-<ul>
-<li><strong>Training error:</strong> error sobre los datos de entrenamiento.</li>
-<li><strong>Test error:</strong> error sobre datos que el modelo no ha visto durante el entrenamiento.</li>
-</ul>
-<div class="important">
-<p>El objetivo es obtener un <strong>test error bajo</strong>, es decir, que el modelo sea capaz de <strong>generalizar a nuevas observaciones</strong>.</p>
-</div>
-</section></section>
-<section id="resumen" class="title-slide slide level1 center">
-<h1>Resumen</h1>
-<ul>
-<li>Machine learning busca <strong>aprender relaciones, patrones o estructuras a partir de datos</strong>.</li>
-<li>En aprendizaje supervisado buscamos estimar la relación</li>
-</ul>
-<p><span class="math display">\[
-Y = f(X) + \varepsilon.
-\]</span></p>
-<ul>
-<li>La estimación <span class="math inline">\(\hat f\)</span> puede utilizarse con objetivos de <strong>predicción</strong> o <strong>inferencia</strong>.</li>
-<li>Un modelo debe ser capaz de <strong>generalizar a nuevas observaciones</strong>.</li>
-</ul>
-</section>
-
-<section id="referencias" class="title-slide slide level1 smaller scrollable">
-<h1>Referencias</h1>
+<section id="referencias" class="slide level2 smaller scrollable">
+<h2>Referencias</h2>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
 <div id="ref-hastie2009elements" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">T. Hastie, R. Tibshirani, y J. Friedman, <em>The Elements of Statistical Learning: Data Mining, Inference, and Prediction</em>, 2.ª ed. Springer, 2009. doi: <a href="https://doi.org/10.1007/978-0-387-84858-7">10.1007/978-0-387-84858-7</a>.</div>
@@ -819,9 +862,8 @@ Y = f(X) + \varepsilon.
 </div>
 </div>
 </section>
-
-<section id="preguntas" class="title-slide slide level1 center">
-<h1>Preguntas</h1>
+<section id="preguntas" class="slide level2">
+<h2>Preguntas</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p><img data-src="../imagenes/mister.jpg" style="width:95.0%"></p>
@@ -839,11 +881,10 @@ Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
 </div>
 </div></div>
 </section>
-
-<section id="qué-sigue" class="title-slide slide level1 center">
-<h1>¿Qué sigue?</h1>
-<p>En la siguiente lección comenzaremos a estudiar métodos de <strong>aprendizaje supervisado</strong>.</p>
-<p><a href="../../lecciones/unidad-01/leccion-08.html"><strong>Ir a la lección →</strong></a></p>
+<section id="qué-sigue" class="slide level2">
+<h2>¿Qué sigue?</h2>
+<p>Descripcion breve</p>
+<p><a href="nombre de leccion/laboratorio/proyecto"><strong>Ir a la siguiente sección →</strong></a></p>
 
 
 </section>

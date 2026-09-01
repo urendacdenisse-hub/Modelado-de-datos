@@ -17,6 +17,8 @@ website:
         text: Notebooks
       - href: proyecto/index.qmd
         text: Proyecto
+      - href: recursos/index.qmd
+        text: Recursos
 
 format:
   html:

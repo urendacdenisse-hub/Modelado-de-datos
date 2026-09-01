@@ -1,0 +1,76 @@
+# Métricas de regresión
+
+Las métricas de regresión permiten evaluar qué tan cercanas son las predicciones del modelo a los valores observados.
+
+Sea:
+
+- $y_i$: valor observado.
+- $\hat{y}_i$: valor predicho por el modelo.
+- $\bar{y}$: media de los valores observados.
+- $n$: número de observaciones.
+
+El error o residuo de una observación es:
+
+$$
+e_i = y_i-\hat{y}_i
+$$
+
+## Métricas basadas en el error
+
+| Métrica | Fórmula | ¿Qué mide? | Interpretación | Herramienta |
+|---------------|---------------|---------------|---------------|---------------|
+| **MAE** | $\displaystyle \frac{1}{n}\sum_{i=1}^n \left|y_i-\hat{y}_i\right|$ | Error absoluto promedio | Error promedio en las mismas unidades de $Y$. Menor es mejor. | `mean_absolute_error(y, y_hat)` |
+| **MSE** | $\displaystyle \frac{1}{n}\sum_{i=1}^n (y_i-\hat{y}_i)^2$ | Error cuadrático promedio | Penaliza más fuertemente los errores grandes. Menor es mejor. | `mean_squared_error(y, y_hat)` |
+| **RMSE** | $\displaystyle \sqrt{\frac{1}{n}\sum_{i=1}^n (y_i-\hat{y}_i)^2}$ | Raíz del error cuadrático promedio | Similar al MSE, pero expresado en las mismas unidades de $Y$. Menor es mejor. | `root_mean_squared_error(y, y_hat)` |
+
+## Coeficiente de determinación
+
+El coeficiente de determinación compara el error del modelo con el error que obtendríamos al utilizar la media $\bar{y}$ como predicción.
+
+Definimos:
+
+$$
+\text{RSS} = \sum_{i=1}^n (y_i-\hat{y}_i)^2
+$$
+
+$$
+\text{TSS} = \sum_{i=1}^n (y_i-\bar{y})^2
+$$
+
+Entonces:
+
+$$
+R^2
+=
+1-\frac{\text{RSS}}{\text{TSS}}
+$$
+
+| Métrica | ¿Qué mide? | Interpretación | Mejor valor | Herramienta |
+|---------------|---------------|---------------|---------------|---------------|
+| $R^2$ | Desempeño del modelo respecto a predecir siempre $\bar{y}$ | $R^2=1$: predicción perfecta. $R^2=0$: desempeño igual a usar la media. $R^2<0$: peor que usar la media. | $1$ | `r2_score(y, y_hat)` |
+
+## $R^2$ ajustado
+
+En regresión múltiple, agregar predictores nunca disminuye el $R^2$ del conjunto utilizado para ajustar el modelo. Por ello puede utilizarse el $R^2$ ajustado, que penaliza la inclusión de predictores adicionales.
+
+$$
+R^2_{\text{adj}}
+=
+1-\frac{(1-R^2)(n-1)}{n-p-1}
+$$
+
+donde $p$ es el número de predictores.
+
+| Métrica | ¿Qué mide? | Interpretación | Herramienta |
+|------------------|------------------|------------------|------------------|
+| $R^2$ ajustado | Variabilidad explicada considerando el número de predictores | Solo aumenta si el nuevo predictor mejora suficientemente el ajuste para compensar la penalización. | `statsmodels` / cálculo directo |
+
+## Resumen
+
+| Métrica | Unidades | Sensible a errores grandes | Mejor valor |
+|----|----|----|----|
+| **MAE** | Mismas unidades que $Y$ | Menos | $0$ |
+| **MSE** | Unidades de $Y$ al cuadrado | Sí | $0$ |
+| **RMSE** | Mismas unidades que $Y$ | Sí | $0$ |
+| $R^2$ | Sin unidades | — | $1$ |
+| $R^2$ ajustado | Sin unidades | — | $1$ |

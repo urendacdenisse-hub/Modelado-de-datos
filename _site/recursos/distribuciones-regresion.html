@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Laboratorio x. titutlo – Modelado de Datos</title>
+<title>distribuciones-regresion – Modelado de Datos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,6 +72,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -167,59 +161,352 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a>
+  <li><a href="#regresión-lineal" id="toc-regresión-lineal" class="nav-link active" data-scroll-target="#regresión-lineal">Regresión lineal</a>
   <ul class="collapse">
-  <li><a href="#tema" id="toc-tema" class="nav-link" data-scroll-target="#tema">Tema</a></li>
+  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link" data-scroll-target="#regresión-lineal-simple">Regresión lineal simple</a>
+  <ul class="collapse">
+  <li><a href="#distribuciones-de-los-estimadores" id="toc-distribuciones-de-los-estimadores" class="nav-link" data-scroll-target="#distribuciones-de-los-estimadores">Distribuciones de los estimadores</a></li>
+  <li><a href="#distribución-de-la-respuesta-media-y-de-una-nueva-observación" id="toc-distribución-de-la-respuesta-media-y-de-una-nueva-observación" class="nav-link" data-scroll-target="#distribución-de-la-respuesta-media-y-de-una-nueva-observación">Distribución de la respuesta media y de una nueva observación</a></li>
+  </ul></li>
+  <li><a href="#regresión-lineal-múltiple" id="toc-regresión-lineal-múltiple" class="nav-link" data-scroll-target="#regresión-lineal-múltiple">Regresión lineal múltiple</a></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a>
+  <ul class="collapse">
+  <li><a href="#distribuciones-de-los-estimadores-1" id="toc-distribuciones-de-los-estimadores-1" class="nav-link" data-scroll-target="#distribuciones-de-los-estimadores-1">Distribuciones de los estimadores</a></li>
+  <li><a href="#distribución-de-la-respuesta-media-y-de-una-nueva-observación-1" id="toc-distribución-de-la-respuesta-media-y-de-una-nueva-observación-1" class="nav-link" data-scroll-target="#distribución-de-la-respuesta-media-y-de-una-nueva-observación-1">Distribución de la respuesta media y de una nueva observación</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Laboratorio x. titutlo</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<blockquote class="blockquote">
-<p><strong>Antes de comenzar</strong></p>
-<p>Este laboratorio está diseñado para ejecutarse en <strong>Google Colab</strong>.</p>
-<p>Una vez abierto en Google Colab, ejecute la primera celda para clonar el repositorio del curso y acceder a los conjuntos de datos utilizados en este laboratorio.</p>
-</blockquote>
-<div id="805a79bd" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>urendacdenisse<span class="op">-</span>hub<span class="op">/</span>modelado<span class="op">-</span>de<span class="op">-</span>datos.git</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="9b50b6c8" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>cd modelado<span class="op">-</span>de<span class="op">-</span>datos</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="objetivo" class="level1">
-<h1>Objetivo</h1>
-<p>…</p>
-<section id="tema" class="level2">
-<h2 class="anchored" data-anchor-id="tema">Tema</h2>
-<div id="4aed1ca5" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Funciones utilizadas</strong></p>
-<ul>
-<li>…</li>
-<li>…</li>
-</ul>
+<section id="regresión-lineal" class="level1">
+<h1>Regresión lineal</h1>
+<section id="regresión-lineal-simple" class="level2">
+<h2 class="anchored" data-anchor-id="regresión-lineal-simple">Regresión lineal simple</h2>
+<p><span class="math display">\[
+Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i,
+\qquad
+\varepsilon_i \sim \mathcal N(0,\sigma^2)
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cantidad</th>
+<th>Expresión</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pendiente</td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}_1 = \frac{\sum (x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}\)</span></td>
+</tr>
+<tr class="even">
+<td>Intercepto</td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}_0 = \bar{y}-\hat{\beta}_1\bar{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Predicción</td>
+<td><span class="math inline">\(\displaystyle \hat{y}_0=\hat{\beta}_0+\hat{\beta}_1x_0\)</span></td>
+</tr>
+<tr class="even">
+<td>Residuos</td>
+<td><span class="math inline">\(\displaystyle e_i=y_i-\hat{y}_i\)</span></td>
+</tr>
+<tr class="odd">
+<td>RSS</td>
+<td><span class="math inline">\(\displaystyle \text{RSS}=\sum e_i^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<section id="distribuciones-de-los-estimadores" class="level3">
+<h3 class="anchored" data-anchor-id="distribuciones-de-los-estimadores">Distribuciones de los estimadores</h3>
+<p><span class="math display">\[
+\hat{\beta}_1 \sim \mathcal N\left(\beta_1,\frac{\sigma^2}{S_{xx}}\right),
+\quad
+\hat{\beta}_0 \sim \mathcal N\left(\beta_0,\sigma^2\left[\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}\right]\right)
+\]</span> donde <span class="math display">\[
+S_{xx}=\sum_{i=1}^n (x_i-\bar{x})^2
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 41%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cantidad</th>
+<th><span class="math inline">\(\sigma^2\)</span> conocida</th>
+<th><span class="math inline">\(\sigma^2\)</span> desconocida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Estadístico para <span class="math inline">\(\beta_1\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\beta}_1-\beta_1}{\sigma/\sqrt{S_{xx}}}\sim \mathcal N(0,1)\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\beta}_1-\beta_1}{s/\sqrt{S_{xx}}}\sim t_{n-2}\)</span></td>
+</tr>
+<tr class="even">
+<td>Estadístico para <span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\beta}_0-\beta_0}{\sigma\sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}}\sim \mathcal N(0,1)\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\beta}_0-\beta_0}{s\sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}}\sim t_{n-2}\)</span></td>
+</tr>
+<tr class="odd">
+<td>IC para <span class="math inline">\(\beta_1\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}_1 \pm z_{\alpha/2}\frac{\sigma}{\sqrt{S_{xx}}}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}_1 \pm t_{\alpha/2,n-2}\frac{s}{\sqrt{S_{xx}}}\)</span></td>
+</tr>
+<tr class="even">
+<td>IC para <span class="math inline">\(\beta_0\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}_0 \pm z_{\alpha/2}\sigma\sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}_0 \pm t_{\alpha/2,n-2}s\sqrt{\frac{1}{n}+\frac{\bar{x}^2}{S_{xx}}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>donde <span class="math display">\[
+s^2=\frac{\text{RSS}}{n-2}
+\]</span></p>
+</section>
+<section id="distribución-de-la-respuesta-media-y-de-una-nueva-observación" class="level3">
+<h3 class="anchored" data-anchor-id="distribución-de-la-respuesta-media-y-de-una-nueva-observación">Distribución de la respuesta media y de una nueva observación</h3>
+<p>Para un valor dado <span class="math inline">\(x_0\)</span>:</p>
+<p><span class="math display">\[
+\mu_{Y|x_0}=E(Y|X=x_0)=\beta_0+\beta_1x_0
+\]</span></p>
+<p>y su estimación es:</p>
+<p><span class="math display">\[
+\hat{\mu}_{Y|x_0}=\hat{y}_0=\hat{\beta}_0+\hat{\beta}_1x_0.
+\]</span></p>
+<p>Distribución de <span class="math inline">\(\hat{\mu}_{Y\mid x_0}\)</span>:</p>
+<p><span class="math display">\[
+\hat{\mu}_{Y\mid x_0}\sim \mathcal N\left(\mu_{Y\mid x_0},\sigma^2\left[\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}\right]\right)
+\]</span></p>
+<p>Distribución de <span class="math inline">\(Y_0\)</span>: <span class="math display">\[
+Y_0\mid x_0\sim \mathcal N\left(\mu_{Y\mid x_0},\sigma^2\right)
+\]</span></p>
+<p>Distribución del error de predicción: <span class="math display">\[
+Y_0-\hat{y}_0\sim \mathcal N\left(0,\sigma^2\left[1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}\right]\right)
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cantidad</th>
+<th><span class="math inline">\(\sigma^2\)</span> conocida</th>
+<th><span class="math inline">\(\sigma^2\)</span> desconocida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Estadístico para <span class="math inline">\(\mu_{Y\mid x_0}\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\mu}_{Y\mid x_0}-\mu_{Y\mid x_0}}{\sigma\sqrt{\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}}\sim \mathcal N(0,1)\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\mu}_{Y\mid x_0}-\mu_{Y\mid x_0}}{s\sqrt{\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}}\sim t_{n-2}\)</span></td>
+</tr>
+<tr class="even">
+<td>IC para <span class="math inline">\(\mu_{Y\mid x_0}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\mu}_{Y\mid x_0}\pm z_{\alpha/2}\sigma\sqrt{\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\mu}_{Y\mid x_0}\pm t_{\alpha/2,n-2}s\sqrt{\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Estadístico para <span class="math inline">\(Y_0\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{Y_0-\hat{y}_0}{\sigma\sqrt{1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}}\sim \mathcal N(0,1)\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{Y_0-\hat{y}_0}{s\sqrt{1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}}\sim t_{n-2}\)</span></td>
+</tr>
+<tr class="even">
+<td>Intervalo de predicción para <span class="math inline">\(Y_0\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{y}_0\pm z_{\alpha/2}\sigma\sqrt{1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{y}_0\pm t_{\alpha/2,n-2}s\sqrt{1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{S_{xx}}}\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="regresión-lineal-múltiple" class="level2">
+<h2 class="anchored" data-anchor-id="regresión-lineal-múltiple">Regresión lineal múltiple</h2>
+<span class="math display">\[
+\mathbf{Y}
+=\mathbf{X}{\beta}
++
+{\varepsilon},
+\qquad
+{\varepsilon}
+\sim
+\mathcal N_n(\mathbf{0}_n,\sigma^2I_n)
+\]</span> donde $$ =
+<span class="math display">\[\begin{bmatrix}
+1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p}\\
+1 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2p}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+1 &amp; x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{np}
+\end{bmatrix}\]</span>
+<p>, </p>
+</section>
+</section>
+<section id="section" class="level1">
+<h1></h1>
+<span class="math display">\[\begin{bmatrix}
+\beta_0\\
+\beta_1\\
+\beta_2\\
+\vdots\\
+\beta_p
+\end{bmatrix}\]</span>
+<p>$$</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cantidad</th>
+<th>Expresión</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Coeficientes</td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}=(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^TY\)</span></td>
+</tr>
+<tr class="even">
+<td>Predicción</td>
+<td><span class="math inline">\(\displaystyle \hat{\mathbf{Y}}=\mathbf{X}\hat{{\beta}}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Residuos</td>
+<td><span class="math inline">\(\displaystyle \mathbf{e}=\mathbf{Y}-\hat{\mathbf{Y}}\)</span></td>
+</tr>
+<tr class="even">
+<td>RSS</td>
+<td><span class="math inline">\(\displaystyle \text{RSS}=\mathbf{e}^T\mathbf{e}\)</span></td>
+</tr>
+</tbody>
+</table>
+<section id="distribuciones-de-los-estimadores-1" class="level3">
+<h3 class="anchored" data-anchor-id="distribuciones-de-los-estimadores-1">Distribuciones de los estimadores</h3>
+<p><span class="math display">\[
+\hat{{\beta}}\sim \mathcal N_{p+1}\left({\beta},\sigma^2(\mathbf{X}^T\mathbf{X})^{-1}\right),
+\quad
+\hat{\beta}_j\sim \mathcal N\left(\beta_j,\sigma^2[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}\right)
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 41%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cantidad</th>
+<th><span class="math inline">\(\sigma^2\)</span> conocida</th>
+<th><span class="math inline">\(\sigma^2\)</span> desconocida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Error estándar de <span class="math inline">\(\hat{\beta}_j\)</span></td>
+<td><span class="math inline">\(\displaystyle \sigma\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}\)</span></td>
+<td><span class="math inline">\(\displaystyle s\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}\)</span></td>
+</tr>
+<tr class="even">
+<td>Estadístico</td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\beta}_j-\beta_j}{\sigma\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}}\sim \mathcal N(0,1)\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\beta}_j-\beta_j}{s\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}}\sim t_{n-p-1}\)</span></td>
+</tr>
+<tr class="odd">
+<td>IC para <span class="math inline">\(\beta_j\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}_j \pm z_{\alpha/2}\sigma\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\beta}_j \pm t_{\alpha/2,n-p-1}s\sqrt{[(\mathbf{X}^T\mathbf{X})^{-1}]_{jj}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>donde <span class="math display">\[
+s^2 = \frac{\text{RSS}}{n-p-1}
+\]</span></p>
+</section>
+<section id="distribución-de-la-respuesta-media-y-de-una-nueva-observación-1" class="level3">
+<h3 class="anchored" data-anchor-id="distribución-de-la-respuesta-media-y-de-una-nueva-observación-1">Distribución de la respuesta media y de una nueva observación</h3>
+<p>Para un vector de predictores dado:</p>
+<p><span class="math display">\[
+\mathbf{x}_0=
+\begin{bmatrix}
+1 &amp; x_{01} &amp; x_{02} &amp; \cdots &amp; x_{0p}
+\end{bmatrix}^T
+\]</span></p>
+<p>la respuesta media es:</p>
+<p><span class="math display">\[
+\mu_{Y|\mathbf{x}_0}
+=
+E(Y|\mathbf{X}=\mathbf{x}_0)
+=
+\mathbf{x}_0^T{\beta}
+\]</span></p>
+<p>y su estimación es:</p>
+<p><span class="math display">\[
+\hat{\mu}_{Y|\mathbf{x}_0}
+=
+\hat{y}_0
+=
+\mathbf{x}_0^T\hat{{\beta}}
+\]</span></p>
+<p>Distribución de <span class="math inline">\(\hat{\mu}_{Y\mid\mathbf{x}_0}\)</span> <span class="math display">\[
+\hat{\mu}_{Y\mid\mathbf{x}_0}\sim \mathcal N\left(\mu_{Y\mid\mathbf{x}_0},\sigma^2\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0\right)
+\]</span></p>
+<p>Distribución de <span class="math inline">\(Y_0\)</span> <span class="math display">\[
+Y_0\mid\mathbf{x}_0\sim \mathcal N\left(\mu_{Y\mid\mathbf{x}_0},\sigma^2\right)
+\]</span></p>
+<p>Distribución del error de predicción <span class="math display">\[
+Y_0-\hat{y}_0\sim \mathcal N\left(0,\sigma^2\left[1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0\right]\right)
+\]</span></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cantidad</th>
+<th><span class="math inline">\(\sigma^2\)</span> conocida</th>
+<th><span class="math inline">\(\sigma^2\)</span> desconocida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Estadístico para <span class="math inline">\(\mu_{Y\mid\mathbf{x}_0}\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\mu}_{Y\mid\mathbf{x}_0}-\mu_{Y\mid\mathbf{x}_0}}{\sigma\sqrt{\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}}\sim \mathcal N(0,1)\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{\hat{\mu}_{Y\mid\mathbf{x}_0}-\mu_{Y\mid\mathbf{x}_0}}{s\sqrt{\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}}\sim t_{n-p-1}\)</span></td>
+</tr>
+<tr class="even">
+<td>IC para <span class="math inline">\(\mu_{Y\mid\mathbf{x}_0}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\mu}_{Y\mid\mathbf{x}_0}\pm z_{\alpha/2}\sigma\sqrt{\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{\mu}_{Y\mid\mathbf{x}_0}\pm t_{\alpha/2,n-p-1}s\sqrt{\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Estadístico para <span class="math inline">\(Y_0\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{Y_0-\hat{y}_0}{\sigma\sqrt{1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}}\sim \mathcal N(0,1)\)</span></td>
+<td><span class="math inline">\(\displaystyle \frac{Y_0-\hat{y}_0}{s\sqrt{1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}}\sim t_{n-p-1}\)</span></td>
+</tr>
+<tr class="even">
+<td>Intervalo de predicción para <span class="math inline">\(Y_0\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{y}_0\pm z_{\alpha/2}\sigma\sqrt{1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}\)</span></td>
+<td><span class="math inline">\(\displaystyle \hat{y}_0\pm t_{\alpha/2,n-p-1}s\sqrt{1+\mathbf{x}_0^T(\mathbf{X}^T\mathbf{X})^{-1}\mathbf{x}_0}\)</span></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

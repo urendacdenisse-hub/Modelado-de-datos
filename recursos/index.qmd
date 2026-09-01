@@ -1,0 +1,9 @@
+---
+title: "Notebooks"
+---
+
+# Unidad I. Aprendizaje supervisado
+
+- [Supuestos de regresión lineal](supuestos-regresion.qmd)
+- [Distribuciones e IC en regresión lineal](distribuciones-regresion.qmd)
+- [Métricas para regresión](metricas-regresion.qmd)
