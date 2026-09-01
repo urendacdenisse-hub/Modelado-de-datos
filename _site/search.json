@@ -287,6 +287,13 @@
     "text": "Interpretación geométrica"
   },
   {
+    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-2",
+    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-2",
+    "title": "Aprendizaje supervisado",
+    "section": "Interpretación geométrica",
+    "text": "Interpretación geométrica\nLas curvas de nivel representan combinaciones de\n\\[(\\beta_1,\\beta_2)\\]\nque producen el mismo valor de \\(RSS\\).\nEl centro corresponde a la solución de mínimos cuadrados:\n\\[\\hat{\\boldsymbol{\\beta}}_{OLS}.\\]\nLa solución Ridge será el punto dentro de la región permitida que produzca el menor \\(RSS\\) posible."
+  },
+  {
     "objectID": "lecciones/unidad-01/leccion-09.html#shrinkage",
     "href": "lecciones/unidad-01/leccion-09.html#shrinkage",
     "title": "Aprendizaje supervisado",
@@ -315,6 +322,13 @@
     "text": "Solución Ridge\nEn forma matricial,\n\\[RSS\n=\n\\|\\mathbf y-X\\boldsymbol{\\beta}\\|_2^2.\\]\nPor lo tanto, Ridge minimiza\n\\[\\|\\mathbf y-X\\boldsymbol{\\beta}\\|_2^2\n+\n\\lambda\\|\\boldsymbol{\\beta}\\|_2^2.\\]\nDerivando e igualando a cero:\n\\[-2X^\\top(\\mathbf y-X\\boldsymbol{\\beta})\n+\n2\\lambda\\boldsymbol{\\beta}\n=\n0.\\]"
   },
   {
+    "objectID": "lecciones/unidad-01/leccion-09.html#solución-ridge-1",
+    "href": "lecciones/unidad-01/leccion-09.html#solución-ridge-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Solución Ridge",
+    "text": "Solución Ridge\nEntonces,\n\\[(X^\\top X+\\lambda I)\\boldsymbol{\\beta}\n=\nX^\\top\\mathbf y.\\]\nPor lo tanto,\n\\[\\boxed{\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\n=\n(X^\\top X+\\lambda I)^{-1}X^\\top\\mathbf y\n}\\]"
+  },
+  {
     "objectID": "lecciones/unidad-01/leccion-09.html#ridge-vs.-mínimos-cuadrados",
     "href": "lecciones/unidad-01/leccion-09.html#ridge-vs.-mínimos-cuadrados",
     "title": "Aprendizaje supervisado",
@@ -334,6 +348,20 @@
     "title": "Aprendizaje supervisado",
     "section": "Una segunda propuesta",
     "text": "Una segunda propuesta\nEn lugar de restringir la suma de los cuadrados, podemos restringir la suma de las magnitudes:\n\\[\\boxed{\n|\\beta_1|+|\\beta_2|+\\cdots+|\\beta_p|\\leq t\n}\\]\ndonde \\(t\\geq0\\) controla la magnitud permitida de los coeficientes."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-3",
+    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-3",
+    "title": "Aprendizaje supervisado",
+    "section": "Interpretación geométrica",
+    "text": "Interpretación geométrica\nPara dos coeficientes,\n\\[|\\beta_1|+|\\beta_2|\\leq t,\\]\nla región permitida tiene forma de diamante.\n\n¿Qué diferencia produce esta geometría?"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-4",
+    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-4",
+    "title": "Aprendizaje supervisado",
+    "section": "Interpretación geométrica",
+    "text": "Interpretación geométrica"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#shrinkage-y-sparsity",
@@ -406,11 +434,25 @@
     "text": "Estandarización de los predictores\nRidge y Lasso penalizan directamente la magnitud de los coeficientes:\n\\[\\sum_{j=1}^{p}\\beta_j^2\n\\qquad\\text{o}\\qquad\n\\sum_{j=1}^{p}|\\beta_j|.\\]\nPor lo tanto, la penalización depende de la escala de los predictores."
   },
   {
+    "objectID": "lecciones/unidad-01/leccion-09.html#estandarización-de-los-predictores-1",
+    "href": "lecciones/unidad-01/leccion-09.html#estandarización-de-los-predictores-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Estandarización de los predictores",
+    "text": "Estandarización de los predictores\nAntes de ajustar el modelo, normalmente estandarizamos:\n\\[\\boxed{\nZ_j\n=\n\\frac{X_j-\\bar X_j}{s_j}\n}\\]\nde modo que cada predictor tenga\n\\[\\text{media}=0,\n\\qquad\n\\text{desviación estándar}=1.\\]\n\nLa estandarización permite que la penalización actúe de manera comparable sobre todos los coeficientes."
+  },
+  {
     "objectID": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia",
     "href": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia",
     "title": "Aprendizaje supervisado",
     "section": "¿Qué ocurre con la inferencia?",
     "text": "¿Qué ocurre con la inferencia?\nEn regresión lineal clásica utilizamos los coeficientes estimados para realizar inferencia mediante:\n\\[SE(\\hat\\beta_j),\\qquad\nCI,\\qquad\np\\text{-values}.\\]\nEn Ridge y Lasso, los coeficientes son estimados bajo una penalización:\n\\[RSS+\\lambda P(\\boldsymbol{\\beta}).\\]\nComo consecuencia, los estimadores son sesgados y la inferencia clásica de mínimos cuadrados no puede aplicarse directamente."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia-1",
+    "href": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia-1",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué ocurre con la inferencia?",
+    "text": "¿Qué ocurre con la inferencia?\n\nRidge y Lasso se utilizan principalmente para mejorar la predicción y estabilidad del modelo, no para realizar inferencia clásica sobre los coeficientes.\n\nExisten métodos específicos para realizar inferencia en modelos regularizados, como bootstrap y inferencia post-selección."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#machine-learning",
@@ -1692,47 +1734,5 @@
     "title": "Supuestos de regresión lineal",
     "section": "",
     "text": "Supuestos de regresión lineal\nEl modelo de regresión lineal se expresa como:\n\\[\n\\mathbf{Y}\n=\n\\mathbf{X}\\beta\n+\n\\varepsilon\n\\]\nSi asumimos que los errores son independientes, tienen media cero, varianza constante y siguen una distribución normal:\n\\[\n\\varepsilon\n\\sim\n\\mathcal{N}_n(\\mathbf{0},\\sigma^2 I_n)\n\\]\nentonces la distribución de la variable respuesta es:\n\\[\n\\mathbf{Y}\\mid\\mathbf{X}\n\\sim\n\\mathcal{N}_n\n\\left(\n\\mathbf{X}\\beta,\n\\sigma^2 I_n\n\\right)\n\\]\nEquivalentemente, para cada observación:\n\\[\nY_i\\mid\\mathbf{x}_i\n\\sim\n\\mathcal{N}\n\\left(\n\\mathbf{x}_i^T\\beta,\n\\sigma^2\n\\right)\n\\]\n\n\n\n\n\n\n\n\n\nSuposición\n¿Qué verificar?\n¿Qué esperamos?\nHerramienta\n\n\n\n\nLinealidad\nRelación entre predictores y respuesta\nResiduos sin patrones sistemáticos ni curvatura\nplt.scatter(y_hat, residuals)\n\n\nLinealidad por predictor\nSi algún predictor presenta estructura no lineal\nResiduos sin patrón respecto a cada predictor\nplt.scatter(X_j, residuals)\n\n\nNormalidad\nDistribución de los residuos\nAproximadamente normal\nstats.probplot(residuals)\n\n\nNormalidad\nEvidencia estadística de normalidad\n(p &gt; 0.05): no rechazamos normalidad\nshapiro(residuals)\n\n\nHomocedasticidad\nVarianza de los residuos\nDispersión aproximadamente constante, sin forma de abanico\nplt.scatter(y_hat, residuals)\n\n\nHomocedasticidad\nEvidencia estadística de varianza constante\n(p &gt; 0.05): no hay evidencia de heterocedasticidad\nhet_breuschpagan()\n\n\nIndependencia\nAutocorrelación de los residuos\nAutocorrelaciones cercanas a 0\nplot_acf(residuals)\n\n\nIndependencia\nAutocorrelación entre residuos consecutivos\nDurbin-Watson cercano a 2\ndurbin_watson(residuals)\n\n\nMulticolinealidad\nCorrelación entre predictores\nEvitar correlaciones muy altas entre (X_j)\nX.corr()\n\n\nMulticolinealidad\nCuánto puede explicarse cada predictor con los demás\nVIF bajo; idealmente &lt; 5\nvariance_inflation_factor()"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-2",
-    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-2",
-    "title": "Aprendizaje supervisado",
-    "section": "Interpretación geométrica",
-    "text": "Interpretación geométrica\nLas curvas de nivel representan combinaciones de\n\\[(\\beta_1,\\beta_2)\\]\nque producen el mismo valor de \\(RSS\\).\nEl centro corresponde a la solución de mínimos cuadrados:\n\\[\\hat{\\boldsymbol{\\beta}}_{OLS}.\\]\nLa solución Ridge será el punto dentro de la región permitida que produzca el menor \\(RSS\\) posible."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-09.html#solución-ridge-1",
-    "href": "lecciones/unidad-01/leccion-09.html#solución-ridge-1",
-    "title": "Aprendizaje supervisado",
-    "section": "Solución Ridge",
-    "text": "Solución Ridge\nEntonces,\n\\[(X^\\top X+\\lambda I)\\boldsymbol{\\beta}\n=\nX^\\top\\mathbf y.\\]\nPor lo tanto,\n\\[\\boxed{\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\n=\n(X^\\top X+\\lambda I)^{-1}X^\\top\\mathbf y\n}\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-3",
-    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-3",
-    "title": "Aprendizaje supervisado",
-    "section": "Interpretación geométrica",
-    "text": "Interpretación geométrica\nPara dos coeficientes,\n\\[|\\beta_1|+|\\beta_2|\\leq t,\\]\nla región permitida tiene forma de diamante.\n\n¿Qué diferencia produce esta geometría?"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-4",
-    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-4",
-    "title": "Aprendizaje supervisado",
-    "section": "Interpretación geométrica",
-    "text": "Interpretación geométrica"
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-09.html#estandarización-de-los-predictores-1",
-    "href": "lecciones/unidad-01/leccion-09.html#estandarización-de-los-predictores-1",
-    "title": "Aprendizaje supervisado",
-    "section": "Estandarización de los predictores",
-    "text": "Estandarización de los predictores\nAntes de ajustar el modelo, normalmente estandarizamos:\n\\[\\boxed{\nZ_j\n=\n\\frac{X_j-\\bar X_j}{s_j}\n}\\]\nde modo que cada predictor tenga\n\\[\\text{media}=0,\n\\qquad\n\\text{desviación estándar}=1.\\]\n\nLa estandarización permite que la penalización actúe de manera comparable sobre todos los coeficientes."
-  },
-  {
-    "objectID": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia-1",
-    "href": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia-1",
-    "title": "Aprendizaje supervisado",
-    "section": "¿Qué ocurre con la inferencia?",
-    "text": "¿Qué ocurre con la inferencia?\n\nRidge y Lasso se utilizan principalmente para mejorar la predicción y estabilidad del modelo, no para realizar inferencia clásica sobre los coeficientes.\n\nExisten métodos específicos para realizar inferencia en modelos regularizados, como bootstrap y inferencia post-selección."
   }
 ]
