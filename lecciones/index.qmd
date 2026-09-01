@@ -23,7 +23,7 @@ title: "Lecciones"
 ## Modelos paramétricos
 
 - [Regresión lineal](unidad-01/leccion-08.qmd)
-- Regularización: Ridge y Lasso
+- [Regularización: Ridge y Lasso](unidad-01/leccion-09.qmd)
 - Regresion logística
 - Support vector machines
 
