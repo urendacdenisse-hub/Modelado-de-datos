@@ -249,126 +249,154 @@
     "href": "lecciones/unidad-01/leccion-09.html#regresión-lineal",
     "title": "Aprendizaje supervisado",
     "section": "Regresión lineal",
-    "text": "Regresión lineal\nEn regresión lineal estimamos los coeficientes minimizando\n\\[\n\\boxed{\nRSS=\\sum_{i=1}^{n}(y_i-\\hat y_i)^2\n}\n\\]\nobteniendo el modelo que mejor se ajusta a los datos de entrenamiento.\nSin embargo, un mejor ajuste no necesariamente implica un mejor desempeño sobre nuevas observaciones.\n\n¿Podemos controlar la complejidad del modelo durante el ajuste?"
+    "text": "Regresión lineal\nEn regresión lineal estimamos los coeficientes minimizando\n\\[\\boxed{\nRSS=\\sum_{i=1}^{n}(y_i-\\hat y_i)^2\n}\\]\nobteniendo el modelo que mejor se ajusta a los datos de entrenamiento.\nSin embargo, un mejor ajuste no necesariamente implica un mejor desempeño sobre nuevas observaciones.\n\n¿Podemos controlar la complejidad del modelo durante el ajuste?"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#regularización",
     "href": "lecciones/unidad-01/leccion-09.html#regularización",
     "title": "Aprendizaje supervisado",
     "section": "Regularización",
-    "text": "Regularización\nLa regularización agrega una penalización al criterio de ajuste:\n\\[\n\\boxed{\nRSS\n+\n\\lambda\\,P(\\boldsymbol{\\beta})\n}\n\\]\ndonde:\n\n\\(RSS\\) mide el error de ajuste;\n\\(P(\\boldsymbol{\\beta})\\) penaliza la complejidad;\n\\(\\lambda\\geq0\\) controla la intensidad de la penalización.\n\nBuscamos un equilibrio entre\n\\[\n\\text{ajuste}\n\\qquad\\longleftrightarrow\\qquad\n\\text{complejidad}.\n\\]"
+    "text": "Regularización\nLa regularización agrega una penalización al criterio de ajuste:\n\\[\\boxed{\nRSS\n+\n\\lambda\\,P(\\boldsymbol{\\beta})\n}\\]\ndonde:\n\n\\(RSS\\) mide el error de ajuste;\n\\(P(\\boldsymbol{\\beta})\\) penaliza la complejidad;\n\\(\\lambda\\geq0\\) controla la intensidad de la penalización.\n\nBuscamos un equilibrio entre\n\\[\\text{ajuste}\n\\qquad\\longleftrightarrow\\qquad\n\\text{complejidad}.\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#el-parámetro-de-regularización",
     "href": "lecciones/unidad-01/leccion-09.html#el-parámetro-de-regularización",
     "title": "Aprendizaje supervisado",
     "section": "El parámetro de regularización",
-    "text": "El parámetro de regularización\nEl parámetro \\(\\lambda\\) determina cuánto penalizamos la complejidad:\n\\[\nRSS+\\lambda P(\\boldsymbol{\\beta}).\n\\]\nSi\n\\[\n\\lambda=0,\n\\]\nno existe penalización y recuperamos mínimos cuadrados.\nSi \\(\\lambda\\) aumenta,\n\\[\n\\lambda\\uparrow\n\\qquad\\Longrightarrow\\qquad\n\\text{mayor regularización}.\n\\]\n\nRegularizar implica aceptar cierto sacrificio en el ajuste para controlar la complejidad del modelo."
+    "text": "El parámetro de regularización\nEl parámetro \\(\\lambda\\) determina cuánto penalizamos la complejidad:\n\\[RSS+\\lambda P(\\boldsymbol{\\beta}).\\]\nSi \\(\\lambda=0,\\) no existe penalización y recuperamos mínimos cuadrados.\nSi \\(\\lambda\\) aumenta, aumenta la penalización a los coeficientes.\n\nRegularizar implica aceptar cierto sacrificio en el ajuste para controlar la complejidad del modelo."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#una-primera-propuesta",
     "href": "lecciones/unidad-01/leccion-09.html#una-primera-propuesta",
     "title": "Aprendizaje supervisado",
     "section": "Una primera propuesta",
-    "text": "Una primera propuesta\nUna forma de controlar la complejidad es limitar la magnitud de los coeficientes:\n\\[\n\\boxed{\n\\beta_1^2+\\beta_2^2+\\cdots+\\beta_p^2\\leq t\n}\n\\]\ndonde \\(t\\geq0\\) determina qué tan grandes pueden ser los coeficientes en conjunto.\n\n¿Qué efecto tiene esta restricción sobre la solución?"
+    "text": "Una primera propuesta\nUna forma de controlar la complejidad es limitar la magnitud de los coeficientes:\n\\[\\boxed{\n\\beta_1^2+\\beta_2^2+\\cdots+\\beta_p^2\\leq t\n}\\]\ndonde \\(t\\geq0\\) determina qué tan grandes pueden ser los coeficientes en conjunto.\n\n¿Qué efecto tiene esta restricción sobre la solución?"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica",
     "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica",
     "title": "Aprendizaje supervisado",
     "section": "Interpretación geométrica",
-    "text": "Interpretación geométrica\nConsideremos solamente dos coeficientes:\n\\[\n\\beta_1,\\qquad\\beta_2.\n\\]\nLa restricción Ridge es\n\\[\n\\boxed{\n\\beta_1^2+\\beta_2^2\\leq t\n}\n\\]\nque representa un disco de radio \\(\\sqrt{t}\\).\nPor lo tanto, la solución debe encontrarse dentro de la región permitida."
+    "text": "Interpretación geométrica\nConsideremos solamente dos coeficientes:\n\\[\\beta_1,\\qquad\\beta_2.\\]\nLa restricción Ridge es\n\\[\\boxed{\n\\beta_1^2+\\beta_2^2\\leq t\n}\\]\nque representa un disco de radio \\(\\sqrt{t}\\).\nPor lo tanto, la solución debe encontrarse dentro de la región permitida."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-1",
     "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-1",
     "title": "Aprendizaje supervisado",
     "section": "Interpretación geométrica",
-    "text": "Interpretación geométrica\nLas curvas de nivel representan combinaciones de\n\\[\n(\\beta_1,\\beta_2)\n\\]\nque producen el mismo valor de \\(RSS\\).\nEl centro corresponde a la solución de mínimos cuadrados:\n\\[\n\\hat{\\boldsymbol{\\beta}}_{OLS}.\n\\]\nLa solución Ridge será el punto dentro de la región permitida que produzca el menor \\(RSS\\) posible."
+    "text": "Interpretación geométrica"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-2",
+    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-2",
+    "title": "Aprendizaje supervisado",
+    "section": "Interpretación geométrica",
+    "text": "Interpretación geométrica\nLas curvas de nivel representan combinaciones de\n\\[(\\beta_1,\\beta_2)\\]\nque producen el mismo valor de \\(RSS\\).\nEl centro corresponde a la solución de mínimos cuadrados:\n\\[\\hat{\\boldsymbol{\\beta}}_{OLS}.\\]\nLa solución Ridge será el punto dentro de la región permitida que produzca el menor \\(RSS\\) posible."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#shrinkage",
     "href": "lecciones/unidad-01/leccion-09.html#shrinkage",
     "title": "Aprendizaje supervisado",
     "section": "Shrinkage",
-    "text": "Shrinkage\nLa restricción impide que los coeficientes tomen valores arbitrariamente grandes.\nComo resultado, la solución Ridge es desplazada hacia el origen:\n\\[\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\n\\longrightarrow\n\\mathbf 0.\n\\]\nEste efecto se conoce como shrinkage.\n\nRidge sacrifica parte del ajuste para obtener coeficientes de menor magnitud."
+    "text": "Shrinkage\nLa restricción impide que los coeficientes tomen valores arbitrariamente grandes.\nComo resultado, la solución Ridge es desplazada hacia el origen:\n\\[\\hat{\\boldsymbol{\\beta}}_{Ridge}\n\\longrightarrow\n\\mathbf 0.\\]\nEste efecto se conoce como shrinkage o contracción.\n\nRidge sacrifica parte del ajuste para obtener coeficientes de menor magnitud."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#formulación-matemática",
     "href": "lecciones/unidad-01/leccion-09.html#formulación-matemática",
     "title": "Aprendizaje supervisado",
     "section": "Formulación matemática",
-    "text": "Formulación matemática\nLa regresión Ridge estima los coeficientes minimizando\n\\[\n\\boxed{\nRSS\n+\n\\lambda\n\\sum_{j=1}^{p}\\beta_j^2\n}\n\\]\nLa penalización\n\\[\n\\sum_{j=1}^{p}\\beta_j^2\n\\]\nfavorece soluciones con coeficientes de menor magnitud.\nEl intercepto \\(\\beta_0\\) no se penaliza."
+    "text": "Formulación matemática\nLa regresión Ridge estima los coeficientes minimizando\n\\[\\boxed{\nRSS\n+\n\\lambda\n\\sum_{j=1}^{p}\\beta_j^2\n}\\]\nLa penalización\n\\[\\sum_{j=1}^{p}\\beta_j^2\\]\nfavorece soluciones con coeficientes de menor magnitud.\nEl intercepto \\(\\beta_0\\) no se penaliza."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#dos-formas-de-ridge",
     "href": "lecciones/unidad-01/leccion-09.html#dos-formas-de-ridge",
     "title": "Aprendizaje supervisado",
     "section": "Dos formas de Ridge",
-    "text": "Dos formas de Ridge\nPodemos expresar Ridge mediante una penalización:\n\\[\n\\boxed{\n\\min\n\\left[\nRSS+\\lambda\\sum_{j=1}^{p}\\beta_j^2\n\\right]\n}\n\\]\no mediante una restricción:\n\\[\n\\boxed{\n\\min RSS\n\\qquad\n\\text{sujeto a}\n\\qquad\n\\sum_{j=1}^{p}\\beta_j^2\\leq t.\n}\n\\]\nAmbas formulaciones representan el mismo principio:\n\\[\n\\text{controlar la magnitud de los coeficientes}.\n\\]"
+    "text": "Dos formas de Ridge\nPodemos expresar Ridge mediante una penalización:\n\\[\\boxed{\n\\min\n\\left[\nRSS+\\lambda\\sum_{j=1}^{p}\\beta_j^2\n\\right]\n}\\]\no mediante una restricción:\n\\[\\boxed{\n\\min RSS\n\\qquad\n\\text{sujeto a}\n\\qquad\n\\sum_{j=1}^{p}\\beta_j^2\\leq t.\n}\\]\nAmbas formulaciones representan el mismo principio:\n\\[\\text{controlar la magnitud de los coeficientes}.\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#solución-ridge",
     "href": "lecciones/unidad-01/leccion-09.html#solución-ridge",
     "title": "Aprendizaje supervisado",
     "section": "Solución Ridge",
-    "text": "Solución Ridge\nEn forma matricial,\n\\[\nRSS\n=\n\\|\\mathbf y-X\\boldsymbol{\\beta}\\|_2^2.\n\\]\nPor lo tanto, Ridge minimiza\n\\[\n\\|\\mathbf y-X\\boldsymbol{\\beta}\\|_2^2\n+\n\\lambda\\|\\boldsymbol{\\beta}\\|_2^2.\n\\]\nDerivando e igualando a cero:\n\\[\n-2X^\\top(\\mathbf y-X\\boldsymbol{\\beta})\n+\n2\\lambda\\boldsymbol{\\beta}\n=\n0.\n\\]\nEntonces,\n\\[\n(X^\\top X+\\lambda I)\\boldsymbol{\\beta}\n=\nX^\\top\\mathbf y.\n\\]\nPor lo tanto,\n\\[\n\\boxed{\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\n=\n(X^\\top X+\\lambda I)^{-1}X^\\top\\mathbf y\n}\n\\]"
+    "text": "Solución Ridge\nEn forma matricial,\n\\[RSS\n=\n\\|\\mathbf y-X\\boldsymbol{\\beta}\\|_2^2.\\]\nPor lo tanto, Ridge minimiza\n\\[\\|\\mathbf y-X\\boldsymbol{\\beta}\\|_2^2\n+\n\\lambda\\|\\boldsymbol{\\beta}\\|_2^2.\\]\nDerivando e igualando a cero:\n\\[-2X^\\top(\\mathbf y-X\\boldsymbol{\\beta})\n+\n2\\lambda\\boldsymbol{\\beta}\n=\n0.\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#solución-ridge-1",
+    "href": "lecciones/unidad-01/leccion-09.html#solución-ridge-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Solución Ridge",
+    "text": "Solución Ridge\nEntonces,\n\\[(X^\\top X+\\lambda I)\\boldsymbol{\\beta}\n=\nX^\\top\\mathbf y.\\]\nPor lo tanto,\n\\[\\boxed{\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\n=\n(X^\\top X+\\lambda I)^{-1}X^\\top\\mathbf y\n}\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#ridge-vs.-mínimos-cuadrados",
     "href": "lecciones/unidad-01/leccion-09.html#ridge-vs.-mínimos-cuadrados",
     "title": "Aprendizaje supervisado",
     "section": "Ridge vs. mínimos cuadrados",
-    "text": "Ridge vs. mínimos cuadrados\nEn mínimos cuadrados,\n\\[\n\\hat{\\boldsymbol{\\beta}}_{OLS}\n=\n(X^\\top X)^{-1}X^\\top\\mathbf y.\n\\]\nEn Ridge,\n\\[\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\n=\n(X^\\top X+\\lambda I)^{-1}X^\\top\\mathbf y.\n\\]\nLa diferencia está en\n\\[\n\\boxed{\nX^\\top X\n\\quad\\longrightarrow\\quad\nX^\\top X+\\lambda I\n}\n\\]\nCuando\n\\[\n\\lambda=0,\n\\]\nrecuperamos la solución de mínimos cuadrados."
+    "text": "Ridge vs. mínimos cuadrados\nEn mínimos cuadrados,\n\\[\\hat{\\boldsymbol{\\beta}}_{OLS}\n=\n(X^\\top X)^{-1}X^\\top\\mathbf y.\\]\nEn Ridge,\n\\[\\hat{\\boldsymbol{\\beta}}_{Ridge}\n=\n(X^\\top X+\\lambda I)^{-1}X^\\top\\mathbf y.\\]\nLa diferencia está en\n\\[\\boxed{\nX^\\top X\n\\quad\\longrightarrow\\quad\nX^\\top X+\\lambda I\n}\\]\nCuando \\(\\lambda=0\\), recuperamos la solución de mínimos cuadrados."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#efecto-de-lambda",
     "href": "lecciones/unidad-01/leccion-09.html#efecto-de-lambda",
     "title": "Aprendizaje supervisado",
     "section": "Efecto de \\(\\lambda\\)",
-    "text": "Efecto de \\(\\lambda\\)\nEl parámetro \\(\\lambda\\) controla la intensidad del shrinkage:\n\\[\n\\lambda=0\n\\qquad\\Longrightarrow\\qquad\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\n=\n\\hat{\\boldsymbol{\\beta}}_{OLS}.\n\\]\nA medida que \\(\\lambda\\) aumenta,\n\\[\n\\lambda\\uparrow\n\\qquad\\Longrightarrow\\qquad\n\\|\\hat{\\boldsymbol{\\beta}}_{Ridge}\\|_2\\downarrow.\n\\]\nEn el límite,\n\\[\n\\lambda\\rightarrow\\infty\n\\qquad\\Longrightarrow\\qquad\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\\rightarrow\\mathbf 0.\n\\]\n\nRidge reduce progresivamente la magnitud de los coeficientes, pero generalmente no los hace exactamente cero."
+    "text": "Efecto de \\(\\lambda\\)\nEl parámetro \\(\\lambda\\) controla la intensidad de contracción:\n\\[\\lambda=0\n\\qquad\\Longrightarrow\\qquad\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\n=\n\\hat{\\boldsymbol{\\beta}}_{OLS}.\\]\nA medida que \\(\\lambda\\) aumenta,\n\\[\\lambda\\uparrow\n\\qquad\\Longrightarrow\\qquad\n\\|\\hat{\\boldsymbol{\\beta}}_{Ridge}\\|_2\\downarrow.\\]\nEn el límite,\n\\[\\lambda\\rightarrow\\infty\n\\qquad\\Longrightarrow\\qquad\n\\hat{\\boldsymbol{\\beta}}_{Ridge}\\rightarrow\\mathbf 0.\\]\n\nRidge reduce progresivamente la magnitud de los coeficientes, pero generalmente no los hace exactamente cero."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#una-segunda-propuesta",
     "href": "lecciones/unidad-01/leccion-09.html#una-segunda-propuesta",
     "title": "Aprendizaje supervisado",
     "section": "Una segunda propuesta",
-    "text": "Una segunda propuesta\nEn lugar de restringir la suma de los cuadrados, podemos restringir la suma de las magnitudes:\n\\[\n\\boxed{\n|\\beta_1|+|\\beta_2|+\\cdots+|\\beta_p|\\leq t\n}\n\\]\ndonde \\(t\\geq0\\) controla la magnitud permitida de los coeficientes.\nPara dos coeficientes,\n\\[\n|\\beta_1|+|\\beta_2|\\leq t,\n\\]\nla región permitida tiene forma de diamante.\n\n¿Qué diferencia produce esta geometría?"
+    "text": "Una segunda propuesta\nEn lugar de restringir la suma de los cuadrados, podemos restringir la suma de las magnitudes:\n\\[\\boxed{\n|\\beta_1|+|\\beta_2|+\\cdots+|\\beta_p|\\leq t\n}\\]\ndonde \\(t\\geq0\\) controla la magnitud permitida de los coeficientes."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-3",
+    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-3",
+    "title": "Aprendizaje supervisado",
+    "section": "Interpretación geométrica",
+    "text": "Interpretación geométrica\nPara dos coeficientes,\n\\[|\\beta_1|+|\\beta_2|\\leq t,\\]\nla región permitida tiene forma de diamante.\n\n¿Qué diferencia produce esta geometría?"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-4",
+    "href": "lecciones/unidad-01/leccion-09.html#interpretación-geométrica-4",
+    "title": "Aprendizaje supervisado",
+    "section": "Interpretación geométrica",
+    "text": "Interpretación geométrica"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#shrinkage-y-sparsity",
     "href": "lecciones/unidad-01/leccion-09.html#shrinkage-y-sparsity",
     "title": "Aprendizaje supervisado",
     "section": "Shrinkage y sparsity",
-    "text": "Shrinkage y sparsity\nLasso también contrae los coeficientes hacia cero:\n\\[\n\\hat{\\boldsymbol{\\beta}}_{Lasso}\n\\longrightarrow\n\\mathbf 0.\n\\]\nSin embargo, algunos coeficientes pueden llegar a ser exactamente cero:\n\\[\n\\boxed{\n\\hat\\beta_j=0.\n}\n\\]\nCuando esto ocurre, el predictor \\(X_j\\) deja de contribuir al modelo.\n\nLasso produce modelos sparse: modelos en los que solo una parte de los predictores tiene coeficientes distintos de cero."
+    "text": "Shrinkage y sparsity\nLasso también contrae los coeficientes hacia cero:\n\\[\\hat{\\boldsymbol{\\beta}}_{Lasso}\n\\longrightarrow\n\\mathbf 0.\\]\nSin embargo, algunos coeficientes pueden llegar a ser exactamente cero:\n\\[\\boxed{\n\\hat\\beta_j=0.\n}\\]\nCuando esto ocurre, el predictor \\(X_j\\) deja de contribuir al modelo.\n\nLasso produce modelos sparse: modelos en los que solo una parte de los predictores tiene coeficientes distintos de cero."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#formulación-matemática-1",
     "href": "lecciones/unidad-01/leccion-09.html#formulación-matemática-1",
     "title": "Aprendizaje supervisado",
     "section": "Formulación matemática",
-    "text": "Formulación matemática\nLa regresión Lasso estima los coeficientes minimizando\n\\[\n\\boxed{\nRSS\n+\n\\lambda\n\\sum_{j=1}^{p}|\\beta_j|\n}\n\\]\nLa penalización\n\\[\n\\sum_{j=1}^{p}|\\beta_j|\n\\]\nse conoce como penalización \\(L_1\\).\nEl intercepto \\(\\beta_0\\) no se penaliza."
+    "text": "Formulación matemática\nLa regresión Lasso estima los coeficientes minimizando\n\\[\\boxed{\nRSS\n+\n\\lambda\n\\sum_{j=1}^{p}|\\beta_j|\n}\\]\nLa penalización\n\\[\\sum_{j=1}^{p}|\\beta_j|\\]\nse conoce como penalización \\(L_1\\). El intercepto \\(\\beta_0\\) no se penaliza."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#ridge-vs.-lasso",
     "href": "lecciones/unidad-01/leccion-09.html#ridge-vs.-lasso",
     "title": "Aprendizaje supervisado",
     "section": "Ridge vs. Lasso",
-    "text": "Ridge vs. Lasso\nRidge\n\\[\nRSS+\\lambda\\sum_{j=1}^{p}\\beta_j^2\n\\]\ncontrae los coeficientes hacia cero, pero generalmente\n\\[\n\\hat\\beta_j\\neq0.\n\\]\nLasso\n\\[\nRSS+\\lambda\\sum_{j=1}^{p}|\\beta_j|\n\\]\npuede producir\n\\[\n\\boxed{\\hat\\beta_j=0}.\n\\]\n\nAmbos métodos regularizan el modelo, pero Lasso además puede eliminar efectivamente algunos predictores."
+    "text": "Ridge vs. Lasso\nRidge\n\\[RSS+\\lambda\\sum_{j=1}^{p}\\beta_j^2\\]\ncontrae los coeficientes hacia cero, pero generalmente \\(\\hat\\beta_j\\neq0.\\)\nLasso\n\\[RSS+\\lambda\\sum_{j=1}^{p}|\\beta_j|\\]\npuede producir \\(\\hat\\beta_j=0\\).\n\nAmbos métodos regularizan el modelo, pero Lasso además puede eliminar efectivamente algunos predictores."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#cómo-se-resuelve-lasso",
     "href": "lecciones/unidad-01/leccion-09.html#cómo-se-resuelve-lasso",
     "title": "Aprendizaje supervisado",
     "section": "¿Cómo se resuelve Lasso?",
-    "text": "¿Cómo se resuelve Lasso?\nA diferencia de Ridge, la función\n\\[\n|\\beta_j|\n\\]\nno es diferenciable en\n\\[\n\\beta_j=0.\n\\]\nPor esta razón, Lasso no tiene una solución cerrada simple como\n\\[\n(X^\\top X+\\lambda I)^{-1}X^\\top y.\n\\]\nEn la práctica, los coeficientes se obtienen mediante métodos de optimización iterativos.\n\nLasso se resuelve numéricamente, actualizando los coeficientes hasta encontrar la solución que minimiza el criterio penalizado."
+    "text": "¿Cómo se resuelve Lasso?\nA diferencia de Ridge, la función \\(|\\beta_j|\\) no es diferenciable en \\(\\beta_j=0.\\)\nPor esta razón, Lasso no tiene una solución cerrada simple como\n\\[(X^\\top X+\\lambda I)^{-1}X^\\top y.\\]\nEn la práctica, los coeficientes se obtienen mediante métodos de optimización iterativos.\n\nLasso se resuelve numéricamente, actualizando los coeficientes hasta encontrar la solución que minimiza el criterio penalizado."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#cómo-elegimos-lambda",
     "href": "lecciones/unidad-01/leccion-09.html#cómo-elegimos-lambda",
     "title": "Aprendizaje supervisado",
     "section": "¿Cómo elegimos \\(\\lambda\\)?",
-    "text": "¿Cómo elegimos \\(\\lambda\\)?\nPodemos probar diferentes valores:\n\\[\n\\lambda_1,\\lambda_2,\\ldots,\\lambda_m.\n\\]\nPero necesitamos decidir cuál produce el mejor desempeño sobre datos no utilizados para ajustar el modelo.\nUna primera estrategia consiste en dividir los datos en:\n\\[\n\\boxed{\n\\text{entrenamiento}\n\\quad+\\quad\n\\text{validación}\n}\n\\]\n\nEntrenamiento: estimamos los coeficientes.\nValidación: evaluamos diferentes valores de \\(\\lambda\\).\n\nSeleccionamos el valor con menor error de validación."
+    "text": "¿Cómo elegimos \\(\\lambda\\)?\nPodemos probar diferentes valores:\n\\[\\lambda_1,\\lambda_2,\\ldots,\\lambda_m.\\]\nPero necesitamos decidir cuál produce el mejor desempeño sobre datos no utilizados para ajustar el modelo.\nUna primera estrategia consiste en dividir los datos en:\n\\[\\boxed{\n\\text{entrenamiento}\n\\quad+\\quad\n\\text{validación}\n}\\]\n\nEntrenamiento: estimamos los coeficientes.\nValidación: evaluamos diferentes valores de \\(\\lambda\\).\n\nSeleccionamos el valor con menor error de validación."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#y-si-la-división-cambia",
@@ -382,7 +410,7 @@
     "href": "lecciones/unidad-01/leccion-09.html#k-fold-cross-validation",
     "title": "Aprendizaje supervisado",
     "section": "\\(K\\)-fold cross-validation",
-    "text": "\\(K\\)-fold cross-validation\nDividimos el conjunto de datos en \\(K\\) bloques:\n\\[\nD=D_1\\cup D_2\\cup\\cdots\\cup D_K.\n\\]\nEn cada iteración:\n\nutilizamos \\(K-1\\) bloques para entrenar;\nutilizamos el bloque restante para validar;\ncalculamos el error de validación.\n\nCada bloque se utiliza una vez para validación y \\(K-1\\) veces para entrenamiento."
+    "text": "\\(K\\)-fold cross-validation\nDividimos el conjunto de datos en \\(K\\) bloques:\n\\[D=D_1\\cup D_2\\cup\\cdots\\cup D_K, \\quad \\text{con} \\quad D_i\\cap D_j=\\emptyset \\quad \\text{para todo} \\quad i\\ne j.\\]\nEn cada iteración:\n\nutilizamos \\(K-1\\) bloques para entrenar;\nutilizamos el bloque restante para validar;\ncalculamos el error de validación.\n\nCada bloque se utiliza una vez para validación y \\(K-1\\) veces para entrenamiento."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#selección-de-lambda-mediante-cv",
@@ -396,21 +424,35 @@
     "href": "lecciones/unidad-01/leccion-09.html#ajuste-del-modelo-final",
     "title": "Aprendizaje supervisado",
     "section": "Ajuste del modelo final",
-    "text": "Ajuste del modelo final\nUna vez seleccionado el hiperparámetro\n\\[\n\\lambda^*,\n\\]\nlo consideramos fijo y utilizamos todos los datos de entrenamiento para estimar los coeficientes:\n\\[\n\\boxed{\n\\hat{\\boldsymbol{\\beta}}\n=\n\\underset{\\boldsymbol{\\beta}}{\\operatorname{argmin}}\n\\left[\nRSS\n+\n\\lambda^*P(\\boldsymbol{\\beta})\n\\right]\n}\n\\]\nPor lo tanto, tenemos dos tareas diferentes:\n\\[\n\\boxed{\n\\text{seleccionar }\\lambda\n\\quad\\longrightarrow\\quad\n\\text{estimar }\\boldsymbol{\\beta}\n}\n\\]\n\n\\(\\lambda\\): hiperparámetro, seleccionado mediante validación cruzada.\n\\(\\boldsymbol{\\beta}\\): parámetros, estimados durante el ajuste del modelo."
+    "text": "Ajuste del modelo final\nUna vez seleccionado el hiperparámetro \\(\\lambda^*\\), lo consideramos fijo y utilizamos todos los datos de entrenamiento para estimar los coeficientes:\n\\[\\boxed{\n\\hat{\\boldsymbol{\\beta}}\n=\n\\underset{\\boldsymbol{\\beta}}{\\operatorname{argmin}}\n\\left[\nRSS\n+\n\\lambda^*P(\\boldsymbol{\\beta})\n\\right]\n}\\]\nPor lo tanto, tenemos dos tareas diferentes:\n\\[\\boxed{\n\\text{seleccionar }\\lambda\n\\quad\\longrightarrow\\quad\n\\text{estimar }\\boldsymbol{\\beta}\n}\\]\n\n\\(\\lambda\\): hiperparámetro, seleccionado mediante validación cruzada.\n\\(\\boldsymbol{\\beta}\\): parámetros, estimados durante el ajuste del modelo."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#estandarización-de-los-predictores",
     "href": "lecciones/unidad-01/leccion-09.html#estandarización-de-los-predictores",
     "title": "Aprendizaje supervisado",
     "section": "Estandarización de los predictores",
-    "text": "Estandarización de los predictores\nRidge y Lasso penalizan directamente la magnitud de los coeficientes:\n\\[\n\\sum_{j=1}^{p}\\beta_j^2\n\\qquad\\text{o}\\qquad\n\\sum_{j=1}^{p}|\\beta_j|.\n\\]\nPor lo tanto, la penalización depende de la escala de los predictores.\nAntes de ajustar el modelo, normalmente estandarizamos:\n\\[\n\\boxed{\nZ_j\n=\n\\frac{X_j-\\bar X_j}{s_j}\n}\n\\]\nde modo que cada predictor tenga\n\\[\n\\text{media}=0,\n\\qquad\n\\text{desviación estándar}=1.\n\\]\n\nLa estandarización permite que la penalización actúe de manera comparable sobre todos los coeficientes."
+    "text": "Estandarización de los predictores\nRidge y Lasso penalizan directamente la magnitud de los coeficientes:\n\\[\\sum_{j=1}^{p}\\beta_j^2\n\\qquad\\text{o}\\qquad\n\\sum_{j=1}^{p}|\\beta_j|.\\]\nPor lo tanto, la penalización depende de la escala de los predictores."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#estandarización-de-los-predictores-1",
+    "href": "lecciones/unidad-01/leccion-09.html#estandarización-de-los-predictores-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Estandarización de los predictores",
+    "text": "Estandarización de los predictores\nAntes de ajustar el modelo, normalmente estandarizamos:\n\\[\\boxed{\nZ_j\n=\n\\frac{X_j-\\bar X_j}{s_j}\n}\\]\nde modo que cada predictor tenga\n\\[\\text{media}=0,\n\\qquad\n\\text{desviación estándar}=1.\\]\n\nLa estandarización permite que la penalización actúe de manera comparable sobre todos los coeficientes."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia",
     "href": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia",
     "title": "Aprendizaje supervisado",
     "section": "¿Qué ocurre con la inferencia?",
-    "text": "¿Qué ocurre con la inferencia?\nEn regresión lineal clásica utilizamos los coeficientes estimados para realizar inferencia mediante:\n\\[\nSE(\\hat\\beta_j),\\qquad\nCI,\\qquad\np\\text{-values}.\n\\]\nEn Ridge y Lasso, los coeficientes son estimados bajo una penalización:\n\\[\nRSS+\\lambda P(\\boldsymbol{\\beta}).\n\\]\nComo consecuencia, los estimadores son sesgados y la inferencia clásica de mínimos cuadrados no puede aplicarse directamente.\n\nRidge y Lasso se utilizan principalmente para mejorar la predicción y estabilidad del modelo, no para realizar inferencia clásica sobre los coeficientes.\n\nExisten métodos específicos para realizar inferencia en modelos regularizados, como bootstrap y inferencia post-selección."
+    "text": "¿Qué ocurre con la inferencia?\nEn regresión lineal clásica utilizamos los coeficientes estimados para realizar inferencia mediante:\n\\[SE(\\hat\\beta_j),\\qquad\nCI,\\qquad\np\\text{-values}.\\]\nEn Ridge y Lasso, los coeficientes son estimados bajo una penalización:\n\\[RSS+\\lambda P(\\boldsymbol{\\beta}).\\]\nComo consecuencia, los estimadores son sesgados y la inferencia clásica de mínimos cuadrados no puede aplicarse directamente."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia-1",
+    "href": "lecciones/unidad-01/leccion-09.html#qué-ocurre-con-la-inferencia-1",
+    "title": "Aprendizaje supervisado",
+    "section": "¿Qué ocurre con la inferencia?",
+    "text": "¿Qué ocurre con la inferencia?\n\nRidge y Lasso se utilizan principalmente para mejorar la predicción y estabilidad del modelo, no para realizar inferencia clásica sobre los coeficientes.\n\nExisten métodos específicos para realizar inferencia en modelos regularizados, como bootstrap y inferencia post-selección."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-07.html#machine-learning",

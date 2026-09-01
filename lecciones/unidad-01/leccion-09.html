@@ -237,8 +237,6 @@ Dra. Denisse Urenda Castañeda
 <li><a href="#/regresión-lasso" id="/toc-regresión-lasso">Regresión Lasso</a></li>
 <li><a href="#/validación-cruzada" id="/toc-validación-cruzada">Validación cruzada</a></li>
 <li><a href="#/inferencia" id="/toc-inferencia">Inferencia</a></li>
-<li><a href="#/flujo-de-trabajo" id="/toc-flujo-de-trabajo">Flujo de trabajo</a></li>
-<li><a href="#/resumen" id="/toc-resumen">Resumen</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
 <li><a href="#/qué-sigue" id="/toc-qué-sigue">¿Qué sigue?</a></li>
@@ -253,11 +251,9 @@ Dra. Denisse Urenda Castañeda
 <section id="regresión-lineal" class="slide level2">
 <h2>Regresión lineal</h2>
 <p>En regresión lineal estimamos los coeficientes minimizando</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 RSS=\sum_{i=1}^{n}(y_i-\hat y_i)^2
-}
-\]</span></p>
+}\]</span></p>
 <p>obteniendo el modelo que mejor se ajusta a los datos de entrenamiento.</p>
 <p>Sin embargo, un mejor ajuste no necesariamente implica un mejor desempeño sobre nuevas observaciones.</p>
 <div class="text-center">
@@ -267,13 +263,11 @@ RSS=\sum_{i=1}^{n}(y_i-\hat y_i)^2
 <section id="regularización" class="slide level2">
 <h2>Regularización</h2>
 <p>La <strong>regularización</strong> agrega una penalización al criterio de ajuste:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 RSS
 +
 \lambda\,P(\boldsymbol{\beta})
-}
-\]</span></p>
+}\]</span></p>
 <p>donde:</p>
 <ul>
 <li><span class="math inline">\(RSS\)</span> mide el error de ajuste;</li>
@@ -281,29 +275,16 @@ RSS
 <li><span class="math inline">\(\lambda\geq0\)</span> controla la intensidad de la penalización.</li>
 </ul>
 <p>Buscamos un equilibrio entre</p>
-<p><span class="math display">\[
-\text{ajuste}
+<p><span class="math display">\[\text{ajuste}
 \qquad\longleftrightarrow\qquad
-\text{complejidad}.
-\]</span></p>
+\text{complejidad}.\]</span></p>
 </section>
 <section id="el-parámetro-de-regularización" class="slide level2">
 <h2>El parámetro de regularización</h2>
 <p>El parámetro <span class="math inline">\(\lambda\)</span> determina cuánto penalizamos la complejidad:</p>
-<p><span class="math display">\[
-RSS+\lambda P(\boldsymbol{\beta}).
-\]</span></p>
-<p>Si</p>
-<p><span class="math display">\[
-\lambda=0,
-\]</span></p>
-<p>no existe penalización y recuperamos mínimos cuadrados.</p>
-<p>Si <span class="math inline">\(\lambda\)</span> aumenta,</p>
-<p><span class="math display">\[
-\lambda\uparrow
-\qquad\Longrightarrow\qquad
-\text{mayor regularización}.
-\]</span></p>
+<p><span class="math display">\[RSS+\lambda P(\boldsymbol{\beta}).\]</span></p>
+<p>Si <span class="math inline">\(\lambda=0,\)</span> no existe penalización y recuperamos mínimos cuadrados.</p>
+<p>Si <span class="math inline">\(\lambda\)</span> aumenta, aumenta la penalización a los coeficientes.</p>
 <div class="formula">
 <p>Regularizar implica aceptar cierto sacrificio en el ajuste para controlar la complejidad del modelo.</p>
 </div>
@@ -316,11 +297,9 @@ RSS+\lambda P(\boldsymbol{\beta}).
 <section id="una-primera-propuesta" class="slide level2">
 <h2>Una primera propuesta</h2>
 <p>Una forma de controlar la complejidad es limitar la magnitud de los coeficientes:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \beta_1^2+\beta_2^2+\cdots+\beta_p^2\leq t
-}
-\]</span></p>
+}\]</span></p>
 <p>donde <span class="math inline">\(t\geq0\)</span> determina qué tan grandes pueden ser los coeficientes en conjunto.</p>
 <div class="text-center">
 <p><strong>¿Qué efecto tiene esta restricción sobre la solución?</strong></p>
@@ -329,41 +308,35 @@ RSS+\lambda P(\boldsymbol{\beta}).
 <section id="interpretación-geométrica" class="slide level2">
 <h2>Interpretación geométrica</h2>
 <p>Consideremos solamente dos coeficientes:</p>
-<p><span class="math display">\[
-\beta_1,\qquad\beta_2.
-\]</span></p>
+<p><span class="math display">\[\beta_1,\qquad\beta_2.\]</span></p>
 <p>La restricción Ridge es</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \beta_1^2+\beta_2^2\leq t
-}
-\]</span></p>
+}\]</span></p>
 <p>que representa un disco de radio <span class="math inline">\(\sqrt{t}\)</span>.</p>
 <p>Por lo tanto, la solución debe encontrarse dentro de la región permitida.</p>
 </section>
 <section id="interpretación-geométrica-1" class="slide level2 unlisted">
 <h2>Interpretación geométrica</h2>
+
+<img data-src="../imagenes/Ridge-regression.png" class="r-stretch"></section>
+<section id="interpretación-geométrica-2" class="slide level2 unlisted">
+<h2>Interpretación geométrica</h2>
 <p>Las curvas de nivel representan combinaciones de</p>
-<p><span class="math display">\[
-(\beta_1,\beta_2)
-\]</span></p>
+<p><span class="math display">\[(\beta_1,\beta_2)\]</span></p>
 <p>que producen el mismo valor de <span class="math inline">\(RSS\)</span>.</p>
 <p>El centro corresponde a la solución de mínimos cuadrados:</p>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}_{OLS}.
-\]</span></p>
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}_{OLS}.\]</span></p>
 <p>La solución Ridge será el punto dentro de la región permitida que produzca el menor <span class="math inline">\(RSS\)</span> posible.</p>
 </section>
 <section id="shrinkage" class="slide level2">
 <h2>Shrinkage</h2>
 <p>La restricción impide que los coeficientes tomen valores arbitrariamente grandes.</p>
 <p>Como resultado, la solución Ridge es desplazada hacia el origen:</p>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}_{Ridge}
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}_{Ridge}
 \longrightarrow
-\mathbf 0.
-\]</span></p>
-<p>Este efecto se conoce como <strong>shrinkage</strong>.</p>
+\mathbf 0.\]</span></p>
+<p>Este efecto se conoce como <strong>shrinkage</strong> o contracción.</p>
 <div class="formula">
 <p>Ridge sacrifica parte del ajuste para obtener coeficientes de menor magnitud.</p>
 </div>
@@ -371,134 +344,101 @@ RSS+\lambda P(\boldsymbol{\beta}).
 <section id="formulación-matemática" class="slide level2">
 <h2>Formulación matemática</h2>
 <p>La regresión Ridge estima los coeficientes minimizando</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 RSS
 +
 \lambda
 \sum_{j=1}^{p}\beta_j^2
-}
-\]</span></p>
+}\]</span></p>
 <p>La penalización</p>
-<p><span class="math display">\[
-\sum_{j=1}^{p}\beta_j^2
-\]</span></p>
+<p><span class="math display">\[\sum_{j=1}^{p}\beta_j^2\]</span></p>
 <p>favorece soluciones con coeficientes de menor magnitud.</p>
 <p>El intercepto <span class="math inline">\(\beta_0\)</span> <strong>no se penaliza</strong>.</p>
 </section>
 <section id="dos-formas-de-ridge" class="slide level2">
 <h2>Dos formas de Ridge</h2>
 <p>Podemos expresar Ridge mediante una penalización:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \min
 \left[
 RSS+\lambda\sum_{j=1}^{p}\beta_j^2
 \right]
-}
-\]</span></p>
+}\]</span></p>
 <p>o mediante una restricción:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \min RSS
 \qquad
 \text{sujeto a}
 \qquad
 \sum_{j=1}^{p}\beta_j^2\leq t.
-}
-\]</span></p>
+}\]</span></p>
 <p>Ambas formulaciones representan el mismo principio:</p>
-<p><span class="math display">\[
-\text{controlar la magnitud de los coeficientes}.
-\]</span></p>
+<p><span class="math display">\[\text{controlar la magnitud de los coeficientes}.\]</span></p>
 </section>
 <section id="solución-ridge" class="slide level2">
 <h2>Solución Ridge</h2>
 <p>En forma matricial,</p>
-<p><span class="math display">\[
-RSS
+<p><span class="math display">\[RSS
 =
-\|\mathbf y-X\boldsymbol{\beta}\|_2^2.
-\]</span></p>
+\|\mathbf y-X\boldsymbol{\beta}\|_2^2.\]</span></p>
 <p>Por lo tanto, Ridge minimiza</p>
-<p><span class="math display">\[
-\|\mathbf y-X\boldsymbol{\beta}\|_2^2
+<p><span class="math display">\[\|\mathbf y-X\boldsymbol{\beta}\|_2^2
 +
-\lambda\|\boldsymbol{\beta}\|_2^2.
-\]</span></p>
+\lambda\|\boldsymbol{\beta}\|_2^2.\]</span></p>
 <p>Derivando e igualando a cero:</p>
-<p><span class="math display">\[
--2X^\top(\mathbf y-X\boldsymbol{\beta})
+<p><span class="math display">\[-2X^\top(\mathbf y-X\boldsymbol{\beta})
 +
 2\lambda\boldsymbol{\beta}
 =
-0.
-\]</span></p>
+0.\]</span></p>
+</section>
+<section id="solución-ridge-1" class="slide level2 unlisted">
+<h2>Solución Ridge</h2>
 <p>Entonces,</p>
-<p><span class="math display">\[
-(X^\top X+\lambda I)\boldsymbol{\beta}
+<p><span class="math display">\[(X^\top X+\lambda I)\boldsymbol{\beta}
 =
-X^\top\mathbf y.
-\]</span></p>
+X^\top\mathbf y.\]</span></p>
 <p>Por lo tanto,</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \hat{\boldsymbol{\beta}}_{Ridge}
 =
 (X^\top X+\lambda I)^{-1}X^\top\mathbf y
-}
-\]</span></p>
+}\]</span></p>
 </section>
 <section id="ridge-vs.-mínimos-cuadrados" class="slide level2">
 <h2>Ridge vs.&nbsp;mínimos cuadrados</h2>
 <p>En mínimos cuadrados,</p>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}_{OLS}
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}_{OLS}
 =
-(X^\top X)^{-1}X^\top\mathbf y.
-\]</span></p>
+(X^\top X)^{-1}X^\top\mathbf y.\]</span></p>
 <p>En Ridge,</p>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}_{Ridge}
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}_{Ridge}
 =
-(X^\top X+\lambda I)^{-1}X^\top\mathbf y.
-\]</span></p>
+(X^\top X+\lambda I)^{-1}X^\top\mathbf y.\]</span></p>
 <p>La diferencia está en</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 X^\top X
 \quad\longrightarrow\quad
 X^\top X+\lambda I
-}
-\]</span></p>
-<p>Cuando</p>
-<p><span class="math display">\[
-\lambda=0,
-\]</span></p>
-<p>recuperamos la solución de mínimos cuadrados.</p>
+}\]</span></p>
+<p>Cuando <span class="math inline">\(\lambda=0\)</span>, recuperamos la solución de mínimos cuadrados.</p>
 </section>
 <section id="efecto-de-lambda" class="slide level2">
 <h2>Efecto de <span class="math inline">\(\lambda\)</span></h2>
-<p>El parámetro <span class="math inline">\(\lambda\)</span> controla la intensidad del <em>shrinkage</em>:</p>
-<p><span class="math display">\[
-\lambda=0
+<p>El parámetro <span class="math inline">\(\lambda\)</span> controla la intensidad de <em>contracción</em>:</p>
+<p><span class="math display">\[\lambda=0
 \qquad\Longrightarrow\qquad
 \hat{\boldsymbol{\beta}}_{Ridge}
 =
-\hat{\boldsymbol{\beta}}_{OLS}.
-\]</span></p>
+\hat{\boldsymbol{\beta}}_{OLS}.\]</span></p>
 <p>A medida que <span class="math inline">\(\lambda\)</span> aumenta,</p>
-<p><span class="math display">\[
-\lambda\uparrow
+<p><span class="math display">\[\lambda\uparrow
 \qquad\Longrightarrow\qquad
-\|\hat{\boldsymbol{\beta}}_{Ridge}\|_2\downarrow.
-\]</span></p>
+\|\hat{\boldsymbol{\beta}}_{Ridge}\|_2\downarrow.\]</span></p>
 <p>En el límite,</p>
-<p><span class="math display">\[
-\lambda\rightarrow\infty
+<p><span class="math display">\[\lambda\rightarrow\infty
 \qquad\Longrightarrow\qquad
-\hat{\boldsymbol{\beta}}_{Ridge}\rightarrow\mathbf 0.
-\]</span></p>
+\hat{\boldsymbol{\beta}}_{Ridge}\rightarrow\mathbf 0.\]</span></p>
 <div class="formula">
 <p>Ridge reduce progresivamente la magnitud de los coeficientes, pero generalmente <strong>no los hace exactamente cero</strong>.</p>
 </div>
@@ -511,35 +451,34 @@ X^\top X+\lambda I
 <section id="una-segunda-propuesta" class="slide level2">
 <h2>Una segunda propuesta</h2>
 <p>En lugar de restringir la suma de los cuadrados, podemos restringir la suma de las magnitudes:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 |\beta_1|+|\beta_2|+\cdots+|\beta_p|\leq t
-}
-\]</span></p>
+}\]</span></p>
 <p>donde <span class="math inline">\(t\geq0\)</span> controla la magnitud permitida de los coeficientes.</p>
+</section>
+<section id="interpretación-geométrica-3" class="slide level2">
+<h2>Interpretación geométrica</h2>
 <p>Para dos coeficientes,</p>
-<p><span class="math display">\[
-|\beta_1|+|\beta_2|\leq t,
-\]</span></p>
+<p><span class="math display">\[|\beta_1|+|\beta_2|\leq t,\]</span></p>
 <p>la región permitida tiene forma de <strong>diamante</strong>.</p>
 <div class="text-center">
 <p><strong>¿Qué diferencia produce esta geometría?</strong></p>
 </div>
 </section>
+<section id="interpretación-geométrica-4" class="slide level2 unlisted">
+<h2>Interpretación geométrica</h2>
+
+<img data-src="../imagenes/Lasso-regression.png" class="r-stretch"></section>
 <section id="shrinkage-y-sparsity" class="slide level2">
 <h2>Shrinkage y sparsity</h2>
 <p>Lasso también contrae los coeficientes hacia cero:</p>
-<p><span class="math display">\[
-\hat{\boldsymbol{\beta}}_{Lasso}
+<p><span class="math display">\[\hat{\boldsymbol{\beta}}_{Lasso}
 \longrightarrow
-\mathbf 0.
-\]</span></p>
+\mathbf 0.\]</span></p>
 <p>Sin embargo, algunos coeficientes pueden llegar a ser <strong>exactamente cero</strong>:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \hat\beta_j=0.
-}
-\]</span></p>
+}\]</span></p>
 <p>Cuando esto ocurre, el predictor <span class="math inline">\(X_j\)</span> deja de contribuir al modelo.</p>
 <div class="formula">
 <p>Lasso produce modelos <strong>sparse</strong>: modelos en los que solo una parte de los predictores tiene coeficientes distintos de cero.</p>
@@ -548,57 +487,33 @@ X^\top X+\lambda I
 <section id="formulación-matemática-1" class="slide level2">
 <h2>Formulación matemática</h2>
 <p>La regresión Lasso estima los coeficientes minimizando</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 RSS
 +
 \lambda
 \sum_{j=1}^{p}|\beta_j|
-}
-\]</span></p>
+}\]</span></p>
 <p>La penalización</p>
-<p><span class="math display">\[
-\sum_{j=1}^{p}|\beta_j|
-\]</span></p>
-<p>se conoce como penalización <span class="math inline">\(L_1\)</span>.</p>
-<p>El intercepto <span class="math inline">\(\beta_0\)</span> <strong>no se penaliza</strong>.</p>
+<p><span class="math display">\[\sum_{j=1}^{p}|\beta_j|\]</span></p>
+<p>se conoce como penalización <span class="math inline">\(L_1\)</span>. El intercepto <span class="math inline">\(\beta_0\)</span> <strong>no se penaliza</strong>.</p>
 </section>
 <section id="ridge-vs.-lasso" class="slide level2">
 <h2>Ridge vs.&nbsp;Lasso</h2>
 <p><strong>Ridge</strong></p>
-<p><span class="math display">\[
-RSS+\lambda\sum_{j=1}^{p}\beta_j^2
-\]</span></p>
-<p>contrae los coeficientes hacia cero, pero generalmente</p>
-<p><span class="math display">\[
-\hat\beta_j\neq0.
-\]</span></p>
+<p><span class="math display">\[RSS+\lambda\sum_{j=1}^{p}\beta_j^2\]</span></p>
+<p>contrae los coeficientes hacia cero, pero generalmente <span class="math inline">\(\hat\beta_j\neq0.\)</span></p>
 <p><strong>Lasso</strong></p>
-<p><span class="math display">\[
-RSS+\lambda\sum_{j=1}^{p}|\beta_j|
-\]</span></p>
-<p>puede producir</p>
-<p><span class="math display">\[
-\boxed{\hat\beta_j=0}.
-\]</span></p>
+<p><span class="math display">\[RSS+\lambda\sum_{j=1}^{p}|\beta_j|\]</span></p>
+<p>puede producir <span class="math inline">\(\hat\beta_j=0\)</span>.</p>
 <div class="formula">
 <p>Ambos métodos regularizan el modelo, pero Lasso además puede eliminar efectivamente algunos predictores.</p>
 </div>
 </section>
 <section id="cómo-se-resuelve-lasso" class="slide level2">
 <h2>¿Cómo se resuelve Lasso?</h2>
-<p>A diferencia de Ridge, la función</p>
-<p><span class="math display">\[
-|\beta_j|
-\]</span></p>
-<p>no es diferenciable en</p>
-<p><span class="math display">\[
-\beta_j=0.
-\]</span></p>
+<p>A diferencia de Ridge, la función <span class="math inline">\(|\beta_j|\)</span> no es diferenciable en <span class="math inline">\(\beta_j=0.\)</span></p>
 <p>Por esta razón, Lasso no tiene una solución cerrada simple como</p>
-<p><span class="math display">\[
-(X^\top X+\lambda I)^{-1}X^\top y.
-\]</span></p>
+<p><span class="math display">\[(X^\top X+\lambda I)^{-1}X^\top y.\]</span></p>
 <p>En la práctica, los coeficientes se obtienen mediante métodos de optimización iterativos.</p>
 <div class="formula">
 <p>Lasso se resuelve numéricamente, actualizando los coeficientes hasta encontrar la solución que minimiza el criterio penalizado.</p>
@@ -612,18 +527,14 @@ RSS+\lambda\sum_{j=1}^{p}|\beta_j|
 <section id="cómo-elegimos-lambda" class="slide level2">
 <h2>¿Cómo elegimos <span class="math inline">\(\lambda\)</span>?</h2>
 <p>Podemos probar diferentes valores:</p>
-<p><span class="math display">\[
-\lambda_1,\lambda_2,\ldots,\lambda_m.
-\]</span></p>
+<p><span class="math display">\[\lambda_1,\lambda_2,\ldots,\lambda_m.\]</span></p>
 <p>Pero necesitamos decidir cuál produce el mejor desempeño sobre <strong>datos no utilizados para ajustar el modelo</strong>.</p>
 <p>Una primera estrategia consiste en dividir los datos en:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \text{entrenamiento}
 \quad+\quad
 \text{validación}
-}
-\]</span></p>
+}\]</span></p>
 <ul>
 <li><strong>Entrenamiento:</strong> estimamos los coeficientes.</li>
 <li><strong>Validación:</strong> evaluamos diferentes valores de <span class="math inline">\(\lambda\)</span>.</li>
@@ -641,9 +552,7 @@ RSS+\lambda\sum_{j=1}^{p}|\beta_j|
 <section id="k-fold-cross-validation" class="slide level2">
 <h2><span class="math inline">\(K\)</span>-fold cross-validation</h2>
 <p>Dividimos el conjunto de datos en <span class="math inline">\(K\)</span> bloques:</p>
-<p><span class="math display">\[
-D=D_1\cup D_2\cup\cdots\cup D_K.
-\]</span></p>
+<p><span class="math display">\[D=D_1\cup D_2\cup\cdots\cup D_K, \quad \text{con} \quad D_i\cap D_j=\emptyset \quad \text{para todo} \quad i\ne j.\]</span></p>
 <p>En cada iteración:</p>
 <ol type="1">
 <li>utilizamos <span class="math inline">\(K-1\)</span> bloques para entrenar;</li>
@@ -673,13 +582,8 @@ D=D_1\cup D_2\cup\cdots\cup D_K.
 </section>
 <section id="ajuste-del-modelo-final" class="slide level2">
 <h2>Ajuste del modelo final</h2>
-<p>Una vez seleccionado el hiperparámetro</p>
-<p><span class="math display">\[
-\lambda^*,
-\]</span></p>
-<p>lo consideramos <strong>fijo</strong> y utilizamos todos los datos de entrenamiento para estimar los coeficientes:</p>
-<p><span class="math display">\[
-\boxed{
+<p>Una vez seleccionado el hiperparámetro <span class="math inline">\(\lambda^*\)</span>, lo consideramos <strong>fijo</strong> y utilizamos todos los datos de entrenamiento para estimar los coeficientes:</p>
+<p><span class="math display">\[\boxed{
 \hat{\boldsymbol{\beta}}
 =
 \underset{\boldsymbol{\beta}}{\operatorname{argmin}}
@@ -688,16 +592,13 @@ RSS
 +
 \lambda^*P(\boldsymbol{\beta})
 \right]
-}
-\]</span></p>
+}\]</span></p>
 <p>Por lo tanto, tenemos dos tareas diferentes:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \text{seleccionar }\lambda
 \quad\longrightarrow\quad
 \text{estimar }\boldsymbol{\beta}
-}
-\]</span></p>
+}\]</span></p>
 <ul>
 <li><span class="math inline">\(\lambda\)</span>: <strong>hiperparámetro</strong>, seleccionado mediante validación cruzada.</li>
 <li><span class="math inline">\(\boldsymbol{\beta}\)</span>: <strong>parámetros</strong>, estimados durante el ajuste del modelo.</li>
@@ -706,26 +607,23 @@ RSS
 <section id="estandarización-de-los-predictores" class="slide level2">
 <h2>Estandarización de los predictores</h2>
 <p>Ridge y Lasso penalizan directamente la magnitud de los coeficientes:</p>
-<p><span class="math display">\[
-\sum_{j=1}^{p}\beta_j^2
+<p><span class="math display">\[\sum_{j=1}^{p}\beta_j^2
 \qquad\text{o}\qquad
-\sum_{j=1}^{p}|\beta_j|.
-\]</span></p>
+\sum_{j=1}^{p}|\beta_j|.\]</span></p>
 <p>Por lo tanto, la penalización depende de la <strong>escala de los predictores</strong>.</p>
+</section>
+<section id="estandarización-de-los-predictores-1" class="slide level2 unlisted">
+<h2>Estandarización de los predictores</h2>
 <p>Antes de ajustar el modelo, normalmente estandarizamos:</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 Z_j
 =
 \frac{X_j-\bar X_j}{s_j}
-}
-\]</span></p>
+}\]</span></p>
 <p>de modo que cada predictor tenga</p>
-<p><span class="math display">\[
-\text{media}=0,
+<p><span class="math display">\[\text{media}=0,
 \qquad
-\text{desviación estándar}=1.
-\]</span></p>
+\text{desviación estándar}=1.\]</span></p>
 <div class="formula">
 <p>La estandarización permite que la penalización actúe de manera comparable sobre todos los coeficientes.</p>
 </div>
@@ -738,35 +636,20 @@ Z_j
 <section id="qué-ocurre-con-la-inferencia" class="slide level2">
 <h2>¿Qué ocurre con la inferencia?</h2>
 <p>En regresión lineal clásica utilizamos los coeficientes estimados para realizar inferencia mediante:</p>
-<p><span class="math display">\[
-SE(\hat\beta_j),\qquad
+<p><span class="math display">\[SE(\hat\beta_j),\qquad
 CI,\qquad
-p\text{-values}.
-\]</span></p>
+p\text{-values}.\]</span></p>
 <p>En Ridge y Lasso, los coeficientes son estimados bajo una penalización:</p>
-<p><span class="math display">\[
-RSS+\lambda P(\boldsymbol{\beta}).
-\]</span></p>
+<p><span class="math display">\[RSS+\lambda P(\boldsymbol{\beta}).\]</span></p>
 <p>Como consecuencia, los estimadores son <strong>sesgados</strong> y la inferencia clásica de mínimos cuadrados no puede aplicarse directamente.</p>
+</section>
+<section id="qué-ocurre-con-la-inferencia-1" class="slide level2 unlisted">
+<h2>¿Qué ocurre con la inferencia?</h2>
 <div class="formula">
 <p>Ridge y Lasso se utilizan principalmente para mejorar la <strong>predicción y estabilidad del modelo</strong>, no para realizar inferencia clásica sobre los coeficientes.</p>
 </div>
 <p>Existen métodos específicos para realizar inferencia en modelos regularizados, como <strong>bootstrap</strong> y <strong>inferencia post-selección</strong>.</p>
 </section></section>
-<section id="flujo-de-trabajo" class="title-slide slide level1 center">
-<h1>Flujo de trabajo</h1>
-
-</section>
-
-<section id="resumen" class="title-slide slide level1 center">
-<h1>Resumen</h1>
-<ul>
-<li>Idea clave 1.</li>
-<li>Idea clave 2.</li>
-<li>Idea clave 3.</li>
-</ul>
-</section>
-
 <section id="referencias" class="title-slide slide level1 smaller scrollable">
 <h1>Referencias</h1>
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list">
@@ -787,13 +670,13 @@ RSS+\lambda P(\boldsymbol{\beta}).
 </div><div class="column" style="width:55%;">
 <div class="vcenter">
 <div class="fragment">
-¿Seguro? 🤨
+<p>¿Seguro? 🤨</p>
 </div>
 <div class="fragment">
-Bueno…
+<p>Bueno…</p>
 </div>
 <div class="fragment">
-Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
+<p>Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.</p>
 </div>
 </div>
 </div></div>
