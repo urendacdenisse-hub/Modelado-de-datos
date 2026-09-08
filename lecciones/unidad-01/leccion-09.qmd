@@ -562,4 +562,4 @@ Pregúntale a [ChatGPT](https://chatgpt.com) pues.
 
 En el siguiente notebook aplicaremos regresión Ridge y Lasso en Python y analizaremos el efecto de la regularización sobre los coeficientes del modelo y su capacidad de generalización.
 
-[**Ir a la notebook →**](nombre%20de%20leccion/laboratorio/proyecto)
+[**Ir a la notebook →**](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-05.ipynb)
