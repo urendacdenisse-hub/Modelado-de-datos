@@ -168,33 +168,20 @@ Dra. Denisse Urenda Castañeda
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
 <li><a href="#/formulación-del-problema" id="/toc-formulación-del-problema">Formulación del problema</a></li>
-<li><a href="#/por-qué-no-usar-regresión-lineal" id="/toc-por-qué-no-usar-regresión-lineal">¿Por qué no usar regresión lineal?</a></li>
 <li><a href="#/intuición-geométrica" id="/toc-intuición-geométrica">Intuición geométrica</a></li>
 <li><a href="#/derivación-simple" id="/toc-derivación-simple">Derivación simple</a></li>
-<li><a href="#/odds" id="/toc-odds">Odds</a></li>
-<li><a href="#/log-odds" id="/toc-log-odds">Log-odds</a></li>
 <li><a href="#/modelo-logístico" id="/toc-modelo-logístico">Modelo logístico</a></li>
-<li><a href="#/qué-estamos-modelando-realmente" id="/toc-qué-estamos-modelando-realmente">¿Qué estamos modelando realmente?</a></li>
-<li><a href="#/ejemplo-simple" id="/toc-ejemplo-simple">Ejemplo simple</a></li>
 <li><a href="#/de-probabilidades-a-clases" id="/toc-de-probabilidades-a-clases">De probabilidades a clases</a></li>
 <li><a href="#/extensión-al-caso-general" id="/toc-extensión-al-caso-general">Extensión al caso general</a></li>
-<li><a href="#/notación-matricial" id="/toc-notación-matricial">Notación matricial</a></li>
 <li><a href="#/modelo-multivariado" id="/toc-modelo-multivariado">Modelo multivariado</a></li>
-<li><a href="#/cómo-estimamos-los-coeficientes" id="/toc-cómo-estimamos-los-coeficientes">¿Cómo estimamos los coeficientes?</a></li>
-<li><a href="#/utilizando-la-distribución-de-y" id="/toc-utilizando-la-distribución-de-y">Utilizando la distribución de <span class="math inline">\(Y\)</span></a></li>
-<li><a href="#/función-de-verosimilitud" id="/toc-función-de-verosimilitud">Función de verosimilitud</a></li>
-<li><a href="#/máxima-verosimilitud" id="/toc-máxima-verosimilitud">Máxima verosimilitud</a></li>
-<li><a href="#/log-verosimilitud" id="/toc-log-verosimilitud">Log-verosimilitud</a></li>
-<li><a href="#/una-diferencia-importante" id="/toc-una-diferencia-importante">Una diferencia importante</a></li>
 <li><a href="#/predicción-y-clasificación" id="/toc-predicción-y-clasificación">Predicción y clasificación</a></li>
 <li><a href="#/interpretación-de-los-coeficientes" id="/toc-interpretación-de-los-coeficientes">Interpretación de los coeficientes</a></li>
 <li><a href="#/inferencia-sobre-los-coeficientes" id="/toc-inferencia-sobre-los-coeficientes">Inferencia sobre los coeficientes</a></li>
 <li><a href="#/métricas-de-clasificación" id="/toc-métricas-de-clasificación">Métricas de clasificación</a></li>
-<li><a href="#/métricas-de-clasificación-1" id="/toc-métricas-de-clasificación-1">Métricas de clasificación</a></li>
-<li><a href="#/el-umbral-importa" id="/toc-el-umbral-importa">El umbral importa</a></li>
+<li><a href="#/selección-del-umbral" id="/toc-selección-del-umbral">Selección del umbral</a></li>
+<li><a href="#/construcción-de-la-curva-roc" id="/toc-construcción-de-la-curva-roc">Construcción de la curva ROC</a></li>
 <li><a href="#/evaluación-probabilística" id="/toc-evaluación-probabilística">Evaluación probabilística</a></li>
 <li><a href="#/supuestos-y-limitaciones" id="/toc-supuestos-y-limitaciones">Supuestos y limitaciones</a></li>
-<li><a href="#/resumen" id="/toc-resumen">Resumen</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
 <li><a href="#/qué-sigue" id="/toc-qué-sigue">¿Qué sigue?</a></li>
@@ -212,46 +199,32 @@ Dra. Denisse Urenda Castañeda
 <li>¿Un estudiante aprobará el curso?</li>
 </ul>
 <p>En el caso más sencillo tenemos dos posibles resultados:</p>
-<p><span class="math display">\[
-Y\in\{0,1\}.
-\]</span></p>
+<p><span class="math display">\[Y\in\{0,1\}.\]</span></p>
 <p>Nuestro objetivo será modelar la probabilidad de que ocurra uno de ellos.</p>
 </section>
 <section id="formulación-del-problema" class="slide level2">
 <h2>Formulación del problema</h2>
 <p>Supongamos que observamos una variable predictora <span class="math inline">\(X\)</span> y una variable respuesta binaria <span class="math inline">\(Y\in\{0,1\}.\)</span></p>
 <p>Queremos modelar</p>
-<p><span class="math display">\[
-P(Y=1\mid X=x).
-\]</span></p>
+<p><span class="math display">\[P(Y=1\mid X=x).\]</span></p>
 <p>Definimos</p>
-<p><span class="math display">\[
-p(x)=P(Y=1\mid X=x).
-\]</span></p>
+<p><span class="math display">\[p(x)=P(Y=1\mid X=x).\]</span></p>
 <p>Por lo tanto,</p>
-<p><span class="math display">\[
-P(Y=0\mid X=x)=1-p(x).
-\]</span></p>
+<p><span class="math display">\[P(Y=0\mid X=x)=1-p(x).\]</span></p>
 <div class="formula">
 <p>La regresión logística busca construir una función</p>
-<p><span class="math display">\[
-p(x)=f(x), \quad \text{tal que} \quad 0\leq p(x)\leq 1.
-\]</span></p>
+<p><span class="math display">\[p(x)=f(x), \quad \text{tal que} \quad 0\leq p(x)\leq 1.\]</span></p>
 </div>
 </section>
-<section id="por-qué-no-usar-regresión-lineal" class="slide level2">
+<section id="por-qué-no-usar-regresión-lineal" class="slide level2 unlisted">
 <h2>¿Por qué no usar regresión lineal?</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
 <p>Podríamos intentar modelar</p>
-<p><span class="math display">\[
-p(x)=\beta_0+\beta_1x.
-\]</span></p>
+<p><span class="math display">\[p(x)=\beta_0+\beta_1x.\]</span></p>
 <p>Sin embargo, una función lineal puede producir valores menores que <span class="math inline">\(0\)</span> o mayores que <span class="math inline">\(1\)</span>.</p>
 <p>Por ejemplo,</p>
-<p><span class="math display">\[
-\beta_0+\beta_1x=1.4
-\]</span></p>
+<p><span class="math display">\[\beta_0+\beta_1x=1.4\]</span></p>
 <p>no puede interpretarse como una probabilidad.</p>
 </div><div class="column" style="width:45%;">
 <p><img data-src="../imagenes/regresion-lineal-clasificacion.png" style="width:100.0%"></p>
@@ -265,77 +238,40 @@ p(x)=\beta_0+\beta_1x.
 <div class="columns">
 <div class="column" style="width:55%;">
 <p>La regresión logística modela primero una combinación lineal</p>
-<p><span class="math display">\[
-z=\beta_0+\beta_1x.
-\]</span></p>
+<p><span class="math display">\[z=\beta_0+\beta_1x.\]</span></p>
 <p>Pero en lugar de utilizar <span class="math inline">\(z\)</span> directamente como predicción, lo transforma mediante la <strong>función logística</strong>:</p>
-<p><span class="math display">\[
-p(x)
-=
-\frac{1}{1+e^{-z}}.
-\]</span></p>
+<p><span class="math display">\[p(x)=\frac{1}{1+e^{-z}}.\]</span></p>
 </div><div class="column" style="width:45%;">
 <p><img data-src="../imagenes/regresion-logistica.png" style="width:100.0%"></p>
 </div></div>
 <p>La función logística transforma cualquier número real en un valor entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, es decir, <span class="math inline">\(\sigma:\mathbb{R}\rightarrow(0,1)\)</span>.</p>
 <div class="formula">
-<p>Por lo tanto, modelamos la probabilidad de <span class="math inline">\(Y=1\)</span> como <span class="math display">\[
-p(x) = P(Y=0\mid X=x) =
-\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.
-\]</span></p>
+<p>Por lo tanto, modelamos la probabilidad de <span class="math inline">\(Y=1\)</span> como <span class="math display">\[p(x) = P(Y=0\mid X=x) =\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
 </div>
 </section>
 <section id="derivación-simple" class="slide level2">
 <h2>Derivación simple</h2>
-<p>Queremos relacionar una probabilidad <span class="math inline">\(p \in (0,1)\)</span> con una expresión lineal que pueda tomar cualquier en <span class="math inline">\(\mathbb R\)</span>. Es decir, una función <span class="math display">\[
-\sigma:(0,1) \rightarrow \mathbb R
-\]</span></p>
+<p>Queremos relacionar una probabilidad <span class="math inline">\(p \in (0,1)\)</span> con una expresión lineal que pueda tomar cualquier valor en <span class="math inline">\(\mathbb R\)</span>. Es decir, una función <span class="math display">\[\sigma:(0,1) \rightarrow \mathbb R\]</span></p>
 <h3 id="primer-intento">Primer intento</h3>
-<p>Comenzamos con la razón conocida como <strong>odds</strong>: <span class="math display">\[
-\frac{p}{1-p}.
-\]</span></p>
+<p>Comenzamos con la razón conocida como <strong>odds</strong>: <span class="math display">\[\frac{p}{1-p}.\]</span></p>
 <p>Si <span class="math inline">\(p\in(0,1)\)</span> entonces</p>
-<p><span class="math display">\[
-\frac{p}{1-p}\in(0,\infty).
-\]</span></p>
+<p><span class="math display">\[\frac{p}{1-p}\in(0,\infty).\]</span></p>
 </section>
-<section id="odds" class="slide level2">
+<section id="odds" class="slide level2 unlisted">
 <h2>Odds</h2>
 <p>Los odds comparan la probabilidad de que ocurra un evento con la probabilidad de que no ocurra:</p>
-<p><span class="math display">\[
-\text{odds}
-=
-\frac{p}{1-p}.
-\]</span></p>
-<p>Por ejemplo, si</p>
-<p><span class="math display">\[
-p=0.8,
-\]</span></p>
-<p>entonces</p>
-<p><span class="math display">\[
-\text{odds}
-=
-\frac{0.8}{0.2}
-=
-4.
-\]</span></p>
+<p><span class="math display">\[\text{odds}=\frac{p}{1-p}.\]</span></p>
+<p>Por ejemplo, si <span class="math inline">\(p=0.8\)</span>, entonces</p>
+<p><span class="math display">\[\text{odds}=\frac{0.8}{0.2}=4.\]</span></p>
 <p>Esto significa que el evento es <strong>4 veces más probable que ocurra a que no ocurra</strong>.</p>
 </section>
-<section id="log-odds" class="slide level2">
+<section id="log-odds" class="slide level2 unlisted">
 <h2>Log-odds</h2>
 <p>Los odds todavía están restringidos a valores positivos.</p>
 <p>Aplicamos logaritmo:</p>
-<p><span class="math display">\[
-\log\left(\frac{p}{1-p}\right).
-\]</span></p>
+<p><span class="math display">\[\log\left(\frac{p}{1-p}\right).\]</span></p>
 <p>Esta transformación puede tomar cualquier valor real:</p>
-<p><span class="math display">\[
--\infty
-&lt;
-\log\left(\frac{p}{1-p}\right)
-&lt;
-\infty.
-\]</span></p>
+<p><span class="math display">\[-\infty&lt;\log\left(\frac{p}{1-p}\right)&lt;\infty.\]</span></p>
 <p>Esta cantidad se conoce como <strong>logit</strong> o <strong>log-odds</strong>.</p>
 </section>
 <section id="modelo-logístico" class="slide level2">
@@ -349,12 +285,10 @@ p=0.8,
 \beta_0+\beta_1x.
 \]</span></p>
 <p>Resolviendo para <span class="math inline">\(p(x)\)</span> obtenemos</p>
-<p><span class="math display">\[
-p(x)=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.
-\]</span></p>
+<p><span class="math display">\[p(x)=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
 <p>que es el modelo de <strong>regresión logística</strong>.</p>
 </section>
-<section id="qué-estamos-modelando-realmente" class="slide level2">
+<section id="qué-estamos-modelando-realmente" class="slide level2 unlisted">
 <h2>¿Qué estamos modelando realmente?</h2>
 <p>La relación entre <span class="math inline">\(X\)</span> y la probabilidad no es lineal:</p>
 <p><span class="math display">\[
@@ -375,11 +309,10 @@ p(x)
 \]</span></p>
 <p>Es decir, la regresión logística es lineal en los <strong>log-odds</strong>.</p>
 </section>
-<section id="ejemplo-simple" class="slide level2">
+<section id="ejemplo-simple" class="slide level2 unlisted">
 <h2>Ejemplo simple</h2>
 <div class="example">
-<p>Supongamos que queremos modelar la probabilidad de aprobar un examen según las <strong>horas de estudio</strong>.</p>
-<p>Sea</p>
+<p>Se quiere modelar la probabilidad de aprobar un examen según las <strong>horas de estudio</strong>.Sea</p>
 <p><span class="math display">\[
 Y=
 \begin{cases}
@@ -387,10 +320,7 @@ Y=
 0, &amp; \text{no aprueba}.
 \end{cases}
 \]</span></p>
-<p>Ajustamos el modelo de regresión logística y obtenemos</p>
-<p><span class="math display">\[
-\beta_0 = -4,\quad \beta_1 = 1
-\]</span></p>
+<p>Se ajusta el modelo de regresión logística y se obtiene <span class="math inline">\(\beta_0 = -4,\quad \beta_1 = 1\)</span>.</p>
 <ul>
 <li>¿Cuál es la probabilidad de aprobar si un estudiante estudia 3 horas? ¿Y si estudia 5 horas?</li>
 <li>¿Cómo podemos convertir estas probabilidades en una decisión: aprueba o no aprueba?</li>
@@ -401,12 +331,9 @@ Y=
 <section id="de-probabilidades-a-clases" class="slide level2">
 <h2>De probabilidades a clases</h2>
 <p>La regresión logística estima</p>
-<p><span class="math display">\[
-p(x)=P(Y=1\mid X=x).
-\]</span></p>
+<p><span class="math display">\[p(x)=P(Y=1\mid X=x).\]</span></p>
 <p>Para obtener una clase debemos elegir un <strong>umbral de decisión</strong> <span class="math inline">\(c\)</span>:</p>
-<p><span class="math display">\[
-\hat y=
+<p><span class="math display">\[\hat y=
 \begin{cases}
 1, &amp; p(x)\geq c,\\
 0, &amp; p(x)&lt;c.
@@ -417,16 +344,12 @@ p(x)=P(Y=1\mid X=x).
 <p>La elección del umbral depende del problema y del costo de cometer diferentes tipos de error.</p>
 </div>
 <p>La <strong>frontera de decisión</strong> corresponde a los valores de <span class="math inline">\(x\)</span> donde</p>
-<p><span class="math display">\[
-p(x)=c.
-\]</span></p>
+<p><span class="math display">\[p(x)=c.\]</span></p>
 </section>
 <section id="extensión-al-caso-general" class="slide level2">
 <h2>Extensión al caso general</h2>
 <p>Sea <span class="math inline">\(Y\in\{0,1\}\)</span> una variable respuesta binaria y sean</p>
-<p><span class="math display">\[
-X_1,X_2,\ldots,X_p
-\]</span></p>
+<p><span class="math display">\[X_1,X_2,\ldots,X_p\]</span></p>
 <p>las <span class="math inline">\(p\)</span> variables predictoras.</p>
 <p>Queremos modelar la probabilidad condicional</p>
 <p><span class="math display">\[
@@ -446,7 +369,7 @@ P(Y=1\mid X_1=x_1,\ldots,X_p=x_p).
 \]</span></p>
 </div>
 </section>
-<section id="notación-matricial" class="slide level2">
+<section id="notación-matricial" class="slide level2 unlisted">
 <h2>Notación matricial</h2>
 <p>Para incluir el intercepto, definimos</p>
 <p><span class="math display">\[
@@ -505,178 +428,27 @@ P(Y=1\mid \mathbf x)
 \]</span></p>
 </div>
 </section>
-<section id="cómo-estimamos-los-coeficientes" class="slide level2">
+<section id="cómo-estimamos-los-coeficientes" class="slide level2 unlisted">
 <h2>¿Cómo estimamos los coeficientes?</h2>
-<p>Recordemos que en regresión lineal estimamos</p>
+<p>En regresión lineal, los coeficientes se estiman minimizando los errores cuadrados.</p>
+<p>En regresión logística, como</p>
 <p><span class="math display">\[
-\hat{\boldsymbol\beta}
-=
-\underset{\boldsymbol\beta}{\arg\min}\;
-\text{RSS}(\boldsymbol\beta)
-=
-\underset{\boldsymbol\beta}{\arg\min}\;
-(\mathbf y-\mathbf X\boldsymbol\beta)^T
-(\mathbf y-\mathbf X\boldsymbol\beta).
+Y_i \mid \mathbf{x}_i \sim \operatorname{Bernoulli}(p_i),
 \]</span></p>
-<p>Podríamos plantear un criterio similar para regresión logística:</p>
-<p><span class="math display">\[
-\underset{\boldsymbol\beta}{\arg\min}
-\sum_{i=1}^n
-\left(y_i-p_i\right)^2, \qquad p_i=P(Y_i=1\mid \mathbf x_i).
-\]</span></p>
-<p>Sin embargo, ahora sabemos que nuestra variable respuesta sigue una distribución</p>
-<p><span class="math display">\[
-Y_i\mid\mathbf x_i
-\sim\operatorname{Bernoulli}(p_i).
-\]</span></p>
-<div class="formula">
-<p>En lugar de minimizar errores cuadrados, utilizaremos la <strong>distribución de <span class="math inline">\(Y_i\)</span></strong> para estimar los parámetros del modelo.</p>
-</div>
-</section>
-<section id="utilizando-la-distribución-de-y" class="slide level2">
-<h2>Utilizando la distribución de <span class="math inline">\(Y\)</span></h2>
-<p>Sabemos que</p>
-<p><span class="math display">\[
-Y_i\mid\mathbf x_i
-\sim
-\operatorname{Bernoulli}(p_i).
-\]</span></p>
-<div class="fragment">
-<p>Por lo tanto,</p>
-<p><span class="math display">\[
-P(Y_i=y_i\mid\mathbf x_i)
-=
-\begin{cases}
-p_i, &amp; y_i=1,\\
-1-p_i, &amp; y_i=0.
-\end{cases}
-\]</span></p>
-</div>
-<div class="fragment">
-<p>Esto puede escribirse de forma compacta como</p>
-<p><span class="math display">\[
-P(Y_i=y_i\mid\mathbf x_i)
-=
-p_i^{y_i}(1-p_i)^{1-y_i}.
-\]</span></p>
-</div>
-<div class="formula fragment">
-<p>Esta expresión nos dice qué tan probable es observar <span class="math inline">\(y_i\)</span> para un valor dado de <span class="math inline">\(p_i\)</span>.</p>
-</div>
-</section>
-<section id="función-de-verosimilitud" class="slide level2">
-<h2>Función de verosimilitud</h2>
-<p>Para cada observación tenemos</p>
-<p><span class="math display">\[
-P(Y_i=y_i\mid\mathbf x_i)
-=
-p_i^{y_i}(1-p_i)^{1-y_i}.
-\]</span></p>
-<div class="fragment">
-<p>Si suponemos que las observaciones son independientes, la probabilidad conjunta de observar</p>
-<p><span class="math display">\[
-y_1,y_2,\ldots,y_n
-\]</span></p>
-<p>es el producto de las probabilidades individuales:</p>
-<p><span class="math display">\[
-L(\boldsymbol\beta)
-=
-\prod_{i=1}^{n}
-p_i^{y_i}(1-p_i)^{1-y_i}.
-\]</span></p>
-</div>
-<div class="formula fragment">
-<p>La <strong>función de verosimilitud</strong> mide qué tan compatibles son los parámetros <span class="math inline">\(\boldsymbol\beta\)</span> con los datos observados.</p>
-</div>
-</section>
-<section id="máxima-verosimilitud" class="slide level2">
-<h2>Máxima verosimilitud</h2>
-<p>Queremos encontrar los valores de <span class="math inline">\(\boldsymbol\beta\)</span> que hagan <strong>más probable observar los datos que obtuvimos</strong>.</p>
-<p>Por lo tanto,</p>
+<p>utilizamos la <strong>máxima verosimilitud</strong>: buscamos los coeficientes que hagan más probables los resultados observados.</p>
 <p><span class="math display">\[
 \hat{\boldsymbol\beta}
 =
 \underset{\boldsymbol\beta}{\arg\max}
-\;L(\boldsymbol\beta).
-\]</span></p>
-<div class="fragment">
-<p>Como</p>
-<p><span class="math display">\[
-L(\boldsymbol\beta)
-=
-\prod_{i=1}^{n}
-p_i^{y_i}(1-p_i)^{1-y_i},
-\]</span></p>
-<p>maximizar la verosimilitud significa encontrar los coeficientes que asignen probabilidades altas a los resultados observados.</p>
-</div>
-<div class="formula fragment">
-<div class="text-center">
-<p>Los coeficientes de la regresión logística se estiman mediante <strong>máxima verosimilitud</strong>.</p>
-</div>
-</div>
-</section>
-<section id="log-verosimilitud" class="slide level2">
-<h2>Log-verosimilitud</h2>
-<p>Queremos maximizar la función de verosimilitud</p>
-<p><span class="math display">\[
-L(\boldsymbol\beta)
-=
-\prod_{i=1}^{n}
-p_i^{y_i}(1-p_i)^{1-y_i}.
-\]</span></p>
-<div class="fragment">
-<p>Sin embargo, esta expresión contiene un producto. Como la función logarítmica transforma productos en sumas y además es estrictamente creciente, definimos <span class="math inline">\(\ell(\boldsymbol\beta) = \log L(\boldsymbol\beta).\)</span></p>
-<p>Entonces,</p>
-<p><span class="math display">\[
-\underset{\boldsymbol\beta}{\arg\max}\;L(\boldsymbol\beta)
-=
-\underset{\boldsymbol\beta}{\arg\max}\;\ell(\boldsymbol\beta).
-\]</span></p>
-</div>
-<div class="formula fragment">
-<p><strong>Estimación por máxima verosimilitud</strong></p>
-<p><span class="math display">\[
-\hat{\boldsymbol\beta}
-=
-\underset{\boldsymbol\beta}{\arg\max}\;
-\left[\sum_{i=1}^{n}
+\sum_{i=1}^{n}
 \left[
 y_i\log(p_i)
 +
 (1-y_i)\log(1-p_i)
-\right]\right].
+\right]
 \]</span></p>
-</div>
-</section>
-<section id="una-diferencia-importante" class="slide level2">
-<h2>Una diferencia importante</h2>
-<p>En regresión lineal obtuvimos una solución cerrada:</p>
-<p><span class="math display">\[
-\hat{\boldsymbol\beta}
-=
-(\mathbf X^T\mathbf X)^{-1}
-\mathbf X^T\mathbf y.
-\]</span></p>
-<p>En regresión logística, en general, no existe una solución cerrada equivalente para</p>
-<p><span class="math display">\[
-\hat{\boldsymbol\beta}
-=
-\underset{\boldsymbol\beta}{\arg\max}\;
-\ell(\boldsymbol\beta).
-\]</span></p>
-<p>Por lo tanto, los coeficientes se obtienen mediante <strong>optimización numérica</strong>.</p>
-<div class="example">
-<p><strong>Newton-Raphson</strong> es un método iterativo que, aplicado a la maximización de la log-verosimilitud, produce la actualización</p>
-<p><span class="math display">\[
-\boldsymbol\beta^{(t+1)}
-=
-\boldsymbol\beta^{(t)}
--
-\left[
-\nabla^2\ell(\boldsymbol\beta^{(t)})
-\right]^{-1}
-\nabla\ell(\boldsymbol\beta^{(t)}).
-\]</span></p>
+<div class="formula">
+<p>Los coeficientes se estiman mediante <strong>máxima verosimilitud</strong> y se obtienen utilizando <strong>optimización numérica</strong>.</p>
 </div>
 </section>
 <section id="predicción-y-clasificación" class="slide level2">
@@ -711,17 +483,11 @@ y_i\log(p_i)
 \beta_0+\beta_1x_1+\cdots+\beta_px_p.
 \]</span></p>
 <p>Manteniendo las demás variables constantes, aumentar <span class="math inline">\(x_j\)</span> una unidad cambia los <strong>log-odds</strong> en</p>
-<p><span class="math display">\[
-\beta_j.
-\]</span></p>
-<p>Equivalentemente, los odds se multiplican por</p>
-<div class="formula">
-<p><span class="math display">\[
-\boxed{e^{\beta_j}}
-\]</span></p>
-<p>Esta cantidad se conoce como <strong>odds ratio</strong>.</p>
+<p><span class="math display">\[\beta_j.\]</span></p>
+<p>Equivalentemente, los odds se multiplican por <span class="math inline">\(e^{\beta_j}\)</span>. Esta cantidad se conoce como <strong>odds ratio</strong>.</p>
+<div class="example">
+<p>Si <span class="math inline">\(\beta_i=2\)</span>, los odds se multiplican por <span class="math inline">\(e^2\approx7.39\)</span>.</p>
 </div>
-<p>Por ejemplo, si <span class="math inline">\(e^{\beta_j}=2\)</span>, los odds se multiplican por <span class="math inline">\(2\)</span>.</p>
 </section>
 <section id="inferencia-sobre-los-coeficientes" class="slide level2">
 <h2>Inferencia sobre los coeficientes</h2>
@@ -773,15 +539,14 @@ z=
 </table>
 <p>A partir de la <strong>matriz de confusión</strong> podemos definir distintas métricas de desempeño.</p>
 </section>
-<section id="métricas-de-clasificación-1" class="slide level2">
+<section id="métricas-de-clasificación-1" class="slide level2 unlisted">
 <h2>Métricas de clasificación</h2>
 <p><span class="math display">\[
 \operatorname{Accuracy}
 =
 \frac{TP+TN}{TP+TN+FP+FN}
 \]</span></p>
-<p><span class="math display">\[
-\operatorname{Precision}
+<p><span class="math display">\[\operatorname{Precision}
 =
 \frac{TP}{TP+FP},
 \qquad
@@ -794,35 +559,62 @@ z=
 <li><strong>Precision:</strong> de los positivos predichos, ¿cuántos eran positivos?</li>
 <li><strong>Recall:</strong> de los positivos reales, ¿cuántos detectamos?</li>
 </ul>
-<div class="note">
-<p>La métrica adecuada depende del costo de los distintos tipos de error.</p>
+<div class="formula">
+<p>La métrica depende del tipo de error que queremos evitar:</p>
+<ul>
+<li>Si es importante evitar <strong>falsos positivos (FP)</strong>, buscamos mayor <strong>Precision</strong>.</li>
+<li>Si es importante evitar <strong>falsos negativos (FN)</strong>, buscamos mayor <strong>Recall</strong>.</li>
+</ul>
 </div>
 </section>
-<section id="el-umbral-importa" class="slide level2">
-<h2>El umbral importa</h2>
-<p>Cambiar el umbral <span class="math inline">\(c\)</span> modifica las clases predichas y, por lo tanto, las métricas de clasificación.</p>
-<p>En general, disminuir <span class="math inline">\(c\)</span> produce más predicciones positivas:</p>
+<section id="selección-del-umbral" class="slide level2">
+<h2>Selección del umbral</h2>
+<p>En un problema de clasificación, debemos elegir un umbral <span class="math inline">\(c\)</span> para convertir las probabilidades en clases:</p>
 <p><span class="math display">\[
-c\downarrow
-\quad\Rightarrow\quad
-\operatorname{Recall}\uparrow,
+\hat{Y} =
+\begin{cases}
+1, &amp; \hat{p} \geq c,\\
+0, &amp; \hat{p} &lt; c.
+\end{cases}
 \]</span></p>
-<p>pero también puede aumentar los falsos positivos.</p>
-<p>La <strong>curva ROC</strong> estudia el comportamiento del clasificador para distintos valores del umbral.</p>
+<p>Diferentes valores de <span class="math inline">\(c\)</span> producen diferentes <strong>falsos positivos</strong> y <strong>verdaderos positivos</strong>.</p>
+<p>Una herramienta para analizar y seleccionar el umbral es la <strong>curva ROC</strong>.</p>
+<p>La curva ROC permite comparar el comportamiento del clasificador para distintos valores de <span class="math inline">\(c\)</span>.</p>
+</section>
+<section id="construcción-de-la-curva-roc" class="slide level2">
+<h2>Construcción de la curva ROC</h2>
+<p>Para cada valor del umbral <span class="math inline">\(c\)</span> calculamos:</p>
+<p><span class="math display">\[
+\operatorname{TPR}
+=
+\frac{TP}{TP+FN},
+\quad
+\operatorname{FPR}
+=
+\frac{FP}{FP+TN}
+\]</span></p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Cada umbral <span class="math inline">\(c\)</span> genera un punto:</p>
+<p><span class="math display">\[
+(\operatorname{FPR},\operatorname{TPR})
+\]</span></p>
+<p>La <strong>curva ROC</strong> se obtiene al representar estos puntos para distintos valores de <span class="math inline">\(c\)</span>.</p>
+</div><div class="column" style="width:60%;">
+<p><img data-src="../imagenes/roc.webp"></p>
+</div></div>
 </section>
 <section id="evaluación-probabilística" class="slide level2">
 <h2>Evaluación probabilística</h2>
 <p>Las métricas anteriores evalúan las <strong>clases predichas</strong>. También podemos evaluar directamente las probabilidades <span class="math inline">\(\hat p_i\)</span>.</p>
 <p>La <strong>log-loss</strong> está dada por</p>
-<p><span class="math display">\[
--\frac1n
+<p><span class="math display">\[-\frac1n
 \sum_{i=1}^{n}
 \left[
 y_i\log(\hat p_i)
 +
 (1-y_i)\log(1-\hat p_i)
-\right].
-\]</span></p>
+\right].\]</span></p>
 <div class="formula">
 <p>La log-loss corresponde a la <strong>log-verosimilitud negativa promedio</strong>.</p>
 <p>Una menor log-loss indica mejores predicciones probabilísticas.</p>
@@ -830,26 +622,15 @@ y_i\log(\hat p_i)
 </section>
 <section id="supuestos-y-limitaciones" class="slide level2">
 <h2>Supuestos y limitaciones</h2>
-<p>La regresión logística supone que:</p>
+<p>Para aplicar regresión logística debemos considerar que:</p>
 <ul>
-<li>la respuesta es binaria;</li>
-<li>las observaciones son independientes;</li>
-<li>los <strong>log-odds</strong> tienen una relación lineal con los predictores;</li>
-<li>no existe multicolinealidad extrema;</li>
-<li>existe información suficiente para estimar los parámetros.</li>
+<li><p>las observaciones son <strong>independientes</strong>;</p></li>
+<li><p>los <strong>log-odds</strong> se modelan como una función lineal de los predictores;</p></li>
+<li><p>los predictores no presentan <strong>multicolinealidad severa</strong>.</p></li>
 </ul>
-<div class="note">
-<p>No supone que los predictores sean normales ni que la probabilidad sea una función lineal de los predictores.</p>
+<div class="formula">
+<p>La regresión logística <strong>no requiere normalidad de los predictores</strong> ni una relación lineal entre los predictores y la probabilidad.</p>
 </div>
-<p>Además, puede presentar problemas cuando existe <strong>separación perfecta</strong> entre las clases.</p>
-</section>
-<section id="resumen" class="slide level2">
-<h2>Resumen</h2>
-<ul>
-<li>Idea clave 1.</li>
-<li>Idea clave 2.</li>
-<li>Idea clave 3.</li>
-</ul>
 </section>
 <section id="referencias" class="slide level2 smaller scrollable">
 <h2>Referencias</h2>
@@ -870,21 +651,21 @@ y_i\log(\hat p_i)
 </div><div class="column" style="width:55%;">
 <div class="vcenter">
 <div class="fragment">
-¿Seguro? 🤨
+<p>¿Seguro? 🤨</p>
 </div>
 <div class="fragment">
-Bueno…
+<p>Bueno…</p>
 </div>
 <div class="fragment">
-Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.
+<p>Pregúntale a <a href="https://chatgpt.com">ChatGPT</a> pues.</p>
 </div>
 </div>
 </div></div>
 </section>
 <section id="qué-sigue" class="slide level2">
 <h2>¿Qué sigue?</h2>
-<p>Descripcion breve</p>
-<p><a href="nombre de leccion/laboratorio/proyecto"><strong>Ir a la siguiente sección →</strong></a></p>
+<p>En el siguiente notebook implementaremos un modelo de <strong>regresión logística</strong>, desde la preparación de los datos hasta la evaluación del clasificador y la selección del umbral de decisión.</p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-06.ipynb"><strong>Ir al notebook →</strong></a></p>
 
 
 </section>
