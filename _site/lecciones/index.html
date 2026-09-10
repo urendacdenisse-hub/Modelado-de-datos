@@ -223,7 +223,7 @@ window.Quarto = {
 <ul>
 <li><a href="../lecciones/unidad-01/leccion-08.html">Regresión lineal</a></li>
 <li><a href="../lecciones/unidad-01/leccion-09.html">Regularización: Ridge y Lasso</a></li>
-<li>Regresion logística</li>
+<li><a href="../lecciones/unidad-01/leccion-10.html">Regresion logística</a></li>
 <li>Support vector machines</li>
 </ul>
 </section>
@@ -315,7 +315,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/urendacdenisse-hub\.github\.io\/Modelado-de-datos\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -269,8 +269,8 @@
     "objectID": "lecciones/unidad-01/leccion-10.html#introducción",
     "href": "lecciones/unidad-01/leccion-10.html#introducción",
     "title": "Aprendizaje supervisado",
-    "section": "",
-    "text": "En muchos problemas de aprendizaje supervisado, la variable respuesta no es cuantitativa sino cualitativa.\nPor ejemplo:\n\n¿Un cliente comprará un producto?\n¿Un paciente presenta una enfermedad?\n¿Un correo es spam?\n¿Un estudiante aprobará el curso?\n\nEn el caso más sencillo tenemos dos posibles resultados:\n\\[Y\\in\\{0,1\\}.\\]\nNuestro objetivo será modelar la probabilidad de que ocurra uno de ellos."
+    "section": "Introducción",
+    "text": "Introducción\nEn muchos problemas de aprendizaje supervisado, la variable respuesta no es cuantitativa sino cualitativa.\nPor ejemplo:\n\n¿Un cliente comprará un producto?\n¿Un paciente presenta una enfermedad?\n¿Un correo es spam?\n¿Un estudiante aprobará el curso?\n\nEn el caso más sencillo tenemos dos posibles resultados:\n\\[Y\\in\\{0,1\\}.\\]\nNuestro objetivo será modelar la probabilidad de que ocurra uno de ellos."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-10.html#formulación-del-problema",
@@ -284,21 +284,21 @@
     "href": "lecciones/unidad-01/leccion-10.html#por-qué-no-usar-regresión-lineal",
     "title": "Aprendizaje supervisado",
     "section": "¿Por qué no usar regresión lineal?",
-    "text": "¿Por qué no usar regresión lineal?\n\n\nPodríamos intentar modelar\n\\[p(x)=\\beta_0+\\beta_1x.\\]\nSin embargo, una función lineal puede producir valores menores que \\(0\\) o mayores que \\(1\\).\nPor ejemplo,\n\\[\\beta_0+\\beta_1x=1.4\\]\nno puede interpretarse como una probabilidad.\n\n\n\n\n\nNecesitamos una función que transforme cualquier valor real en un número entre \\(0\\) y \\(1\\)."
+    "text": "¿Por qué no usar regresión lineal?\n\n\nPodríamos intentar modelar\n\\[p(x)=\\beta_0+\\beta_1x.\\]\nSin embargo, una función lineal puede producir valores menores que \\(0\\) o mayores que \\(1\\).\nPor ejemplo,\n\\[\\beta_0+\\beta_1x=1.4\\]\nno puede interpretarse como una probabilidad.\n\n\n\n\nNecesitamos una función que transforme cualquier valor real en un número entre \\(0\\) y \\(1\\)."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-10.html#intuición-geométrica",
     "href": "lecciones/unidad-01/leccion-10.html#intuición-geométrica",
     "title": "Aprendizaje supervisado",
     "section": "Intuición geométrica",
-    "text": "Intuición geométrica\n\n\nLa regresión logística modela primero una combinación lineal\n\\[z=\\beta_0+\\beta_1x.\\]\nPero en lugar de utilizar \\(z\\) directamente como predicción, lo transforma mediante la función logística:\n\\[p(x)=\\frac{1}{1+e^{-z}}.\\]\n\n\n\n\nLa función logística transforma cualquier número real en un valor entre \\(0\\) y \\(1\\), es decir, \\(\\sigma:\\mathbb{R}\\rightarrow(0,1)\\).\n\nPor lo tanto, modelamos la probabilidad de \\(Y=1\\) como \\[p(x) = P(Y=0\\mid X=x) =\\frac{1}{1+e^{-(\\beta_0+\\beta_1x)}}.\\]"
+    "text": "Intuición geométrica\n\n\nLa regresión logística modela primero una combinación lineal\n\\[z=\\beta_0+\\beta_1x.\\]\nPero en lugar de utilizar \\(z\\) directamente como predicción, lo transforma mediante la función logística:\n\\[p(x)=\\frac{1}{1+e^{-z}}.\\]\n\n\n\nLa función logística transforma cualquier número real en un valor entre \\(0\\) y \\(1\\), es decir, \\(\\sigma:\\mathbb{R}\\rightarrow(0,1)\\).\n\nPor lo tanto, modelamos la probabilidad de \\(Y=1\\) como \\[p(x) = P(Y=0\\mid X=x) =\\frac{1}{1+e^{-(\\beta_0+\\beta_1x)}}.\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-10.html#derivación-simple",
     "href": "lecciones/unidad-01/leccion-10.html#derivación-simple",
     "title": "Aprendizaje supervisado",
     "section": "Derivación simple",
-    "text": "Derivación simple\nQueremos relacionar una probabilidad \\(p \\in (0,1)\\) con una expresión lineal que pueda tomar cualquier valor en \\(\\mathbb R\\). Es decir, una función \\[\\sigma:(0,1) \\rightarrow \\mathbb R\\]\n\nPrimer intento\nComenzamos con la razón conocida como odds: \\[\\frac{p}{1-p}.\\]\nSi \\(p\\in(0,1)\\) entonces\n\\[\\frac{p}{1-p}\\in(0,\\infty).\\]"
+    "text": "Derivación simple\nQueremos relacionar una probabilidad \\(p \\in (0,1)\\) con una expresión lineal que pueda tomar cualquier valor en \\(\\mathbb R\\). Es decir, una función \\[\\sigma:(0,1) \\rightarrow \\mathbb R\\]\nPrimer intento\nComenzamos con la razón conocida como odds: \\[\\frac{p}{1-p}.\\]\nSi \\(p\\in(0,1)\\) entonces\n\\[\\frac{p}{1-p}\\in(0,\\infty).\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-10.html#odds",
@@ -368,7 +368,7 @@
     "href": "lecciones/unidad-01/leccion-10.html#cómo-estimamos-los-coeficientes",
     "title": "Aprendizaje supervisado",
     "section": "¿Cómo estimamos los coeficientes?",
-    "text": "¿Cómo estimamos los coeficientes?\nRecordemos que en regresión lineal estimamos\n\\[\n\\hat{\\boldsymbol\\beta}\n=\n\\underset{\\boldsymbol\\beta}{\\arg\\min}\\;\n\\text{RSS}(\\boldsymbol\\beta)\n=\n\\underset{\\boldsymbol\\beta}{\\arg\\min}\\;\n(\\mathbf y-\\mathbf X\\boldsymbol\\beta)^T\n(\\mathbf y-\\mathbf X\\boldsymbol\\beta).\n\\]\nPodríamos plantear un criterio similar para regresión logística:\n\\[\n\\underset{\\boldsymbol\\beta}{\\arg\\min}\n\\sum_{i=1}^n\n\\left(y_i-p_i\\right)^2, \\qquad p_i=P(Y_i=1\\mid \\mathbf x_i).\n\\]\nSin embargo, ahora sabemos que nuestra variable respuesta sigue una distribución\n\\[Y_i\\mid\\mathbf x_i\\sim\\operatorname{Bernoulli}(p_i).\\]\n\nEn lugar de minimizar errores cuadrados, utilizaremos la distribución de \\(Y_i\\) para estimar los parámetros del modelo."
+    "text": "¿Cómo estimamos los coeficientes?\nEn regresión lineal, los coeficientes se estiman minimizando los errores cuadrados.\nEn regresión logística, como\n\\[\nY_i \\mid \\mathbf{x}_i \\sim \\operatorname{Bernoulli}(p_i),\n\\]\nutilizamos la máxima verosimilitud: buscamos los coeficientes que hagan más probables los resultados observados.\n\\[\n\\hat{\\boldsymbol\\beta}\n=\n\\underset{\\boldsymbol\\beta}{\\arg\\max}\n\\sum_{i=1}^{n}\n\\left[\ny_i\\log(p_i)\n+\n(1-y_i)\\log(1-p_i)\n\\right]\n\\]\n\nLos coeficientes se estiman mediante máxima verosimilitud y se obtienen utilizando optimización numérica."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-10.html#utilizando-la-distribución-de-y",
@@ -487,7 +487,7 @@
     "href": "lecciones/unidad-01/leccion-10.html#qué-sigue",
     "title": "Aprendizaje supervisado",
     "section": "¿Qué sigue?",
-    "text": "¿Qué sigue?\nDescripcion breve\nIr a la siguiente sección →"
+    "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos un modelo de regresión logística, desde la preparación de los datos hasta la evaluación del clasificador y la selección del umbral de decisión.\nIr al notebook →"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-08.html#formulación",
@@ -1811,5 +1811,89 @@
     "title": "Aprendizaje supervisado",
     "section": "",
     "text": "En muchos problemas de aprendizaje supervisado, la variable respuesta no es cuantitativa sino cualitativa.\nPor ejemplo:\n\n¿Un cliente comprará un producto?\n¿Un paciente presenta una enfermedad?\n¿Un correo es spam?\n¿Un estudiante aprobará el curso?\n\nEn el caso más sencillo tenemos dos posibles resultados:\n\\[Y\\in\\{0,1\\}.\\]\nNuestro objetivo será modelar la probabilidad de que ocurra uno de ellos."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html",
+    "href": "notebooks/unidad-01/notebook-06.html",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "",
+    "text": "En este notebook construiremos un modelo de regresión logística para un problema de clasificación binaria utilizando un dataset incluido en scikit-learn.\nTrabajaremos con el dataset Breast Cancer Wisconsin, cuyo objetivo es clasificar tumores como benignos o malignos a partir de características obtenidas de imágenes de masas celulares."
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#carga-de-datos",
+    "href": "notebooks/unidad-01/notebook-06.html#carga-de-datos",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Carga de datos",
+    "text": "Carga de datos\nPrimero cargamos el dataset utilizando load_breast_cancer.\nEl objeto contiene tanto los predictores como la variable respuesta y los nombres de las variables.\n\nfrom sklearn.datasets import load_breast_cancer\nimport pandas as pd\nimport numpy as np\n\ndata = load_breast_cancer()\n\n\nprint(data.DESCR)\n\nConstruimos la matriz de predictores X y el vector de respuesta y.\n\ndata.target_names\n\nConstruimos la matriz de predictores X y el vector de respuesta y.\n\nX = pd.DataFrame(\n    data.data,\n    columns=data.feature_names\n)\n\ny = pd.Series(\n    data.target,\n    name=\"target\"\n)"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#exploración-de-datos",
+    "href": "notebooks/unidad-01/notebook-06.html#exploración-de-datos",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Exploración de datos",
+    "text": "Exploración de datos\nAntes de ajustar el modelo, revisamos la estructura de los predictores y la respuesta\n\nX.head()\n\n\nX.shape\n\n\ny.value_counts()"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#separación-de-conjuntos-de-entrenamiento-y-prueba",
+    "href": "notebooks/unidad-01/notebook-06.html#separación-de-conjuntos-de-entrenamiento-y-prueba",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Separación de conjuntos de entrenamiento y prueba",
+    "text": "Separación de conjuntos de entrenamiento y prueba\nDividiremos los datos en un conjunto de entrenamiento y un conjunto de prueba.\nUtilizamos stratify=y para conservar aproximadamente la misma proporción de clases en ambos conjuntos.\n\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X,\n    y,\n    test_size=0.25,\n    random_state=42,\n    stratify=y\n)\n\nX_train.shape, X_test.shape"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#ajustar-la-regresión-logística",
+    "href": "notebooks/unidad-01/notebook-06.html#ajustar-la-regresión-logística",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Ajustar la regresión logística",
+    "text": "Ajustar la regresión logística\nAhora ajustamos el modelo utilizando los datos de entrenamiento.\n\nfrom sklearn.linear_model import LogisticRegression\n\nmodel = LogisticRegression(\n    max_iter=10000\n)\n\nmodel.fit(X_train, y_train)\n\nEl modelo estima un intercepto \\(\\beta_0\\) y un coeficiente \\(\\beta_i\\) para cada predictor.\nPodemos observar los coeficientes:\n\ncoeficientes = pd.DataFrame({\n    \"Variable\": X.columns,\n    \"Beta\": model.coef_[0]\n})\n\ncoeficientes"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#interpretar-los-coeficientes",
+    "href": "notebooks/unidad-01/notebook-06.html#interpretar-los-coeficientes",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Interpretar los coeficientes",
+    "text": "Interpretar los coeficientes\nEn regresión logística:\n\\[\n\\log\\left(\\frac{p}{1-p}\\right)\n=\n\\beta_0+\\beta_1x_1+\\cdots+\\beta_px_p\n\\]\nUn incremento de una unidad en \\(x_i\\), manteniendo los demás predictores constantes, cambia los log-odds en \\(\\beta_i\\).\nAl aplicar la función exponencial:\n\\[\ne^{\\beta_i}\n\\]\nobtenemos el factor por el cual se multiplican los odds.\n\ncoeficientes[\"Odds Ratio\"] = np.exp(\n    coeficientes[\"Beta\"]\n)\n\ncoeficientes"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#probabilidades-estimadas",
+    "href": "notebooks/unidad-01/notebook-06.html#probabilidades-estimadas",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Probabilidades estimadas",
+    "text": "Probabilidades estimadas\nLa regresión logística no produce directamente una clase. El modelo estima la probabilidad de que cada observación pertenezca a la clase positiva.\nEn nuestro caso:\n\\[\nP(Y=1\\mid X)\n=\nP(\\text{benign}\\mid X)\n\\]\nPodemos obtener estas probabilidades utilizando predict_proba():\n\nprobabilidades = model.predict_proba(X_test)\n\nprobabilidades[:5]\n\nEl resultado contiene una columna para cada clase:\n\\[\nP(Y=0\\mid X)\n\\qquad\nP(Y=1\\mid X)\n\\]\nPodemos verificar el orden de las clases utilizado por el modelo:\n\nmodel.classes_\n\nComo la clase 1 corresponde a benign, la segunda columna contiene: \\[\nP(Y=1\\mid X)\n=\nP(\\text{benign}\\mid X)\n\\]\n\np_benign = probabilidades[:, 1]\n\np_benign[:10]"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#del-modelo-a-la-clasificación",
+    "href": "notebooks/unidad-01/notebook-06.html#del-modelo-a-la-clasificación",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Del modelo a la clasificación",
+    "text": "Del modelo a la clasificación\nPara convertir las probabilidades estimadas en clases debemos establecer un umbral de decisión \\(c\\).\nUtilizando la clase 1 como referencia:\n\\[\n\\hat{Y} =\n\\begin{cases}\n1, & \\hat{p} \\geq c,\\\\\n0, & \\hat{p} &lt; c.\n\\end{cases}\n\\]\nComenzaremos con:\n\\[\nc=0.5\n\\]\n\nc = 0.5\n\ny_pred = (p_benign &gt;= c).astype(int)\n\ny_pred[:10]\n\nPor lo tanto:\n\nsi \\(\\hat p \\geq 0.5\\), clasificamos la observación como benigna;\nsi \\(\\hat p &lt; 0.5\\), la clasificamos como maligna.\n\nPodemos comparar las probabilidades, predicciones y clases reales:\n\nresultados = pd.DataFrame({\n    \"Probabilidad\": p_benign,\n    \"Predicción\": y_pred,\n    \"Real\": y_test.values\n})\n\nresultados.head(10)"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#matriz-de-confusión",
+    "href": "notebooks/unidad-01/notebook-06.html#matriz-de-confusión",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Matriz de confusión",
+    "text": "Matriz de confusión\nAhora comparamos las clases predichas con las clases reales.\n\nfrom sklearn.metrics import confusion_matrix\n\ncm = confusion_matrix(y_test, y_pred)\n\ncm\n\nscikit-learn utiliza por defecto la clase 1 como positiva, por lo que la matriz se organiza como:\n[[TN, FP],\n [FN, TP]]\nPodemos extraer sus componentes:\n\nTN, FP, FN, TP = cm.ravel()\n\nprint(\"TN:\", TN)\nprint(\"FP:\", FP)\nprint(\"FN:\", FN)\nprint(\"TP:\", TP)"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#métricas-de-clasificación",
+    "href": "notebooks/unidad-01/notebook-06.html#métricas-de-clasificación",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Métricas de clasificación",
+    "text": "Métricas de clasificación\nA partir de la matriz de confusión podemos calcular diferentes métricas.\n\nAccuracy\nEl accuracy representa la proporción total de observaciones clasificadas correctamente:\n\\[\n\\text{Accuracy}\n=\n\\frac{TP+TN}{TP+TN+FP+FN}\n\\]\n\nfrom sklearn.metrics import accuracy_score\n\naccuracy = accuracy_score(y_test, y_pred)\n\naccuracy\n\n\n\nPrecision\nLa precision responde:\n\nDe todos los tumores clasificados como benignos, ¿qué proporción realmente era benigna?\n\n\\[\n\\text{Precision}\n=\n\\frac{TP}{TP+FP}\n\\]\n\nfrom sklearn.metrics import precision_score\n\nprecision = precision_score(y_test, y_pred)\n\nprecision\n\n\n\nRecall\nEl recall responde:\n\nDe todos los tumores realmente benignos, ¿qué proporción fue identificada correctamente como benigna?\n\n\\[\n\\text{Recall}\n=\n\\frac{TP}{TP+FN}\n\\]\n\nfrom sklearn.metrics import recall_score\n\nrecall = recall_score(y_test, y_pred)\n\nrecall\n\n\nprint(\"Accuracy:\", accuracy)\nprint(\"Precision:\", precision)\nprint(\"Recall:\", recall)"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#curva-roc",
+    "href": "notebooks/unidad-01/notebook-06.html#curva-roc",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Curva ROC",
+    "text": "Curva ROC\nHasta ahora evaluamos el clasificador utilizando un único umbral:\n\\[\nc = 0.5\n\\]\nSin embargo, diferentes valores de \\(c\\) producen diferentes cantidades de verdaderos positivos y falsos positivos.\nLa curva ROC permite estudiar el comportamiento del clasificador para distintos valores del umbral.\nPara cada umbral calculamos:\n\\[\n\\operatorname{TPR}\n=\n\\frac{TP}{TP+FN}\n\\]\ny\n\\[\n\\operatorname{FPR}\n=\n\\frac{FP}{FP+TN}\n\\]\ndonde:\n\nTPR corresponde al recall de la clase positiva;\nFPR representa la proporción de observaciones negativas clasificadas incorrectamente como positivas.\n\nEn este dataset, la clase positiva es:\n\\[\n1 = \\text{benign}\n\\]\nPodemos calcular estos valores utilizando roc_curve():\n\nfrom sklearn.metrics import roc_curve\n\nfpr, tpr, thresholds = roc_curve(\n    y_test,\n    p_benign\n)\n\n\nroc = pd.DataFrame({\n    \"Threshold\": thresholds,\n    \"FPR\": fpr,\n    \"TPR\": tpr\n})\n\nroc.head(10)\n\nCada fila representa un umbral diferente y genera un punto:\n\\[\n(\\operatorname{FPR},\\operatorname{TPR})\n\\]\nLa curva ROC se obtiene al representar todos estos puntos.\n\nimport matplotlib.pyplot as plt\n\nplt.plot(fpr, tpr)\nplt.plot([0, 1], [0, 1], \"--\")\n\nplt.xlabel(\"False Positive Rate\")\nplt.ylabel(\"True Positive Rate\")\nplt.title(\"ROC Curve\")\n\nplt.show()"
+  },
+  {
+    "objectID": "notebooks/unidad-01/notebook-06.html#área-bajo-la-curva",
+    "href": "notebooks/unidad-01/notebook-06.html#área-bajo-la-curva",
+    "title": "Laboratorio 6. Regresión logística",
+    "section": "Área bajo la curva",
+    "text": "Área bajo la curva\nLa curva ROC puede resumirse utilizando el Area Under the Curve (AUC).\n\nfrom sklearn.metrics import roc_auc_score\n\nauc = roc_auc_score(\n    y_test,\n    p_benign\n)\n\nauc\n\nEl AUC toma valores entre 0 y 1.\nEn general:\n\nun valor cercano a 1 indica una alta capacidad de discriminación;\nun valor cercano a 0.5 indica un desempeño similar al de una clasificación aleatoria.\n\nEl AUC evalúa la capacidad del modelo para separar las clases considerando distintos valores del umbral."
   }
 ]
