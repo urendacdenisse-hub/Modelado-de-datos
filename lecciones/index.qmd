@@ -24,7 +24,7 @@ title: "Lecciones"
 
 - [Regresión lineal](unidad-01/leccion-08.qmd)
 - [Regularización: Ridge y Lasso](unidad-01/leccion-09.qmd)
-- Regresion logística
+- [Regresion logística](unidad-01/leccion-10.qmd)
 - Support vector machines
 
 ## Modelos no paramétricos y ensambles
