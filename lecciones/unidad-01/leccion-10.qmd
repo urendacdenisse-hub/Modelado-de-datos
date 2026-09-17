@@ -95,41 +95,15 @@ no puede interpretarse como una probabilidad.
 Necesitamos una función que transforme cualquier valor real en un número entre $0$ y $1$.
 :::
 
-## Intuición geométrica
 
-::::: columns
-::: {.column width="55%"}
-La regresión logística modela primero una combinación lineal
-
-$$z=\beta_0+\beta_1x.$$
-
-Pero en lugar de utilizar $z$ directamente como predicción, lo transforma mediante la **función logística**:
-
-$$p(x)=\frac{1}{1+e^{-z}}.$$
-:::
-
-::: {.column width="45%"}
-![](../imagenes/regresion-logistica.png){width="100%"}
-:::
-:::::
-
-La función logística transforma cualquier número real en un valor entre $0$ y $1$, es decir, $\sigma:\mathbb{R}\rightarrow(0,1)$.
-
-::: formula
-Por lo tanto, modelamos la probabilidad de $Y=1$ como
-$$p(x) = P(Y=0\mid X=x) =\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.$$
-
-:::
 
 ## Derivación simple
 
-Queremos relacionar una probabilidad $p \in (0,1)$ con una expresión lineal que pueda tomar cualquier valor en $\mathbb R$. Es decir, una función
-$$\sigma:(0,1) \rightarrow \mathbb R$$
+Queremos relacionar una probabilidad $p \in (0,1)$ con una expresión lineal que pueda tomar cualquier valor en $\mathbb R$. Es decir, una función $$\sigma:(0,1) \rightarrow \mathbb R$$
 
 ### Primer intento
 
-Comenzamos con la razón conocida como **odds**:
-$$\frac{p}{1-p}.$$
+Comenzamos con la razón conocida como **odds**: $$\frac{p}{1-p}.$$
 
 Si $p\in(0,1)$ entonces
 
@@ -161,17 +135,39 @@ $$-\infty<\log\left(\frac{p}{1-p}\right)<\infty.$$
 
 Esta cantidad se conoce como **logit** o **log-odds**.
 
+## Intuición geométrica
+
+::::: columns
+::: {.column width="55%"}
+La regresión logística modela primero una combinación lineal
+
+$$z=\beta_0+\beta_1x.$$
+
+Pero en lugar de utilizar $z$ directamente como predicción, lo transforma mediante la **función logística**:
+
+$$p(x)=\frac{1}{1+e^{-z}}.$$
+:::
+
+::: {.column width="45%"}
+![](../imagenes/regresion-logistica.png){width="100%"}
+:::
+:::::
+
+La función logística transforma cualquier número real en un valor entre $0$ y $1$, es decir, $\sigma:\mathbb{R}\rightarrow(0,1)$.
+
+::: formula
+Por lo tanto, modelamos la probabilidad de $Y=1$ como $$p(x) = P(Y=1\mid X=x) =\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.$$
+:::
+
 ## Modelo logístico
 
 Ahora podemos modelar los log-odds mediante una función lineal:
 
-$$
-\log\left(
+$$\log\left(
 \frac{p(x)}{1-p(x)}
 \right)
 =
-\beta_0+\beta_1x.
-$$
+\beta_0+\beta_1x.$$
 
 Resolviendo para $p(x)$ obtenemos
 
@@ -183,24 +179,20 @@ que es el modelo de **regresión logística**.
 
 La relación entre $X$ y la probabilidad no es lineal:
 
-$$
-p(x)
+$$p(x)
 =
 \frac{1}
-{1+e^{-(\beta_0+\beta_1x)}}.
-$$
+{1+e^{-(\beta_0+\beta_1x)}}.$$
 
 Lo que sí es lineal es
 
-$$
-\boxed{
+$$\boxed{
 \log\left(
 \frac{p(x)}{1-p(x)}
 \right)
 =
 \beta_0+\beta_1x
-}
-$$
+}$$
 
 Es decir, la regresión logística es lineal en los **log-odds**.
 
@@ -209,13 +201,11 @@ Es decir, la regresión logística es lineal en los **log-odds**.
 ::: example
 Se quiere modelar la probabilidad de aprobar un examen según las **horas de estudio**.Sea
 
-$$
-Y=
+$$Y=
 \begin{cases}
 1, & \text{aprueba},\\
 0, & \text{no aprueba}.
-\end{cases}
-$$
+\end{cases}$$
 
 Se ajusta el modelo de regresión logística y se obtiene $\beta_0 = -4,\quad \beta_1 = 1$.
 
@@ -236,8 +226,7 @@ $$\hat y=
 \begin{cases}
 1, & p(x)\geq c,\\
 0, & p(x)<c.
-\end{cases}
-$$
+\end{cases}$$
 
 El valor $c=0.5$ es una elección común, pero **no necesariamente es la mejor**.
 
@@ -259,67 +248,55 @@ las $p$ variables predictoras.
 
 Queremos modelar la probabilidad condicional
 
-$$
-p(x_1,\ldots,x_p)
+$$p(x_1,\ldots,x_p)
 =
-P(Y=1\mid X_1=x_1,\ldots,X_p=x_p).
-$$
+P(Y=1\mid X_1=x_1,\ldots,X_p=x_p).$$
 
 La regresión logística supone que los **log-odds** de esta probabilidad son una función lineal de los predictores:
 
 ::: formula
 
-$$
-\log\left(
+$$\log\left(
 \frac{p(x_1,\ldots,x_p)}
 {1-p(x_1,\ldots,x_p)}
 \right)
 =
-\beta_0+\beta_1x_1+\cdots+\beta_px_p.
-$$
+\beta_0+\beta_1x_1+\cdots+\beta_px_p.$$
 :::
 
 ## Notación matricial {.unlisted}
 
 Para incluir el intercepto, definimos
 
-$$
-\mathbf x
+$$\mathbf x
 =
 (1,x_1,\ldots,x_p)^T,
 \qquad
 \boldsymbol\beta
 =
-(\beta_0,\beta_1,\ldots,\beta_p)^T.
-$$
+(\beta_0,\beta_1,\ldots,\beta_p)^T.$$
 
 Entonces,
 
-$$
-\beta_0+\beta_1x_1+\cdots+\beta_px_p
+$$\beta_0+\beta_1x_1+\cdots+\beta_px_p
 =
-\mathbf x^T\boldsymbol\beta.
-$$
+\mathbf x^T\boldsymbol\beta.$$
 
 Por lo tanto, el modelo puede escribirse como
 
-$$
-\log\left(
+$$\log\left(
 \frac{p(\mathbf x)}
 {1-p(\mathbf x)}
 \right)
 =
-\mathbf x^T\boldsymbol\beta.
-$$
+\mathbf x^T\boldsymbol\beta.$$
 
 Despejando $p(\mathbf x)$,
 
-$$
-p(\mathbf x)
+$$p(\mathbf x)
 =
 \frac{e^{\mathbf x^T\boldsymbol\beta}}
-{1+e^{\mathbf x^T\boldsymbol\beta}}.
-$$
+{1+e^{\mathbf x^T\boldsymbol\beta}}.$$
 
 ## Modelo multivariado
 
@@ -328,28 +305,23 @@ $$
 
 Sea $Y\in\{0,1\}$ una variable respuesta binaria y sean
 
-$$
-\mathbf x=(1,x_1,\ldots,x_p)^T,
+$$\mathbf x=(1,x_1,\ldots,x_p)^T,
 \qquad
-\boldsymbol\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T,
-$$
+\boldsymbol\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T,$$
 
 el vector de predictores y el vector de parámetros, respectivamente.
 
 La probabilidad condicional de $Y=1$ está dada por
 
-$$
-\boxed{
+$$\boxed{
 p(\mathbf x)
 =
 P(Y=1\mid \mathbf x)
 =
 \frac{1}
 {1+e^{-\mathbf x^T\boldsymbol\beta}}
-}.
-$$
+}.$$
 :::
-
 
 ## ¿Cómo estimamos los coeficientes? {.unlisted}
 
@@ -357,14 +329,11 @@ En regresión lineal, los coeficientes se estiman minimizando los errores cuadra
 
 En regresión logística, como
 
-$$
-Y_i \mid \mathbf{x}_i \sim \operatorname{Bernoulli}(p_i),
-$$
+$$Y_i \mid \mathbf{x}_i \sim \operatorname{Bernoulli}(p_i),$$
 
 utilizamos la **máxima verosimilitud**: buscamos los coeficientes que hagan más probables los resultados observados.
 
-$$
-\hat{\boldsymbol\beta}
+$$\hat{\boldsymbol\beta}
 =
 \underset{\boldsymbol\beta}{\arg\max}
 \sum_{i=1}^{n}
@@ -372,52 +341,20 @@ $$
 y_i\log(p_i)
 +
 (1-y_i)\log(1-p_i)
-\right]
-$$
+\right]$$
 
-::: {.formula}
-
+::: formula
 Los coeficientes se estiman mediante **máxima verosimilitud** y se obtienen utilizando **optimización numérica**.
-
 :::
 
-## Predicción y clasificación
-
-Una vez estimados los parámetros, para una nueva observación $\mathbf x_*$ calculamos
-
-$$
-\hat p
-=
-\frac{1}
-{1+e^{-\mathbf x_*^T\hat{\boldsymbol\beta}}}.
-$$
-
-Esta es una **predicción probabilística**.
-
-Para obtener una clase, elegimos un umbral $c$:
-
-$$
-\hat y
-=
-\begin{cases}
-1, & \hat p\geq c,\\
-0, & \hat p<c.
-\end{cases}
-$$
-
-::: note
-Un valor común es $c=0.5$, pero el umbral depende del problema.
-:::
 
 ## Interpretación de los coeficientes
 
 Recordemos que
 
-$$
-\log\left(\frac{p}{1-p}\right)
+$$\log\left(\frac{p}{1-p}\right)
 =
-\beta_0+\beta_1x_1+\cdots+\beta_px_p.
-$$
+\beta_0+\beta_1x_1+\cdots+\beta_px_p.$$
 
 Manteniendo las demás variables constantes, aumentar $x_j$ una unidad cambia los **log-odds** en
 
@@ -425,7 +362,7 @@ $$\beta_j.$$
 
 Equivalentemente, los odds se multiplican por $e^{\beta_j}$. Esta cantidad se conoce como **odds ratio**.
 
-:::{.example}
+::: example
 Si $\beta_i=2$, los odds se multiplican por $e^2\approx7.39$.
 :::
 
@@ -433,30 +370,49 @@ Si $\beta_i=2$, los odds se multiplican por $e^2\approx7.39$.
 
 Para muestras suficientemente grandes,
 
-$$
-\hat\beta_j
+$$\hat\beta_j
 \approx
 \mathcal N\left(
 \beta_j,
 \operatorname{SE}(\hat\beta_j)^2
-\right).
-$$
+\right).$$
 
 Esto permite construir **intervalos de confianza** y realizar pruebas de hipótesis, por ejemplo,
 
-$$
-H_0:\beta_j=0
+$$H_0:\beta_j=0
 \qquad\text{vs.}\qquad
-H_1:\beta_j\neq0.
-$$
+H_1:\beta_j\neq0.$$
 
 Una prueba común utiliza el estadístico de Wald:
 
-$$
-z=
+$$z=
 \frac{\hat\beta_j}
-{\operatorname{SE}(\hat\beta_j)}.
-$$
+{\operatorname{SE}(\hat\beta_j)}.$$
+
+
+## Predicción y clasificación
+
+Una vez estimados los parámetros, para una nueva observación $\mathbf x_*$ calculamos
+
+$$\hat p
+=
+\frac{1}
+{1+e^{-\mathbf x_*^T\hat{\boldsymbol\beta}}}.$$
+
+Esta es una **predicción probabilística**.
+
+Para obtener una clase, elegimos un umbral $c$:
+
+$$\hat y
+=
+\begin{cases}
+1, & \hat p\geq c,\\
+0, & \hat p<c.
+\end{cases}$$
+
+::: {.formula}
+Un valor común es $c=0.5$, pero el umbral depende del problema.
+:::
 
 ## Métricas de clasificación
 
@@ -471,11 +427,9 @@ A partir de la **matriz de confusión** podemos definir distintas métricas de d
 
 ## Métricas de clasificación {.unlisted}
 
-$$
-\operatorname{Accuracy}
+$$\operatorname{Accuracy}
 =
-\frac{TP+TN}{TP+TN+FP+FN}
-$$
+\frac{TP+TN}{TP+TN+FP+FN}$$
 
 $$\operatorname{Precision}
 =
@@ -483,8 +437,7 @@ $$\operatorname{Precision}
 \qquad
 \operatorname{Recall}
 =
-\frac{TP}{TP+FN}.
-$$
+\frac{TP}{TP+FN}.$$
 
 - **Accuracy:** ¿qué proporción clasificamos correctamente?
 - **Precision:** de los positivos predichos, ¿cuántos eran positivos?
@@ -501,13 +454,11 @@ La métrica depende del tipo de error que queremos evitar:
 
 En un problema de clasificación, debemos elegir un umbral $c$ para convertir las probabilidades en clases:
 
-$$
-\hat{Y} =
+$$\hat{Y} =
 \begin{cases}
 1, & \hat{p} \geq c,\\
 0, & \hat{p} < c.
-\end{cases}
-$$
+\end{cases}$$
 
 Diferentes valores de $c$ producen diferentes **falsos positivos** y **verdaderos positivos**.
 
@@ -519,37 +470,27 @@ La curva ROC permite comparar el comportamiento del clasificador para distintos 
 
 Para cada valor del umbral $c$ calculamos:
 
-$$
-\operatorname{TPR}
+$$\operatorname{TPR}
 =
 \frac{TP}{TP+FN},
 \quad
 \operatorname{FPR}
 =
-\frac{FP}{FP+TN}
-$$
+\frac{FP}{FP+TN}$$
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="40%"}
-
 Cada umbral $c$ genera un punto:
 
-$$
-(\operatorname{FPR},\operatorname{TPR})
-$$
+$$(\operatorname{FPR},\operatorname{TPR})$$
 
 La **curva ROC** se obtiene al representar estos puntos para distintos valores de $c$.
-
 :::
 
 ::: {.column width="60%"}
-
 ![](../imagenes/roc.webp)
-
 :::
-
-::::
+:::::
 
 ## Evaluación probabilística
 
@@ -582,11 +523,8 @@ Para aplicar regresión logística debemos considerar que:
 - los predictores no presentan **multicolinealidad severa**.
 
 ::: formula
-
 La regresión logística **no requiere normalidad de los predictores** ni una relación lineal entre los predictores y la probabilidad.
-
 :::
-
 
 ## Referencias
 

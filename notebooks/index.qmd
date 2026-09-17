@@ -15,11 +15,11 @@ title: "Notebooks"
 - [Regresión lineal](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-04.ipynb)
 - [Regularización: Ridge y Lasso](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-05.ipynb)
 - [Regresion logística](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-06.ipynb)
-- Support vector machines
+- [Support vector machines](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-07.ipynb)
 
 ## Modelos no paramétricos y ensambles
 
-- $k$-Nearest Neighbors
+- [$k$-Nearest Neighbors](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-08.ipynb)
 - Árboles de decisión
 - Random Forest
 - Boosting

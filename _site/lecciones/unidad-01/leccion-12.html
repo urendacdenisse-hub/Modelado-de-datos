@@ -152,7 +152,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Aprendizaje supervisado</h1>
-  <p class="subtitle">Regresión logística</p>
+  <p class="subtitle">K-Nearest Neighbors (KNN)</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -167,21 +167,16 @@ Dra. Denisse Urenda Castañeda
 <h2 id="toc-title">Tabla de contenidos</h2>
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
-<li><a href="#/formulación-del-problema" id="/toc-formulación-del-problema">Formulación del problema</a></li>
-<li><a href="#/intuición-geométrica" id="/toc-intuición-geométrica">Intuición geométrica</a></li>
-<li><a href="#/derivación-simple" id="/toc-derivación-simple">Derivación simple</a></li>
-<li><a href="#/modelo-logístico" id="/toc-modelo-logístico">Modelo logístico</a></li>
-<li><a href="#/de-probabilidades-a-clases" id="/toc-de-probabilidades-a-clases">De probabilidades a clases</a></li>
-<li><a href="#/extensión-al-caso-general" id="/toc-extensión-al-caso-general">Extensión al caso general</a></li>
-<li><a href="#/modelo-multivariado" id="/toc-modelo-multivariado">Modelo multivariado</a></li>
-<li><a href="#/predicción-y-clasificación" id="/toc-predicción-y-clasificación">Predicción y clasificación</a></li>
-<li><a href="#/interpretación-de-los-coeficientes" id="/toc-interpretación-de-los-coeficientes">Interpretación de los coeficientes</a></li>
-<li><a href="#/inferencia-sobre-los-coeficientes" id="/toc-inferencia-sobre-los-coeficientes">Inferencia sobre los coeficientes</a></li>
-<li><a href="#/métricas-de-clasificación" id="/toc-métricas-de-clasificación">Métricas de clasificación</a></li>
-<li><a href="#/selección-del-umbral" id="/toc-selección-del-umbral">Selección del umbral</a></li>
-<li><a href="#/construcción-de-la-curva-roc" id="/toc-construcción-de-la-curva-roc">Construcción de la curva ROC</a></li>
-<li><a href="#/evaluación-probabilística" id="/toc-evaluación-probabilística">Evaluación probabilística</a></li>
-<li><a href="#/supuestos-y-limitaciones" id="/toc-supuestos-y-limitaciones">Supuestos y limitaciones</a></li>
+<li><a href="#/qué-significa-cercano" id="/toc-qué-significa-cercano">¿Qué significa “cercano”?</a></li>
+<li><a href="#/k-nearest-neighbors" id="/toc-k-nearest-neighbors">K-Nearest Neighbors</a></li>
+<li><a href="#/ejemplo" id="/toc-ejemplo">Ejemplo</a></li>
+<li><a href="#/el-parámetro-k" id="/toc-el-parámetro-k">El parámetro <span class="math inline">\(k\)</span></a></li>
+<li><a href="#/la-elección-de-d" id="/toc-la-elección-de-d">La elección de <span class="math inline">\(d\)</span></a></li>
+<li><a href="#/knn-para-clasificación-y-regresión" id="/toc-knn-para-clasificación-y-regresión">KNN para clasificación y regresión</a></li>
+<li><a href="#/evaluación-del-modelo" id="/toc-evaluación-del-modelo">Evaluación del modelo</a></li>
+<li><a href="#/knn-es-un-modelo-no-paramétrico" id="/toc-knn-es-un-modelo-no-paramétrico">KNN es un modelo no paramétrico</a></li>
+<li><a href="#/limitaciones-de-knn" id="/toc-limitaciones-de-knn">Limitaciones de KNN</a></li>
+<li><a href="#/en-resumen" id="/toc-en-resumen">En resumen</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
 <li><a href="#/qué-sigue" id="/toc-qué-sigue">¿Qué sigue?</a></li>
@@ -190,446 +185,263 @@ Dra. Denisse Urenda Castañeda
 </section>
 <section id="introducción" class="slide level2">
 <h2>Introducción</h2>
-<p>En muchos problemas de aprendizaje supervisado, la variable respuesta no es cuantitativa sino <strong>cualitativa</strong>.</p>
-<p>Por ejemplo:</p>
-<ul>
-<li>¿Un cliente comprará un producto?</li>
-<li>¿Un paciente presenta una enfermedad?</li>
-<li>¿Un correo es spam?</li>
-<li>¿Un estudiante aprobará el curso?</li>
-</ul>
-<p>En el caso más sencillo tenemos dos posibles resultados:</p>
-<p><span class="math display">\[Y\in\{0,1\}.\]</span></p>
-<p>Nuestro objetivo será modelar la probabilidad de que ocurra uno de ellos.</p>
-</section>
-<section id="formulación-del-problema" class="slide level2">
-<h2>Formulación del problema</h2>
-<p>Supongamos que observamos una variable predictora <span class="math inline">\(X\)</span> y una variable respuesta binaria <span class="math inline">\(Y\in\{0,1\}.\)</span></p>
-<p>Queremos modelar</p>
-<p><span class="math display">\[P(Y=1\mid X=x).\]</span></p>
-<p>Definimos</p>
-<p><span class="math display">\[p(x)=P(Y=1\mid X=x).\]</span></p>
-<p>Por lo tanto,</p>
-<p><span class="math display">\[P(Y=0\mid X=x)=1-p(x).\]</span></p>
-<div class="formula">
-<p>La regresión logística busca construir una función</p>
-<p><span class="math display">\[p(x)=f(x), \quad \text{tal que} \quad 0\leq p(x)\leq 1.\]</span></p>
-</div>
-</section>
-<section id="por-qué-no-usar-regresión-lineal" class="slide level2 unlisted">
-<h2>¿Por qué no usar regresión lineal?</h2>
 <div class="columns">
-<div class="column" style="width:55%;">
-<p>Podríamos intentar modelar</p>
-<p><span class="math display">\[p(x)=\beta_0+\beta_1x.\]</span></p>
-<p>Sin embargo, una función lineal puede producir valores menores que <span class="math inline">\(0\)</span> o mayores que <span class="math inline">\(1\)</span>.</p>
-<p>Por ejemplo,</p>
-<p><span class="math display">\[\beta_0+\beta_1x=1.4\]</span></p>
-<p>no puede interpretarse como una probabilidad.</p>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../imagenes/regresion-lineal-clasificacion.png" style="width:100.0%"></p>
+<div class="column" style="width:50%;">
+<p>Supongamos que tenemos un problema de clasificación y queremos predecir la clase de una <strong>nueva observación</strong>.</p>
+<p><strong>Idea</strong>: buscar las observaciones <strong>más parecidas</strong> dentro de los datos conocidos.</p>
+<p>Si la <strong>mayoría</strong> de los vecinos pertenece a cierta clase, predecimos la nueva observación como miembro de esta clase</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../imagenes/knn-intro.png" style="width:100.0%"></p>
 </div></div>
 <div class="formula">
-<p>Necesitamos una función que transforme cualquier valor real en un número entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>.</p>
+<p><strong>K-Nearest Neighbors (KNN)</strong> predice utilizando las <span class="math inline">\(k\)</span> observaciones más cercanas a una nueva observación.</p>
 </div>
 </section>
-<section id="intuición-geométrica" class="slide level2">
-<h2>Intuición geométrica</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>La regresión logística modela primero una combinación lineal</p>
-<p><span class="math display">\[z=\beta_0+\beta_1x.\]</span></p>
-<p>Pero en lugar de utilizar <span class="math inline">\(z\)</span> directamente como predicción, lo transforma mediante la <strong>función logística</strong>:</p>
-<p><span class="math display">\[p(x)=\frac{1}{1+e^{-z}}.\]</span></p>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../imagenes/regresion-logistica.png" style="width:100.0%"></p>
-</div></div>
-<p>La función logística transforma cualquier número real en un valor entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, es decir, <span class="math inline">\(\sigma:\mathbb{R}\rightarrow(0,1)\)</span>.</p>
-<div class="formula">
-<p>Por lo tanto, modelamos la probabilidad de <span class="math inline">\(Y=1\)</span> como <span class="math display">\[p(x) = P(Y=0\mid X=x) =\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
-</div>
-</section>
-<section id="derivación-simple" class="slide level2">
-<h2>Derivación simple</h2>
-<p>Queremos relacionar una probabilidad <span class="math inline">\(p \in (0,1)\)</span> con una expresión lineal que pueda tomar cualquier valor en <span class="math inline">\(\mathbb R\)</span>. Es decir, una función <span class="math display">\[\sigma:(0,1) \rightarrow \mathbb R\]</span></p>
-<h3 id="primer-intento">Primer intento</h3>
-<p>Comenzamos con la razón conocida como <strong>odds</strong>: <span class="math display">\[\frac{p}{1-p}.\]</span></p>
-<p>Si <span class="math inline">\(p\in(0,1)\)</span> entonces</p>
-<p><span class="math display">\[\frac{p}{1-p}\in(0,\infty).\]</span></p>
-</section>
-<section id="odds" class="slide level2 unlisted">
-<h2>Odds</h2>
-<p>Los odds comparan la probabilidad de que ocurra un evento con la probabilidad de que no ocurra:</p>
-<p><span class="math display">\[\text{odds}=\frac{p}{1-p}.\]</span></p>
-<p>Por ejemplo, si <span class="math inline">\(p=0.8\)</span>, entonces</p>
-<p><span class="math display">\[\text{odds}=\frac{0.8}{0.2}=4.\]</span></p>
-<p>Esto significa que el evento es <strong>4 veces más probable que ocurra a que no ocurra</strong>.</p>
-</section>
-<section id="log-odds" class="slide level2 unlisted">
-<h2>Log-odds</h2>
-<p>Los odds todavía están restringidos a valores positivos.</p>
-<p>Aplicamos logaritmo:</p>
-<p><span class="math display">\[\log\left(\frac{p}{1-p}\right).\]</span></p>
-<p>Esta transformación puede tomar cualquier valor real:</p>
-<p><span class="math display">\[-\infty&lt;\log\left(\frac{p}{1-p}\right)&lt;\infty.\]</span></p>
-<p>Esta cantidad se conoce como <strong>logit</strong> o <strong>log-odds</strong>.</p>
-</section>
-<section id="modelo-logístico" class="slide level2">
-<h2>Modelo logístico</h2>
-<p>Ahora podemos modelar los log-odds mediante una función lineal:</p>
-<p><span class="math display">\[
-\log\left(
-\frac{p(x)}{1-p(x)}
-\right)
-=
-\beta_0+\beta_1x.
-\]</span></p>
-<p>Resolviendo para <span class="math inline">\(p(x)\)</span> obtenemos</p>
-<p><span class="math display">\[p(x)=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
-<p>que es el modelo de <strong>regresión logística</strong>.</p>
-</section>
-<section id="qué-estamos-modelando-realmente" class="slide level2 unlisted">
-<h2>¿Qué estamos modelando realmente?</h2>
-<p>La relación entre <span class="math inline">\(X\)</span> y la probabilidad no es lineal:</p>
-<p><span class="math display">\[
-p(x)
-=
-\frac{1}
-{1+e^{-(\beta_0+\beta_1x)}}.
-\]</span></p>
-<p>Lo que sí es lineal es</p>
-<p><span class="math display">\[
-\boxed{
-\log\left(
-\frac{p(x)}{1-p(x)}
-\right)
-=
-\beta_0+\beta_1x
-}
-\]</span></p>
-<p>Es decir, la regresión logística es lineal en los <strong>log-odds</strong>.</p>
-</section>
-<section id="ejemplo-simple" class="slide level2 unlisted">
-<h2>Ejemplo simple</h2>
-<div class="example">
-<p>Se quiere modelar la probabilidad de aprobar un examen según las <strong>horas de estudio</strong>.Sea</p>
-<p><span class="math display">\[
-Y=
-\begin{cases}
-1, &amp; \text{aprueba},\\
-0, &amp; \text{no aprueba}.
-\end{cases}
-\]</span></p>
-<p>Se ajusta el modelo de regresión logística y se obtiene <span class="math inline">\(\beta_0 = -4,\quad \beta_1 = 1\)</span>.</p>
-<ul>
-<li>¿Cuál es la probabilidad de aprobar si un estudiante estudia 3 horas? ¿Y si estudia 5 horas?</li>
-<li>¿Cómo podemos convertir estas probabilidades en una decisión: aprueba o no aprueba?</li>
-<li>¿A partir de cuántas horas de estudio el modelo clasifica a un estudiante como aprobado?</li>
-</ul>
-</div>
-</section>
-<section id="de-probabilidades-a-clases" class="slide level2">
-<h2>De probabilidades a clases</h2>
-<p>La regresión logística estima</p>
-<p><span class="math display">\[p(x)=P(Y=1\mid X=x).\]</span></p>
-<p>Para obtener una clase debemos elegir un <strong>umbral de decisión</strong> <span class="math inline">\(c\)</span>:</p>
-<p><span class="math display">\[\hat y=
-\begin{cases}
-1, &amp; p(x)\geq c,\\
-0, &amp; p(x)&lt;c.
-\end{cases}
-\]</span></p>
-<p>El valor <span class="math inline">\(c=0.5\)</span> es una elección común, pero <strong>no necesariamente es la mejor</strong>.</p>
-<div class="formula">
-<p>La elección del umbral depende del problema y del costo de cometer diferentes tipos de error.</p>
-</div>
-<p>La <strong>frontera de decisión</strong> corresponde a los valores de <span class="math inline">\(x\)</span> donde</p>
-<p><span class="math display">\[p(x)=c.\]</span></p>
-</section>
-<section id="extensión-al-caso-general" class="slide level2">
-<h2>Extensión al caso general</h2>
-<p>Sea <span class="math inline">\(Y\in\{0,1\}\)</span> una variable respuesta binaria y sean</p>
-<p><span class="math display">\[X_1,X_2,\ldots,X_p\]</span></p>
-<p>las <span class="math inline">\(p\)</span> variables predictoras.</p>
-<p>Queremos modelar la probabilidad condicional</p>
-<p><span class="math display">\[
-p(x_1,\ldots,x_p)
-=
-P(Y=1\mid X_1=x_1,\ldots,X_p=x_p).
-\]</span></p>
-<p>La regresión logística supone que los <strong>log-odds</strong> de esta probabilidad son una función lineal de los predictores:</p>
-<div class="formula">
-<p><span class="math display">\[
-\log\left(
-\frac{p(x_1,\ldots,x_p)}
-{1-p(x_1,\ldots,x_p)}
-\right)
-=
-\beta_0+\beta_1x_1+\cdots+\beta_px_p.
-\]</span></p>
-</div>
-</section>
-<section id="notación-matricial" class="slide level2 unlisted">
-<h2>Notación matricial</h2>
-<p>Para incluir el intercepto, definimos</p>
-<p><span class="math display">\[
-\mathbf x
-=
-(1,x_1,\ldots,x_p)^T,
-\qquad
-\boldsymbol\beta
-=
-(\beta_0,\beta_1,\ldots,\beta_p)^T.
-\]</span></p>
-<p>Entonces,</p>
-<p><span class="math display">\[
-\beta_0+\beta_1x_1+\cdots+\beta_px_p
-=
-\mathbf x^T\boldsymbol\beta.
-\]</span></p>
-<p>Por lo tanto, el modelo puede escribirse como</p>
-<p><span class="math display">\[
-\log\left(
-\frac{p(\mathbf x)}
-{1-p(\mathbf x)}
-\right)
-=
-\mathbf x^T\boldsymbol\beta.
-\]</span></p>
-<p>Despejando <span class="math inline">\(p(\mathbf x)\)</span>,</p>
-<p><span class="math display">\[
-p(\mathbf x)
-=
-\frac{e^{\mathbf x^T\boldsymbol\beta}}
-{1+e^{\mathbf x^T\boldsymbol\beta}}.
-\]</span></p>
-</section>
-<section id="modelo-multivariado" class="slide level2">
-<h2>Modelo multivariado</h2>
-<div class="formula">
-<p><strong>Modelo de regresión logística</strong></p>
-<p>Sea <span class="math inline">\(Y\in\{0,1\}\)</span> una variable respuesta binaria y sean</p>
-<p><span class="math display">\[
-\mathbf x=(1,x_1,\ldots,x_p)^T,
-\qquad
-\boldsymbol\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T,
-\]</span></p>
-<p>el vector de predictores y el vector de parámetros, respectivamente.</p>
-<p>La probabilidad condicional de <span class="math inline">\(Y=1\)</span> está dada por</p>
-<p><span class="math display">\[
-\boxed{
-p(\mathbf x)
-=
-P(Y=1\mid \mathbf x)
-=
-\frac{1}
-{1+e^{-\mathbf x^T\boldsymbol\beta}}
-}.
-\]</span></p>
-</div>
-</section>
-<section id="cómo-estimamos-los-coeficientes" class="slide level2 unlisted">
-<h2>¿Cómo estimamos los coeficientes?</h2>
-<p>En regresión lineal, los coeficientes se estiman minimizando los errores cuadrados.</p>
-<p>En regresión logística, como</p>
-<p><span class="math display">\[
-Y_i \mid \mathbf{x}_i \sim \operatorname{Bernoulli}(p_i),
-\]</span></p>
-<p>utilizamos la <strong>máxima verosimilitud</strong>: buscamos los coeficientes que hagan más probables los resultados observados.</p>
-<p><span class="math display">\[
-\hat{\boldsymbol\beta}
-=
-\underset{\boldsymbol\beta}{\arg\max}
-\sum_{i=1}^{n}
-\left[
-y_i\log(p_i)
-+
-(1-y_i)\log(1-p_i)
-\right]
-\]</span></p>
-<div class="formula">
-<p>Los coeficientes se estiman mediante <strong>máxima verosimilitud</strong> y se obtienen utilizando <strong>optimización numérica</strong>.</p>
-</div>
-</section>
-<section id="predicción-y-clasificación" class="slide level2">
-<h2>Predicción y clasificación</h2>
-<p>Una vez estimados los parámetros, para una nueva observación <span class="math inline">\(\mathbf x_*\)</span> calculamos</p>
-<p><span class="math display">\[
-\hat p
-=
-\frac{1}
-{1+e^{-\mathbf x_*^T\hat{\boldsymbol\beta}}}.
-\]</span></p>
-<p>Esta es una <strong>predicción probabilística</strong>.</p>
-<p>Para obtener una clase, elegimos un umbral <span class="math inline">\(c\)</span>:</p>
-<p><span class="math display">\[
-\hat y
-=
-\begin{cases}
-1, &amp; \hat p\geq c,\\
-0, &amp; \hat p&lt;c.
-\end{cases}
-\]</span></p>
-<div class="note">
-<p>Un valor común es <span class="math inline">\(c=0.5\)</span>, pero el umbral depende del problema.</p>
-</div>
-</section>
-<section id="interpretación-de-los-coeficientes" class="slide level2">
-<h2>Interpretación de los coeficientes</h2>
-<p>Recordemos que</p>
-<p><span class="math display">\[
-\log\left(\frac{p}{1-p}\right)
-=
-\beta_0+\beta_1x_1+\cdots+\beta_px_p.
-\]</span></p>
-<p>Manteniendo las demás variables constantes, aumentar <span class="math inline">\(x_j\)</span> una unidad cambia los <strong>log-odds</strong> en</p>
-<p><span class="math display">\[\beta_j.\]</span></p>
-<p>Equivalentemente, los odds se multiplican por <span class="math inline">\(e^{\beta_j}\)</span>. Esta cantidad se conoce como <strong>odds ratio</strong>.</p>
-<div class="example">
-<p>Si <span class="math inline">\(\beta_i=2\)</span>, los odds se multiplican por <span class="math inline">\(e^2\approx7.39\)</span>.</p>
-</div>
-</section>
-<section id="inferencia-sobre-los-coeficientes" class="slide level2">
-<h2>Inferencia sobre los coeficientes</h2>
-<p>Para muestras suficientemente grandes,</p>
-<p><span class="math display">\[
-\hat\beta_j
-\approx
-\mathcal N\left(
-\beta_j,
-\operatorname{SE}(\hat\beta_j)^2
-\right).
-\]</span></p>
-<p>Esto permite construir <strong>intervalos de confianza</strong> y realizar pruebas de hipótesis, por ejemplo,</p>
-<p><span class="math display">\[
-H_0:\beta_j=0
-\qquad\text{vs.}\qquad
-H_1:\beta_j\neq0.
-\]</span></p>
-<p>Una prueba común utiliza el estadístico de Wald:</p>
-<p><span class="math display">\[
-z=
-\frac{\hat\beta_j}
-{\operatorname{SE}(\hat\beta_j)}.
-\]</span></p>
-</section>
-<section id="métricas-de-clasificación" class="slide level2">
-<h2>Métricas de clasificación</h2>
-<p>Después de seleccionar un umbral, comparamos <span class="math inline">\(y_i\)</span> con <span class="math inline">\(\hat y_i\)</span>:</p>
+<section id="qué-significa-cercano" class="slide level2">
+<h2>¿Qué significa “cercano”?</h2>
+<p>Para determinar cuáles observaciones son vecinas necesitamos definir una <strong>distancia</strong>. Algunas de las medidas más utilizadas son:</p>
 <table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
-<th></th>
-<th style="text-align: right;">Predicción <span class="math inline">\(1\)</span></th>
-<th style="text-align: right;">Predicción <span class="math inline">\(0\)</span></th>
+<th>Distancia</th>
+<th>Definición</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Real <span class="math inline">\(1\)</span></td>
-<td style="text-align: right;">TP</td>
-<td style="text-align: right;">FN</td>
+<td><strong>Euclidiana</strong></td>
+<td><span class="math inline">\(d(\mathbf x_i,\mathbf x_j)=\sqrt{\sum_{m=1}^{p}(x_{im}-x_{jm})^2}\)</span></td>
 </tr>
 <tr class="even">
-<td>Real <span class="math inline">\(0\)</span></td>
-<td style="text-align: right;">FP</td>
-<td style="text-align: right;">TN</td>
+<td><strong>Manhattan</strong></td>
+<td><span class="math inline">\(d(\mathbf x_i,\mathbf x_j)=\sum_{m=1}^{p}|x_{im}-x_{jm}|\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Minkowski</strong></td>
+<td><span class="math inline">\(d(\mathbf x_i,\mathbf x_j)=\left(\sum_{m=1}^{p}|x_{im}-x_{jm}|^q\right)^{1/q}\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>A partir de la <strong>matriz de confusión</strong> podemos definir distintas métricas de desempeño.</p>
-</section>
-<section id="métricas-de-clasificación-1" class="slide level2 unlisted">
-<h2>Métricas de clasificación</h2>
-<p><span class="math display">\[
-\operatorname{Accuracy}
-=
-\frac{TP+TN}{TP+TN+FP+FN}
-\]</span></p>
-<p><span class="math display">\[\operatorname{Precision}
-=
-\frac{TP}{TP+FP},
-\qquad
-\operatorname{Recall}
-=
-\frac{TP}{TP+FN}.
-\]</span></p>
-<ul>
-<li><strong>Accuracy:</strong> ¿qué proporción clasificamos correctamente?</li>
-<li><strong>Precision:</strong> de los positivos predichos, ¿cuántos eran positivos?</li>
-<li><strong>Recall:</strong> de los positivos reales, ¿cuántos detectamos?</li>
-</ul>
 <div class="formula">
-<p>La métrica depende del tipo de error que queremos evitar:</p>
-<ul>
-<li>Si es importante evitar <strong>falsos positivos (FP)</strong>, buscamos mayor <strong>Precision</strong>.</li>
-<li>Si es importante evitar <strong>falsos negativos (FN)</strong>, buscamos mayor <strong>Recall</strong>.</li>
-</ul>
+<p>Una menor distancia indica una mayor <strong>similitud</strong> según la métrica utilizada.</p>
+<p>Por lo tanto, los <span class="math inline">\(k\)</span> vecinos seleccionados pueden cambiar dependiendo de la distancia elegida.</p>
 </div>
 </section>
-<section id="selección-del-umbral" class="slide level2">
-<h2>Selección del umbral</h2>
-<p>En un problema de clasificación, debemos elegir un umbral <span class="math inline">\(c\)</span> para convertir las probabilidades en clases:</p>
-<p><span class="math display">\[
-\hat{Y} =
-\begin{cases}
-1, &amp; \hat{p} \geq c,\\
-0, &amp; \hat{p} &lt; c.
-\end{cases}
-\]</span></p>
-<p>Diferentes valores de <span class="math inline">\(c\)</span> producen diferentes <strong>falsos positivos</strong> y <strong>verdaderos positivos</strong>.</p>
-<p>Una herramienta para analizar y seleccionar el umbral es la <strong>curva ROC</strong>.</p>
-<p>La curva ROC permite comparar el comportamiento del clasificador para distintos valores de <span class="math inline">\(c\)</span>.</p>
-</section>
-<section id="construcción-de-la-curva-roc" class="slide level2">
-<h2>Construcción de la curva ROC</h2>
-<p>Para cada valor del umbral <span class="math inline">\(c\)</span> calculamos:</p>
-<p><span class="math display">\[
-\operatorname{TPR}
-=
-\frac{TP}{TP+FN},
-\quad
-\operatorname{FPR}
-=
-\frac{FP}{FP+TN}
-\]</span></p>
+<section id="k-nearest-neighbors" class="slide level2">
+<h2>K-Nearest Neighbors</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
-<p>Cada umbral <span class="math inline">\(c\)</span> genera un punto:</p>
+<div class="column" style="width:50%;">
+<p>Para clasificar una nueva observación:</p>
+<ol type="1">
+<li><p>Calculamos su distancia a cada observación de entrenamiento: <span class="math inline">\(d_i=d(\mathbf{x},\mathbf{x}_i)\)</span>.</p></li>
+<li><p>Seleccionamos los <span class="math inline">\(k\)</span> vecinos más cercanos: <span class="math inline">\(N_k(\mathbf{x})\)</span>.</p></li>
+<li><p>Observamos sus clases <span class="math inline">\(y_i\)</span>.</p></li>
+<li><p>Asignamos la clase más frecuente:</p></li>
+</ol>
 <p><span class="math display">\[
-(\operatorname{FPR},\operatorname{TPR})
+\hat y
+=
+\operatorname{mode}
+\{y_i:\mathbf{x}_i\in N_k(\mathbf{x})\}.
 \]</span></p>
-<p>La <strong>curva ROC</strong> se obtiene al representar estos puntos para distintos valores de <span class="math inline">\(c\)</span>.</p>
-</div><div class="column" style="width:60%;">
-<p><img data-src="../imagenes/roc.webp"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../imagenes/knn-vecinos.png" style="width:100.0%"></p>
 </div></div>
 </section>
-<section id="evaluación-probabilística" class="slide level2">
-<h2>Evaluación probabilística</h2>
-<p>Las métricas anteriores evalúan las <strong>clases predichas</strong>. También podemos evaluar directamente las probabilidades <span class="math inline">\(\hat p_i\)</span>.</p>
-<p>La <strong>log-loss</strong> está dada por</p>
-<p><span class="math display">\[-\frac1n
-\sum_{i=1}^{n}
-\left[
-y_i\log(\hat p_i)
-+
-(1-y_i)\log(1-\hat p_i)
-\right].\]</span></p>
-<div class="formula">
-<p>La log-loss corresponde a la <strong>log-verosimilitud negativa promedio</strong>.</p>
-<p>Una menor log-loss indica mejores predicciones probabilísticas.</p>
+<section id="ejemplo" class="slide level2">
+<h2>Ejemplo</h2>
+<div class="example">
+<p>Queremos predecir si un cliente presenta <strong>riesgo de impago</strong> utilizando dos predictores:</p>
+<ul>
+<li><span class="math inline">\(x_1\)</span>: ingreso mensual (miles de pesos)</li>
+<li><span class="math inline">\(x_2\)</span>: deuda mensual (miles de pesos).</li>
+</ul>
+<p>Un nuevo cliente tiene un <strong>ingreso mensual de 15 mil pesos</strong> y una <strong>deuda mensual de 6 mil pesos</strong>.</p>
+<p>Utilizando <span class="math inline">\(k=2\)</span> y <strong>distancia euclidiana</strong>, <strong>¿cuál será la clase predicha para el nuevo cliente?</strong></p>
 </div>
 </section>
-<section id="supuestos-y-limitaciones" class="slide level2">
-<h2>Supuestos y limitaciones</h2>
-<p>Para aplicar regresión logística debemos considerar que:</p>
+<section id="ejemplo-1" class="slide level2 unlisted">
+<h2>Ejemplo</h2>
+<div class="example">
+<p>Las observaciones de entrenamiento son:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Ingreso <span class="math inline">\(x_1\)</span></th>
+<th style="text-align: right;">Deuda <span class="math inline">\(x_2\)</span></th>
+<th>Riesgo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">8</td>
+<td>Alto</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">7</td>
+<td>Alto</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">5</td>
+<td>Bajo</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">4</td>
+<td>Bajo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">6</td>
+<td>Bajo</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="el-parámetro-k" class="slide level2">
+<h2>El parámetro <span class="math inline">\(k\)</span></h2>
+<p>El número de vecinos utilizados afecta directamente las predicciones del modelo.</p>
+<div style="height: 250px; margin: 20px 0 30px 0;">
+<p><img data-src="../imagenes/knn-hiperparametro.png"></p>
+</div>
+<p>Si utilizamos un valor pequeño de <span class="math inline">\(k\)</span>, la predicción depende de observaciones muy cercanas. Si utilizamos un valor grande, intervienen observaciones cada vez más alejadas.</p>
+<div class="formula">
+<p><span class="math inline">\(k\)</span> es un <strong>hiperparámetro</strong> del modelo y normalmente se selecciona utilizando datos de validación.</p>
+</div>
+</section>
+<section id="el-parámetro-k-1" class="slide level2 unlisted">
+<h2>El parámetro <span class="math inline">\(k\)</span></h2>
+<div style="height: 250px; margin: 15px 0 140px 0;">
+<p><img data-src="../imagenes/knn-frontera.png"></p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><span class="math inline">\(k\)</span> pequeño</strong></p>
+<p>La predicción depende de <strong>pocos vecinos</strong>, por lo que la frontera puede adaptarse demasiado a los datos.</p>
+<div class="formula">
+<p>Frontera <strong>irregular</strong> y mayor sensibilidad al <strong>ruido</strong>.</p>
+</div>
+</div><div class="column" style="width:50%;">
+<p><strong><span class="math inline">\(k\)</span> grande</strong></p>
+<p>La predicción considera <strong>más vecinos</strong>, suavizando la frontera y reduciendo el efecto de observaciones individuales.</p>
+<div class="formula">
+<p>Frontera <strong>suave</strong>, pero puede perder <strong>patrones locales</strong>.</p>
+</div>
+</div></div>
+</section>
+<section id="la-elección-de-d" class="slide level2">
+<h2>La elección de <span class="math inline">\(d\)</span></h2>
+<p>Además de <span class="math inline">\(k\)</span>, debemos elegir cómo medir la cercanía entre observaciones.</p>
+<p>La función <span class="math inline">\(d(\mathbf{x}_i,\mathbf{x}_j)\)</span> determina qué observaciones serán consideradas vecinas.</p>
+<div style="height: 250px; margin: 15px 0 180px 0;">
+<p><img data-src="../imagenes/knn-distance.png"></p>
+</div>
+<div class="formula">
+<p>Cambiar <span class="math inline">\(d\)</span> cambia la <strong>geometría de la vecindad</strong> y puede cambiar la <strong>predicción del modelo</strong>.</p>
+</div>
+</section>
+<section id="knn-para-clasificación-y-regresión" class="slide level2">
+<h2>KNN para clasificación y regresión</h2>
+<p>KNN puede utilizarse tanto para <strong>clasificación</strong> como para <strong>regresión</strong>.</p>
+<p><strong>Clasificación:</strong> asignamos la clase más frecuente entre los <span class="math inline">\(k\)</span> vecinos:</p>
+<p><span class="math display">\[
+\hat y
+=
+\operatorname{mode}
+\{y_i:\mathbf{x}_i\in\mathcal N_k(\mathbf{x})\}.
+\]</span></p>
+<p><strong>Regresión:</strong> cuando la respuesta es continua, utilizamos el promedio:</p>
+<p><span class="math display">\[
+\hat y
+=
+\frac{1}{k}
+\sum_{i\in\mathcal N_k(\mathbf{x})}
+y_i.
+\]</span></p>
+<div class="formula">
+<p>En ambos casos utilizamos los mismos <span class="math inline">\(k\)</span> vecinos; lo que cambia es <strong>cómo combinamos sus respuestas</strong>.</p>
+</div>
+</section>
+<section id="evaluación-del-modelo" class="slide level2">
+<h2>Evaluación del modelo</h2>
+<p>Las métricas utilizadas dependen del tipo de problema:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><strong>Clasificación</strong></th>
+<th><strong>Regresión</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Accuracy</td>
+<td>MSE</td>
+</tr>
+<tr class="even">
+<td>Precision</td>
+<td>RMSE</td>
+</tr>
+<tr class="odd">
+<td>Recall</td>
+<td>MAE</td>
+</tr>
+<tr class="even">
+<td>Matriz de confusión</td>
+<td><span class="math inline">\(R^2\)</span></td>
+</tr>
+<tr class="odd">
+<td>Curva ROC</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="formula">
+<p>La métrica utilizada depende del problema y del tipo de error que sea más importante.</p>
+</div>
+</section>
+<section id="knn-es-un-modelo-no-paramétrico" class="slide level2">
+<h2>KNN es un modelo no paramétrico</h2>
+<p>KNN es un método de <strong>aprendizaje supervisado no paramétrico</strong>.</p>
+<p>A diferencia de otros modelos que hemos estudiado, no supone una forma funcional específica ni estima un conjunto fijo de parámetros, como en</p>
+<p><span class="math display">\[
+\hat y=f(\mathbf x;\boldsymbol\theta).
+\]</span></p>
+<p>En su lugar, conserva los datos de entrenamiento y realiza la predicción utilizando las observaciones cercanas.</p>
+<div class="formula">
+<p>KNN es un método basado en <strong>instancias</strong>: las predicciones dependen directamente de las observaciones almacenadas.</p>
+</div>
+</section>
+<section id="limitaciones-de-knn" class="slide level2">
+<h2>Limitaciones de KNN</h2>
+<p>KNN presenta algunas limitaciones importantes:</p>
 <ul>
-<li><p>las observaciones son <strong>independientes</strong>;</p></li>
-<li><p>los <strong>log-odds</strong> se modelan como una función lineal de los predictores;</p></li>
-<li><p>los predictores no presentan <strong>multicolinealidad severa</strong>.</p></li>
+<li><p><strong>Costo computacional:</strong> para cada nueva observación debe calcular distancias con las observaciones del conjunto de entrenamiento.</p></li>
+<li><p><strong>Escala:</strong> variables con escalas mayores pueden dominar las distancias, por lo que es necesario <strong>escalar los predictores</strong>.</p></li>
+<li><p><strong>Alta dimensión:</strong> las observaciones se vuelven más dispersas y las distancias menos informativas, fenómeno conocido como <strong>maldición de la dimensionalidad</strong>.</p></li>
 </ul>
 <div class="formula">
-<p>La regresión logística <strong>no requiere normalidad de los predictores</strong> ni una relación lineal entre los predictores y la probabilidad.</p>
+<p>KNN funciona mejor cuando existe una noción útil de <strong>proximidad entre las observaciones</strong>.</p>
+</div>
+</section>
+<section id="en-resumen" class="slide level2">
+<h2>En resumen</h2>
+<ul>
+<li><p>KNN es un método <strong>supervisado y no paramétrico</strong> basado en observaciones cercanas.</p></li>
+<li><p>La noción de cercanía depende de la <strong>métrica de distancia</strong> y de la <strong>escala de los predictores</strong>.</p></li>
+<li><p><span class="math inline">\(k\)</span> controla qué tan <strong>local</strong> es la predicción y debe seleccionarse utilizando datos de validación.</p></li>
+<li><p>En <strong>clasificación</strong>, los vecinos votan; en <strong>regresión</strong>, sus respuestas se promedian.</p></li>
+<li><p>Es simple de entrenar, pero la <strong>predicción puede ser costosa</strong> y deteriorarse en alta dimensión.</p></li>
+</ul>
+<div class="formula">
+<p><strong>Idea central:</strong> observaciones similares deberían producir respuestas similares.</p>
 </div>
 </section>
 <section id="referencias" class="slide level2 smaller scrollable">
@@ -664,8 +476,8 @@ y_i\log(\hat p_i)
 </section>
 <section id="qué-sigue" class="slide level2">
 <h2>¿Qué sigue?</h2>
-<p>En el siguiente notebook implementaremos un modelo de <strong>regresión logística</strong>, desde la preparación de los datos hasta la evaluación del clasificador y la selección del umbral de decisión.</p>
-<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-06.ipynb"><strong>Ir al notebook →</strong></a></p>
+<p>En el siguiente notebook implementaremos <strong>K-Nearest Neighbors</strong>, desde el escalamiento de los datos hasta la selección de <span class="math inline">\(k\)</span> mediante validación.</p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-08.ipynb"><strong>Ir al notebook →</strong></a></p>
 
 
 </section>
@@ -954,7 +766,7 @@ y_i\log(\hat p_i)
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/urendacdenisse-hub\.github\.io\/Modelado-de-datos\/");
+            var filterRegex = new RegExp('/' + window.location.host + '/');
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
