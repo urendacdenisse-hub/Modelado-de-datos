@@ -152,7 +152,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Aprendizaje supervisado</h1>
-  <p class="subtitle">Regresión logística</p>
+  <p class="subtitle">Árboles de decisión</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -167,21 +167,26 @@ Dra. Denisse Urenda Castañeda
 <h2 id="toc-title">Tabla de contenidos</h2>
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
-<li><a href="#/formulación-del-problema" id="/toc-formulación-del-problema">Formulación del problema</a></li>
-<li><a href="#/derivación-simple" id="/toc-derivación-simple">Derivación simple</a></li>
-<li><a href="#/intuición-geométrica" id="/toc-intuición-geométrica">Intuición geométrica</a></li>
-<li><a href="#/modelo-logístico" id="/toc-modelo-logístico">Modelo logístico</a></li>
-<li><a href="#/de-probabilidades-a-clases" id="/toc-de-probabilidades-a-clases">De probabilidades a clases</a></li>
-<li><a href="#/extensión-al-caso-general" id="/toc-extensión-al-caso-general">Extensión al caso general</a></li>
-<li><a href="#/modelo-multivariado" id="/toc-modelo-multivariado">Modelo multivariado</a></li>
-<li><a href="#/interpretación-de-los-coeficientes" id="/toc-interpretación-de-los-coeficientes">Interpretación de los coeficientes</a></li>
-<li><a href="#/inferencia-sobre-los-coeficientes" id="/toc-inferencia-sobre-los-coeficientes">Inferencia sobre los coeficientes</a></li>
-<li><a href="#/predicción-y-clasificación" id="/toc-predicción-y-clasificación">Predicción y clasificación</a></li>
-<li><a href="#/métricas-de-clasificación" id="/toc-métricas-de-clasificación">Métricas de clasificación</a></li>
-<li><a href="#/selección-del-umbral" id="/toc-selección-del-umbral">Selección del umbral</a></li>
-<li><a href="#/construcción-de-la-curva-roc" id="/toc-construcción-de-la-curva-roc">Construcción de la curva ROC</a></li>
-<li><a href="#/evaluación-probabilística" id="/toc-evaluación-probabilística">Evaluación probabilística</a></li>
-<li><a href="#/supuestos-y-limitaciones" id="/toc-supuestos-y-limitaciones">Supuestos y limitaciones</a></li>
+<li><a href="#/estructura-de-un-árbol" id="/toc-estructura-de-un-árbol">Estructura de un árbol</a></li>
+<li><a href="#/de-árbol-a-regiones" id="/toc-de-árbol-a-regiones">De árbol a regiones</a></li>
+<li><a href="#/dónde-hacemos-una-división" id="/toc-dónde-hacemos-una-división">¿Dónde hacemos una división?</a></li>
+<li><a href="#/impureza" id="/toc-impureza">Impureza</a></li>
+<li><a href="#/índice-gini" id="/toc-índice-gini">Índice Gini</a></li>
+<li><a href="#/ejemplo" id="/toc-ejemplo">Ejemplo</a></li>
+<li><a href="#/elegir-una-división" id="/toc-elegir-una-división">Elegir una división</a></li>
+<li><a href="#/construcción-del-árbol" id="/toc-construcción-del-árbol">Construcción del árbol</a></li>
+<li><a href="#/predicción" id="/toc-predicción">Predicción</a></li>
+<li><a href="#/profundidad-del-árbol" id="/toc-profundidad-del-árbol">Profundidad del árbol</a></li>
+<li><a href="#/sobreajuste" id="/toc-sobreajuste">Sobreajuste</a></li>
+<li><a href="#/control-de-complejidad" id="/toc-control-de-complejidad">Control de complejidad</a></li>
+<li><a href="#/y-para-regresión" id="/toc-y-para-regresión">¿Y para regresión?</a></li>
+<li><a href="#/divisiones-en-regresión" id="/toc-divisiones-en-regresión">Divisiones en regresión</a></li>
+<li><a href="#/necesitamos-escalar" id="/toc-necesitamos-escalar">¿Necesitamos escalar?</a></li>
+<li><a href="#/fronteras-de-decisión" id="/toc-fronteras-de-decisión">Fronteras de decisión</a></li>
+<li><a href="#/interpretabilidad" id="/toc-interpretabilidad">Interpretabilidad</a></li>
+<li><a href="#/evaluación" id="/toc-evaluación">Evaluación</a></li>
+<li><a href="#/consideraciones-prácticas" id="/toc-consideraciones-prácticas">Consideraciones prácticas</a></li>
+<li><a href="#/una-limitación-importante" id="/toc-una-limitación-importante">Una limitación importante</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
 <li><a href="#/qué-sigue" id="/toc-qué-sigue">¿Qué sigue?</a></li>
@@ -190,396 +195,331 @@ Dra. Denisse Urenda Castañeda
 </section>
 <section id="introducción" class="slide level2">
 <h2>Introducción</h2>
-<p>En muchos problemas de aprendizaje supervisado, la variable respuesta no es cuantitativa sino <strong>cualitativa</strong>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Supongamos que queremos predecir si una observación pertenece a una determinada clase.</p>
+<p>Una estrategia consiste en realizar una serie de <strong>preguntas sobre las variables predictoras</strong>.</p>
 <p>Por ejemplo:</p>
 <ul>
-<li>¿Un cliente comprará un producto?</li>
-<li>¿Un paciente presenta una enfermedad?</li>
-<li>¿Un correo es spam?</li>
-<li>¿Un estudiante aprobará el curso?</li>
+<li>¿<span class="math inline">\(X_1 &lt; 5\)</span>?</li>
+<li>¿<span class="math inline">\(X_2 &lt; 10\)</span>?</li>
+<li>¿<span class="math inline">\(X_3 = 1\)</span>?</li>
 </ul>
-<p>En el caso más sencillo tenemos dos posibles resultados:</p>
-<p><span class="math display">\[Y\in\{0,1\}.\]</span></p>
-<p>Nuestro objetivo será modelar la probabilidad de que ocurra uno de ellos.</p>
-</section>
-<section id="formulación-del-problema" class="slide level2">
-<h2>Formulación del problema</h2>
-<p>Supongamos que observamos una variable predictora <span class="math inline">\(X\)</span> y una variable respuesta binaria <span class="math inline">\(Y\in\{0,1\}.\)</span></p>
-<p>Queremos modelar</p>
-<p><span class="math display">\[P(Y=1\mid X=x).\]</span></p>
-<p>Definimos</p>
-<p><span class="math display">\[p(x)=P(Y=1\mid X=x).\]</span></p>
-<p>Por lo tanto,</p>
-<p><span class="math display">\[P(Y=0\mid X=x)=1-p(x).\]</span></p>
-<div class="formula">
-<p>La regresión logística busca construir una función</p>
-<p><span class="math display">\[p(x)=f(x), \quad \text{tal que} \quad 0\leq p(x)\leq 1.\]</span></p>
-</div>
-</section>
-<section id="por-qué-no-usar-regresión-lineal" class="slide level2 unlisted">
-<h2>¿Por qué no usar regresión lineal?</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>Podríamos intentar modelar</p>
-<p><span class="math display">\[p(x)=\beta_0+\beta_1x.\]</span></p>
-<p>Sin embargo, una función lineal puede producir valores menores que <span class="math inline">\(0\)</span> o mayores que <span class="math inline">\(1\)</span>.</p>
-<p>Por ejemplo,</p>
-<p><span class="math display">\[\beta_0+\beta_1x=1.4\]</span></p>
-<p>no puede interpretarse como una probabilidad.</p>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../imagenes/regresion-lineal-clasificacion.png" style="width:100.0%"></p>
+<p>Cada respuesta divide los datos en grupos cada vez más pequeños.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../imagenes/tree-intro.png" style="width:100.0%"></p>
 </div></div>
 <div class="formula">
-<p>Necesitamos una función que transforme cualquier valor real en un número entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>.</p>
+<p>Un <strong>árbol de decisión</strong> realiza divisiones sucesivas de los datos utilizando las variables predictoras.</p>
 </div>
 </section>
-<section id="derivación-simple" class="slide level2">
-<h2>Derivación simple</h2>
-<p>Queremos relacionar una probabilidad <span class="math inline">\(p \in (0,1)\)</span> con una expresión lineal que pueda tomar cualquier valor en <span class="math inline">\(\mathbb R\)</span>. Es decir, una función <span class="math display">\[\sigma:(0,1) \rightarrow \mathbb R\]</span></p>
-<h3 id="primer-intento">Primer intento</h3>
-<p>Comenzamos con la razón conocida como <strong>odds</strong>: <span class="math display">\[\frac{p}{1-p}.\]</span></p>
-<p>Si <span class="math inline">\(p\in(0,1)\)</span> entonces</p>
-<p><span class="math display">\[\frac{p}{1-p}\in(0,\infty).\]</span></p>
-</section>
-<section id="odds" class="slide level2 unlisted">
-<h2>Odds</h2>
-<p>Los odds comparan la probabilidad de que ocurra un evento con la probabilidad de que no ocurra:</p>
-<p><span class="math display">\[\text{odds}=\frac{p}{1-p}.\]</span></p>
-<p>Por ejemplo, si <span class="math inline">\(p=0.8\)</span>, entonces</p>
-<p><span class="math display">\[\text{odds}=\frac{0.8}{0.2}=4.\]</span></p>
-<p>Esto significa que el evento es <strong>4 veces más probable que ocurra a que no ocurra</strong>.</p>
-</section>
-<section id="log-odds" class="slide level2 unlisted">
-<h2>Log-odds</h2>
-<p>Los odds todavía están restringidos a valores positivos.</p>
-<p>Aplicamos logaritmo:</p>
-<p><span class="math display">\[\log\left(\frac{p}{1-p}\right).\]</span></p>
-<p>Esta transformación puede tomar cualquier valor real:</p>
-<p><span class="math display">\[-\infty&lt;\log\left(\frac{p}{1-p}\right)&lt;\infty.\]</span></p>
-<p>Esta cantidad se conoce como <strong>logit</strong> o <strong>log-odds</strong>.</p>
-</section>
-<section id="intuición-geométrica" class="slide level2">
-<h2>Intuición geométrica</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>La regresión logística modela primero una combinación lineal</p>
-<p><span class="math display">\[z=\beta_0+\beta_1x.\]</span></p>
-<p>Pero en lugar de utilizar <span class="math inline">\(z\)</span> directamente como predicción, lo transforma mediante la <strong>función logística</strong>:</p>
-<p><span class="math display">\[p(x)=\frac{1}{1+e^{-z}}.\]</span></p>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../imagenes/regresion-logistica.png" style="width:100.0%"></p>
-</div></div>
-<p>La función logística transforma cualquier número real en un valor entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, es decir, <span class="math inline">\(\sigma:\mathbb{R}\rightarrow(0,1)\)</span>.</p>
-<div class="formula">
-<p>Por lo tanto, modelamos la probabilidad de <span class="math inline">\(Y=1\)</span> como <span class="math display">\[p(x) = P(Y=1\mid X=x) =\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
-</div>
-</section>
-<section id="modelo-logístico" class="slide level2">
-<h2>Modelo logístico</h2>
-<p>Ahora podemos modelar los log-odds mediante una función lineal:</p>
-<p><span class="math display">\[\log\left(
-\frac{p(x)}{1-p(x)}
-\right)
-=
-\beta_0+\beta_1x.\]</span></p>
-<p>Resolviendo para <span class="math inline">\(p(x)\)</span> obtenemos</p>
-<p><span class="math display">\[p(x)=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
-<p>que es el modelo de <strong>regresión logística</strong>.</p>
-</section>
-<section id="qué-estamos-modelando-realmente" class="slide level2 unlisted">
-<h2>¿Qué estamos modelando realmente?</h2>
-<p>La relación entre <span class="math inline">\(X\)</span> y la probabilidad no es lineal:</p>
-<p><span class="math display">\[p(x)
-=
-\frac{1}
-{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
-<p>Lo que sí es lineal es</p>
-<p><span class="math display">\[\boxed{
-\log\left(
-\frac{p(x)}{1-p(x)}
-\right)
-=
-\beta_0+\beta_1x
-}\]</span></p>
-<p>Es decir, la regresión logística es lineal en los <strong>log-odds</strong>.</p>
-</section>
-<section id="ejemplo-simple" class="slide level2 unlisted">
-<h2>Ejemplo simple</h2>
-<div class="example">
-<p>Se quiere modelar la probabilidad de aprobar un examen según las <strong>horas de estudio</strong>.Sea</p>
-<p><span class="math display">\[Y=
-\begin{cases}
-1, &amp; \text{aprueba},\\
-0, &amp; \text{no aprueba}.
-\end{cases}\]</span></p>
-<p>Se ajusta el modelo de regresión logística y se obtiene <span class="math inline">\(\beta_0 = -4,\quad \beta_1 = 1\)</span>.</p>
+<section id="estructura-de-un-árbol" class="slide level2">
+<h2>Estructura de un árbol</h2>
+<p>Un árbol de decisión está formado por:</p>
 <ul>
-<li>¿Cuál es la probabilidad de aprobar si un estudiante estudia 3 horas? ¿Y si estudia 5 horas?</li>
-<li>¿Cómo podemos convertir estas probabilidades en una decisión: aprueba o no aprueba?</li>
-<li>¿A partir de cuántas horas de estudio el modelo clasifica a un estudiante como aprobado?</li>
+<li><strong>nodo raíz:</strong> contiene inicialmente todas las observaciones;</li>
+<li><strong>nodos internos:</strong> representan decisiones sobre alguna variable;</li>
+<li><strong>ramas:</strong> representan el resultado de una decisión;</li>
+<li><strong>nodos terminales u hojas:</strong> contienen la predicción final.</li>
 </ul>
-</div>
-</section>
-<section id="de-probabilidades-a-clases" class="slide level2">
-<h2>De probabilidades a clases</h2>
-<p>La regresión logística estima</p>
-<p><span class="math display">\[p(x)=P(Y=1\mid X=x).\]</span></p>
-<p>Para obtener una clase debemos elegir un <strong>umbral de decisión</strong> <span class="math inline">\(c\)</span>:</p>
-<p><span class="math display">\[\hat y=
-\begin{cases}
-1, &amp; p(x)\geq c,\\
-0, &amp; p(x)&lt;c.
-\end{cases}\]</span></p>
-<p>El valor <span class="math inline">\(c=0.5\)</span> es una elección común, pero <strong>no necesariamente es la mejor</strong>.</p>
+
+<img data-src="../imagenes/tree-parts.png" style="width:75.0%" class="r-stretch"></section>
+<section id="de-árbol-a-regiones" class="slide level2">
+<h2>De árbol a regiones</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Cada división del árbol también puede interpretarse como una división del espacio de predictores.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[X_1 &lt; 5\]</span></p>
+<p>divide el espacio en dos regiones.</p>
+<p>Posteriormente podemos dividir alguna de estas regiones utilizando otra variable.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../imagenes/tree-regions.png" style="width:100.0%"></p>
+</div></div>
 <div class="formula">
-<p>La elección del umbral depende del problema y del costo de cometer diferentes tipos de error.</p>
-</div>
-<p>La <strong>frontera de decisión</strong> corresponde a los valores de <span class="math inline">\(x\)</span> donde</p>
-<p><span class="math display">\[p(x)=c.\]</span></p>
-</section>
-<section id="extensión-al-caso-general" class="slide level2">
-<h2>Extensión al caso general</h2>
-<p>Sea <span class="math inline">\(Y\in\{0,1\}\)</span> una variable respuesta binaria y sean</p>
-<p><span class="math display">\[X_1,X_2,\ldots,X_p\]</span></p>
-<p>las <span class="math inline">\(p\)</span> variables predictoras.</p>
-<p>Queremos modelar la probabilidad condicional</p>
-<p><span class="math display">\[p(x_1,\ldots,x_p)
-=
-P(Y=1\mid X_1=x_1,\ldots,X_p=x_p).\]</span></p>
-<p>La regresión logística supone que los <strong>log-odds</strong> de esta probabilidad son una función lineal de los predictores:</p>
-<div class="formula">
-<p><span class="math display">\[\log\left(
-\frac{p(x_1,\ldots,x_p)}
-{1-p(x_1,\ldots,x_p)}
-\right)
-=
-\beta_0+\beta_1x_1+\cdots+\beta_px_p.\]</span></p>
+<p>Un árbol divide el espacio de predictores en <strong>regiones</strong> y asigna una predicción a cada región.</p>
 </div>
 </section>
-<section id="notación-matricial" class="slide level2 unlisted">
-<h2>Notación matricial</h2>
-<p>Para incluir el intercepto, definimos</p>
-<p><span class="math display">\[\mathbf x
-=
-(1,x_1,\ldots,x_p)^T,
+<section id="dónde-hacemos-una-división" class="slide level2">
+<h2>¿Dónde hacemos una división?</h2>
+<p>Supongamos que tenemos diferentes posibilidades:</p>
+<p><span class="math display">\[X_1 &lt; 2,
 \qquad
-\boldsymbol\beta
+X_1 &lt; 5,
+\qquad
+X_2 &lt; 8,
+\qquad \ldots\]</span></p>
+<p>Cada división genera dos nuevos grupos de observaciones.</p>
+<p>Queremos elegir una división que produzca grupos <strong>más homogéneos respecto a la variable respuesta</strong>.</p>
+<div class="formula">
+<p>El árbol busca la variable y el punto de corte que produzcan la <strong>mejor separación de los datos</strong>.</p>
+</div>
+</section>
+<section id="impureza" class="slide level2">
+<h2>Impureza</h2>
+<p>En clasificación necesitamos medir qué tan mezcladas se encuentran las clases dentro de un nodo.</p>
+<p>Consideremos:</p>
+<p><span class="math display">\[\text{Nodo A}:
+\quad
+\class{A}=50\%,
+\quad
+\class{B}=50\%.\]</span></p>
+<p>Este nodo tiene alta impureza.</p>
+<p>En cambio,</p>
+<p><span class="math display">\[\text{Nodo B}:
+\quad
+\class{A}=95\%,
+\quad
+\class{B}=5\%.\]</span></p>
+<p>es mucho más homogéneo.</p>
+<div class="formula">
+<p>Una buena división produce nodos con observaciones pertenecientes principalmente a <strong>una misma clase</strong>.</p>
+</div>
+</section>
+<section id="índice-gini" class="slide level2">
+<h2>Índice Gini</h2>
+<p>Una medida común de impureza es el <strong>índice Gini</strong>.</p>
+<p>Si existen <span class="math inline">\(K\)</span> clases,</p>
+<p><span class="math display">\[G
 =
-(\beta_0,\beta_1,\ldots,\beta_p)^T.\]</span></p>
+1-
+\sum_{k=1}^{K}p_k^2,\]</span></p>
+<p>donde <span class="math inline">\(p_k\)</span> representa la proporción de observaciones de la clase <span class="math inline">\(k\)</span> dentro del nodo.</p>
+<div class="formula">
+<p>Un nodo completamente puro tiene</p>
+<p><span class="math display">\[G=0.\]</span></p>
+</div>
+</section>
+<section id="ejemplo" class="slide level2">
+<h2>Ejemplo</h2>
+<p>Supongamos un nodo con dos clases:</p>
+<p><span class="math display">\[p_A=0.5,
+\qquad
+p_B=0.5.\]</span></p>
 <p>Entonces,</p>
-<p><span class="math display">\[\beta_0+\beta_1x_1+\cdots+\beta_px_p
+<p><span class="math display">\[G
 =
-\mathbf x^T\boldsymbol\beta.\]</span></p>
-<p>Por lo tanto, el modelo puede escribirse como</p>
-<p><span class="math display">\[\log\left(
-\frac{p(\mathbf x)}
-{1-p(\mathbf x)}
-\right)
+1-(0.5)^2-(0.5)^2
 =
-\mathbf x^T\boldsymbol\beta.\]</span></p>
-<p>Despejando <span class="math inline">\(p(\mathbf x)\)</span>,</p>
-<p><span class="math display">\[p(\mathbf x)
-=
-\frac{e^{\mathbf x^T\boldsymbol\beta}}
-{1+e^{\mathbf x^T\boldsymbol\beta}}.\]</span></p>
-</section>
-<section id="modelo-multivariado" class="slide level2">
-<h2>Modelo multivariado</h2>
-<div class="formula">
-<p><strong>Modelo de regresión logística</strong></p>
-<p>Sea <span class="math inline">\(Y\in\{0,1\}\)</span> una variable respuesta binaria y sean</p>
-<p><span class="math display">\[\mathbf x=(1,x_1,\ldots,x_p)^T,
+0.5.\]</span></p>
+<p>Si tenemos</p>
+<p><span class="math display">\[p_A=1,
 \qquad
-\boldsymbol\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T,\]</span></p>
-<p>el vector de predictores y el vector de parámetros, respectivamente.</p>
-<p>La probabilidad condicional de <span class="math inline">\(Y=1\)</span> está dada por</p>
-<p><span class="math display">\[\boxed{
-p(\mathbf x)
+p_B=0,\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[G
 =
-P(Y=1\mid \mathbf x)
+1-(1)^2-(0)^2
 =
-\frac{1}
-{1+e^{-\mathbf x^T\boldsymbol\beta}}
-}.\]</span></p>
+0.\]</span></p>
+<div class="formula">
+<p>Mientras menor sea el índice Gini, <strong>más puro es el nodo</strong>.</p>
 </div>
 </section>
-<section id="cómo-estimamos-los-coeficientes" class="slide level2 unlisted">
-<h2>¿Cómo estimamos los coeficientes?</h2>
-<p>En regresión lineal, los coeficientes se estiman minimizando los errores cuadrados.</p>
-<p>En regresión logística, como</p>
-<p><span class="math display">\[Y_i \mid \mathbf{x}_i \sim \operatorname{Bernoulli}(p_i),\]</span></p>
-<p>utilizamos la <strong>máxima verosimilitud</strong>: buscamos los coeficientes que hagan más probables los resultados observados.</p>
-<p><span class="math display">\[\hat{\boldsymbol\beta}
+<section id="elegir-una-división" class="slide level2">
+<h2>Elegir una división</h2>
+<p>Una posible división genera dos nodos:</p>
+<p><span class="math display">\[R_1
+\qquad\text{y}\qquad
+R_2.\]</span></p>
+<p>Calculamos la impureza resultante mediante un promedio ponderado:</p>
+<p><span class="math display">\[G_{\text{split}}
 =
-\underset{\boldsymbol\beta}{\arg\max}
-\sum_{i=1}^{n}
-\left[
-y_i\log(p_i)
+\frac{n_1}{n}G_1
 +
-(1-y_i)\log(1-p_i)
-\right]\]</span></p>
+\frac{n_2}{n}G_2.\]</span></p>
+<p>El árbol compara diferentes variables y puntos de corte.</p>
 <div class="formula">
-<p>Los coeficientes se estiman mediante <strong>máxima verosimilitud</strong> y se obtienen utilizando <strong>optimización numérica</strong>.</p>
+<p>Se selecciona la división que produce la <strong>mayor reducción de impureza</strong>.</p>
 </div>
 </section>
-<section id="interpretación-de-los-coeficientes" class="slide level2">
-<h2>Interpretación de los coeficientes</h2>
-<p>Recordemos que</p>
-<p><span class="math display">\[\log\left(\frac{p}{1-p}\right)
-=
-\beta_0+\beta_1x_1+\cdots+\beta_px_p.\]</span></p>
-<p>Manteniendo las demás variables constantes, aumentar <span class="math inline">\(x_j\)</span> una unidad cambia los <strong>log-odds</strong> en</p>
-<p><span class="math display">\[\beta_j.\]</span></p>
-<p>Equivalentemente, los odds se multiplican por <span class="math inline">\(e^{\beta_j}\)</span>. Esta cantidad se conoce como <strong>odds ratio</strong>.</p>
-<div class="example">
-<p>Si <span class="math inline">\(\beta_i=2\)</span>, los odds se multiplican por <span class="math inline">\(e^2\approx7.39\)</span>.</p>
-</div>
-</section>
-<section id="inferencia-sobre-los-coeficientes" class="slide level2">
-<h2>Inferencia sobre los coeficientes</h2>
-<p>Para muestras suficientemente grandes,</p>
-<p><span class="math display">\[\hat\beta_j
-\approx
-\mathcal N\left(
-\beta_j,
-\operatorname{SE}(\hat\beta_j)^2
-\right).\]</span></p>
-<p>Esto permite construir <strong>intervalos de confianza</strong> y realizar pruebas de hipótesis, por ejemplo,</p>
-<p><span class="math display">\[H_0:\beta_j=0
-\qquad\text{vs.}\qquad
-H_1:\beta_j\neq0.\]</span></p>
-<p>Una prueba común utiliza el estadístico de Wald:</p>
-<p><span class="math display">\[z=
-\frac{\hat\beta_j}
-{\operatorname{SE}(\hat\beta_j)}.\]</span></p>
-</section>
-<section id="predicción-y-clasificación" class="slide level2">
-<h2>Predicción y clasificación</h2>
-<p>Una vez estimados los parámetros, para una nueva observación <span class="math inline">\(\mathbf x_*\)</span> calculamos</p>
-<p><span class="math display">\[\hat p
-=
-\frac{1}
-{1+e^{-\mathbf x_*^T\hat{\boldsymbol\beta}}}.\]</span></p>
-<p>Esta es una <strong>predicción probabilística</strong>.</p>
-<p>Para obtener una clase, elegimos un umbral <span class="math inline">\(c\)</span>:</p>
-<p><span class="math display">\[\hat y
-=
-\begin{cases}
-1, &amp; \hat p\geq c,\\
-0, &amp; \hat p&lt;c.
-\end{cases}\]</span></p>
+<section id="construcción-del-árbol" class="slide level2">
+<h2>Construcción del árbol</h2>
+<p>El proceso se repite de manera recursiva:</p>
+<ol type="1">
+<li>evaluar posibles divisiones;</li>
+<li>seleccionar la mejor;</li>
+<li>dividir los datos;</li>
+<li>repetir el procedimiento dentro de cada nuevo nodo.</li>
+</ol>
+<p>El crecimiento continúa hasta satisfacer algún <strong>criterio de parada</strong>.</p>
 <div class="formula">
-<p>Un valor común es <span class="math inline">\(c=0.5\)</span>, pero el umbral depende del problema.</p>
+<p>El árbol se construye mediante una secuencia de decisiones <strong>localmente óptimas</strong>.</p>
 </div>
 </section>
-<section id="métricas-de-clasificación" class="slide level2">
-<h2>Métricas de clasificación</h2>
-<p>Después de seleccionar un umbral, comparamos <span class="math inline">\(y_i\)</span> con <span class="math inline">\(\hat y_i\)</span>:</p>
+<section id="predicción" class="slide level2">
+<h2>Predicción</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Para predecir una nueva observación:</p>
+<ol type="1">
+<li>comenzamos en el nodo raíz;</li>
+<li>evaluamos la primera condición;</li>
+<li>seguimos la rama correspondiente;</li>
+<li>repetimos hasta llegar a una hoja.</li>
+</ol>
+<p>La clase predicha corresponde normalmente a la <strong>clase mayoritaria de la hoja</strong>.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../imagenes/tree-prediction.png" style="width:100.0%"></p>
+</div></div>
+</section>
+<section id="profundidad-del-árbol" class="slide level2">
+<h2>Profundidad del árbol</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Un árbol poco profundo realiza pocas divisiones y genera regiones relativamente grandes.</p>
+<p>Un árbol profundo puede generar regiones muy específicas alrededor de las observaciones de entrenamiento.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../imagenes/tree-depth.png" style="width:100.0%"></p>
+</div></div>
+<div class="formula">
+<p>La <strong>profundidad</strong> controla la complejidad del árbol.</p>
+</div>
+</section>
+<section id="sobreajuste" class="slide level2">
+<h2>Sobreajuste</h2>
+<p>Si permitimos que el árbol continúe creciendo, puede llegar a construir hojas con muy pocas observaciones.</p>
+<p>Esto permite ajustarse extremadamente bien a los datos de entrenamiento.</p>
+<p>Sin embargo, puede producir un desempeño pobre sobre nuevas observaciones.</p>
+<div class="formula">
+<p>Un árbol demasiado complejo puede producir <strong>sobreajuste</strong>.</p>
+</div>
+</section>
+<section id="control-de-complejidad" class="slide level2">
+<h2>Control de complejidad</h2>
+<p>Podemos controlar el crecimiento utilizando hiperparámetros como:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th></th>
-<th style="text-align: right;">Predicción <span class="math inline">\(1\)</span></th>
-<th style="text-align: right;">Predicción <span class="math inline">\(0\)</span></th>
+<th>Hiperparámetro</th>
+<th>Controla</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Real <span class="math inline">\(1\)</span></td>
-<td style="text-align: right;">TP</td>
-<td style="text-align: right;">FN</td>
+<td><code>max_depth</code></td>
+<td>Profundidad máxima</td>
 </tr>
 <tr class="even">
-<td>Real <span class="math inline">\(0\)</span></td>
-<td style="text-align: right;">FP</td>
-<td style="text-align: right;">TN</td>
+<td><code>min_samples_split</code></td>
+<td>Observaciones mínimas para dividir un nodo</td>
+</tr>
+<tr class="odd">
+<td><code>min_samples_leaf</code></td>
+<td>Observaciones mínimas en una hoja</td>
+</tr>
+<tr class="even">
+<td><code>max_leaf_nodes</code></td>
+<td>Número máximo de hojas</td>
 </tr>
 </tbody>
 </table>
-<p>A partir de la <strong>matriz de confusión</strong> podemos definir distintas métricas de desempeño.</p>
-</section>
-<section id="métricas-de-clasificación-1" class="slide level2 unlisted">
-<h2>Métricas de clasificación</h2>
-<p><span class="math display">\[\operatorname{Accuracy}
-=
-\frac{TP+TN}{TP+TN+FP+FN}\]</span></p>
-<p><span class="math display">\[\operatorname{Precision}
-=
-\frac{TP}{TP+FP},
-\qquad
-\operatorname{Recall}
-=
-\frac{TP}{TP+FN}.\]</span></p>
-<ul>
-<li><strong>Accuracy:</strong> ¿qué proporción clasificamos correctamente?</li>
-<li><strong>Precision:</strong> de los positivos predichos, ¿cuántos eran positivos?</li>
-<li><strong>Recall:</strong> de los positivos reales, ¿cuántos detectamos?</li>
-</ul>
 <div class="formula">
-<p>La métrica depende del tipo de error que queremos evitar:</p>
-<ul>
-<li>Si es importante evitar <strong>falsos positivos (FP)</strong>, buscamos mayor <strong>Precision</strong>.</li>
-<li>Si es importante evitar <strong>falsos negativos (FN)</strong>, buscamos mayor <strong>Recall</strong>.</li>
-</ul>
+<p>Estos hiperparámetros controlan la <strong>complejidad del árbol</strong> y pueden seleccionarse utilizando validación.</p>
 </div>
 </section>
-<section id="selección-del-umbral" class="slide level2">
-<h2>Selección del umbral</h2>
-<p>En un problema de clasificación, debemos elegir un umbral <span class="math inline">\(c\)</span> para convertir las probabilidades en clases:</p>
-<p><span class="math display">\[\hat{Y} =
-\begin{cases}
-1, &amp; \hat{p} \geq c,\\
-0, &amp; \hat{p} &lt; c.
-\end{cases}\]</span></p>
-<p>Diferentes valores de <span class="math inline">\(c\)</span> producen diferentes <strong>falsos positivos</strong> y <strong>verdaderos positivos</strong>.</p>
-<p>Una herramienta para analizar y seleccionar el umbral es la <strong>curva ROC</strong>.</p>
-<p>La curva ROC permite comparar el comportamiento del clasificador para distintos valores de <span class="math inline">\(c\)</span>.</p>
+<section id="y-para-regresión" class="slide level2">
+<h2>¿Y para regresión?</h2>
+<p>Los árboles también pueden utilizarse cuando la variable respuesta es continua.</p>
+<p>En este caso, cada hoja contiene una predicción numérica.</p>
+<p>Normalmente, la predicción corresponde al promedio de las observaciones de entrenamiento dentro de la región:</p>
+<p><span class="math display">\[\hat y_R
+=
+\frac{1}{N_R}
+\sum_{i:x_i\in R}y_i.\]</span></p>
+<div class="formula">
+<p><strong>Clasificación:</strong> cada hoja predice una clase.</p>
+<p><strong>Regresión:</strong> cada hoja predice un valor continuo.</p>
+</div>
 </section>
-<section id="construcción-de-la-curva-roc" class="slide level2">
-<h2>Construcción de la curva ROC</h2>
-<p>Para cada valor del umbral <span class="math inline">\(c\)</span> calculamos:</p>
-<p><span class="math display">\[\operatorname{TPR}
+<section id="divisiones-en-regresión" class="slide level2">
+<h2>Divisiones en regresión</h2>
+<p>En regresión ya no buscamos separar clases.</p>
+<p>Buscamos divisiones que produzcan regiones donde los valores de <span class="math inline">\(y\)</span> sean similares.</p>
+<p>Una forma de medir el error dentro de una región <span class="math inline">\(R\)</span> es</p>
+<p><span class="math display">\[\text{SSE}_R
 =
-\frac{TP}{TP+FN},
-\quad
-\operatorname{FPR}
-=
-\frac{FP}{FP+TN}\]</span></p>
+\sum_{i:x_i\in R}
+(y_i-\hat y_R)^2.\]</span></p>
+<p>El árbol busca divisiones que reduzcan este error.</p>
+<div class="formula">
+<p>En regresión, una buena división genera regiones con valores de <span class="math inline">\(y\)</span> <strong>más homogéneos</strong>.</p>
+</div>
+</section>
+<section id="necesitamos-escalar" class="slide level2">
+<h2>¿Necesitamos escalar?</h2>
+<p>Consideremos una división:</p>
+<p><span class="math display">\[X_j &lt; c.\]</span></p>
+<p>El árbol solamente necesita comparar el valor de una variable con un punto de corte.</p>
+<p>Por esta razón, cambiar la escala de una variable no modifica fundamentalmente las posibles divisiones.</p>
+<div class="formula">
+<p>A diferencia de KNN y SVM, los árboles de decisión generalmente <strong>no requieren escalamiento de las variables predictoras</strong>.</p>
+</div>
+</section>
+<section id="fronteras-de-decisión" class="slide level2">
+<h2>Fronteras de decisión</h2>
 <div class="columns">
-<div class="column" style="width:40%;">
-<p>Cada umbral <span class="math inline">\(c\)</span> genera un punto:</p>
-<p><span class="math display">\[(\operatorname{FPR},\operatorname{TPR})\]</span></p>
-<p>La <strong>curva ROC</strong> se obtiene al representar estos puntos para distintos valores de <span class="math inline">\(c\)</span>.</p>
-</div><div class="column" style="width:60%;">
-<p><img data-src="../imagenes/roc.webp"></p>
+<div class="column" style="width:50%;">
+<p>Cada división utiliza una variable:</p>
+<p><span class="math display">\[X_j&lt;c.\]</span></p>
+<p>Por esta razón, en dos dimensiones las divisiones son verticales u horizontales.</p>
+<p>Al combinar muchas divisiones, el árbol puede construir fronteras de decisión no lineales.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../imagenes/tree-boundaries.png" style="width:100.0%"></p>
 </div></div>
 </section>
-<section id="evaluación-probabilística" class="slide level2">
-<h2>Evaluación probabilística</h2>
-<p>Las métricas anteriores evalúan las <strong>clases predichas</strong>. También podemos evaluar directamente las probabilidades <span class="math inline">\(\hat p_i\)</span>.</p>
-<p>La <strong>log-loss</strong> está dada por</p>
-<p><span class="math display">\[-\frac1n
-\sum_{i=1}^{n}
-\left[
-y_i\log(\hat p_i)
-+
-(1-y_i)\log(1-\hat p_i)
-\right].\]</span></p>
-<div class="formula">
-<p>La log-loss corresponde a la <strong>log-verosimilitud negativa promedio</strong>.</p>
-<p>Una menor log-loss indica mejores predicciones probabilísticas.</p>
-</div>
-</section>
-<section id="supuestos-y-limitaciones" class="slide level2">
-<h2>Supuestos y limitaciones</h2>
-<p>Para aplicar regresión logística debemos considerar que:</p>
+<section id="interpretabilidad" class="slide level2">
+<h2>Interpretabilidad</h2>
+<p>Una ventaja importante de los árboles es que podemos visualizar directamente las decisiones utilizadas para realizar una predicción.</p>
+<p>Esto permite observar:</p>
 <ul>
-<li><p>las observaciones son <strong>independientes</strong>;</p></li>
-<li><p>los <strong>log-odds</strong> se modelan como una función lineal de los predictores;</p></li>
-<li><p>los predictores no presentan <strong>multicolinealidad severa</strong>.</p></li>
+<li>qué variables aparecen en las divisiones;</li>
+<li>qué condiciones conducen a una hoja;</li>
+<li>qué predicción realiza cada región.</li>
 </ul>
 <div class="formula">
-<p>La regresión logística <strong>no requiere normalidad de los predictores</strong> ni una relación lineal entre los predictores y la probabilidad.</p>
+<p>Los árboles pequeños pueden ser modelos <strong>fácilmente interpretables</strong>.</p>
+</div>
+</section>
+<section id="evaluación" class="slide level2">
+<h2>Evaluación</h2>
+<p>Para clasificación podemos utilizar:</p>
+<ul>
+<li>Accuracy</li>
+<li>Precision</li>
+<li>Recall</li>
+<li>Matriz de confusión</li>
+<li>Curva ROC</li>
+</ul>
+<p>Para regresión:</p>
+<ul>
+<li>MSE</li>
+<li>RMSE</li>
+<li>MAE</li>
+<li><span class="math inline">\(R^2\)</span></li>
+</ul>
+<div class="note">
+<p>Los hiperparámetros del árbol deben seleccionarse utilizando datos de validación.</p>
+</div>
+</section>
+<section id="consideraciones-prácticas" class="slide level2">
+<h2>Consideraciones prácticas</h2>
+<p>Antes de utilizar árboles de decisión debemos recordar:</p>
+<ul>
+<li>pueden utilizarse para <strong>clasificación y regresión</strong>;</li>
+<li>generalmente no requieren escalamiento;</li>
+<li>pueden representar relaciones no lineales;</li>
+<li>su complejidad debe controlarse para evitar sobreajuste;</li>
+<li>árboles pequeños son fáciles de interpretar;</li>
+<li>pequeñas modificaciones en los datos pueden producir árboles diferentes.</li>
+</ul>
+</section>
+<section id="una-limitación-importante" class="slide level2">
+<h2>Una limitación importante</h2>
+<p>Los árboles de decisión pueden tener <strong>alta variabilidad</strong>.</p>
+<p>Una pequeña modificación en los datos de entrenamiento puede cambiar las primeras divisiones y producir un árbol considerablemente diferente.</p>
+<div class="formula">
+<p>Podemos reducir esta variabilidad combinando las predicciones de <strong>muchos árboles</strong>.</p>
 </div>
 </section>
 <section id="referencias" class="slide level2 smaller scrollable">
@@ -614,8 +554,8 @@ y_i\log(\hat p_i)
 </section>
 <section id="qué-sigue" class="slide level2">
 <h2>¿Qué sigue?</h2>
-<p>En el siguiente notebook implementaremos un modelo de <strong>regresión logística</strong>, desde la preparación de los datos hasta la evaluación del clasificador y la selección del umbral de decisión.</p>
-<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-06.ipynb"><strong>Ir al notebook →</strong></a></p>
+<p>En el siguiente notebook implementaremos <strong>árboles de decisión</strong>, desde la construcción del modelo hasta la selección de sus hiperparámetros.</p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-09.ipynb"><strong>Ir al notebook →</strong></a></p>
 
 
 </section>
