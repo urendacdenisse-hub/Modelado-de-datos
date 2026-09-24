@@ -417,7 +417,7 @@
     "href": "lecciones/unidad-01/leccion-12.html#k-nearest-neighbors",
     "title": "Aprendizaje supervisado",
     "section": "K-Nearest Neighbors",
-    "text": "K-Nearest Neighbors\n\n\nPara clasificar una nueva observación:\n\nCalculamos su distancia a cada observación de entrenamiento: \\(d_i=d(\\mathbf{x},\\mathbf{x}_i)\\).\nSeleccionamos los \\(k\\) vecinos más cercanos: \\(N_k(\\mathbf{x})\\).\nObservamos sus clases \\(y_i\\).\nAsignamos la clase más frecuente:\n\n\\[\n\\hat y\n=\n\\operatorname{mode}\n\\{y_i:\\mathbf{x}_i\\in N_k(\\mathbf{x})\\}.\n\\]"
+    "text": "K-Nearest Neighbors\n\n\nPara clasificar una nueva observación:\n\nCalculamos su distancia a cada observación de entrenamiento: \\(d_i=d(\\mathbf{x},\\mathbf{x}_i)\\).\nSeleccionamos los \\(k\\) vecinos más cercanos: \\(N_k(\\mathbf{x})\\).\nObservamos sus clases \\(y_i\\).\nAsignamos la clase más frecuente:\n\n\\[\\hat y\n=\n\\operatorname{mode}\n\\{y_i:\\mathbf{x}_i\\in N_k(\\mathbf{x})\\}.\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-12.html#ejemplo",
@@ -459,7 +459,14 @@
     "href": "lecciones/unidad-01/leccion-12.html#knn-para-clasificación-y-regresión",
     "title": "Aprendizaje supervisado",
     "section": "KNN para clasificación y regresión",
-    "text": "KNN para clasificación y regresión\nKNN puede utilizarse tanto para clasificación como para regresión.\nClasificación: asignamos la clase más frecuente entre los \\(k\\) vecinos:\n\\[\n\\hat y\n=\n\\operatorname{mode}\n\\{y_i:\\mathbf{x}_i\\in\\mathcal N_k(\\mathbf{x})\\}.\n\\]\nRegresión: cuando la respuesta es continua, utilizamos el promedio:\n\\[\n\\hat y\n=\n\\frac{1}{k}\n\\sum_{i\\in\\mathcal N_k(\\mathbf{x})}\ny_i.\n\\]\n\nEn ambos casos utilizamos los mismos \\(k\\) vecinos; lo que cambia es cómo combinamos sus respuestas."
+    "text": "KNN para clasificación y regresión\nKNN puede utilizarse tanto para clasificación como para regresión.\nClasificación: asignamos la clase más frecuente entre los \\(k\\) vecinos:\n\\[\\hat y\n=\n\\operatorname{mode}\n\\{y_i:\\mathbf{x}_i\\in\\mathcal N_k(\\mathbf{x})\\}.\\]\nRegresión: cuando la respuesta es continua, utilizamos el promedio:\n\\[\\hat y\n=\n\\frac{1}{k}\n\\sum_{i\\in\\mathcal N_k(\\mathbf{x})}\ny_i.\\]\n\nEn ambos casos utilizamos los mismos \\(k\\) vecinos; lo que cambia es cómo combinamos sus respuestas."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-12.html#antes-de-continuar",
+    "href": "lecciones/unidad-01/leccion-12.html#antes-de-continuar",
+    "title": "Aprendizaje supervisado",
+    "section": "Antes de continuar…",
+    "text": "Antes de continuar…\n\n\n\n\nContesta la siguiente encuesta:\nResponder encuesta"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-12.html#evaluación-del-modelo",
@@ -473,7 +480,7 @@
     "href": "lecciones/unidad-01/leccion-12.html#knn-es-un-modelo-no-paramétrico",
     "title": "Aprendizaje supervisado",
     "section": "KNN es un modelo no paramétrico",
-    "text": "KNN es un modelo no paramétrico\nKNN es un método de aprendizaje supervisado no paramétrico.\nA diferencia de otros modelos que hemos estudiado, no supone una forma funcional específica ni estima un conjunto fijo de parámetros, como en\n\\[\n\\hat y=f(\\mathbf x;\\boldsymbol\\theta).\n\\]\nEn su lugar, conserva los datos de entrenamiento y realiza la predicción utilizando las observaciones cercanas.\n\nKNN es un método basado en instancias: las predicciones dependen directamente de las observaciones almacenadas."
+    "text": "KNN es un modelo no paramétrico\nKNN es un método de aprendizaje supervisado no paramétrico.\nA diferencia de otros modelos que hemos estudiado, no supone una forma funcional específica ni estima un conjunto fijo de parámetros, como en\n\\[\\hat y=f(\\mathbf x;\\boldsymbol\\theta).\\]\nEn su lugar, conserva los datos de entrenamiento y realiza la predicción utilizando las observaciones cercanas.\n\nKNN es un método basado en instancias: las predicciones dependen directamente de las observaciones almacenadas."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-12.html#limitaciones-de-knn",
