@@ -80,13 +80,10 @@ Para clasificar una nueva observación:
 
 4.  Asignamos la clase más frecuente:
 
-$$
-\hat y
+$$\hat y
 =
 \operatorname{mode}
-\{y_i:\mathbf{x}_i\in N_k(\mathbf{x})\}.
-$$
-
+\{y_i:\mathbf{x}_i\in N_k(\mathbf{x})\}.$$
 :::
 
 ::: {.column width="50%"}
@@ -135,42 +132,33 @@ Si utilizamos un valor pequeño de $k$, la predicción depende de observaciones 
 $k$ es un **hiperparámetro** del modelo y normalmente se selecciona utilizando datos de validación.
 :::
 
-
 ## El parámetro $k$ {.unlisted}
 
 ::: {style="height: 250px; margin: 15px 0 140px 0;"}
-
 ![](../imagenes/knn-frontera.png)
-
 :::
 
-::::: columns
-
-::: {.column width="50%"}
-
-**$k$ pequeño**
+::::::: columns
+:::: {.column width="50%"}
+$k$ pequeño
 
 La predicción depende de **pocos vecinos**, por lo que la frontera puede adaptarse demasiado a los datos.
 
 ::: formula
 Frontera **irregular** y mayor sensibilidad al **ruido**.
 :::
+::::
 
-:::
-
-::: {.column width="50%"}
-
-**$k$ grande**
+:::: {.column width="50%"}
+$k$ grande
 
 La predicción considera **más vecinos**, suavizando la frontera y reduciendo el efecto de observaciones individuales.
 
 ::: formula
 Frontera **suave**, pero puede perder **patrones locales**.
 :::
-
-:::
-
-:::::
+::::
+:::::::
 
 ## La elección de $d$
 
@@ -179,19 +167,12 @@ Además de $k$, debemos elegir cómo medir la cercanía entre observaciones.
 La función $d(\mathbf{x}_i,\mathbf{x}_j)$ determina qué observaciones serán consideradas vecinas.
 
 ::: {style="height: 250px; margin: 15px 0 180px 0;"}
-
 ![](../imagenes/knn-distance.png)
-
 :::
-
-
 
 ::: formula
-
 Cambiar $d$ cambia la **geometría de la vecindad** y puede cambiar la **predicción del modelo**.
-
 :::
-
 
 ## KNN para clasificación y regresión
 
@@ -199,44 +180,50 @@ KNN puede utilizarse tanto para **clasificación** como para **regresión**.
 
 **Clasificación:** asignamos la clase más frecuente entre los $k$ vecinos:
 
-$$
-\hat y
+$$\hat y
 =
 \operatorname{mode}
-\{y_i:\mathbf{x}_i\in\mathcal N_k(\mathbf{x})\}.
-$$
+\{y_i:\mathbf{x}_i\in\mathcal N_k(\mathbf{x})\}.$$
 
 **Regresión:** cuando la respuesta es continua, utilizamos el promedio:
 
-$$
-\hat y
+$$\hat y
 =
 \frac{1}{k}
 \sum_{i\in\mathcal N_k(\mathbf{x})}
-y_i.
-$$
+y_i.$$
 
 ::: formula
-
 En ambos casos utilizamos los mismos $k$ vecinos; lo que cambia es **cómo combinamos sus respuestas**.
-
 :::
 
+## Antes de continuar... {.unlisted}
 
+::::: {.columns style="align-items: center;"}
+::: {.column width="50%"}
+![](../imagenes/miss.png)
+:::
+
+::: {.column width="50%"}
+Contesta la siguiente encuesta:
+
+[**Responder encuesta**](https://forms.gle/8Yg3euLNM8h2m37k7)
+:::
+:::::
 
 ## Evaluación del modelo
 
 Las métricas utilizadas dependen del tipo de problema:
 
-| **Clasificación** | **Regresión** |
-|---|---|
-| Accuracy | MSE |
-| Precision | RMSE |
-| Recall | MAE |
-| Matriz de confusión | $R^2$ |
-| Curva ROC | - |
+| **Clasificación**   | **Regresión** |
+|---------------------|---------------|
+| Accuracy            | MSE           |
+| Precision           | RMSE          |
+| Recall              | MAE           |
+| Matriz de confusión | $R^2$         |
+| Curva ROC           | \-            |
 
-::: {.formula}
+::: formula
 La métrica utilizada depende del problema y del tipo de error que sea más importante.
 :::
 
@@ -246,16 +233,12 @@ KNN es un método de **aprendizaje supervisado no paramétrico**.
 
 A diferencia de otros modelos que hemos estudiado, no supone una forma funcional específica ni estima un conjunto fijo de parámetros, como en
 
-$$
-\hat y=f(\mathbf x;\boldsymbol\theta).
-$$
+$$\hat y=f(\mathbf x;\boldsymbol\theta).$$
 
 En su lugar, conserva los datos de entrenamiento y realiza la predicción utilizando las observaciones cercanas.
 
 ::: formula
-
 KNN es un método basado en **instancias**: las predicciones dependen directamente de las observaciones almacenadas.
-
 :::
 
 ## Limitaciones de KNN
@@ -269,9 +252,7 @@ KNN presenta algunas limitaciones importantes:
 - **Alta dimensión:** las observaciones se vuelven más dispersas y las distancias menos informativas, fenómeno conocido como **maldición de la dimensionalidad**.
 
 ::: formula
-
 KNN funciona mejor cuando existe una noción útil de **proximidad entre las observaciones**.
-
 :::
 
 ## En resumen
@@ -287,9 +268,7 @@ KNN funciona mejor cuando existe una noción útil de **proximidad entre las obs
 - Es simple de entrenar, pero la **predicción puede ser costosa** y deteriorarse en alta dimensión.
 
 ::: formula
-
 **Idea central:** observaciones similares deberían producir respuestas similares.
-
 :::
 
 ## Referencias

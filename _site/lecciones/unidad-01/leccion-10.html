@@ -168,15 +168,15 @@ Dra. Denisse Urenda Castañeda
 <ul>
 <li><a href="#/introducción" id="/toc-introducción">Introducción</a></li>
 <li><a href="#/formulación-del-problema" id="/toc-formulación-del-problema">Formulación del problema</a></li>
-<li><a href="#/intuición-geométrica" id="/toc-intuición-geométrica">Intuición geométrica</a></li>
 <li><a href="#/derivación-simple" id="/toc-derivación-simple">Derivación simple</a></li>
+<li><a href="#/intuición-geométrica" id="/toc-intuición-geométrica">Intuición geométrica</a></li>
 <li><a href="#/modelo-logístico" id="/toc-modelo-logístico">Modelo logístico</a></li>
 <li><a href="#/de-probabilidades-a-clases" id="/toc-de-probabilidades-a-clases">De probabilidades a clases</a></li>
 <li><a href="#/extensión-al-caso-general" id="/toc-extensión-al-caso-general">Extensión al caso general</a></li>
 <li><a href="#/modelo-multivariado" id="/toc-modelo-multivariado">Modelo multivariado</a></li>
-<li><a href="#/predicción-y-clasificación" id="/toc-predicción-y-clasificación">Predicción y clasificación</a></li>
 <li><a href="#/interpretación-de-los-coeficientes" id="/toc-interpretación-de-los-coeficientes">Interpretación de los coeficientes</a></li>
 <li><a href="#/inferencia-sobre-los-coeficientes" id="/toc-inferencia-sobre-los-coeficientes">Inferencia sobre los coeficientes</a></li>
+<li><a href="#/predicción-y-clasificación" id="/toc-predicción-y-clasificación">Predicción y clasificación</a></li>
 <li><a href="#/métricas-de-clasificación" id="/toc-métricas-de-clasificación">Métricas de clasificación</a></li>
 <li><a href="#/selección-del-umbral" id="/toc-selección-del-umbral">Selección del umbral</a></li>
 <li><a href="#/construcción-de-la-curva-roc" id="/toc-construcción-de-la-curva-roc">Construcción de la curva ROC</a></li>
@@ -233,22 +233,6 @@ Dra. Denisse Urenda Castañeda
 <p>Necesitamos una función que transforme cualquier valor real en un número entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>.</p>
 </div>
 </section>
-<section id="intuición-geométrica" class="slide level2">
-<h2>Intuición geométrica</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>La regresión logística modela primero una combinación lineal</p>
-<p><span class="math display">\[z=\beta_0+\beta_1x.\]</span></p>
-<p>Pero en lugar de utilizar <span class="math inline">\(z\)</span> directamente como predicción, lo transforma mediante la <strong>función logística</strong>:</p>
-<p><span class="math display">\[p(x)=\frac{1}{1+e^{-z}}.\]</span></p>
-</div><div class="column" style="width:45%;">
-<p><img data-src="../imagenes/regresion-logistica.png" style="width:100.0%"></p>
-</div></div>
-<p>La función logística transforma cualquier número real en un valor entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, es decir, <span class="math inline">\(\sigma:\mathbb{R}\rightarrow(0,1)\)</span>.</p>
-<div class="formula">
-<p>Por lo tanto, modelamos la probabilidad de <span class="math inline">\(Y=1\)</span> como <span class="math display">\[p(x) = P(Y=0\mid X=x) =\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
-</div>
-</section>
 <section id="derivación-simple" class="slide level2">
 <h2>Derivación simple</h2>
 <p>Queremos relacionar una probabilidad <span class="math inline">\(p \in (0,1)\)</span> con una expresión lineal que pueda tomar cualquier valor en <span class="math inline">\(\mathbb R\)</span>. Es decir, una función <span class="math display">\[\sigma:(0,1) \rightarrow \mathbb R\]</span></p>
@@ -274,16 +258,30 @@ Dra. Denisse Urenda Castañeda
 <p><span class="math display">\[-\infty&lt;\log\left(\frac{p}{1-p}\right)&lt;\infty.\]</span></p>
 <p>Esta cantidad se conoce como <strong>logit</strong> o <strong>log-odds</strong>.</p>
 </section>
+<section id="intuición-geométrica" class="slide level2">
+<h2>Intuición geométrica</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>La regresión logística modela primero una combinación lineal</p>
+<p><span class="math display">\[z=\beta_0+\beta_1x.\]</span></p>
+<p>Pero en lugar de utilizar <span class="math inline">\(z\)</span> directamente como predicción, lo transforma mediante la <strong>función logística</strong>:</p>
+<p><span class="math display">\[p(x)=\frac{1}{1+e^{-z}}.\]</span></p>
+</div><div class="column" style="width:45%;">
+<p><img data-src="../imagenes/regresion-logistica.png" style="width:100.0%"></p>
+</div></div>
+<p>La función logística transforma cualquier número real en un valor entre <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, es decir, <span class="math inline">\(\sigma:\mathbb{R}\rightarrow(0,1)\)</span>.</p>
+<div class="formula">
+<p>Por lo tanto, modelamos la probabilidad de <span class="math inline">\(Y=1\)</span> como <span class="math display">\[p(x) = P(Y=1\mid X=x) =\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
+</div>
+</section>
 <section id="modelo-logístico" class="slide level2">
 <h2>Modelo logístico</h2>
 <p>Ahora podemos modelar los log-odds mediante una función lineal:</p>
-<p><span class="math display">\[
-\log\left(
+<p><span class="math display">\[\log\left(
 \frac{p(x)}{1-p(x)}
 \right)
 =
-\beta_0+\beta_1x.
-\]</span></p>
+\beta_0+\beta_1x.\]</span></p>
 <p>Resolviendo para <span class="math inline">\(p(x)\)</span> obtenemos</p>
 <p><span class="math display">\[p(x)=\frac{1}{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
 <p>que es el modelo de <strong>regresión logística</strong>.</p>
@@ -291,35 +289,29 @@ Dra. Denisse Urenda Castañeda
 <section id="qué-estamos-modelando-realmente" class="slide level2 unlisted">
 <h2>¿Qué estamos modelando realmente?</h2>
 <p>La relación entre <span class="math inline">\(X\)</span> y la probabilidad no es lineal:</p>
-<p><span class="math display">\[
-p(x)
+<p><span class="math display">\[p(x)
 =
 \frac{1}
-{1+e^{-(\beta_0+\beta_1x)}}.
-\]</span></p>
+{1+e^{-(\beta_0+\beta_1x)}}.\]</span></p>
 <p>Lo que sí es lineal es</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 \log\left(
 \frac{p(x)}{1-p(x)}
 \right)
 =
 \beta_0+\beta_1x
-}
-\]</span></p>
+}\]</span></p>
 <p>Es decir, la regresión logística es lineal en los <strong>log-odds</strong>.</p>
 </section>
 <section id="ejemplo-simple" class="slide level2 unlisted">
 <h2>Ejemplo simple</h2>
 <div class="example">
 <p>Se quiere modelar la probabilidad de aprobar un examen según las <strong>horas de estudio</strong>.Sea</p>
-<p><span class="math display">\[
-Y=
+<p><span class="math display">\[Y=
 \begin{cases}
 1, &amp; \text{aprueba},\\
 0, &amp; \text{no aprueba}.
-\end{cases}
-\]</span></p>
+\end{cases}\]</span></p>
 <p>Se ajusta el modelo de regresión logística y se obtiene <span class="math inline">\(\beta_0 = -4,\quad \beta_1 = 1\)</span>.</p>
 <ul>
 <li>¿Cuál es la probabilidad de aprobar si un estudiante estudia 3 horas? ¿Y si estudia 5 horas?</li>
@@ -337,8 +329,7 @@ Y=
 \begin{cases}
 1, &amp; p(x)\geq c,\\
 0, &amp; p(x)&lt;c.
-\end{cases}
-\]</span></p>
+\end{cases}\]</span></p>
 <p>El valor <span class="math inline">\(c=0.5\)</span> es una elección común, pero <strong>no necesariamente es la mejor</strong>.</p>
 <div class="formula">
 <p>La elección del umbral depende del problema y del costo de cometer diferentes tipos de error.</p>
@@ -352,92 +343,73 @@ Y=
 <p><span class="math display">\[X_1,X_2,\ldots,X_p\]</span></p>
 <p>las <span class="math inline">\(p\)</span> variables predictoras.</p>
 <p>Queremos modelar la probabilidad condicional</p>
-<p><span class="math display">\[
-p(x_1,\ldots,x_p)
+<p><span class="math display">\[p(x_1,\ldots,x_p)
 =
-P(Y=1\mid X_1=x_1,\ldots,X_p=x_p).
-\]</span></p>
+P(Y=1\mid X_1=x_1,\ldots,X_p=x_p).\]</span></p>
 <p>La regresión logística supone que los <strong>log-odds</strong> de esta probabilidad son una función lineal de los predictores:</p>
 <div class="formula">
-<p><span class="math display">\[
-\log\left(
+<p><span class="math display">\[\log\left(
 \frac{p(x_1,\ldots,x_p)}
 {1-p(x_1,\ldots,x_p)}
 \right)
 =
-\beta_0+\beta_1x_1+\cdots+\beta_px_p.
-\]</span></p>
+\beta_0+\beta_1x_1+\cdots+\beta_px_p.\]</span></p>
 </div>
 </section>
 <section id="notación-matricial" class="slide level2 unlisted">
 <h2>Notación matricial</h2>
 <p>Para incluir el intercepto, definimos</p>
-<p><span class="math display">\[
-\mathbf x
+<p><span class="math display">\[\mathbf x
 =
 (1,x_1,\ldots,x_p)^T,
 \qquad
 \boldsymbol\beta
 =
-(\beta_0,\beta_1,\ldots,\beta_p)^T.
-\]</span></p>
+(\beta_0,\beta_1,\ldots,\beta_p)^T.\]</span></p>
 <p>Entonces,</p>
-<p><span class="math display">\[
-\beta_0+\beta_1x_1+\cdots+\beta_px_p
+<p><span class="math display">\[\beta_0+\beta_1x_1+\cdots+\beta_px_p
 =
-\mathbf x^T\boldsymbol\beta.
-\]</span></p>
+\mathbf x^T\boldsymbol\beta.\]</span></p>
 <p>Por lo tanto, el modelo puede escribirse como</p>
-<p><span class="math display">\[
-\log\left(
+<p><span class="math display">\[\log\left(
 \frac{p(\mathbf x)}
 {1-p(\mathbf x)}
 \right)
 =
-\mathbf x^T\boldsymbol\beta.
-\]</span></p>
+\mathbf x^T\boldsymbol\beta.\]</span></p>
 <p>Despejando <span class="math inline">\(p(\mathbf x)\)</span>,</p>
-<p><span class="math display">\[
-p(\mathbf x)
+<p><span class="math display">\[p(\mathbf x)
 =
 \frac{e^{\mathbf x^T\boldsymbol\beta}}
-{1+e^{\mathbf x^T\boldsymbol\beta}}.
-\]</span></p>
+{1+e^{\mathbf x^T\boldsymbol\beta}}.\]</span></p>
 </section>
 <section id="modelo-multivariado" class="slide level2">
 <h2>Modelo multivariado</h2>
 <div class="formula">
 <p><strong>Modelo de regresión logística</strong></p>
 <p>Sea <span class="math inline">\(Y\in\{0,1\}\)</span> una variable respuesta binaria y sean</p>
-<p><span class="math display">\[
-\mathbf x=(1,x_1,\ldots,x_p)^T,
+<p><span class="math display">\[\mathbf x=(1,x_1,\ldots,x_p)^T,
 \qquad
-\boldsymbol\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T,
-\]</span></p>
+\boldsymbol\beta=(\beta_0,\beta_1,\ldots,\beta_p)^T,\]</span></p>
 <p>el vector de predictores y el vector de parámetros, respectivamente.</p>
 <p>La probabilidad condicional de <span class="math inline">\(Y=1\)</span> está dada por</p>
-<p><span class="math display">\[
-\boxed{
+<p><span class="math display">\[\boxed{
 p(\mathbf x)
 =
 P(Y=1\mid \mathbf x)
 =
 \frac{1}
 {1+e^{-\mathbf x^T\boldsymbol\beta}}
-}.
-\]</span></p>
+}.\]</span></p>
 </div>
 </section>
 <section id="cómo-estimamos-los-coeficientes" class="slide level2 unlisted">
 <h2>¿Cómo estimamos los coeficientes?</h2>
 <p>En regresión lineal, los coeficientes se estiman minimizando los errores cuadrados.</p>
 <p>En regresión logística, como</p>
-<p><span class="math display">\[
-Y_i \mid \mathbf{x}_i \sim \operatorname{Bernoulli}(p_i),
-\]</span></p>
+<p><span class="math display">\[Y_i \mid \mathbf{x}_i \sim \operatorname{Bernoulli}(p_i),\]</span></p>
 <p>utilizamos la <strong>máxima verosimilitud</strong>: buscamos los coeficientes que hagan más probables los resultados observados.</p>
-<p><span class="math display">\[
-\hat{\boldsymbol\beta}
+<p><span class="math display">\[\hat{\boldsymbol\beta}
 =
 \underset{\boldsymbol\beta}{\arg\max}
 \sum_{i=1}^{n}
@@ -445,43 +417,17 @@ Y_i \mid \mathbf{x}_i \sim \operatorname{Bernoulli}(p_i),
 y_i\log(p_i)
 +
 (1-y_i)\log(1-p_i)
-\right]
-\]</span></p>
+\right]\]</span></p>
 <div class="formula">
 <p>Los coeficientes se estiman mediante <strong>máxima verosimilitud</strong> y se obtienen utilizando <strong>optimización numérica</strong>.</p>
-</div>
-</section>
-<section id="predicción-y-clasificación" class="slide level2">
-<h2>Predicción y clasificación</h2>
-<p>Una vez estimados los parámetros, para una nueva observación <span class="math inline">\(\mathbf x_*\)</span> calculamos</p>
-<p><span class="math display">\[
-\hat p
-=
-\frac{1}
-{1+e^{-\mathbf x_*^T\hat{\boldsymbol\beta}}}.
-\]</span></p>
-<p>Esta es una <strong>predicción probabilística</strong>.</p>
-<p>Para obtener una clase, elegimos un umbral <span class="math inline">\(c\)</span>:</p>
-<p><span class="math display">\[
-\hat y
-=
-\begin{cases}
-1, &amp; \hat p\geq c,\\
-0, &amp; \hat p&lt;c.
-\end{cases}
-\]</span></p>
-<div class="note">
-<p>Un valor común es <span class="math inline">\(c=0.5\)</span>, pero el umbral depende del problema.</p>
 </div>
 </section>
 <section id="interpretación-de-los-coeficientes" class="slide level2">
 <h2>Interpretación de los coeficientes</h2>
 <p>Recordemos que</p>
-<p><span class="math display">\[
-\log\left(\frac{p}{1-p}\right)
+<p><span class="math display">\[\log\left(\frac{p}{1-p}\right)
 =
-\beta_0+\beta_1x_1+\cdots+\beta_px_p.
-\]</span></p>
+\beta_0+\beta_1x_1+\cdots+\beta_px_p.\]</span></p>
 <p>Manteniendo las demás variables constantes, aumentar <span class="math inline">\(x_j\)</span> una unidad cambia los <strong>log-odds</strong> en</p>
 <p><span class="math display">\[\beta_j.\]</span></p>
 <p>Equivalentemente, los odds se multiplican por <span class="math inline">\(e^{\beta_j}\)</span>. Esta cantidad se conoce como <strong>odds ratio</strong>.</p>
@@ -492,26 +438,39 @@ y_i\log(p_i)
 <section id="inferencia-sobre-los-coeficientes" class="slide level2">
 <h2>Inferencia sobre los coeficientes</h2>
 <p>Para muestras suficientemente grandes,</p>
-<p><span class="math display">\[
-\hat\beta_j
+<p><span class="math display">\[\hat\beta_j
 \approx
 \mathcal N\left(
 \beta_j,
 \operatorname{SE}(\hat\beta_j)^2
-\right).
-\]</span></p>
+\right).\]</span></p>
 <p>Esto permite construir <strong>intervalos de confianza</strong> y realizar pruebas de hipótesis, por ejemplo,</p>
-<p><span class="math display">\[
-H_0:\beta_j=0
+<p><span class="math display">\[H_0:\beta_j=0
 \qquad\text{vs.}\qquad
-H_1:\beta_j\neq0.
-\]</span></p>
+H_1:\beta_j\neq0.\]</span></p>
 <p>Una prueba común utiliza el estadístico de Wald:</p>
-<p><span class="math display">\[
-z=
+<p><span class="math display">\[z=
 \frac{\hat\beta_j}
-{\operatorname{SE}(\hat\beta_j)}.
-\]</span></p>
+{\operatorname{SE}(\hat\beta_j)}.\]</span></p>
+</section>
+<section id="predicción-y-clasificación" class="slide level2">
+<h2>Predicción y clasificación</h2>
+<p>Una vez estimados los parámetros, para una nueva observación <span class="math inline">\(\mathbf x_*\)</span> calculamos</p>
+<p><span class="math display">\[\hat p
+=
+\frac{1}
+{1+e^{-\mathbf x_*^T\hat{\boldsymbol\beta}}}.\]</span></p>
+<p>Esta es una <strong>predicción probabilística</strong>.</p>
+<p>Para obtener una clase, elegimos un umbral <span class="math inline">\(c\)</span>:</p>
+<p><span class="math display">\[\hat y
+=
+\begin{cases}
+1, &amp; \hat p\geq c,\\
+0, &amp; \hat p&lt;c.
+\end{cases}\]</span></p>
+<div class="formula">
+<p>Un valor común es <span class="math inline">\(c=0.5\)</span>, pero el umbral depende del problema.</p>
+</div>
 </section>
 <section id="métricas-de-clasificación" class="slide level2">
 <h2>Métricas de clasificación</h2>
@@ -541,19 +500,16 @@ z=
 </section>
 <section id="métricas-de-clasificación-1" class="slide level2 unlisted">
 <h2>Métricas de clasificación</h2>
-<p><span class="math display">\[
-\operatorname{Accuracy}
+<p><span class="math display">\[\operatorname{Accuracy}
 =
-\frac{TP+TN}{TP+TN+FP+FN}
-\]</span></p>
+\frac{TP+TN}{TP+TN+FP+FN}\]</span></p>
 <p><span class="math display">\[\operatorname{Precision}
 =
 \frac{TP}{TP+FP},
 \qquad
 \operatorname{Recall}
 =
-\frac{TP}{TP+FN}.
-\]</span></p>
+\frac{TP}{TP+FN}.\]</span></p>
 <ul>
 <li><strong>Accuracy:</strong> ¿qué proporción clasificamos correctamente?</li>
 <li><strong>Precision:</strong> de los positivos predichos, ¿cuántos eran positivos?</li>
@@ -570,13 +526,11 @@ z=
 <section id="selección-del-umbral" class="slide level2">
 <h2>Selección del umbral</h2>
 <p>En un problema de clasificación, debemos elegir un umbral <span class="math inline">\(c\)</span> para convertir las probabilidades en clases:</p>
-<p><span class="math display">\[
-\hat{Y} =
+<p><span class="math display">\[\hat{Y} =
 \begin{cases}
 1, &amp; \hat{p} \geq c,\\
 0, &amp; \hat{p} &lt; c.
-\end{cases}
-\]</span></p>
+\end{cases}\]</span></p>
 <p>Diferentes valores de <span class="math inline">\(c\)</span> producen diferentes <strong>falsos positivos</strong> y <strong>verdaderos positivos</strong>.</p>
 <p>Una herramienta para analizar y seleccionar el umbral es la <strong>curva ROC</strong>.</p>
 <p>La curva ROC permite comparar el comportamiento del clasificador para distintos valores de <span class="math inline">\(c\)</span>.</p>
@@ -584,21 +538,17 @@ z=
 <section id="construcción-de-la-curva-roc" class="slide level2">
 <h2>Construcción de la curva ROC</h2>
 <p>Para cada valor del umbral <span class="math inline">\(c\)</span> calculamos:</p>
-<p><span class="math display">\[
-\operatorname{TPR}
+<p><span class="math display">\[\operatorname{TPR}
 =
 \frac{TP}{TP+FN},
 \quad
 \operatorname{FPR}
 =
-\frac{FP}{FP+TN}
-\]</span></p>
+\frac{FP}{FP+TN}\]</span></p>
 <div class="columns">
 <div class="column" style="width:40%;">
 <p>Cada umbral <span class="math inline">\(c\)</span> genera un punto:</p>
-<p><span class="math display">\[
-(\operatorname{FPR},\operatorname{TPR})
-\]</span></p>
+<p><span class="math display">\[(\operatorname{FPR},\operatorname{TPR})\]</span></p>
 <p>La <strong>curva ROC</strong> se obtiene al representar estos puntos para distintos valores de <span class="math inline">\(c\)</span>.</p>
 </div><div class="column" style="width:60%;">
 <p><img data-src="../imagenes/roc.webp"></p>

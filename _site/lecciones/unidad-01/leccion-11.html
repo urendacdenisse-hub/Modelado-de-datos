@@ -177,10 +177,9 @@ Dra. Denisse Urenda Castañeda
 <li><a href="#/y-si-la-frontera-no-es-lineal" id="/toc-y-si-la-frontera-no-es-lineal">¿Y si la frontera no es lineal?</a></li>
 <li><a href="#/kernel-trick" id="/toc-kernel-trick">Kernel trick</a></li>
 <li><a href="#/kernels-comunes" id="/toc-kernels-comunes">Kernels comunes</a></li>
-<li><a href="#/escalamiento" id="/toc-escalamiento">Escalamiento</a></li>
-<li><a href="#/evaluación" id="/toc-evaluación">Evaluación</a></li>
-<li><a href="#/consideraciones-prácticas" id="/toc-consideraciones-prácticas">Consideraciones prácticas</a></li>
-<li><a href="#/y-para-regresión" id="/toc-y-para-regresión">¿Y para regresión?</a></li>
+<li><a href="#/svm-para-clasificación-y-regresión" id="/toc-svm-para-clasificación-y-regresión">SVM para clasificación y regresión</a></li>
+<li><a href="#/limitaciones-de-svm" id="/toc-limitaciones-de-svm">Limitaciones de SVM</a></li>
+<li><a href="#/en-resumen" id="/toc-en-resumen">En resumen</a></li>
 <li><a href="#/referencias" id="/toc-referencias">Referencias</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
 <li><a href="#/qué-sigue" id="/toc-qué-sigue">¿Qué sigue?</a></li>
@@ -443,50 +442,48 @@ y_i(\mathbf w^T\mathbf x_i+b)\geq1-\xi_i,
 <p>Todos ellos son <strong>hiperparámetros del modelo</strong> y sus valores pueden seleccionarse mediante validación cruzada.</p>
 </div>
 </section>
-<section id="escalamiento" class="slide level2">
-<h2>Escalamiento</h2>
-<p>Los SVM dependen de distancias y productos entre las variables predictoras.</p>
-<p>Por esta razón, variables medidas en escalas muy diferentes pueden afectar considerablemente el modelo.</p>
-<p>Por ejemplo,</p>
-<p><span class="math display">\[X_1\in[0,1],
-\qquad
-X_2\in[0,100000].\]</span></p>
+<section id="svm-para-clasificación-y-regresión" class="slide level2">
+<h2>SVM para clasificación y regresión</h2>
+<p>SVM puede utilizarse tanto para <strong>clasificación</strong> como para <strong>regresión</strong>.</p>
+<p><strong>Clasificación:</strong> buscamos una frontera que separe las clases maximizando el margen:</p>
+<p><span class="math display">\[
+\min_{\mathbf w,b,\boldsymbol\xi}
+\left\{
+\frac12\|\mathbf w\|^2
++
+C\sum_{i=1}^n\xi_i
+\right\}.
+\]</span></p>
+<p><strong>Regresión:</strong> Support Vector Regression (SVR) busca una función que aproxime una respuesta continua, permitiendo un margen de error <span class="math inline">\(\varepsilon\)</span>.</p>
 <div class="formula">
-<p>Antes de ajustar un SVM debemos <strong>escalar las variables predictoras</strong>.</p>
+<p><strong>SVC:</strong> separa clases mediante un margen.</p>
+<p><strong>SVR:</strong> aproxima una respuesta continua permitiendo un margen de error <span class="math inline">\(\varepsilon\)</span>.</p>
 </div>
 </section>
-<section id="evaluación" class="slide level2">
-<h2>Evaluación</h2>
-<p>Una vez obtenidas las clases predichas, podemos evaluar el modelo utilizando las mismas métricas utilizadas para otros problemas de clasificación:</p>
+<section id="limitaciones-de-svm" class="slide level2">
+<h2>Limitaciones de SVM</h2>
+<p>SVM presenta algunas consideraciones importantes:</p>
 <ul>
-<li>Accuracy</li>
-<li>Precision</li>
-<li>Recall</li>
-<li>Matriz de confusión</li>
-<li>Curva ROC</li>
+<li><p><strong>Escala:</strong> las variables con escalas mayores pueden dominar distancias y productos, por lo que generalmente debemos <strong>escalar los predictores</strong>.</p></li>
+<li><p><strong>Hiperparámetros:</strong> el desempeño depende de la selección de <span class="math inline">\(C\)</span> y, para kernels no lineales, de parámetros como <span class="math inline">\(\gamma\)</span> o el grado <span class="math inline">\(d\)</span>.</p></li>
+<li><p><strong>Costo computacional:</strong> el entrenamiento puede volverse costoso cuando el número de observaciones es muy grande.</p></li>
 </ul>
-<div class="note">
-<p>La elección de la métrica depende del <strong>tipo de error que sea más importante evitar</strong>.</p>
+<div class="formula">
+<p>El desempeño de SVM depende tanto de la <strong>representación de los datos</strong> como de la selección adecuada de sus <strong>hiperparámetros</strong>.</p>
 </div>
 </section>
-<section id="consideraciones-prácticas" class="slide level2">
-<h2>Consideraciones prácticas</h2>
-<p>Antes de utilizar SVM debemos recordar:</p>
+<section id="en-resumen" class="slide level2">
+<h2>En resumen</h2>
 <ul>
-<li>las variables predictoras generalmente deben <strong>escalarse</strong>;</li>
-<li>el parámetro <span class="math inline">\(C\)</span> controla la penalización de las violaciones;</li>
-<li>el kernel determina el tipo de frontera que puede construir el modelo;</li>
-<li>los hiperparámetros deben seleccionarse utilizando datos de validación;</li>
-<li>SVM puede ser computacionalmente costoso para datasets muy grandes.</li>
+<li><p>SVM busca una frontera que <strong>maximice el margen</strong> entre las clases.</p></li>
+<li><p>El parámetro <span class="math inline">\(C\)</span> controla el compromiso entre <strong>maximizar el margen</strong> y <strong>penalizar sus violaciones</strong>.</p></li>
+<li><p>Los <strong>vectores soporte</strong> son las observaciones que determinan la frontera.</p></li>
+<li><p>Los <strong>kernels</strong> permiten construir fronteras no lineales mediante productos internos en otro espacio de características.</p></li>
+<li><p>Los predictores generalmente deben <strong>escalarse</strong> y los hiperparámetros seleccionarse utilizando validación.</p></li>
+<li><p>SVM puede utilizarse tanto para <strong>clasificación</strong> como para <strong>regresión</strong>.</p></li>
 </ul>
-</section>
-<section id="y-para-regresión" class="slide level2">
-<h2>¿Y para regresión?</h2>
-<p>SVM también puede utilizarse para problemas de regresión mediante<br>
-<strong>Support Vector Regression (SVR)</strong>.</p>
-<p>En lugar de buscar una frontera que separe clases, SVR busca una función que aproxime una variable continua, permitiendo cierto margen de error <span class="math inline">\(\varepsilon\)</span>.</p>
 <div class="formula">
-<p>Échale un vistazo al ejemplo de <a href="https://scikit-learn.org/stable/auto_examples/svm/plot_svm_regression.html">Support Vector Regression (SVR)</a> de Scikit-learn.</p>
+<p><strong>Idea central:</strong> encontrar una frontera que separe las clases con el <strong>mayor margen posible</strong>.</p>
 </div>
 </section>
 <section id="referencias" class="slide level2 smaller scrollable">
@@ -521,7 +518,8 @@ X_2\in[0,100000].\]</span></p>
 </section>
 <section id="qué-sigue" class="slide level2">
 <h2>¿Qué sigue?</h2>
-<p>En el siguiente notebook implementaremos un <strong>Support Vector Machine</strong>, desde el escalamiento de los datos hasta la selección del kernel y sus hiperparámetros.</p>
+<p>En el siguiente notebook implementaremos <strong>Support Vector Machine</strong>, desde el escalamiento de los datos hasta la selección del kernel y sus hiperparámetros.</p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-07.ipynb"><strong>Ir al notebook →</strong></a></p>
 
 
 </section>
@@ -810,7 +808,7 @@ X_2\in[0,100000].\]</span></p>
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/urendacdenisse-hub\.github\.io\/Modelado-de-datos\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
