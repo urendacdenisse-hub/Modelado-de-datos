@@ -172,17 +172,12 @@ Dra. Denisse Urenda Castañeda
 <li><a href="#/dónde-hacemos-una-división" id="/toc-dónde-hacemos-una-división">¿Dónde hacemos una división?</a></li>
 <li><a href="#/impureza" id="/toc-impureza">Impureza</a></li>
 <li><a href="#/índice-gini" id="/toc-índice-gini">Índice Gini</a></li>
-<li><a href="#/ejemplo" id="/toc-ejemplo">Ejemplo</a></li>
-<li><a href="#/elegir-una-división" id="/toc-elegir-una-división">Elegir una división</a></li>
-<li><a href="#/construcción-del-árbol" id="/toc-construcción-del-árbol">Construcción del árbol</a></li>
-<li><a href="#/predicción" id="/toc-predicción">Predicción</a></li>
+<li><a href="#/construcción-recursiva-del-árbol" id="/toc-construcción-recursiva-del-árbol">Construcción recursiva del árbol</a></li>
 <li><a href="#/profundidad-del-árbol" id="/toc-profundidad-del-árbol">Profundidad del árbol</a></li>
-<li><a href="#/sobreajuste" id="/toc-sobreajuste">Sobreajuste</a></li>
 <li><a href="#/control-de-complejidad" id="/toc-control-de-complejidad">Control de complejidad</a></li>
 <li><a href="#/y-para-regresión" id="/toc-y-para-regresión">¿Y para regresión?</a></li>
 <li><a href="#/divisiones-en-regresión" id="/toc-divisiones-en-regresión">Divisiones en regresión</a></li>
 <li><a href="#/necesitamos-escalar" id="/toc-necesitamos-escalar">¿Necesitamos escalar?</a></li>
-<li><a href="#/fronteras-de-decisión" id="/toc-fronteras-de-decisión">Fronteras de decisión</a></li>
 <li><a href="#/interpretabilidad" id="/toc-interpretabilidad">Interpretabilidad</a></li>
 <li><a href="#/evaluación" id="/toc-evaluación">Evaluación</a></li>
 <li><a href="#/consideraciones-prácticas" id="/toc-consideraciones-prácticas">Consideraciones prácticas</a></li>
@@ -205,9 +200,9 @@ Dra. Denisse Urenda Castañeda
 <li>¿<span class="math inline">\(X_2 &lt; 10\)</span>?</li>
 <li>¿<span class="math inline">\(X_3 = 1\)</span>?</li>
 </ul>
-<p>Cada respuesta divide los datos en grupos cada vez más pequeños.</p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="../imagenes/tree-intro.png" style="width:100.0%"></p>
+<p>Cada respuesta divide los datos en grupos cada vez más pequeños.</p>
 </div></div>
 <div class="formula">
 <p>Un <strong>árbol de decisión</strong> realiza divisiones sucesivas de los datos utilizando las variables predictoras.</p>
@@ -215,15 +210,19 @@ Dra. Denisse Urenda Castañeda
 </section>
 <section id="estructura-de-un-árbol" class="slide level2">
 <h2>Estructura de un árbol</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
 <p>Un árbol de decisión está formado por:</p>
 <ul>
-<li><strong>nodo raíz:</strong> contiene inicialmente todas las observaciones;</li>
-<li><strong>nodos internos:</strong> representan decisiones sobre alguna variable;</li>
-<li><strong>ramas:</strong> representan el resultado de una decisión;</li>
-<li><strong>nodos terminales u hojas:</strong> contienen la predicción final.</li>
+<li>Nodo raíz</li>
+<li>Nodo interno</li>
+<li>Rama</li>
+<li>Nodos terminales u hojas</li>
 </ul>
-
-<img data-src="../imagenes/tree-parts.png" style="width:75.0%" class="r-stretch"></section>
+</div><div class="column" style="width:70%;">
+<p><img data-src="../imagenes/tree-parts.png" style="width:100.0%"></p>
+</div></div>
+</section>
 <section id="de-árbol-a-regiones" class="slide level2">
 <h2>De árbol a regiones</h2>
 <div class="columns">
@@ -243,12 +242,14 @@ Dra. Denisse Urenda Castañeda
 <section id="dónde-hacemos-una-división" class="slide level2">
 <h2>¿Dónde hacemos una división?</h2>
 <p>Supongamos que tenemos diferentes posibilidades:</p>
-<p><span class="math display">\[X_1 &lt; 2,
+<p><span class="math display">\[
+X_1 &lt; 2,
 \qquad
 X_1 &lt; 5,
 \qquad
 X_2 &lt; 8,
-\qquad \ldots\]</span></p>
+\qquad \ldots
+\]</span></p>
 <p>Cada división genera dos nuevos grupos de observaciones.</p>
 <p>Queremos elegir una división que produzca grupos <strong>más homogéneos respecto a la variable respuesta</strong>.</p>
 <div class="formula">
@@ -259,18 +260,22 @@ X_2 &lt; 8,
 <h2>Impureza</h2>
 <p>En clasificación necesitamos medir qué tan mezcladas se encuentran las clases dentro de un nodo.</p>
 <p>Consideremos:</p>
-<p><span class="math display">\[\text{Nodo A}:
+<p><span class="math display">\[
+\text{Nodo A}:
 \quad
-\class{A}=50\%,
+\text{Clase A}=50\%,
 \quad
-\class{B}=50\%.\]</span></p>
+\text{Clase B}=50\%.
+\]</span></p>
 <p>Este nodo tiene alta impureza.</p>
 <p>En cambio,</p>
-<p><span class="math display">\[\text{Nodo B}:
+<p><span class="math display">\[
+\text{Nodo B}:
 \quad
-\class{A}=95\%,
+\text{Clase A}=95\%,
 \quad
-\class{B}=5\%.\]</span></p>
+\text{Clase B}=5\%.
+\]</span></p>
 <p>es mucho más homogéneo.</p>
 <div class="formula">
 <p>Una buena división produce nodos con observaciones pertenecientes principalmente a <strong>una misma clase</strong>.</p>
@@ -279,105 +284,154 @@ X_2 &lt; 8,
 <section id="índice-gini" class="slide level2">
 <h2>Índice Gini</h2>
 <p>Una medida común de impureza es el <strong>índice Gini</strong>.</p>
-<p>Si existen <span class="math inline">\(K\)</span> clases,</p>
-<p><span class="math display">\[G
-=
-1-
-\sum_{k=1}^{K}p_k^2,\]</span></p>
+<p>Si existen <span class="math inline">\(K\)</span> clases, la impureza de un nodo se calcula como</p>
+<p><span class="math display">\[
+G=1-\sum_{k=1}^{K}p_k^2,
+\]</span></p>
 <p>donde <span class="math inline">\(p_k\)</span> representa la proporción de observaciones de la clase <span class="math inline">\(k\)</span> dentro del nodo.</p>
 <div class="formula">
-<p>Un nodo completamente puro tiene</p>
-<p><span class="math display">\[G=0.\]</span></p>
+<p>Un nodo completamente puro tiene <span class="math inline">\(G=0\)</span>.</p>
 </div>
 </section>
-<section id="ejemplo" class="slide level2">
-<h2>Ejemplo</h2>
-<p>Supongamos un nodo con dos clases:</p>
-<p><span class="math display">\[p_A=0.5,
-\qquad
-p_B=0.5.\]</span></p>
-<p>Entonces,</p>
-<p><span class="math display">\[G
-=
-1-(0.5)^2-(0.5)^2
-=
-0.5.\]</span></p>
-<p>Si tenemos</p>
-<p><span class="math display">\[p_A=1,
-\qquad
-p_B=0,\]</span></p>
-<p>entonces</p>
-<p><span class="math display">\[G
-=
-1-(1)^2-(0)^2
-=
-0.\]</span></p>
+<section id="índice-gini-ponderado" class="slide level2 unlisted">
+<h2>Índice Gini ponderado</h2>
+<p>Para evaluar una división, calculamos el <strong>índice Gini ponderado</strong>:</p>
+<p><span class="math display">\[
+G_{\text{división}} =
+\frac{n_L}{n}G_L +
+\frac{n_R}{n}G_R,
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(G_L\)</span> y <span class="math inline">\(G_R\)</span> son los índices Gini de los nodos izquierdo y derecho.</li>
+<li><span class="math inline">\(n_L\)</span> y <span class="math inline">\(n_R\)</span> son las observaciones en cada nodo.</li>
+<li><span class="math inline">\(n\)</span> es el total de observaciones antes de la división.</li>
+</ul>
 <div class="formula">
-<p>Mientras menor sea el índice Gini, <strong>más puro es el nodo</strong>.</p>
+<p>El <strong>mejor corte</strong> es aquel que minimiza el índice Gini ponderado.</p>
 </div>
 </section>
-<section id="elegir-una-división" class="slide level2">
-<h2>Elegir una división</h2>
-<p>Una posible división genera dos nodos:</p>
-<p><span class="math display">\[R_1
-\qquad\text{y}\qquad
-R_2.\]</span></p>
-<p>Calculamos la impureza resultante mediante un promedio ponderado:</p>
-<p><span class="math display">\[G_{\text{split}}
-=
-\frac{n_1}{n}G_1
-+
-\frac{n_2}{n}G_2.\]</span></p>
-<p>El árbol compara diferentes variables y puntos de corte.</p>
-<div class="formula">
-<p>Se selecciona la división que produce la <strong>mayor reducción de impureza</strong>.</p>
-</div>
+<section id="ejemplo-comparación-de-dos-cortes" class="slide level2 unlisted">
+<h2>Ejemplo: Comparación de dos cortes</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Supongamos el siguiente conjunto de datos:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X_1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(X_2\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(X_3\)</span></th>
+<th style="text-align: center;">Clase</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">B</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<p>Consideremos dos posibles divisiones del conjunto de datos:</p>
+<ul>
+<li><strong>Corte 1:</strong> <span class="math inline">\(X_1 &lt; 4.5\)</span></li>
+<li><strong>Corte 2:</strong> <span class="math inline">\(X_1 &lt; 6.5\)</span></li>
+</ul>
+<p><strong>Determina cuál de los dos cortes es mejor</strong> utilizando el índice Gini ponderado.</p>
+</div></div>
 </section>
-<section id="construcción-del-árbol" class="slide level2">
-<h2>Construcción del árbol</h2>
+<section id="construcción-recursiva-del-árbol" class="slide level2">
+<h2>Construcción recursiva del árbol</h2>
 <p>El proceso se repite de manera recursiva:</p>
 <ol type="1">
-<li>evaluar posibles divisiones;</li>
-<li>seleccionar la mejor;</li>
-<li>dividir los datos;</li>
-<li>repetir el procedimiento dentro de cada nuevo nodo.</li>
+<li><p><strong>Evaluar posibles divisiones</strong> sobre las variables predictoras: <span class="math inline">\(X_j &lt; c\)</span></p></li>
+<li><p><strong>Seleccionar el mejor corte</strong>, minimizando el índice Gini ponderado:</p>
+<p><span class="math display">\[
+(j^*,c^*)=\arg\min_{j,c}
+\left[
+\frac{n_L}{n}G_L+
+\frac{n_R}{n}G_R
+\right]
+\]</span></p></li>
+<li><p><strong>Dividir las observaciones</strong> en dos nuevos nodos:</p>
+<p><span class="math display">\[
+R_L=\{x\in R:X_{j^*}&lt;c^*\},
+\quad
+R_R=\{x\in R:X_{j^*}\geq c^*\}
+\]</span></p></li>
+<li><p><strong>Repetir el procedimiento</strong> dentro de cada nuevo nodo.</p></li>
 </ol>
 <p>El crecimiento continúa hasta satisfacer algún <strong>criterio de parada</strong>.</p>
 <div class="formula">
 <p>El árbol se construye mediante una secuencia de decisiones <strong>localmente óptimas</strong>.</p>
 </div>
 </section>
-<section id="predicción" class="slide level2">
-<h2>Predicción</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Para predecir una nueva observación:</p>
-<ol type="1">
-<li>comenzamos en el nodo raíz;</li>
-<li>evaluamos la primera condición;</li>
-<li>seguimos la rama correspondiente;</li>
-<li>repetimos hasta llegar a una hoja.</li>
-</ol>
-<p>La clase predicha corresponde normalmente a la <strong>clase mayoritaria de la hoja</strong>.</p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="../imagenes/tree-prediction.png" style="width:100.0%"></p>
-</div></div>
-</section>
+<section id="construcción-recursiva-del-árbol-1" class="slide level2 unlisted">
+<h2>Construcción recursiva del árbol</h2>
+
+<img data-src="../imagenes/tree-prediction.png" style="width:100.0%" class="r-stretch"></section>
 <section id="profundidad-del-árbol" class="slide level2">
 <h2>Profundidad del árbol</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Un árbol poco profundo realiza pocas divisiones y genera regiones relativamente grandes.</p>
-<p>Un árbol profundo puede generar regiones muy específicas alrededor de las observaciones de entrenamiento.</p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="../imagenes/tree-depth.png" style="width:100.0%"></p>
-</div></div>
+<p>La <strong>profundidad de un árbol</strong> es el número máximo de divisiones (ramas) que se recorren desde el nodo raíz hasta una hoja. Por convención, el nodo raíz tiene profundidad <span class="math inline">\(0\)</span>.</p>
+<ul>
+<li><p><strong>Árbol poco profundo:</strong> realiza pocas divisiones y genera regiones relativamente grandes. Puede no capturar patrones complejos en los datos.</p></li>
+<li><p><strong>Árbol profundo:</strong> realiza más divisiones y genera regiones más específicas. Puede ajustarse excesivamente a las observaciones de entrenamiento.</p></li>
+</ul>
 <div class="formula">
-<p>La <strong>profundidad</strong> controla la complejidad del árbol.</p>
+<p>La <strong>profundidad</strong> controla la complejidad del árbol y permite regular el equilibrio entre subajuste y sobreajuste.</p>
 </div>
 </section>
-<section id="sobreajuste" class="slide level2">
-<h2>Sobreajuste</h2>
+<section id="profundidad-del-árbol-1" class="slide level2 unlisted">
+<h2>Profundidad del árbol</h2>
+
+<img data-src="../imagenes/tree-depth.png" style="width:100.0%" class="r-stretch"></section>
+<section id="profundidad-del-árbol-2" class="slide level2 unlisted">
+<h2>Profundidad del árbol</h2>
 <p>Si permitimos que el árbol continúe creciendo, puede llegar a construir hojas con muy pocas observaciones.</p>
 <p>Esto permite ajustarse extremadamente bien a los datos de entrenamiento.</p>
 <p>Sin embargo, puede producir un desempeño pobre sobre nuevas observaciones.</p>
@@ -415,7 +469,7 @@ R_2.\]</span></p>
 </tbody>
 </table>
 <div class="formula">
-<p>Estos hiperparámetros controlan la <strong>complejidad del árbol</strong> y pueden seleccionarse utilizando validación.</p>
+<p>Estos hiperparámetros controlan la <strong>complejidad del árbol</strong> y pueden seleccionarse utilizando validación cruzada.</p>
 </div>
 </section>
 <section id="y-para-regresión" class="slide level2">
@@ -456,18 +510,6 @@ R_2.\]</span></p>
 <p>A diferencia de KNN y SVM, los árboles de decisión generalmente <strong>no requieren escalamiento de las variables predictoras</strong>.</p>
 </div>
 </section>
-<section id="fronteras-de-decisión" class="slide level2">
-<h2>Fronteras de decisión</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Cada división utiliza una variable:</p>
-<p><span class="math display">\[X_j&lt;c.\]</span></p>
-<p>Por esta razón, en dos dimensiones las divisiones son verticales u horizontales.</p>
-<p>Al combinar muchas divisiones, el árbol puede construir fronteras de decisión no lineales.</p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="../imagenes/tree-boundaries.png" style="width:100.0%"></p>
-</div></div>
-</section>
 <section id="interpretabilidad" class="slide level2">
 <h2>Interpretabilidad</h2>
 <p>Una ventaja importante de los árboles es que podemos visualizar directamente las decisiones utilizadas para realizar una predicción.</p>
@@ -483,23 +525,39 @@ R_2.\]</span></p>
 </section>
 <section id="evaluación" class="slide level2">
 <h2>Evaluación</h2>
-<p>Para clasificación podemos utilizar:</p>
-<ul>
-<li>Accuracy</li>
-<li>Precision</li>
-<li>Recall</li>
-<li>Matriz de confusión</li>
-<li>Curva ROC</li>
-</ul>
-<p>Para regresión:</p>
-<ul>
-<li>MSE</li>
-<li>RMSE</li>
-<li>MAE</li>
-<li><span class="math inline">\(R^2\)</span></li>
-</ul>
+<p>El desempeño de un árbol de decisión puede evaluarse utilizando diferentes métricas según el tipo de problema.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Clasificación</strong></th>
+<th style="text-align: left;"><strong>Regresión</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Accuracy</td>
+<td style="text-align: left;">MSE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Precision</td>
+<td style="text-align: left;">RMSE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Recall</td>
+<td style="text-align: left;">MAE</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Matriz de confusión</td>
+<td style="text-align: left;"><span class="math inline">\(R^2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Curva ROC</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
 <div class="note">
-<p>Los hiperparámetros del árbol deben seleccionarse utilizando datos de validación.</p>
+<p>Los hiperparámetros del árbol deben seleccionarse utilizando validación cruzada.</p>
 </div>
 </section>
 <section id="consideraciones-prácticas" class="slide level2">
@@ -554,7 +612,7 @@ R_2.\]</span></p>
 </section>
 <section id="qué-sigue" class="slide level2">
 <h2>¿Qué sigue?</h2>
-<p>En el siguiente notebook implementaremos <strong>árboles de decisión</strong>, desde la construcción del modelo hasta la selección de sus hiperparámetros.</p>
+<p>En el siguiente notebook utilizaremos <strong>Scikit-learn</strong> para aplicar árboles de decisión a un conjunto de datos, evaluar su desempeño y analizar cómo la selección de diferentes <strong>hiperparámetros</strong> influye en los resultados del modelo.</p>
 <p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-09.ipynb"><strong>Ir al notebook →</strong></a></p>
 
 
