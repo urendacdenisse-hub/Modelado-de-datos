@@ -242,12 +242,10 @@ Dra. Denisse Urenda Castañeda
 <li><p>Observamos sus clases <span class="math inline">\(y_i\)</span>.</p></li>
 <li><p>Asignamos la clase más frecuente:</p></li>
 </ol>
-<p><span class="math display">\[
-\hat y
+<p><span class="math display">\[\hat y
 =
 \operatorname{mode}
-\{y_i:\mathbf{x}_i\in N_k(\mathbf{x})\}.
-\]</span></p>
+\{y_i:\mathbf{x}_i\in N_k(\mathbf{x})\}.\]</span></p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="../imagenes/knn-vecinos.png" style="width:100.0%"></p>
 </div></div>
@@ -324,13 +322,13 @@ Dra. Denisse Urenda Castañeda
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong><span class="math inline">\(k\)</span> pequeño</strong></p>
+<p><span class="math inline">\(k\)</span> pequeño</p>
 <p>La predicción depende de <strong>pocos vecinos</strong>, por lo que la frontera puede adaptarse demasiado a los datos.</p>
 <div class="formula">
 <p>Frontera <strong>irregular</strong> y mayor sensibilidad al <strong>ruido</strong>.</p>
 </div>
 </div><div class="column" style="width:50%;">
-<p><strong><span class="math inline">\(k\)</span> grande</strong></p>
+<p><span class="math inline">\(k\)</span> grande</p>
 <p>La predicción considera <strong>más vecinos</strong>, suavizando la frontera y reduciendo el efecto de observaciones individuales.</p>
 <div class="formula">
 <p>Frontera <strong>suave</strong>, pero puede perder <strong>patrones locales</strong>.</p>
@@ -352,23 +350,29 @@ Dra. Denisse Urenda Castañeda
 <h2>KNN para clasificación y regresión</h2>
 <p>KNN puede utilizarse tanto para <strong>clasificación</strong> como para <strong>regresión</strong>.</p>
 <p><strong>Clasificación:</strong> asignamos la clase más frecuente entre los <span class="math inline">\(k\)</span> vecinos:</p>
-<p><span class="math display">\[
-\hat y
+<p><span class="math display">\[\hat y
 =
 \operatorname{mode}
-\{y_i:\mathbf{x}_i\in\mathcal N_k(\mathbf{x})\}.
-\]</span></p>
+\{y_i:\mathbf{x}_i\in\mathcal N_k(\mathbf{x})\}.\]</span></p>
 <p><strong>Regresión:</strong> cuando la respuesta es continua, utilizamos el promedio:</p>
-<p><span class="math display">\[
-\hat y
+<p><span class="math display">\[\hat y
 =
 \frac{1}{k}
 \sum_{i\in\mathcal N_k(\mathbf{x})}
-y_i.
-\]</span></p>
+y_i.\]</span></p>
 <div class="formula">
 <p>En ambos casos utilizamos los mismos <span class="math inline">\(k\)</span> vecinos; lo que cambia es <strong>cómo combinamos sus respuestas</strong>.</p>
 </div>
+</section>
+<section id="antes-de-continuar" class="slide level2 unlisted">
+<h2>Antes de continuar…</h2>
+<div class="columns" style="align-items: center;">
+<div class="column" style="width:50%;">
+<p><img data-src="../imagenes/miss.png"></p>
+</div><div class="column" style="width:50%;">
+<p>Contesta la siguiente encuesta:</p>
+<p><a href="https://forms.gle/8Yg3euLNM8h2m37k7"><strong>Responder encuesta</strong></a></p>
+</div></div>
 </section>
 <section id="evaluación-del-modelo" class="slide level2">
 <h2>Evaluación del modelo</h2>
@@ -411,9 +415,7 @@ y_i.
 <h2>KNN es un modelo no paramétrico</h2>
 <p>KNN es un método de <strong>aprendizaje supervisado no paramétrico</strong>.</p>
 <p>A diferencia de otros modelos que hemos estudiado, no supone una forma funcional específica ni estima un conjunto fijo de parámetros, como en</p>
-<p><span class="math display">\[
-\hat y=f(\mathbf x;\boldsymbol\theta).
-\]</span></p>
+<p><span class="math display">\[\hat y=f(\mathbf x;\boldsymbol\theta).\]</span></p>
 <p>En su lugar, conserva los datos de entrenamiento y realiza la predicción utilizando las observaciones cercanas.</p>
 <div class="formula">
 <p>KNN es un método basado en <strong>instancias</strong>: las predicciones dependen directamente de las observaciones almacenadas.</p>

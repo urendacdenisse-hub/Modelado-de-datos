@@ -417,7 +417,7 @@
     "href": "lecciones/unidad-01/leccion-12.html#k-nearest-neighbors",
     "title": "Aprendizaje supervisado",
     "section": "K-Nearest Neighbors",
-    "text": "K-Nearest Neighbors\n\n\nPara clasificar una nueva observación:\n\nCalculamos su distancia a cada observación de entrenamiento: \\(d_i=d(\\mathbf{x},\\mathbf{x}_i)\\).\nSeleccionamos los \\(k\\) vecinos más cercanos: \\(N_k(\\mathbf{x})\\).\nObservamos sus clases \\(y_i\\).\nAsignamos la clase más frecuente:\n\n\\[\n\\hat y\n=\n\\operatorname{mode}\n\\{y_i:\\mathbf{x}_i\\in N_k(\\mathbf{x})\\}.\n\\]"
+    "text": "K-Nearest Neighbors\n\n\nPara clasificar una nueva observación:\n\nCalculamos su distancia a cada observación de entrenamiento: \\(d_i=d(\\mathbf{x},\\mathbf{x}_i)\\).\nSeleccionamos los \\(k\\) vecinos más cercanos: \\(N_k(\\mathbf{x})\\).\nObservamos sus clases \\(y_i\\).\nAsignamos la clase más frecuente:\n\n\\[\\hat y\n=\n\\operatorname{mode}\n\\{y_i:\\mathbf{x}_i\\in N_k(\\mathbf{x})\\}.\\]"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-12.html#ejemplo",
@@ -459,7 +459,14 @@
     "href": "lecciones/unidad-01/leccion-12.html#knn-para-clasificación-y-regresión",
     "title": "Aprendizaje supervisado",
     "section": "KNN para clasificación y regresión",
-    "text": "KNN para clasificación y regresión\nKNN puede utilizarse tanto para clasificación como para regresión.\nClasificación: asignamos la clase más frecuente entre los \\(k\\) vecinos:\n\\[\n\\hat y\n=\n\\operatorname{mode}\n\\{y_i:\\mathbf{x}_i\\in\\mathcal N_k(\\mathbf{x})\\}.\n\\]\nRegresión: cuando la respuesta es continua, utilizamos el promedio:\n\\[\n\\hat y\n=\n\\frac{1}{k}\n\\sum_{i\\in\\mathcal N_k(\\mathbf{x})}\ny_i.\n\\]\n\nEn ambos casos utilizamos los mismos \\(k\\) vecinos; lo que cambia es cómo combinamos sus respuestas."
+    "text": "KNN para clasificación y regresión\nKNN puede utilizarse tanto para clasificación como para regresión.\nClasificación: asignamos la clase más frecuente entre los \\(k\\) vecinos:\n\\[\\hat y\n=\n\\operatorname{mode}\n\\{y_i:\\mathbf{x}_i\\in\\mathcal N_k(\\mathbf{x})\\}.\\]\nRegresión: cuando la respuesta es continua, utilizamos el promedio:\n\\[\\hat y\n=\n\\frac{1}{k}\n\\sum_{i\\in\\mathcal N_k(\\mathbf{x})}\ny_i.\\]\n\nEn ambos casos utilizamos los mismos \\(k\\) vecinos; lo que cambia es cómo combinamos sus respuestas."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-12.html#antes-de-continuar",
+    "href": "lecciones/unidad-01/leccion-12.html#antes-de-continuar",
+    "title": "Aprendizaje supervisado",
+    "section": "Antes de continuar…",
+    "text": "Antes de continuar…\n\n\n\n\nContesta la siguiente encuesta:\nResponder encuesta"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-12.html#evaluación-del-modelo",
@@ -473,7 +480,7 @@
     "href": "lecciones/unidad-01/leccion-12.html#knn-es-un-modelo-no-paramétrico",
     "title": "Aprendizaje supervisado",
     "section": "KNN es un modelo no paramétrico",
-    "text": "KNN es un modelo no paramétrico\nKNN es un método de aprendizaje supervisado no paramétrico.\nA diferencia de otros modelos que hemos estudiado, no supone una forma funcional específica ni estima un conjunto fijo de parámetros, como en\n\\[\n\\hat y=f(\\mathbf x;\\boldsymbol\\theta).\n\\]\nEn su lugar, conserva los datos de entrenamiento y realiza la predicción utilizando las observaciones cercanas.\n\nKNN es un método basado en instancias: las predicciones dependen directamente de las observaciones almacenadas."
+    "text": "KNN es un modelo no paramétrico\nKNN es un método de aprendizaje supervisado no paramétrico.\nA diferencia de otros modelos que hemos estudiado, no supone una forma funcional específica ni estima un conjunto fijo de parámetros, como en\n\\[\\hat y=f(\\mathbf x;\\boldsymbol\\theta).\\]\nEn su lugar, conserva los datos de entrenamiento y realiza la predicción utilizando las observaciones cercanas.\n\nKNN es un método basado en instancias: las predicciones dependen directamente de las observaciones almacenadas."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-12.html#limitaciones-de-knn",
@@ -1922,14 +1929,14 @@
     "href": "lecciones/unidad-01/leccion-13.html#introducción",
     "title": "Aprendizaje supervisado",
     "section": "Introducción",
-    "text": "Introducción\n\n\nSupongamos que queremos predecir si una observación pertenece a una determinada clase.\nUna estrategia consiste en realizar una serie de preguntas sobre las variables predictoras.\nPor ejemplo:\n\n¿\\(X_1 &lt; 5\\)?\n¿\\(X_2 &lt; 10\\)?\n¿\\(X_3 = 1\\)?\n\nCada respuesta divide los datos en grupos cada vez más pequeños.\n\n\n\n\nUn árbol de decisión realiza divisiones sucesivas de los datos utilizando las variables predictoras."
+    "text": "Introducción\n\n\nSupongamos que queremos predecir si una observación pertenece a una determinada clase.\nUna estrategia consiste en realizar una serie de preguntas sobre las variables predictoras.\nPor ejemplo:\n\n¿\\(X_1 &lt; 5\\)?\n¿\\(X_2 &lt; 10\\)?\n¿\\(X_3 = 1\\)?\n\n\n\nCada respuesta divide los datos en grupos cada vez más pequeños.\n\n\nUn árbol de decisión realiza divisiones sucesivas de los datos utilizando las variables predictoras."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#estructura-de-un-árbol",
     "href": "lecciones/unidad-01/leccion-13.html#estructura-de-un-árbol",
     "title": "Aprendizaje supervisado",
     "section": "Estructura de un árbol",
-    "text": "Estructura de un árbol\nUn árbol de decisión está formado por:\n\nnodo raíz: contiene inicialmente todas las observaciones;\nnodos internos: representan decisiones sobre alguna variable;\nramas: representan el resultado de una decisión;\nnodos terminales u hojas: contienen la predicción final."
+    "text": "Estructura de un árbol\n\n\nUn árbol de decisión está formado por:\n\nNodo raíz\nNodo interno\nRama\nNodos terminales u hojas"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#de-árbol-a-regiones",
@@ -1943,21 +1950,21 @@
     "href": "lecciones/unidad-01/leccion-13.html#dónde-hacemos-una-división",
     "title": "Aprendizaje supervisado",
     "section": "¿Dónde hacemos una división?",
-    "text": "¿Dónde hacemos una división?\nSupongamos que tenemos diferentes posibilidades:\n\\[X_1 &lt; 2,\n\\qquad\nX_1 &lt; 5,\n\\qquad\nX_2 &lt; 8,\n\\qquad \\ldots\\]\nCada división genera dos nuevos grupos de observaciones.\nQueremos elegir una división que produzca grupos más homogéneos respecto a la variable respuesta.\n\nEl árbol busca la variable y el punto de corte que produzcan la mejor separación de los datos."
+    "text": "¿Dónde hacemos una división?\nSupongamos que tenemos diferentes posibilidades:\n\\[\nX_1 &lt; 2,\n\\qquad\nX_1 &lt; 5,\n\\qquad\nX_2 &lt; 8,\n\\qquad \\ldots\n\\]\nCada división genera dos nuevos grupos de observaciones.\nQueremos elegir una división que produzca grupos más homogéneos respecto a la variable respuesta.\n\nEl árbol busca la variable y el punto de corte que produzcan la mejor separación de los datos."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#impureza",
     "href": "lecciones/unidad-01/leccion-13.html#impureza",
     "title": "Aprendizaje supervisado",
     "section": "Impureza",
-    "text": "Impureza\nEn clasificación necesitamos medir qué tan mezcladas se encuentran las clases dentro de un nodo.\nConsideremos:\n\\[\\text{Nodo A}:\n\\quad\n\\class{A}=50\\%,\n\\quad\n\\class{B}=50\\%.\\]\nEste nodo tiene alta impureza.\nEn cambio,\n\\[\\text{Nodo B}:\n\\quad\n\\class{A}=95\\%,\n\\quad\n\\class{B}=5\\%.\\]\nes mucho más homogéneo.\n\nUna buena división produce nodos con observaciones pertenecientes principalmente a una misma clase."
+    "text": "Impureza\nEn clasificación necesitamos medir qué tan mezcladas se encuentran las clases dentro de un nodo.\nConsideremos:\n\\[\n\\text{Nodo A}:\n\\quad\n\\text{Clase A}=50\\%,\n\\quad\n\\text{Clase B}=50\\%.\n\\]\nEste nodo tiene alta impureza.\nEn cambio,\n\\[\n\\text{Nodo B}:\n\\quad\n\\text{Clase A}=95\\%,\n\\quad\n\\text{Clase B}=5\\%.\n\\]\nes mucho más homogéneo.\n\nUna buena división produce nodos con observaciones pertenecientes principalmente a una misma clase."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#índice-gini",
     "href": "lecciones/unidad-01/leccion-13.html#índice-gini",
     "title": "Aprendizaje supervisado",
     "section": "Índice Gini",
-    "text": "Índice Gini\nUna medida común de impureza es el índice Gini.\nSi existen \\(K\\) clases,\n\\[G\n=\n1-\n\\sum_{k=1}^{K}p_k^2,\\]\ndonde \\(p_k\\) representa la proporción de observaciones de la clase \\(k\\) dentro del nodo.\n\nUn nodo completamente puro tiene\n\\[G=0.\\]"
+    "text": "Índice Gini\nUna medida común de impureza es el índice Gini.\nSi existen \\(K\\) clases, la impureza de un nodo se calcula como\n\\[\nG=1-\\sum_{k=1}^{K}p_k^2,\n\\]\ndonde \\(p_k\\) representa la proporción de observaciones de la clase \\(k\\) dentro del nodo.\n\nUn nodo completamente puro tiene \\(G=0\\)."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#ejemplo",
@@ -1978,7 +1985,7 @@
     "href": "lecciones/unidad-01/leccion-13.html#construcción-del-árbol",
     "title": "Aprendizaje supervisado",
     "section": "Construcción del árbol",
-    "text": "Construcción del árbol\nEl proceso se repite de manera recursiva:\n\nevaluar posibles divisiones;\nseleccionar la mejor;\ndividir los datos;\nrepetir el procedimiento dentro de cada nuevo nodo.\n\nEl crecimiento continúa hasta satisfacer algún criterio de parada.\n\nEl árbol se construye mediante una secuencia de decisiones localmente óptimas."
+    "text": "Construcción del árbol"
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#predicción",
@@ -1992,7 +1999,7 @@
     "href": "lecciones/unidad-01/leccion-13.html#profundidad-del-árbol",
     "title": "Aprendizaje supervisado",
     "section": "Profundidad del árbol",
-    "text": "Profundidad del árbol\n\n\nUn árbol poco profundo realiza pocas divisiones y genera regiones relativamente grandes.\nUn árbol profundo puede generar regiones muy específicas alrededor de las observaciones de entrenamiento.\n\n\n\n\nLa profundidad controla la complejidad del árbol."
+    "text": "Profundidad del árbol\nLa profundidad de un árbol es el número máximo de divisiones (ramas) que se recorren desde el nodo raíz hasta una hoja. Por convención, el nodo raíz tiene profundidad \\(0\\).\n\nÁrbol poco profundo: realiza pocas divisiones y genera regiones relativamente grandes. Puede no capturar patrones complejos en los datos.\nÁrbol profundo: realiza más divisiones y genera regiones más específicas. Puede ajustarse excesivamente a las observaciones de entrenamiento.\n\n\nLa profundidad controla la complejidad del árbol y permite regular el equilibrio entre subajuste y sobreajuste."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#sobreajuste",
@@ -2006,7 +2013,7 @@
     "href": "lecciones/unidad-01/leccion-13.html#control-de-complejidad",
     "title": "Aprendizaje supervisado",
     "section": "Control de complejidad",
-    "text": "Control de complejidad\nPodemos controlar el crecimiento utilizando hiperparámetros como:\n\n\n\nHiperparámetro\nControla\n\n\n\n\nmax_depth\nProfundidad máxima\n\n\nmin_samples_split\nObservaciones mínimas para dividir un nodo\n\n\nmin_samples_leaf\nObservaciones mínimas en una hoja\n\n\nmax_leaf_nodes\nNúmero máximo de hojas\n\n\n\n\nEstos hiperparámetros controlan la complejidad del árbol y pueden seleccionarse utilizando validación."
+    "text": "Control de complejidad\nPodemos controlar el crecimiento utilizando hiperparámetros como:\n\n\n\nHiperparámetro\nControla\n\n\n\n\nmax_depth\nProfundidad máxima\n\n\nmin_samples_split\nObservaciones mínimas para dividir un nodo\n\n\nmin_samples_leaf\nObservaciones mínimas en una hoja\n\n\nmax_leaf_nodes\nNúmero máximo de hojas\n\n\n\n\nEstos hiperparámetros controlan la complejidad del árbol y pueden seleccionarse utilizando validación cruzada."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#y-para-regresión",
@@ -2048,7 +2055,7 @@
     "href": "lecciones/unidad-01/leccion-13.html#evaluación",
     "title": "Aprendizaje supervisado",
     "section": "Evaluación",
-    "text": "Evaluación\nPara clasificación podemos utilizar:\n\nAccuracy\nPrecision\nRecall\nMatriz de confusión\nCurva ROC\n\nPara regresión:\n\nMSE\nRMSE\nMAE\n\\(R^2\\)\n\n\nLos hiperparámetros del árbol deben seleccionarse utilizando datos de validación."
+    "text": "Evaluación\nEl desempeño de un árbol de decisión puede evaluarse utilizando diferentes métricas según el tipo de problema.\n\n\n\nClasificación\nRegresión\n\n\n\n\nAccuracy\nMSE\n\n\nPrecision\nRMSE\n\n\nRecall\nMAE\n\n\nMatriz de confusión\n\\(R^2\\)\n\n\nCurva ROC\n\n\n\n\n\nLos hiperparámetros del árbol deben seleccionarse utilizando validación cruzada."
   },
   {
     "objectID": "lecciones/unidad-01/leccion-13.html#consideraciones-prácticas",
@@ -2385,5 +2392,61 @@
     "title": "Supuestos de regresión lineal",
     "section": "",
     "text": "Supuestos de regresión lineal\nEl modelo de regresión lineal se expresa como:\n\\[\n\\mathbf{Y}\n=\n\\mathbf{X}\\beta\n+\n\\varepsilon\n\\]\nSi asumimos que los errores son independientes, tienen media cero, varianza constante y siguen una distribución normal:\n\\[\n\\varepsilon\n\\sim\n\\mathcal{N}_n(\\mathbf{0},\\sigma^2 I_n)\n\\]\nentonces la distribución de la variable respuesta es:\n\\[\n\\mathbf{Y}\\mid\\mathbf{X}\n\\sim\n\\mathcal{N}_n\n\\left(\n\\mathbf{X}\\beta,\n\\sigma^2 I_n\n\\right)\n\\]\nEquivalentemente, para cada observación:\n\\[\nY_i\\mid\\mathbf{x}_i\n\\sim\n\\mathcal{N}\n\\left(\n\\mathbf{x}_i^T\\beta,\n\\sigma^2\n\\right)\n\\]\n\n\n\n\n\n\n\n\n\nSuposición\n¿Qué verificar?\n¿Qué esperamos?\nHerramienta\n\n\n\n\nLinealidad\nRelación entre predictores y respuesta\nResiduos sin patrones sistemáticos ni curvatura\nplt.scatter(y_hat, residuals)\n\n\nLinealidad por predictor\nSi algún predictor presenta estructura no lineal\nResiduos sin patrón respecto a cada predictor\nplt.scatter(X_j, residuals)\n\n\nNormalidad\nDistribución de los residuos\nAproximadamente normal\nstats.probplot(residuals)\n\n\nNormalidad\nEvidencia estadística de normalidad\n(p &gt; 0.05): no rechazamos normalidad\nshapiro(residuals)\n\n\nHomocedasticidad\nVarianza de los residuos\nDispersión aproximadamente constante, sin forma de abanico\nplt.scatter(y_hat, residuals)\n\n\nHomocedasticidad\nEvidencia estadística de varianza constante\n(p &gt; 0.05): no hay evidencia de heterocedasticidad\nhet_breuschpagan()\n\n\nIndependencia\nAutocorrelación de los residuos\nAutocorrelaciones cercanas a 0\nplot_acf(residuals)\n\n\nIndependencia\nAutocorrelación entre residuos consecutivos\nDurbin-Watson cercano a 2\ndurbin_watson(residuals)\n\n\nMulticolinealidad\nCorrelación entre predictores\nEvitar correlaciones muy altas entre (X_j)\nX.corr()\n\n\nMulticolinealidad\nCuánto puede explicarse cada predictor con los demás\nVIF bajo; idealmente &lt; 5\nvariance_inflation_factor()"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-13.html#ejemplo-comparación-de-dos-cortes",
+    "href": "lecciones/unidad-01/leccion-13.html#ejemplo-comparación-de-dos-cortes",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo: Comparación de dos cortes",
+    "text": "Ejemplo: Comparación de dos cortes\n\n\nSupongamos el siguiente conjunto de datos:\n\n\n\n\\(X_1\\)\n\\(X_2\\)\n\\(X_3\\)\nClase\n\n\n\n\n1\n12\n0\nA\n\n\n2\n8\n1\nA\n\n\n3\n15\n0\nA\n\n\n4\n6\n1\nA\n\n\n5\n11\n1\nB\n\n\n6\n9\n0\nA\n\n\n7\n14\n1\nB\n\n\n8\n7\n0\nB\n\n\n\n\nConsideremos dos posibles divisiones del conjunto de datos:\n\nCorte 1: \\(X_1 &lt; 4.5\\)\nCorte 2: \\(X_1 &lt; 6.5\\)\n\nDetermina cuál de los dos cortes es mejor utilizando el índice Gini ponderado."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-13.html#ejemplo-comparación-de-dos-cortes-1",
+    "href": "lecciones/unidad-01/leccion-13.html#ejemplo-comparación-de-dos-cortes-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Ejemplo: Comparación de dos cortes",
+    "text": "Ejemplo: Comparación de dos cortes\nQueremos comparar dos posibles divisiones:\n\nCorte 1: \\(X_1 &lt; 4.5\\)\nCorte 2: \\(X_1 &lt; 6.5\\)\n\nPara cada corte calcularemos la impureza Gini de los nodos resultantes:\n\\[G = 1 - p_A^2 - p_B^2\\]\nEl índice Gini ponderado de la división es:\n\\[\nG_{\\text{división}} =\n\\frac{n_L}{n}G_L +\n\\frac{n_R}{n}G_R\n\\]\n\nEl mejor corte es aquel que produce la menor impureza Gini ponderada."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-13.html#índice-gini-1",
+    "href": "lecciones/unidad-01/leccion-13.html#índice-gini-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Índice Gini",
+    "text": "Índice Gini\nPara evaluar una división, calculamos el índice Gini ponderado:\n\\[\nG_{\\text{división}} =\n\\frac{n_L}{n}G_L +\n\\frac{n_R}{n}G_R,\n\\]\ndonde:\n\n\\(G_L\\) y \\(G_R\\) son los índices Gini de los nodos izquierdo y derecho.\n\\(n_L\\) y \\(n_R\\) son las observaciones en cada nodo.\n\\(n\\) es el total de observaciones antes de la división.\n\n\nEl mejor corte es aquel que minimiza el índice Gini ponderado."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-13.html#índice-gini-ponderado",
+    "href": "lecciones/unidad-01/leccion-13.html#índice-gini-ponderado",
+    "title": "Aprendizaje supervisado",
+    "section": "Índice Gini ponderado",
+    "text": "Índice Gini ponderado\nPara evaluar una división, calculamos el índice Gini ponderado:\n\\[\nG_{\\text{división}} =\n\\frac{n_L}{n}G_L +\n\\frac{n_R}{n}G_R,\n\\]\ndonde:\n\n\\(G_L\\) y \\(G_R\\) son los índices Gini de los nodos izquierdo y derecho.\n\\(n_L\\) y \\(n_R\\) son las observaciones en cada nodo.\n\\(n\\) es el total de observaciones antes de la división.\n\n\nEl mejor corte es aquel que minimiza el índice Gini ponderado."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-13.html#construcción-recursiva-del-árbol",
+    "href": "lecciones/unidad-01/leccion-13.html#construcción-recursiva-del-árbol",
+    "title": "Aprendizaje supervisado",
+    "section": "Construcción recursiva del árbol",
+    "text": "Construcción recursiva del árbol\nEl proceso se repite de manera recursiva:\n\nEvaluar posibles divisiones sobre las variables predictoras: \\(X_j &lt; c\\)\nSeleccionar el mejor corte, minimizando el índice Gini ponderado:\n\\[\n(j^*,c^*)=\\arg\\min_{j,c}\n\\left[\n\\frac{n_L}{n}G_L+\n\\frac{n_R}{n}G_R\n\\right]\n\\]\nDividir las observaciones en dos nuevos nodos:\n\\[\nR_L=\\{x\\in R:X_{j^*}&lt;c^*\\},\n\\quad\nR_R=\\{x\\in R:X_{j^*}\\geq c^*\\}\n\\]\nRepetir el procedimiento dentro de cada nuevo nodo.\n\nEl crecimiento continúa hasta satisfacer algún criterio de parada.\n\nEl árbol se construye mediante una secuencia de decisiones localmente óptimas."
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-13.html#construcción-recursiva-del-árbol-1",
+    "href": "lecciones/unidad-01/leccion-13.html#construcción-recursiva-del-árbol-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Construcción recursiva del árbol",
+    "text": "Construcción recursiva del árbol"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-13.html#profundidad-del-árbol-1",
+    "href": "lecciones/unidad-01/leccion-13.html#profundidad-del-árbol-1",
+    "title": "Aprendizaje supervisado",
+    "section": "Profundidad del árbol",
+    "text": "Profundidad del árbol"
+  },
+  {
+    "objectID": "lecciones/unidad-01/leccion-13.html#profundidad-del-árbol-2",
+    "href": "lecciones/unidad-01/leccion-13.html#profundidad-del-árbol-2",
+    "title": "Aprendizaje supervisado",
+    "section": "Profundidad del árbol",
+    "text": "Profundidad del árbol\nSi permitimos que el árbol continúe creciendo, puede llegar a construir hojas con muy pocas observaciones.\nEsto permite ajustarse extremadamente bien a los datos de entrenamiento.\nSin embargo, puede producir un desempeño pobre sobre nuevas observaciones.\n\nUn árbol demasiado complejo puede producir sobreajuste."
   }
 ]

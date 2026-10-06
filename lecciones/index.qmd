@@ -30,7 +30,7 @@ title: "Lecciones"
 ## Modelos no paramétricos y ensambles
 
 - [$k$-Nearest Neighbors](unidad-01/leccion-12.qmd)
-- Árboles de decisión
+- [Árboles de decisión](unidad-01/leccion-13.qmd)
 - Random Forest
 - Boosting
 - Redes neuronales
