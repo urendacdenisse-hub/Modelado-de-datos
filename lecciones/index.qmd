@@ -31,6 +31,5 @@ title: "Lecciones"
 
 - [$k$-Nearest Neighbors](unidad-01/leccion-12.qmd)
 - [Árboles de decisión](unidad-01/leccion-13.qmd)
-- Random Forest
-- Boosting
-- Redes neuronales
+- [Random Forest](unidad-01/leccion-14.qmd)
+- [Redes neuronales](unidad-01/leccion-15.qmd)
