@@ -562,7 +562,7 @@ L=L(a),\qquad a=f(z),\qquad z=z(w)
 <li class="fragment">Número de neuronas por capa.</li>
 <li class="fragment">Funciones de activación.</li>
 <li class="fragment">Tasa de aprendizaje.</li>
-<li class="fragment">Tamaño del lote (<em>batch size</em>).</li>
+<li class="fragment">Tamaño del lote.</li>
 <li class="fragment">Número máximo de épocas.</li>
 </ul>
 </section>
@@ -630,8 +630,9 @@ L=L(a),\qquad a=f(z),\qquad z=z(w)
 </section>
 <section id="qué-sigue" class="slide level2">
 <h2>¿Qué sigue?</h2>
-<p>En el siguiente notebook utilizaremos <strong>Scikit-learn</strong> para entrenar un Random Forest, comparar su desempeño con un árbol de decisión y analizar el efecto de <code>n_estimators</code>, <code>max_features</code> y <code>max_depth</code>.</p>
-<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-10.ipynb"><strong>Ir al notebook →</strong></a></p>
+<p>En el siguiente notebook utilizaremos <strong>Scikit-learn</strong> para entrenar una red neuronal artificial mediante <code>MLPClassifier</code>, evaluar su desempeño y analizar cómo influyen diferentes configuraciones de su arquitectura.</p>
+<p>Experimentaremos con el <strong>número de capas ocultas</strong>, la <strong>cantidad de neuronas por capa</strong> y las <strong>funciones de activación</strong>.</p>
+<p><a href="https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-11.ipynb"><strong>Ir al notebook →</strong></a></p>
 
 
 </section>
@@ -920,7 +921,7 @@ L=L(a),\qquad a=f(z),\qquad z=z(w)
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp('/' + window.location.host + '/');
+            var filterRegex = new RegExp("https:\/\/urendacdenisse-hub\.github\.io\/Modelado-de-datos\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

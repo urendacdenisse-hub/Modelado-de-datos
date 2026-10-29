@@ -33,3 +33,10 @@ title: "Lecciones"
 - [Árboles de decisión](unidad-01/leccion-13.qmd)
 - [Random Forest](unidad-01/leccion-14.qmd)
 - [Redes neuronales](unidad-01/leccion-15.qmd)
+
+
+# Unidad II. Aprendizaje no supervisado
+
+## Agrupamiento de datos
+
+- [$K$-Means](unidad-02/leccion-01.qmd)
