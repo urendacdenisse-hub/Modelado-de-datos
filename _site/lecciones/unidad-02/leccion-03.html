@@ -153,7 +153,6 @@ Dra. Denisse Urenda Castañeda
 <li><a href="#/ejemplo" id="/toc-ejemplo">Ejemplo</a></li>
 <li><a href="#/hiperparámetros-de-dbscan" id="/toc-hiperparámetros-de-dbscan">Hiperparámetros de DBSCAN</a></li>
 <li><a href="#/consideraciones-importantes" id="/toc-consideraciones-importantes">Consideraciones importantes</a></li>
-<li><a href="#/comparación-de-algoritmos" id="/toc-comparación-de-algoritmos">Comparación de algoritmos</a></li>
 <li><a href="#/preguntas" id="/toc-preguntas">Preguntas</a></li>
 <li><a href="#/qué-sigue" id="/toc-qué-sigue">¿Qué sigue?</a></li>
 </ul>
@@ -180,57 +179,43 @@ Dra. Denisse Urenda Castañeda
 <h2>Concepto de densidad</h2>
 <p>DBSCAN considera que una observación pertenece a una región densa cuando tiene suficientes observaciones cercanas.</p>
 <p>Para ello utiliza dos parámetros:</p>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
 <li><strong><span class="math inline">\(\varepsilon\)</span> (eps):</strong> radio de la vecindad alrededor de una observación.</li>
 <li><strong>MinPts:</strong> número mínimo de observaciones necesarias para considerar una región suficientemente densa, incluyendo la propia observación.</li>
 </ul>
-<p>La vecindad de una observación <span class="math inline">\(x_i\)</span> se define como:</p>
-<p><span class="math display">\[
+</div><div class="column" style="width:40%;">
+<div style="width: 500px; margin: auto;">
+<p><img data-src="../imagenes/dbscan-concept.png" style="width:90.0%"></p>
+</div>
+</div></div>
+<p>La vecindad de una observación <span class="math inline">\(x_i\)</span> se define como: <span class="math display">\[
 N_\varepsilon(x_i)=
 \{x_j:d(x_i,x_j)\leq\varepsilon\}
 \]</span></p>
-<p><embed data-src="../imagenes/dbscan.html"></p>
 </section>
 <section id="tipos-de-observaciones" class="slide level2">
 <h2>Tipos de observaciones</h2>
 <p>DBSCAN clasifica las observaciones en tres categorías:</p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Tipo</th>
-<th style="text-align: left;">Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Núcleo (core)</td>
-<td style="text-align: left;">Tiene al menos MinPts observaciones en su vecindad, incluyéndose a sí misma.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Borde (border)</td>
-<td style="text-align: left;">No es núcleo, pero está dentro de la vecindad de un punto núcleo.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Ruido (noise)</td>
-<td style="text-align: left;">No es núcleo ni pertenece a la vecindad de ningún punto núcleo.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="tipos-de-observaciones-1" class="slide level2 unlisted">
-<h2>Tipos de observaciones</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><strong>Núcleo</strong> (core): Tiene al menos MinPts observaciones en su vecindad, incluyéndose a sí misma.</li>
+<li><strong>Borde</strong> (border): No es núcleo, pero está dentro de la vecindad de un punto núcleo.</li>
+<li><strong>Ruido</strong> (noise): No es núcleo ni pertenece a la vecindad de ningún punto núcleo.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div style="width: 500px; margin: auto;">
+<p><img data-src="../imagenes/dbscan.png" style="width:90.0%"></p>
+</div>
+</div></div>
 <div class="formula">
-<p>Una observación es un punto núcleo cuando:</p>
-<p><span class="math display">\[
+<p>Una observación es un punto núcleo cuando: <span class="math display">\[
 |N_\varepsilon(x_i)|\geq MinPts
 \]</span></p>
 </div>
-
-<img data-src="../imagenes/dbscan-concept.png" class="r-stretch"></section>
+</section>
 <section id="cómo-funciona-dbscan" class="slide level2">
 <h2>¿Cómo funciona DBSCAN?</h2>
 <p>El algoritmo sigue los siguientes pasos:</p>
@@ -296,51 +281,6 @@ X=\{1.0,\ 1.2,\ 1.4,\ 5.0,\ 5.2,\ 5.4,\ 9.0\}
 <li>Puede presentar dificultades cuando los clusters tienen densidades muy diferentes.</li>
 <li>El escalamiento de las variables puede afectar los resultados.</li>
 </ul>
-</section>
-<section id="comparación-de-algoritmos" class="slide level2">
-<h2>Comparación de algoritmos</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Característica</th>
-<th style="text-align: left;">K-means</th>
-<th style="text-align: left;">Jerárquico</th>
-<th style="text-align: left;">DBSCAN</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Requiere definir K inicialmente</td>
-<td style="text-align: left;">Sí</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">No</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Identifica ruido</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">No directamente</td>
-<td style="text-align: left;">Sí</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Grupos irregulares</td>
-<td style="text-align: left;">Limitado</td>
-<td style="text-align: left;">Depende del enlace</td>
-<td style="text-align: left;">Sí</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Resultado principal</td>
-<td style="text-align: left;">Centroides y clusters</td>
-<td style="text-align: left;">Dendrograma</td>
-<td style="text-align: left;">Clusters y ruido</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="preguntas" class="slide level2">
 <h2>Preguntas</h2>

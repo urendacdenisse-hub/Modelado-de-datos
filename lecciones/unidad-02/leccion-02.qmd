@@ -70,12 +70,13 @@ El resultado puede representarse mediante un **dendrograma**.
 
 ## ¿Qué es un dendrograma?
 
+Un **dendrograma** es una representación gráfica que muestra cómo se agrupan progresivamente las observaciones.
 
 :::: {.columns}
 
 ::: {.column width="55%"}
 
-Un **dendrograma** es una representación gráfica que muestra cómo se agrupan progresivamente las observaciones.
+
 
 - Las hojas representan las observaciones.
 - Las ramas representan las uniones entre clusters.
@@ -109,9 +110,9 @@ Para decidir qué clusters unir, es necesario definir cómo calcular la distanci
 La elección del criterio puede modificar los agrupamientos obtenidos.
 
 ## Criterios de enlace (linkage) {.unlisted}
-
+:::{style="width: 1000px; margin: auto;"}
 ![](/lecciones/imagenes/linkage.png)
-
+:::
 
 
 ## Ejemplo
@@ -119,7 +120,7 @@ La elección del criterio puede modificar los agrupamientos obtenidos.
 Utiliza las siguientes observaciones para construir un **dendrograma**, aplicando clustering jerárquico aglomerativo con distancia euclidiana y el criterio **single linkage**.
 
 $$
-X=\{1,2,4,7,8,12\}
+X=\{1,2,4,7,8\}
 $$
 
 

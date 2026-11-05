@@ -50,39 +50,59 @@ DBSCAN considera que una observación pertenece a una región densa cuando tiene
 
 Para ello utiliza dos parámetros:
 
+:::{.columns}
+
+::: {.column width="60%"}
+
+
 - **$\varepsilon$ (eps):** radio de la vecindad alrededor de una observación.
 - **MinPts:** número mínimo de observaciones necesarias para considerar una región suficientemente densa, incluyendo la propia observación.
+:::
+
+::: {.column width="40%"}
+:::{style="width: 500px; margin: auto;"}
+![](../imagenes/dbscan-concept.png){width="90%"}
+:::
+:::
+
+:::
 
 La vecindad de una observación $x_i$ se define como:
-
 $$
 N_\varepsilon(x_i)=
 \{x_j:d(x_i,x_j)\leq\varepsilon\}
 $$
 
-![](../imagenes/dbscan.png)
+
 
 ## Tipos de observaciones
 
 DBSCAN clasifica las observaciones en tres categorías:
 
-| Tipo | Descripción |
-|:---|:---|
-| Núcleo (core) | Tiene al menos MinPts observaciones en su vecindad, incluyéndose a sí misma. |
-| Borde (border) | No es núcleo, pero está dentro de la vecindad de un punto núcleo. |
-| Ruido (noise) | No es núcleo ni pertenece a la vecindad de ningún punto núcleo. |
+:::{.columns}
+:::{.column width="60%"}
 
-## Tipos de observaciones {.unlisted}
+- **Núcleo** (core): Tiene al menos MinPts observaciones en su vecindad, incluyéndose a sí misma.
+- **Borde** (border): No es núcleo, pero está dentro de la vecindad de un punto núcleo.
+- **Ruido** (noise): No es núcleo ni pertenece a la vecindad de ningún punto núcleo.
+:::
+
+:::{.column width="40%"}
+:::{style="width: 500px; margin: auto;"}
+![](../imagenes/dbscan.png){width="90%"}
+:::
+:::
+:::
 
 :::{.formula}
 Una observación es un punto núcleo cuando:
-
 $$
 |N_\varepsilon(x_i)|\geq MinPts
 $$
 :::
 
-![](../imagenes/dbscan-concept.png)
+
+
 
 ## ¿Cómo funciona DBSCAN?
 
@@ -134,15 +154,6 @@ La elección de estos parámetros afecta directamente los clusters identificados
 - Es sensible a la elección de $\varepsilon$ y MinPts.
 - Puede presentar dificultades cuando los clusters tienen densidades muy diferentes.
 - El escalamiento de las variables puede afectar los resultados.
-
-## Comparación de algoritmos
-
-| Característica | K-means | Jerárquico | DBSCAN |
-|:---|:---|:---|:---|
-| Requiere definir K inicialmente | Sí | No | No |
-| Identifica ruido | No | No directamente | Sí |
-| Grupos irregulares | Limitado | Depende del enlace | Sí |
-| Resultado principal | Centroides y clusters | Dendrograma | Clusters y ruido |
 
 ## Preguntas
 

@@ -2979,14 +2979,14 @@
     "href": "lecciones/unidad-02/leccion-03.html#concepto-de-densidad",
     "title": "Aprendizaje no supervisado",
     "section": "Concepto de densidad",
-    "text": "Concepto de densidad\nDBSCAN considera que una observación pertenece a una región densa cuando tiene suficientes observaciones cercanas.\nPara ello utiliza dos parámetros:\n\n\\(\\varepsilon\\) (eps): radio de la vecindad alrededor de una observación.\nMinPts: número mínimo de observaciones necesarias para considerar una región suficientemente densa, incluyendo la propia observación.\n\nLa vecindad de una observación \\(x_i\\) se define como:\n\\[\nN_\\varepsilon(x_i)=\n\\{x_j:d(x_i,x_j)\\leq\\varepsilon\\}\n\\]"
+    "text": "Concepto de densidad\nDBSCAN considera que una observación pertenece a una región densa cuando tiene suficientes observaciones cercanas.\nPara ello utiliza dos parámetros:\n\n\n\n\\(\\varepsilon\\) (eps): radio de la vecindad alrededor de una observación.\nMinPts: número mínimo de observaciones necesarias para considerar una región suficientemente densa, incluyendo la propia observación.\n\n\n\n\n\n\nLa vecindad de una observación \\(x_i\\) se define como: \\[\nN_\\varepsilon(x_i)=\n\\{x_j:d(x_i,x_j)\\leq\\varepsilon\\}\n\\]"
   },
   {
     "objectID": "lecciones/unidad-02/leccion-03.html#tipos-de-observaciones",
     "href": "lecciones/unidad-02/leccion-03.html#tipos-de-observaciones",
     "title": "Aprendizaje no supervisado",
     "section": "Tipos de observaciones",
-    "text": "Tipos de observaciones\nDBSCAN clasifica las observaciones en tres categorías:\n\n\n\n\n\n\n\nTipo\nDescripción\n\n\n\n\nNúcleo (core)\nTiene al menos MinPts observaciones en su vecindad, incluyéndose a sí misma.\n\n\nBorde (border)\nNo es núcleo, pero está dentro de la vecindad de un punto núcleo.\n\n\nRuido (noise)\nNo es núcleo ni pertenece a la vecindad de ningún punto núcleo."
+    "text": "Tipos de observaciones\nDBSCAN clasifica las observaciones en tres categorías:\n\n\n\nNúcleo (core): Tiene al menos MinPts observaciones en su vecindad, incluyéndose a sí misma.\nBorde (border): No es núcleo, pero está dentro de la vecindad de un punto núcleo.\nRuido (noise): No es núcleo ni pertenece a la vecindad de ningún punto núcleo.\n\n\n\n\n\n\n\nUna observación es un punto núcleo cuando: \\[\n|N_\\varepsilon(x_i)|\\geq MinPts\n\\]"
   },
   {
     "objectID": "lecciones/unidad-02/leccion-03.html#cómo-funciona-dbscan",
@@ -3056,7 +3056,7 @@
     "href": "lecciones/unidad-02/leccion-02.html#qué-es-un-dendrograma",
     "title": "Aprendizaje no supervisado",
     "section": "¿Qué es un dendrograma?",
-    "text": "¿Qué es un dendrograma?\n\n\nUn dendrograma es una representación gráfica que muestra cómo se agrupan progresivamente las observaciones.\n\nLas hojas representan las observaciones.\nLas ramas representan las uniones entre clusters.\nLa altura de cada unión indica la distancia o disimilitud a la que se realizó.\n\n\n\n\n\nEl dendrograma permite seleccionar diferentes números de grupos mediante un corte horizontal."
+    "text": "¿Qué es un dendrograma?\nUn dendrograma es una representación gráfica que muestra cómo se agrupan progresivamente las observaciones.\n\n\n\nLas hojas representan las observaciones.\nLas ramas representan las uniones entre clusters.\nLa altura de cada unión indica la distancia o disimilitud a la que se realizó.\n\n\n\n\n\nEl dendrograma permite seleccionar diferentes números de grupos mediante un corte horizontal."
   },
   {
     "objectID": "lecciones/unidad-02/leccion-02.html#criterios-de-enlace-linkage",
@@ -3077,7 +3077,7 @@
     "href": "lecciones/unidad-02/leccion-02.html#ejemplo",
     "title": "Aprendizaje no supervisado",
     "section": "Ejemplo",
-    "text": "Ejemplo\nUtiliza las siguientes observaciones para construir un dendrograma, aplicando clustering jerárquico aglomerativo con distancia euclidiana y el criterio single linkage.\n\\[\nX=\\{1,2,4,7,8,12\\}\n\\]"
+    "text": "Ejemplo\nUtiliza las siguientes observaciones para construir un dendrograma, aplicando clustering jerárquico aglomerativo con distancia euclidiana y el criterio single linkage.\n\\[\nX=\\{1,2,4,7,8\\}\n\\]"
   },
   {
     "objectID": "lecciones/unidad-02/leccion-02.html#consideraciones-importantes",
