@@ -120,7 +120,7 @@ La elección del criterio puede modificar los agrupamientos obtenidos.
 Utiliza las siguientes observaciones para construir un **dendrograma**, aplicando clustering jerárquico aglomerativo con distancia euclidiana y el criterio **single linkage**.
 
 $$
-X=\{1,2,4,7,8\}
+X=\{1,2,4,7,9,12\}
 $$
 
 
