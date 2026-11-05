@@ -385,6 +385,76 @@
     "text": "Sitios web\nExtraigamos tablas publicadas en un sitio web y carguemos su contenido en un DataFrame.\nFunciones utilizadas\n\npd.read_html(): Extrae las tablas encontradas en una página web y las devuelve como una lista de DataFrames.\n\n\nurl = \"https://www.w3schools.com/html/html_tables.asp\"\ntables = pd.read_html(url)\n\n\ntables[0]"
   },
   {
+    "objectID": "lecciones/unidad-02/leccion-03.html#qué-es-dbscan",
+    "href": "lecciones/unidad-02/leccion-03.html#qué-es-dbscan",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Qué es DBSCAN?",
+    "text": "¿Qué es DBSCAN?\nDBSCAN (Density-Based Spatial Clustering of Applications with Noise) es un algoritmo de aprendizaje no supervisado que identifica clusters a partir de regiones con alta densidad de observaciones.\nA diferencia de K-means:\n\nNo requiere establecer el número de clusters.\nPuede identificar grupos con formas irregulares.\nPermite identificar observaciones que no pertenecen a ningún cluster, consideradas ruido.\n\n\nDBSCAN puede utilizarse para identificar zonas de alta concentración de eventos geográficos y detectar ubicaciones aisladas."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#qué-es-dbscan-1",
+    "href": "lecciones/unidad-02/leccion-03.html#qué-es-dbscan-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Qué es DBSCAN?",
+    "text": "¿Qué es DBSCAN?"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#concepto-de-densidad",
+    "href": "lecciones/unidad-02/leccion-03.html#concepto-de-densidad",
+    "title": "Aprendizaje no supervisado",
+    "section": "Concepto de densidad",
+    "text": "Concepto de densidad\nDBSCAN considera que una observación pertenece a una región densa cuando tiene suficientes observaciones cercanas.\nPara ello utiliza dos parámetros:\n\n\n\n\\(\\varepsilon\\) (eps): radio de la vecindad alrededor de una observación.\nMinPts: número mínimo de observaciones necesarias para considerar una región suficientemente densa, incluyendo la propia observación.\n\n\n\n\n\n\nLa vecindad de una observación \\(x_i\\) se define como: \\[\nN_\\varepsilon(x_i)=\n\\{x_j:d(x_i,x_j)\\leq\\varepsilon\\}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#tipos-de-observaciones",
+    "href": "lecciones/unidad-02/leccion-03.html#tipos-de-observaciones",
+    "title": "Aprendizaje no supervisado",
+    "section": "Tipos de observaciones",
+    "text": "Tipos de observaciones\nDBSCAN clasifica las observaciones en tres categorías:\n\n\n\nNúcleo (core): Tiene al menos MinPts observaciones en su vecindad, incluyéndose a sí misma.\nBorde (border): No es núcleo, pero está dentro de la vecindad de un punto núcleo.\nRuido (noise): No es núcleo ni pertenece a la vecindad de ningún punto núcleo.\n\n\n\n\n\n\n\nUna observación es un punto núcleo cuando: \\[\n|N_\\varepsilon(x_i)|\\geq MinPts\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#cómo-funciona-dbscan",
+    "href": "lecciones/unidad-02/leccion-03.html#cómo-funciona-dbscan",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Cómo funciona DBSCAN?",
+    "text": "¿Cómo funciona DBSCAN?\nEl algoritmo sigue los siguientes pasos:\n\nSeleccionar una observación no visitada.\nIdentificar sus vecinos dentro del radio \\(\\varepsilon\\).\nSi es un punto núcleo, iniciar un nuevo cluster.\nExpandir el cluster incorporando observaciones conectadas a través de puntos núcleo.\nRepetir hasta procesar todas las observaciones.\n\nLas observaciones que no pertenecen a ningún cluster se clasifican como ruido."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#ejemplo",
+    "href": "lecciones/unidad-02/leccion-03.html#ejemplo",
+    "title": "Aprendizaje no supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nAplica el algoritmo DBSCAN a las siguientes observaciones:\n\\[\nX=\\{1.0,\\ 1.2,\\ 1.4,\\ 5.0,\\ 5.2,\\ 5.4,\\ 9.0\\}\n\\]\nUtiliza los parámetros:\n\\[\n\\varepsilon=0.3,\\qquad MinPts=3\n\\]\nIdentifica los puntos núcleo, puntos de borde y puntos de ruido, y determina los clusters resultantes.\nNota: MinPts incluye la propia observación."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#hiperparámetros-de-dbscan",
+    "href": "lecciones/unidad-02/leccion-03.html#hiperparámetros-de-dbscan",
+    "title": "Aprendizaje no supervisado",
+    "section": "Hiperparámetros de DBSCAN",
+    "text": "Hiperparámetros de DBSCAN\n\n\n\n\n\n\n\nHiperparámetro\nDescripción\n\n\n\n\neps\nRadio máximo para considerar dos observaciones vecinas.\n\n\nmin_samples\nNúmero mínimo de observaciones en una vecindad, incluyendo la propia observación.\n\n\nmetric\nMétrica utilizada para calcular distancias.\n\n\n\nLa elección de estos parámetros afecta directamente los clusters identificados."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#consideraciones-importantes",
+    "href": "lecciones/unidad-02/leccion-03.html#consideraciones-importantes",
+    "title": "Aprendizaje no supervisado",
+    "section": "Consideraciones importantes",
+    "text": "Consideraciones importantes\n\nNo requiere definir previamente el número de clusters.\nPuede identificar grupos de formas irregulares.\nPermite detectar observaciones aisladas.\nEs sensible a la elección de \\(\\varepsilon\\) y MinPts.\nPuede presentar dificultades cuando los clusters tienen densidades muy diferentes.\nEl escalamiento de las variables puede afectar los resultados."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#preguntas",
+    "href": "lecciones/unidad-02/leccion-03.html#preguntas",
+    "title": "Aprendizaje no supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-03.html#qué-sigue",
+    "href": "lecciones/unidad-02/leccion-03.html#qué-sigue",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos DBSCAN, analizaremos los grupos identificados y exploraremos cómo cambian los resultados al modificar sus hiperparámetros."
+  },
+  {
     "objectID": "lecciones/unidad-02/leccion-01.html#introducción",
     "href": "lecciones/unidad-02/leccion-01.html#introducción",
     "title": "Aprendizaje no supervisado",
@@ -1425,7 +1495,7 @@
     "href": "lecciones/index.html#agrupamiento-de-datos",
     "title": "Lecciones",
     "section": "Agrupamiento de datos",
-    "text": "Agrupamiento de datos\n\n\\(K\\)-Means"
+    "text": "Agrupamiento de datos\n\n\\(K\\)-Means\nClustering jerárquico\nDBSCAN"
   },
   {
     "objectID": "index.html",
@@ -2595,6 +2665,69 @@
     "title": "Aprendizaje supervisado",
     "section": "¿Qué sigue?",
     "text": "¿Qué sigue?\nEn el siguiente notebook utilizaremos Scikit-learn para entrenar una red neuronal artificial mediante MLPClassifier, evaluar su desempeño y analizar cómo influyen diferentes configuraciones de su arquitectura.\nExperimentaremos con el número de capas ocultas, la cantidad de neuronas por capa y las funciones de activación.\nIr al notebook →"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#qué-es-el-clustering-jerárquico",
+    "href": "lecciones/unidad-02/leccion-02.html#qué-es-el-clustering-jerárquico",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Qué es el clustering jerárquico?",
+    "text": "¿Qué es el clustering jerárquico?\nEl clustering jerárquico es una técnica de aprendizaje no supervisado que organiza las observaciones en una estructura de grupos anidados, de acuerdo con su similitud.\nA diferencia de K-means, no requiere establecer inicialmente el número de clusters.\nExisten dos enfoques:\n\nAglomerativo: comienza con cada observación en un grupo y los combina progresivamente.\nDivisivo: comienza con todas las observaciones en un grupo y lo divide progresivamente."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#cómo-funciona",
+    "href": "lecciones/unidad-02/leccion-02.html#cómo-funciona",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Cómo funciona?",
+    "text": "¿Cómo funciona?\n\n\nEl clustering jerárquico aglomerativo sigue los siguientes pasos:\n\nConsiderar cada observación como un cluster independiente.\nCalcular las distancias entre los clusters.\nIdentificar los dos clusters más cercanos.\nUnirlos en un nuevo cluster.\nRepetir hasta obtener un único cluster.\n\n\n\n\n\nEl resultado puede representarse mediante un dendrograma."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#qué-es-un-dendrograma",
+    "href": "lecciones/unidad-02/leccion-02.html#qué-es-un-dendrograma",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Qué es un dendrograma?",
+    "text": "¿Qué es un dendrograma?\nUn dendrograma es una representación gráfica que muestra cómo se agrupan progresivamente las observaciones.\n\n\n\nLas hojas representan las observaciones.\nLas ramas representan las uniones entre clusters.\nLa altura de cada unión indica la distancia o disimilitud a la que se realizó.\n\n\n\n\n\nEl dendrograma permite seleccionar diferentes números de grupos mediante un corte horizontal."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#criterios-de-enlace-linkage",
+    "href": "lecciones/unidad-02/leccion-02.html#criterios-de-enlace-linkage",
+    "title": "Aprendizaje no supervisado",
+    "section": "Criterios de enlace (linkage)",
+    "text": "Criterios de enlace (linkage)\nPara decidir qué clusters unir, es necesario definir cómo calcular la distancia entre dos grupos.\n\n\n\n\n\n\n\nCriterio\nDescripción\n\n\n\n\nSingle\nDistancia mínima entre observaciones de ambos grupos.\n\n\nComplete\nDistancia máxima entre observaciones de ambos grupos.\n\n\nAverage\nPromedio de las distancias entre observaciones de ambos grupos.\n\n\n\nLa elección del criterio puede modificar los agrupamientos obtenidos."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#criterios-de-enlace-linkage-1",
+    "href": "lecciones/unidad-02/leccion-02.html#criterios-de-enlace-linkage-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "Criterios de enlace (linkage)",
+    "text": "Criterios de enlace (linkage)"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#ejemplo",
+    "href": "lecciones/unidad-02/leccion-02.html#ejemplo",
+    "title": "Aprendizaje no supervisado",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nUtiliza las siguientes observaciones para construir un dendrograma, aplicando clustering jerárquico aglomerativo con distancia euclidiana y el criterio single linkage.\n\\[\nX=\\{1,2,4,7,9,12\\}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#consideraciones-importantes",
+    "href": "lecciones/unidad-02/leccion-02.html#consideraciones-importantes",
+    "title": "Aprendizaje no supervisado",
+    "section": "Consideraciones importantes",
+    "text": "Consideraciones importantes\n\nNo es necesario establecer inicialmente el número de clusters.\nEl dendrograma permite explorar diferentes agrupamientos.\nLos resultados dependen de la métrica de distancia y del criterio de enlace.\nPuede ser computacionalmente costoso para conjuntos de datos grandes.\nEs sensible a valores atípicos y a la escala de las variables."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#preguntas",
+    "href": "lecciones/unidad-02/leccion-02.html#preguntas",
+    "title": "Aprendizaje no supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-02.html#qué-sigue",
+    "href": "lecciones/unidad-02/leccion-02.html#qué-sigue",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos clustering jerárquico y utilizaremos un dendrograma para explorar diferentes agrupamientos."
   },
   {
     "objectID": "notebooks/index.html",
