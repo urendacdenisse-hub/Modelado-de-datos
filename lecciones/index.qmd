@@ -40,3 +40,6 @@ title: "Lecciones"
 ## Agrupamiento de datos
 
 - [$K$-Means](unidad-02/leccion-01.qmd)
+- [Clustering jerárquico](unidad-02/leccion-02.qmd)
+- [DBSCAN](unidad-02/leccion-03.qmd)
+
