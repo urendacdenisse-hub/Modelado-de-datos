@@ -42,4 +42,9 @@ title: "Lecciones"
 - [$K$-Means](unidad-02/leccion-01.qmd)
 - [Clustering jerárquico](unidad-02/leccion-02.qmd)
 - [DBSCAN](unidad-02/leccion-03.qmd)
+- [Modelo de mezclas gausianas](unidad-02/leccion-04.qmd)
+
+## Reducción de dimensión
+
+- [Análisis de componentes principales](unidad-02/leccion-05.qmd)
 
