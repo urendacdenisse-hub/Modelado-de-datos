@@ -21,6 +21,19 @@ title: "Notebooks"
 
 - [$k$-Nearest Neighbors](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-08.ipynb)
 - [Árboles de decisión](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-09.ipynb)
-- Random Forest
-- Boosting
-- Redes neuronales
+- [Random Forest](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-10.ipynb)
+- [Redes neuronales](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-11.ipynb)
+
+# Unidad II. Aprendizaje no supervisado
+
+## Agrupamiento de datos**
+
+- [$K$-Means](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-02/notebook-01.ipynb#scrollTo=f3c33d5a)
+- [Clustering jerárquico](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-02/notebook-01.ipynb#scrollTo=13a8c23b)
+- [DBSCAN](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-02/notebook-01.ipynb#scrollTo=8496ca26)
+- [Modelo de mezclas gausianas](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-01/notebook-01.ipynb#scrollTo=05f0bd36)
+
+## Reducción de dimensión
+
+- [Análisis de componentes principales](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-02/notebook-02.ipynb#scrollTo=cecaf84a)
+- [t-SNE](https://colab.research.google.com/github/urendacdenisse-hub/modelado-de-datos/blob/main/notebooks/unidad-02/notebook-02.ipynb#scrollTo=c7354f99)

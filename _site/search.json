@@ -385,6 +385,97 @@
     "text": "Sitios web\nExtraigamos tablas publicadas en un sitio web y carguemos su contenido en un DataFrame.\nFunciones utilizadas\n\npd.read_html(): Extrae las tablas encontradas en una página web y las devuelve como una lista de DataFrames.\n\n\nurl = \"https://www.w3schools.com/html/html_tables.asp\"\ntables = pd.read_html(url)\n\n\ntables[0]"
   },
   {
+    "objectID": "lecciones/unidad-02/leccion-05.html#introducción",
+    "href": "lecciones/unidad-02/leccion-05.html#introducción",
+    "title": "Aprendizaje no supervisado",
+    "section": "Introducción",
+    "text": "Introducción\nEl Análisis de Componentes Principales (Principal Component Analysis, PCA) es una técnica de aprendizaje no supervisado utilizada para reducir la dimensionalidad de los datos.\nSu objetivo es construir nuevas variables, llamadas componentes principales, que conserven la mayor cantidad posible de variabilidad de los datos originales.\n\nReduce el número de variables.\nFacilita la visualización de datos de alta dimensionalidad.\nPuede eliminar redundancia entre variables correlacionadas."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#introducción-1",
+    "href": "lecciones/unidad-02/leccion-05.html#introducción-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "Introducción",
+    "text": "Introducción"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#componentes-principales",
+    "href": "lecciones/unidad-02/leccion-05.html#componentes-principales",
+    "title": "Aprendizaje no supervisado",
+    "section": "Componentes principales",
+    "text": "Componentes principales\nLos componentes principales son nuevas variables obtenidas mediante combinaciones lineales de las variables originales.\n\\[\nPC_k = w_{k1}(x_1-\\mu_1)+w_{k2}(x_2-\\mu_2)+\\cdots+w_{kp}(x_p-\\mu_p)\n\\]\nCada componente tiene una dirección que describe parte de la variabilidad de los datos.\n\nPC1: dirección que captura la mayor varianza posible.\nPC2: dirección ortogonal a PC1 que captura la mayor varianza restante.\nPC3: dirección ortogonal a las anteriores que captura la mayor varianza restante.\n\nLos componentes son ortogonales entre sí y están ordenados según la varianza que explican."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#formulación-matemática",
+    "href": "lecciones/unidad-02/leccion-05.html#formulación-matemática",
+    "title": "Aprendizaje no supervisado",
+    "section": "Formulación matemática",
+    "text": "Formulación matemática\nPCA busca las direcciones sobre las cuales proyectar los datos para conservar la mayor varianza posible.\nEl primer componente principal se obtiene resolviendo:\n\\[\n\\boxed{\n\\mathbf{w}_1 =\n\\underset{\\mathbf{w}}{\\operatorname{arg\\,max}}\n\\left\\{\\mathbf{w}^T\\Sigma\\mathbf{w}\\right\\},\n\\quad \\text{s.t.}\n\\quad \\mathbf{w}^T\\mathbf{w}=1\n}\n\\]\ndonde:\n\n\\(\\Sigma\\): matriz de covarianzas de los datos.\n\\(\\mathbf{w}\\): dirección de proyección candidata.\n\\(\\mathbf{w}_1\\): dirección óptima del primer componente principal."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#formulación-matemática-1",
+    "href": "lecciones/unidad-02/leccion-05.html#formulación-matemática-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "Formulación matemática",
+    "text": "Formulación matemática\nUna vez obtenida esta dirección, el primer componente principal se calcula como:\n\\[\nPC_1=\\mathbf{w}_1^T(\\mathbf{x}-\\boldsymbol{\\mu})\n\\]\nLos siguientes componentes se obtienen mediante el mismo problema de optimización, agregando restricciones de ortogonalidad respecto a los componentes anteriores, es decir\n\\[\n\\boxed{\n\\begin{aligned}\n\\mathbf{w}_i\n&=\n\\underset{\\mathbf{w}}{\\operatorname{arg\\,max}}\n\\left\\{\\mathbf{w}^T\\Sigma\\mathbf{w}\\right\\}\\\\[6pt]\n\\text{s.a.}\\quad\n&\\mathbf{w}^T\\mathbf{w}=1\\\\\n&\\mathbf{w}^T\\mathbf{w}_j=0,\n\\quad j=1,\\ldots,i-1\n\\end{aligned}\n}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores",
+    "href": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores",
+    "title": "Aprendizaje no supervisado",
+    "section": "Relación con los eigenvectores y eigenvalores",
+    "text": "Relación con los eigenvectores y eigenvalores\nEl problema de optimización de PCA se resuelve encontrando los eigenvectores y eigenvalores de la matriz de covarianzas:\n\\[\n\\Sigma\\mathbf{w}_k=\\lambda_k\\mathbf{w}_k\n\\]\ndonde:\n\n\\(\\mathbf{w}_k\\): eigenvector que define la dirección del componente principal \\(k\\).\n\\(\\lambda_k\\): eigenvalor que representa la varianza explicada por ese componente.\n\nLos eigenvectores se ordenan de acuerdo con sus eigenvalores: \\[\n\\lambda_1\\geq\\lambda_2\\geq\\cdots\\geq\\lambda_p.\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores-1",
+    "href": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "Relación con los eigenvectores y eigenvalores",
+    "text": "Relación con los eigenvectores y eigenvalores\nRecordemos que PCA busca la dirección que maximiza la varianza de los datos proyectados:\n\\[\n\\max_{\\mathbf{w}}\\quad \\mathbf{w}^T\\Sigma\\mathbf{w},\n\\qquad \\text{s.a.}\\quad \\mathbf{w}^T\\mathbf{w}=1\n\\]\nPara resolver este problema utilizamos multiplicadores de Lagrange:\n\\[\n\\mathcal{L}(\\mathbf{w},\\lambda)\n=\n\\mathbf{w}^T\\Sigma\\mathbf{w}\n-\n\\lambda(\\mathbf{w}^T\\mathbf{w}-1)\n\\]\nDerivamos respecto a \\(\\mathbf{w}\\) e igualamos a cero:\n\\[\n\\nabla_{\\mathbf{w}}\\mathcal{L}\n=\n2\\Sigma\\mathbf{w}-2\\lambda\\mathbf{w}=0\n\\]\nPor lo tanto: \\[\n\\boxed{\\Sigma\\mathbf{w}=\\lambda\\mathbf{w}}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores-2",
+    "href": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores-2",
+    "title": "Aprendizaje no supervisado",
+    "section": "Relación con los eigenvectores y eigenvalores",
+    "text": "Relación con los eigenvectores y eigenvalores\nLa varianza de los datos proyectados sobre una dirección \\(\\mathbf{w}\\) es:\n\\[\n\\operatorname{Var}(PC)=\\mathbf{w}^T\\Sigma\\mathbf{w}\n\\]\nSabemos que, para un eigenvector \\(\\mathbf{w}\\) de la matriz \\(\\Sigma\\) \\[\n\\Sigma\\mathbf{w}=\\lambda\\mathbf{w}\n\\]\nSustituyendo\n\\[\n\\begin{aligned}\n\\operatorname{Var}(PC)\n&=\\mathbf{w}^T(\\lambda\\mathbf{w})\\\\\n&=\\lambda\\mathbf{w}^T\\mathbf{w}\\\\\n&=\\lambda\n\\end{aligned}\n\\]\nPor lo tanto, cada eigenvalor representa la varianza capturada por su componente principal."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#varianza-explicada",
+    "href": "lecciones/unidad-02/leccion-05.html#varianza-explicada",
+    "title": "Aprendizaje no supervisado",
+    "section": "Varianza explicada",
+    "text": "Varianza explicada\nCada componente principal conserva una proporción de la varianza total de los datos. La proporción de varianza explicada por el componente \\(k\\) es:\n\\[\nVE_k=\\frac{\\lambda_k}{\\sum_{j=1}^{p}\\lambda_j}\n\\]\nLa varianza explicada acumulada por los primeros \\(m\\) componentes es:\n\\[\nVE_{acum}(m)=\\sum_{k=1}^{m}VE_k\n\\]\nEsto permite evaluar cuánta variabilidad se conserva al reducir la dimensionalidad."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#selección-del-número-de-componentes",
+    "href": "lecciones/unidad-02/leccion-05.html#selección-del-número-de-componentes",
+    "title": "Aprendizaje no supervisado",
+    "section": "Selección del número de componentes",
+    "text": "Selección del número de componentes\nEl número de componentes principales puede seleccionarse analizando la varianza explicada acumulada.\nDos criterios habituales son:\n\n\n\nUmbral de varianza: seleccionar el menor número de componentes que permita conservar una proporción determinada de la varianza total, por ejemplo, 90% o 95%.\nMétodo del codo: identificar el punto a partir del cual agregar más componentes produce incrementos cada vez menores en la varianza explicada acumulada."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#consideraciones-importantes",
+    "href": "lecciones/unidad-02/leccion-05.html#consideraciones-importantes",
+    "title": "Aprendizaje no supervisado",
+    "section": "Consideraciones importantes",
+    "text": "Consideraciones importantes\n\nPCA es una técnica de reducción de dimensionalidad, no un algoritmo de clustering.\nLos componentes son combinaciones lineales de las variables originales.\nMaximiza la varianza conservada, no necesariamente la información relevante para una tarea predictiva.\nEs sensible a la escala de las variables.\nGeneralmente se recomienda estandarizar cuando las variables tienen diferentes unidades o magnitudes.\nLos componentes pueden ser difíciles de interpretar.\nLa reducción de dimensionalidad puede ocasionar pérdida de información."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#preguntas",
+    "href": "lecciones/unidad-02/leccion-05.html#preguntas",
+    "title": "Aprendizaje no supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-05.html#qué-sigue",
+    "href": "lecciones/unidad-02/leccion-05.html#qué-sigue",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos PCA, analizaremos la varianza explicada y visualizaremos cómo cambia la representación de los datos al reducir su dimensionalidad."
+  },
+  {
     "objectID": "lecciones/unidad-02/leccion-03.html#qué-es-dbscan",
     "href": "lecciones/unidad-02/leccion-03.html#qué-es-dbscan",
     "title": "Aprendizaje no supervisado",
@@ -1495,7 +1586,14 @@
     "href": "lecciones/index.html#agrupamiento-de-datos",
     "title": "Lecciones",
     "section": "Agrupamiento de datos",
-    "text": "Agrupamiento de datos\n\n\\(K\\)-Means\nClustering jerárquico\nDBSCAN"
+    "text": "Agrupamiento de datos\n\n\\(K\\)-Means\nClustering jerárquico\nDBSCAN\nModelo de mezclas gausianas"
+  },
+  {
+    "objectID": "lecciones/index.html#reducción-de-dimensión",
+    "href": "lecciones/index.html#reducción-de-dimensión",
+    "title": "Lecciones",
+    "section": "Reducción de dimensión",
+    "text": "Reducción de dimensión\n\nAnálisis de componentes principales"
   },
   {
     "objectID": "index.html",
@@ -2730,6 +2828,111 @@
     "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos clustering jerárquico y utilizaremos un dendrograma para explorar diferentes agrupamientos."
   },
   {
+    "objectID": "lecciones/unidad-02/leccion-04.html#introducción",
+    "href": "lecciones/unidad-02/leccion-04.html#introducción",
+    "title": "Aprendizaje no supervisado",
+    "section": "Introducción",
+    "text": "Introducción\nLos modelos de mezclas gaussianas (Gaussian Mixture Models, GMM) son modelos probabilísticos que representan los datos mediante una combinación de distribuciones normales.\nCada distribución gaussiana representa un componente de la mezcla que puede asociarse con un cluster.\n\nA diferencia de K-means:\n\nPermiten representar clusters con diferentes formas, tamaños y orientaciones.\nAsignan probabilidades de pertenencia a cada cluster.\nPermiten que las distribuciones de los clusters se superpongan."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#introducción-1",
+    "href": "lecciones/unidad-02/leccion-04.html#introducción-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "Introducción",
+    "text": "Introducción"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#distribución-gaussiana",
+    "href": "lecciones/unidad-02/leccion-04.html#distribución-gaussiana",
+    "title": "Aprendizaje no supervisado",
+    "section": "Distribución gaussiana",
+    "text": "Distribución gaussiana\nUna distribución gaussiana describe cómo se distribuyen las observaciones alrededor de una media.\n\n\nEn una dimensión, su función de densidad es:\n\\[\nf(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}\n\\exp\\left(-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right)\n\\]\ndonde:\n\n\\(\\mu\\): media de la distribución.\n\\(\\sigma^2\\): varianza de la distribución.\n\\(x\\): valor de una observación."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#distribución-gaussiana-1",
+    "href": "lecciones/unidad-02/leccion-04.html#distribución-gaussiana-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "Distribución gaussiana",
+    "text": "Distribución gaussiana\nCuando las observaciones tienen varias variables, se utiliza una distribución gaussiana multivariada. Su función de densidad es:\n\\[\nf(\\mathbf{x})=\n\\frac{1}{(2\\pi)^{d/2}|\\Sigma|^{1/2}}\n\\exp\\left(\n-\\frac{1}{2}\n(\\mathbf{x}-\\boldsymbol{\\mu})^T\n\\Sigma^{-1}\n(\\mathbf{x}-\\boldsymbol{\\mu})\n\\right)\n\\]\n\n\ndonde:\n\n\\(\\mathbf{x}\\): vector de características de una observación.\n\\(\\boldsymbol{\\mu}\\): vector de medias de las variables.\n\\(\\Sigma\\): matriz de covarianzas que describe la dispersión y relación entre las variables."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#modelo-de-mezclas-gaussianas",
+    "href": "lecciones/unidad-02/leccion-04.html#modelo-de-mezclas-gaussianas",
+    "title": "Aprendizaje no supervisado",
+    "section": "Modelo de mezclas gaussianas",
+    "text": "Modelo de mezclas gaussianas\nUn GMM supone que las observaciones provienen de una combinación de \\(K\\) distribuciones gaussianas. Su función de densidad se expresa como:\n\n\\[\np(x)=\\sum_{k=1}^{K}\\pi_k\n\\mathcal{N}(x\\mid\\boldsymbol{\\mu}_k,\\Sigma_k),\n\\quad \\sum_{k=1}^{K}\\pi_k=1\n\\]\n\ndonde:\n\n\\(\\pi_k\\): peso del componente \\(k\\).\n\\(\\boldsymbol{\\mu}_k, \\Sigma_k\\): vector de medias y matriz de covarianzas.\n\\(\\mathcal{N}\\): densidad de la distribución normal."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#asignación-probabilística",
+    "href": "lecciones/unidad-02/leccion-04.html#asignación-probabilística",
+    "title": "Aprendizaje no supervisado",
+    "section": "Asignación probabilística",
+    "text": "Asignación probabilística\nA diferencia de K-means, GMM utiliza una asignación suave (soft clustering).\nCada observación tiene una probabilidad de pertenecer a cada componente.\nPor ejemplo:\n\n\n\nObservación\nCluster 1\nCluster 2\n\n\n\n\nA\n0.95\n0.05\n\n\nB\n0.60\n0.40\n\n\nC\n0.10\n0.90\n\n\n\nSi se requiere una asignación única, la observación se asigna al componente con mayor probabilidad."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia",
+    "href": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia",
+    "title": "Aprendizaje no supervisado",
+    "section": "Ejemplo: probabilidades de pertenencia",
+    "text": "Ejemplo: probabilidades de pertenencia\nConsidera las observaciones:\n\\[\nX=\\{1,2,3,5,6,7\\}\n\\]\nSupongamos que inicialmente tenemos dos componentes gaussianos:\n\n\n\nParámetro\nGaussiana 1\nGaussiana 2\n\n\n\n\nMedia \\(\\mu\\)\n2\n6\n\n\nVarianza \\(\\sigma^2\\)\n4\n4\n\n\nPeso \\(\\pi\\)\n0.5\n0.5\n\n\n\nQueremos calcular la probabilidad de pertenencia de la observación \\(x=3\\) a cada componente."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia-1",
+    "href": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "Ejemplo: probabilidades de pertenencia",
+    "text": "Ejemplo: probabilidades de pertenencia\nPrimero, evaluamos las funciones de densidad:\n\\[\nf_k(x)=\\frac{1}{\\sqrt{2\\pi\\sigma_k^2}}\n\\exp\\left(-\\frac{(x-\\mu_k)^2}{2\\sigma_k^2}\\right)\n\\]\nObtenemos:\n\\[\nf_1(3)\\approx 0.1760,\\qquad\nf_2(3)\\approx 0.0648\n\\]\nPara obtener las probabilidades de pertenencia, utilizamos el teorema de Bayes:\n\\[\nP(z=k\\mid x)=\n\\frac{\\pi_k f_k(x)}\n{\\sum_{j=1}^{K}\\pi_j f_j(x)}\n\\]"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia-2",
+    "href": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia-2",
+    "title": "Aprendizaje no supervisado",
+    "section": "Ejemplo: probabilidades de pertenencia",
+    "text": "Ejemplo: probabilidades de pertenencia\nPara la primera gaussiana:\n\\[\nP(z=1\\mid x=3)=\n\\frac{0.5(0.1760)}\n{0.5(0.1760)+0.5(0.0648)}\n\\approx 0.731\n\\]\nPara la segunda gaussiana:\n\\[\nP(z=2\\mid x=3)=\n\\frac{0.5(0.0648)}\n{0.5(0.1760)+0.5(0.0648)}\n\\approx 0.269\n\\]\nPor lo tanto, la observación \\(x=3\\) tiene mayor probabilidad de pertenecer al primer componente, pero ambos componentes contribuyen a explicar su origen."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#algoritmo-em",
+    "href": "lecciones/unidad-02/leccion-04.html#algoritmo-em",
+    "title": "Aprendizaje no supervisado",
+    "section": "Algoritmo EM",
+    "text": "Algoritmo EM\nLos parámetros se estiman mediante el algoritmo Expectation-Maximization (EM).\n\nInicialización: establecer medias \\(\\boldsymbol{\\mu}_k^{0}\\), covarianzas \\(\\Sigma_k^{0}\\) y pesos iniciales \\(\\pi_k^{0}\\).\nPaso E (Expectation): calcular las probabilidades de pertenencia \\(\\gamma_{ik}\\).\nPaso M (Maximization): actualizar los parámetros \\(\\boldsymbol{\\mu}_k, \\Sigma_k, \\pi_k\\).\nRepetición: alternar los pasos E y M hasta alcanzar la convergencia."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#algoritmo-em-1",
+    "href": "lecciones/unidad-02/leccion-04.html#algoritmo-em-1",
+    "title": "Aprendizaje no supervisado",
+    "section": "Algoritmo EM",
+    "text": "Algoritmo EM"
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#hiperparámetros-de-gmm",
+    "href": "lecciones/unidad-02/leccion-04.html#hiperparámetros-de-gmm",
+    "title": "Aprendizaje no supervisado",
+    "section": "Hiperparámetros de GMM",
+    "text": "Hiperparámetros de GMM\n\n\n\nHiperparámetro\nDescripción\n\n\n\n\nn_components\nNúmero de componentes gaussianos.\n\n\nmax_iter\nNúmero máximo de iteraciones del algoritmo EM.\n\n\ntol\nTolerancia utilizada para determinar la convergencia.\n\n\nrandom_state\nSemilla para controlar la aleatoriedad.\n\n\n\n\nEl número de componentes puede seleccionarse utilizando criterios como AIC o BIC.\nSe ajustan modelos con distintos valores de \\(K\\) y se selecciona aquel que minimiza AIC o BIC, según el criterio elegido."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#consideraciones-importantes",
+    "href": "lecciones/unidad-02/leccion-04.html#consideraciones-importantes",
+    "title": "Aprendizaje no supervisado",
+    "section": "Consideraciones importantes",
+    "text": "Consideraciones importantes\n\nRequiere establecer el número de componentes gaussianos.\nPermite asignaciones probabilísticas.\nPuede representar clusters elípticos.\nEs sensible a la inicialización y puede converger a óptimos locales.\nPuede presentar problemas cuando las matrices de covarianza son singulares o casi singulares."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#preguntas",
+    "href": "lecciones/unidad-02/leccion-04.html#preguntas",
+    "title": "Aprendizaje no supervisado",
+    "section": "Preguntas",
+    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
+  },
+  {
+    "objectID": "lecciones/unidad-02/leccion-04.html#qué-sigue",
+    "href": "lecciones/unidad-02/leccion-04.html#qué-sigue",
+    "title": "Aprendizaje no supervisado",
+    "section": "¿Qué sigue?",
+    "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos un modelo de mezclas gaussianas, visualizaremos las distribuciones estimadas y analizaremos cómo cambian los resultados al modificar el número de componentes y las matrices de covarianza."
+  },
+  {
     "objectID": "notebooks/index.html",
     "href": "notebooks/index.html",
     "title": "Notebooks",
@@ -3101,220 +3304,101 @@
     "text": "Supuestos de regresión lineal\nEl modelo de regresión lineal se expresa como:\n\\[\n\\mathbf{Y}\n=\n\\mathbf{X}\\beta\n+\n\\varepsilon\n\\]\nSi asumimos que los errores son independientes, tienen media cero, varianza constante y siguen una distribución normal:\n\\[\n\\varepsilon\n\\sim\n\\mathcal{N}_n(\\mathbf{0},\\sigma^2 I_n)\n\\]\nentonces la distribución de la variable respuesta es:\n\\[\n\\mathbf{Y}\\mid\\mathbf{X}\n\\sim\n\\mathcal{N}_n\n\\left(\n\\mathbf{X}\\beta,\n\\sigma^2 I_n\n\\right)\n\\]\nEquivalentemente, para cada observación:\n\\[\nY_i\\mid\\mathbf{x}_i\n\\sim\n\\mathcal{N}\n\\left(\n\\mathbf{x}_i^T\\beta,\n\\sigma^2\n\\right)\n\\]\n\n\n\n\n\n\n\n\n\nSuposición\n¿Qué verificar?\n¿Qué esperamos?\nHerramienta\n\n\n\n\nLinealidad\nRelación entre predictores y respuesta\nResiduos sin patrones sistemáticos ni curvatura\nplt.scatter(y_hat, residuals)\n\n\nLinealidad por predictor\nSi algún predictor presenta estructura no lineal\nResiduos sin patrón respecto a cada predictor\nplt.scatter(X_j, residuals)\n\n\nNormalidad\nDistribución de los residuos\nAproximadamente normal\nstats.probplot(residuals)\n\n\nNormalidad\nEvidencia estadística de normalidad\n(p &gt; 0.05): no rechazamos normalidad\nshapiro(residuals)\n\n\nHomocedasticidad\nVarianza de los residuos\nDispersión aproximadamente constante, sin forma de abanico\nplt.scatter(y_hat, residuals)\n\n\nHomocedasticidad\nEvidencia estadística de varianza constante\n(p &gt; 0.05): no hay evidencia de heterocedasticidad\nhet_breuschpagan()\n\n\nIndependencia\nAutocorrelación de los residuos\nAutocorrelaciones cercanas a 0\nplot_acf(residuals)\n\n\nIndependencia\nAutocorrelación entre residuos consecutivos\nDurbin-Watson cercano a 2\ndurbin_watson(residuals)\n\n\nMulticolinealidad\nCorrelación entre predictores\nEvitar correlaciones muy altas entre (X_j)\nX.corr()\n\n\nMulticolinealidad\nCuánto puede explicarse cada predictor con los demás\nVIF bajo; idealmente &lt; 5\nvariance_inflation_factor()"
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#introducción",
-    "href": "lecciones/unidad-02/leccion-05.html#introducción",
+    "objectID": "lecciones/unidad-02/leccion-06.html#introducción",
+    "href": "lecciones/unidad-02/leccion-06.html#introducción",
     "title": "Aprendizaje no supervisado",
     "section": "Introducción",
-    "text": "Introducción\nEl Análisis de Componentes Principales (Principal Component Analysis, PCA) es una técnica de aprendizaje no supervisado utilizada para reducir la dimensionalidad de los datos.\nSu objetivo es construir nuevas variables, llamadas componentes principales, que conserven la mayor cantidad posible de variabilidad de los datos originales.\n\nReduce el número de variables.\nFacilita la visualización de datos de alta dimensionalidad.\nPuede eliminar redundancia entre variables correlacionadas."
+    "text": "Introducción\nt-SNE (t-distributed Stochastic Neighbor Embedding) es una técnica no lineal de reducción de dimensionalidad utilizada principalmente para visualizar datos de alta dimensionalidad.\nSu objetivo es construir una representación de menor dimensión que preserve las relaciones de proximidad entre observaciones.\n\nPermite representar datos en dos o tres dimensiones.\nBusca conservar principalmente las relaciones locales.\nFacilita la exploración visual de posibles agrupamientos."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#introducción-1",
-    "href": "lecciones/unidad-02/leccion-05.html#introducción-1",
+    "objectID": "lecciones/unidad-02/leccion-06.html#cómo-funciona",
+    "href": "lecciones/unidad-02/leccion-06.html#cómo-funciona",
     "title": "Aprendizaje no supervisado",
-    "section": "Introducción",
-    "text": "Introducción"
+    "section": "¿Cómo funciona?",
+    "text": "¿Cómo funciona?\nConsideremos un conjunto de observaciones:\n\\[\nX=\\{\\mathbf{x}_1,\\mathbf{x}_2,\\ldots,\\mathbf{x}_n\\},\n\\qquad \\mathbf{x}_i\\in\\mathbb{R}^p\n\\]\nQueremos obtener una representación:\n\\[\nY=\\{\\mathbf{y}_1,\\mathbf{y}_2,\\ldots,\\mathbf{y}_n\\},\n\\qquad \\mathbf{y}_i\\in\\mathbb{R}^2\n\\]\nDe manera general, t-SNE:\n\nCalcula similitudes entre observaciones en el espacio original.\nCalcula similitudes en el espacio reducido.\nAjusta las posiciones de las observaciones para que ambas distribuciones de similitud sean parecidas."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#componentes-principales",
-    "href": "lecciones/unidad-02/leccion-05.html#componentes-principales",
+    "objectID": "lecciones/unidad-02/leccion-06.html#parámetro-principal-perplexity",
+    "href": "lecciones/unidad-02/leccion-06.html#parámetro-principal-perplexity",
     "title": "Aprendizaje no supervisado",
-    "section": "Componentes principales",
-    "text": "Componentes principales\nLos componentes principales son nuevas variables obtenidas mediante combinaciones lineales de las variables originales.\n\\[\nPC_k = w_{k1}(x_1-\\mu_1)+w_{k2}(x_2-\\mu_2)+\\cdots+w_{kp}(x_p-\\mu_p)\n\\]\nCada componente tiene una dirección que describe parte de la variabilidad de los datos.\n\nPC1: dirección que captura la mayor varianza posible.\nPC2: dirección ortogonal a PC1 que captura la mayor varianza restante.\nPC3: dirección ortogonal a las anteriores que captura la mayor varianza restante.\n\nLos componentes son ortogonales entre sí y están ordenados según la varianza que explican."
+    "section": "Parámetro principal: Perplexity",
+    "text": "Parámetro principal: Perplexity\nEl parámetro perplexity influye en el número efectivo de vecinos considerados al calcular las similitudes originales.\nSe define mediante la entropía de las probabilidades condicionales:\n\\[\n\\boxed{\nPerp(P_i)=2^{H(P_i)}\n}\n\\]\ndonde:\n\\[\nH(P_i)=-\\sum_{j\\neq i}p_{j|i}\\log_2(p_{j|i})\n\\]\n\nValores pequeños: enfatizan vecindades más locales.\nValores grandes: consideran vecindades más amplias.\n\nt-SNE ajusta los valores de \\(\\sigma_i\\) para alcanzar la perplexity especificada."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#formulación-matemática",
-    "href": "lecciones/unidad-02/leccion-05.html#formulación-matemática",
+    "objectID": "lecciones/unidad-02/leccion-06.html#comparación-con-pca",
+    "href": "lecciones/unidad-02/leccion-06.html#comparación-con-pca",
     "title": "Aprendizaje no supervisado",
-    "section": "Formulación matemática",
-    "text": "Formulación matemática\nPCA busca las direcciones sobre las cuales proyectar los datos para conservar la mayor varianza posible.\nEl primer componente principal se obtiene resolviendo:\n\\[\n\\boxed{\n\\mathbf{w}_1 =\n\\underset{\\mathbf{w}}{\\operatorname{arg\\,max}}\n\\left\\{\\mathbf{w}^T\\Sigma\\mathbf{w}\\right\\},\n\\quad \\text{s.t.}\n\\quad \\mathbf{w}^T\\mathbf{w}=1\n}\n\\]\ndonde:\n\n\\(\\Sigma\\): matriz de covarianzas de los datos.\n\\(\\mathbf{w}\\): dirección de proyección candidata.\n\\(\\mathbf{w}_1\\): dirección óptima del primer componente principal."
+    "section": "Comparación con PCA",
+    "text": "Comparación con PCA\n\n\n\n\n\n\n\n\nCaracterística\nPCA\nt-SNE\n\n\n\n\nTipo\nLineal\nNo lineal\n\n\nObjetivo\nMaximizar varianza\nPreservar similitudes locales\n\n\nMétodo\nEigenvectores\nOptimización de KL\n\n\nInterpretabilidad\nComponentes principales\nCoordenadas sin interpretación directa\n\n\nUso principal\nReducción y análisis\nVisualización\n\n\nCosto computacional\nGeneralmente menor\nGeneralmente mayor\n\n\n\nAmbas técnicas reducen la dimensionalidad, pero optimizan objetivos diferentes."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#relación-con-eigenvectores-y-eigenvalores",
-    "href": "lecciones/unidad-02/leccion-05.html#relación-con-eigenvectores-y-eigenvalores",
-    "title": "Aprendizaje no supervisado",
-    "section": "Relación con eigenvectores y eigenvalores",
-    "text": "Relación con eigenvectores y eigenvalores\nRecordemos que PCA busca la dirección que maximiza la varianza de los datos proyectados:\n\\[\n\\max_{\\mathbf{w}}\\quad \\mathbf{w}^T\\Sigma\\mathbf{w},\n\\qquad \\text{s.a.}\\quad \\mathbf{w}^T\\mathbf{w}=1\n\\]\nPara resolver este problema utilizamos multiplicadores de Lagrange:\n\\[\n\\mathcal{L}(\\mathbf{w},\\lambda)\n=\n\\mathbf{w}^T\\Sigma\\mathbf{w}\n-\n\\lambda(\\mathbf{w}^T\\mathbf{w}-1)\n\\]\nDerivamos respecto a \\(\\mathbf{w}\\) e igualamos a cero:\n\\[\n\\nabla_{\\mathbf{w}}\\mathcal{L}\n=\n2\\Sigma\\mathbf{w}-2\\lambda\\mathbf{w}=0\n\\]\nPor lo tanto: \\[\n\\boxed{\\Sigma\\mathbf{w}=\\lambda\\mathbf{w}}\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-05.html#relación-con-eigenvectores-y-eigenvalores-1",
-    "href": "lecciones/unidad-02/leccion-05.html#relación-con-eigenvectores-y-eigenvalores-1",
-    "title": "Aprendizaje no supervisado",
-    "section": "Relación con eigenvectores y eigenvalores",
-    "text": "Relación con eigenvectores y eigenvalores\nLa varianza de los datos proyectados sobre una dirección \\(\\mathbf{w}\\) es:\n\\[\n\\operatorname{Var}(PC)=\\mathbf{w}^T\\Sigma\\mathbf{w}\n\\]\nSabemos que, para un eigenvector \\(\\mathbf{w}\\) de la matriz \\(\\Sigma\\) \\[\n\\Sigma\\mathbf{w}=\\lambda\\mathbf{w}\n\\]\nSustituyendo\n\\[\n\\begin{aligned}\n\\operatorname{Var}(PC)\n&=\\mathbf{w}^T(\\lambda\\mathbf{w})\\\\\n&=\\lambda\\mathbf{w}^T\\mathbf{w}\\\\\n&=\\lambda\n\\end{aligned}\n\\]\nPor lo tanto, cada eigenvalor representa la varianza capturada por su componente principal."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-05.html#por-qué-elegimos-el-mayor-eigenvalor",
-    "href": "lecciones/unidad-02/leccion-05.html#por-qué-elegimos-el-mayor-eigenvalor",
-    "title": "Aprendizaje no supervisado",
-    "section": "¿Por qué elegimos el mayor eigenvalor?",
-    "text": "¿Por qué elegimos el mayor eigenvalor?\nLa varianza de los datos proyectados sobre una dirección \\(\\mathbf{w}\\) es:\n\\[\n\\operatorname{Var}(PC)=\\mathbf{w}^T\\Sigma\\mathbf{w}\n\\]\nSabemos que, para un eigenvector \\(\\Sigma\\mathbf{w}=\\lambda\\mathbf{w}\\)\nSustituyendo:\n\\[\n\\begin{aligned}\n\\operatorname{Var}(PC)\n&=\\mathbf{w}^T(\\lambda\\mathbf{w})\\\\\n&=\\lambda\\mathbf{w}^T\\mathbf{w}\\\\\n&=\\lambda\n\\end{aligned}\n\\]\n\n\\[\n\\boxed{\\operatorname{Var}(PC_k)=\\lambda_k}\n\\]\n\nPor lo tanto, cada eigenvalor representa la varianza capturada por su componente principal."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-05.html#varianza-explicada",
-    "href": "lecciones/unidad-02/leccion-05.html#varianza-explicada",
-    "title": "Aprendizaje no supervisado",
-    "section": "Varianza explicada",
-    "text": "Varianza explicada\nCada componente principal conserva una proporción de la varianza total de los datos. La proporción de varianza explicada por el componente \\(k\\) es:\n\\[\nVE_k=\\frac{\\lambda_k}{\\sum_{j=1}^{p}\\lambda_j}\n\\]\nLa varianza explicada acumulada por los primeros \\(m\\) componentes es:\n\\[\nVE_{acum}(m)=\\sum_{k=1}^{m}VE_k\n\\]\nEsto permite evaluar cuánta variabilidad se conserva al reducir la dimensionalidad."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-05.html#selección-del-número-de-componentes",
-    "href": "lecciones/unidad-02/leccion-05.html#selección-del-número-de-componentes",
-    "title": "Aprendizaje no supervisado",
-    "section": "Selección del número de componentes",
-    "text": "Selección del número de componentes\nEl número de componentes principales puede seleccionarse analizando la varianza explicada acumulada.\nDos criterios habituales son:\n\n\n\nUmbral de varianza: seleccionar el menor número de componentes que permita conservar una proporción determinada de la varianza total, por ejemplo, 90% o 95%.\nMétodo del codo: identificar el punto a partir del cual agregar más componentes produce incrementos cada vez menores en la varianza explicada acumulada."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-05.html#consideraciones-importantes",
-    "href": "lecciones/unidad-02/leccion-05.html#consideraciones-importantes",
+    "objectID": "lecciones/unidad-02/leccion-06.html#consideraciones-importantes",
+    "href": "lecciones/unidad-02/leccion-06.html#consideraciones-importantes",
     "title": "Aprendizaje no supervisado",
     "section": "Consideraciones importantes",
-    "text": "Consideraciones importantes\n\nPCA es una técnica de reducción de dimensionalidad, no un algoritmo de clustering.\nLos componentes son combinaciones lineales de las variables originales.\nMaximiza la varianza conservada, no necesariamente la información relevante para una tarea predictiva.\nEs sensible a la escala de las variables.\nGeneralmente se recomienda estandarizar cuando las variables tienen diferentes unidades o magnitudes.\nLos componentes pueden ser difíciles de interpretar.\nLa reducción de dimensionalidad puede ocasionar pérdida de información."
+    "text": "Consideraciones importantes\n\nt-SNE no es un algoritmo de clustering.\nLos grupos visualmente separados no garantizan la existencia de clusters reales.\nLas distancias entre grupos alejados y sus tamaños aparentes pueden ser engañosos.\nLos resultados pueden variar según los parámetros y la inicialización.\nNo proporciona una medida de varianza explicada como PCA.\nEs sensible a la escala de las variables, por lo que puede ser conveniente estandarizarlas.\nSu función objetivo es no convexa, por lo que distintas ejecuciones pueden producir representaciones diferentes."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#preguntas",
-    "href": "lecciones/unidad-02/leccion-05.html#preguntas",
+    "objectID": "lecciones/unidad-02/leccion-06.html#preguntas",
+    "href": "lecciones/unidad-02/leccion-06.html#preguntas",
     "title": "Aprendizaje no supervisado",
     "section": "Preguntas",
     "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#qué-sigue",
-    "href": "lecciones/unidad-02/leccion-05.html#qué-sigue",
+    "objectID": "lecciones/unidad-02/leccion-06.html#qué-sigue",
+    "href": "lecciones/unidad-02/leccion-06.html#qué-sigue",
     "title": "Aprendizaje no supervisado",
     "section": "¿Qué sigue?",
-    "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos PCA, analizaremos la varianza explicada y visualizaremos cómo cambia la representación de los datos al reducir su dimensionalidad."
+    "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos t-SNE y visualizaremos cómo se representan los datos al reducir su dimensionalidad."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores",
-    "href": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores",
+    "objectID": "lecciones/unidad-02/leccion-06.html#similitudes-en-el-espacio-original",
+    "href": "lecciones/unidad-02/leccion-06.html#similitudes-en-el-espacio-original",
     "title": "Aprendizaje no supervisado",
-    "section": "Relación con los eigenvectores y eigenvalores",
-    "text": "Relación con los eigenvectores y eigenvalores\nEl problema de optimización de PCA se resuelve encontrando los eigenvectores y eigenvalores de la matriz de covarianzas:\n\\[\n\\Sigma\\mathbf{w}_k=\\lambda_k\\mathbf{w}_k\n\\]\ndonde:\n\n\\(\\mathbf{w}_k\\): eigenvector que define la dirección del componente principal \\(k\\).\n\\(\\lambda_k\\): eigenvalor que representa la varianza explicada por ese componente.\n\nLos eigenvectores se ordenan de acuerdo con sus eigenvalores: \\[\n\\lambda_1\\geq\\lambda_2\\geq\\cdots\\geq\\lambda_p.\n\\]"
+    "section": "Similitudes en el espacio original",
+    "text": "Similitudes en el espacio original\nEn lugar de trabajar directamente con las distancias, t-SNE las transforma en probabilidades de similitud.\nPrimero calcula probabilidad de similitud de \\(\\mathbf{x}_j\\) respecto a \\(\\mathbf{x}_i\\).\n\\[\np_{j|i}=\n\\frac{\n\\exp\\left(-\\frac{\\|\\mathbf{x}_i-\\mathbf{x}_j\\|^2}{2\\sigma_i^2}\\right)\n}{\n\\sum_{k\\neq i}\n\\exp\\left(-\\frac{\\|\\mathbf{x}_i-\\mathbf{x}_k\\|^2}{2\\sigma_i^2}\\right)\n}\n\\]\ndonde:\n\n\\(\\mathbf{x}_i,\\mathbf{x}_j\\): observaciones originales.\n\\(\\sigma_i\\): controla la escala de vecindad alrededor de \\(\\mathbf{x}_i\\)."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#formulación-matemática-1",
-    "href": "lecciones/unidad-02/leccion-05.html#formulación-matemática-1",
+    "objectID": "lecciones/unidad-02/leccion-06.html#similitudes-en-el-espacio-original-1",
+    "href": "lecciones/unidad-02/leccion-06.html#similitudes-en-el-espacio-original-1",
     "title": "Aprendizaje no supervisado",
-    "section": "Formulación matemática",
-    "text": "Formulación matemática\nUna vez obtenida esta dirección, el primer componente principal se calcula como:\n\\[\nPC_1=\\mathbf{w}_1^T(\\mathbf{x}-\\boldsymbol{\\mu})\n\\]\nLos siguientes componentes se obtienen mediante el mismo problema de optimización, agregando restricciones de ortogonalidad respecto a los componentes anteriores, es decir\n\\[\n\\boxed{\n\\begin{aligned}\n\\mathbf{w}_i\n&=\n\\underset{\\mathbf{w}}{\\operatorname{arg\\,max}}\n\\left\\{\\mathbf{w}^T\\Sigma\\mathbf{w}\\right\\}\\\\[6pt]\n\\text{s.a.}\\quad\n&\\mathbf{w}^T\\mathbf{w}=1\\\\\n&\\mathbf{w}^T\\mathbf{w}_j=0,\n\\quad j=1,\\ldots,i-1\n\\end{aligned}\n}\n\\]"
+    "section": "Similitudes en el espacio original",
+    "text": "Similitudes en el espacio original\nComo las probabilidades condicionales pueden ser diferentes en ambas direcciones, t-SNE construye probabilidades simétricas:\n\\[\n\\boxed{\np_{ij}=\\frac{p_{j|i}+p_{i|j}}{2n}\n}\n\\]\nEstas probabilidades describen las relaciones de similitud en el espacio original.\n\nValores grandes de \\(p_{ij}\\) indican observaciones cercanas.\nValores pequeños indican observaciones poco similares.\n\nEl objetivo será conservar estas relaciones en una representación de menor dimensión."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores-1",
-    "href": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores-1",
+    "objectID": "lecciones/unidad-02/leccion-06.html#similitudes-en-el-espacio-reducido",
+    "href": "lecciones/unidad-02/leccion-06.html#similitudes-en-el-espacio-reducido",
     "title": "Aprendizaje no supervisado",
-    "section": "Relación con los eigenvectores y eigenvalores",
-    "text": "Relación con los eigenvectores y eigenvalores\nRecordemos que PCA busca la dirección que maximiza la varianza de los datos proyectados:\n\\[\n\\max_{\\mathbf{w}}\\quad \\mathbf{w}^T\\Sigma\\mathbf{w},\n\\qquad \\text{s.a.}\\quad \\mathbf{w}^T\\mathbf{w}=1\n\\]\nPara resolver este problema utilizamos multiplicadores de Lagrange:\n\\[\n\\mathcal{L}(\\mathbf{w},\\lambda)\n=\n\\mathbf{w}^T\\Sigma\\mathbf{w}\n-\n\\lambda(\\mathbf{w}^T\\mathbf{w}-1)\n\\]\nDerivamos respecto a \\(\\mathbf{w}\\) e igualamos a cero:\n\\[\n\\nabla_{\\mathbf{w}}\\mathcal{L}\n=\n2\\Sigma\\mathbf{w}-2\\lambda\\mathbf{w}=0\n\\]\nPor lo tanto: \\[\n\\boxed{\\Sigma\\mathbf{w}=\\lambda\\mathbf{w}}\n\\]"
+    "section": "Similitudes en el espacio reducido",
+    "text": "Similitudes en el espacio reducido\nAhora buscamos representar cada observación mediante un punto \\(\\mathbf{y}_i\\) en dos dimensiones.\nEn este espacio, t-SNE utiliza una distribución t de Student con un grado de libertad para calcular las similitudes:\n\\[\n\\boxed{\nq_{ij}=\n\\frac{\n(1+\\|\\mathbf{y}_i-\\mathbf{y}_j\\|^2)^{-1}\n}{\n\\sum_{k\\neq l}\n(1+\\|\\mathbf{y}_k-\\mathbf{y}_l\\|^2)^{-1}\n}\n}\n\\]\ndonde:\n\n\\(\\mathbf{y}_i,\\mathbf{y}_j\\): posiciones en el espacio reducido.\n\\(q_{ij}\\): similitud entre ambas observaciones en la nueva representación.\n\nLa distribución t tiene colas más pesadas que una distribución normal, lo que ayuda a representar puntos poco similares suficientemente separados."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores-2",
-    "href": "lecciones/unidad-02/leccion-05.html#relación-con-los-eigenvectores-y-eigenvalores-2",
+    "objectID": "lecciones/unidad-02/leccion-06.html#función-objetivo",
+    "href": "lecciones/unidad-02/leccion-06.html#función-objetivo",
     "title": "Aprendizaje no supervisado",
-    "section": "Relación con los eigenvectores y eigenvalores",
-    "text": "Relación con los eigenvectores y eigenvalores\nLa varianza de los datos proyectados sobre una dirección \\(\\mathbf{w}\\) es:\n\\[\n\\operatorname{Var}(PC)=\\mathbf{w}^T\\Sigma\\mathbf{w}\n\\]\nSabemos que, para un eigenvector \\(\\mathbf{w}\\) de la matriz \\(\\Sigma\\) \\[\n\\Sigma\\mathbf{w}=\\lambda\\mathbf{w}\n\\]\nSustituyendo\n\\[\n\\begin{aligned}\n\\operatorname{Var}(PC)\n&=\\mathbf{w}^T(\\lambda\\mathbf{w})\\\\\n&=\\lambda\\mathbf{w}^T\\mathbf{w}\\\\\n&=\\lambda\n\\end{aligned}\n\\]\nPor lo tanto, cada eigenvalor representa la varianza capturada por su componente principal."
+    "section": "Función objetivo",
+    "text": "Función objetivo\nTenemos dos distribuciones de similitud:\n\n\\(P\\): similitudes en el espacio original.\n\\(Q\\): similitudes en el espacio reducido.\n\nQueremos que ambas sean lo más parecidas posible.\nPara medir su diferencia, t-SNE utiliza la divergencia de Kullback-Leibler (KL):\n\\[\n\\boxed{\nKL(P\\|Q(Y))=\n\\sum_i\\sum_{j\\neq i}\np_{ij}\\log\\left(\\frac{p_{ij}}{q_{ij}}\\right)\n}\n\\]\nEsta función penaliza especialmente que dos observaciones muy similares en el espacio original aparezcan demasiado alejadas en la representación reducida."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-04.html#introducción",
-    "href": "lecciones/unidad-02/leccion-04.html#introducción",
+    "objectID": "lecciones/unidad-02/leccion-06.html#optimización",
+    "href": "lecciones/unidad-02/leccion-06.html#optimización",
     "title": "Aprendizaje no supervisado",
-    "section": "Introducción",
-    "text": "Introducción\nLos modelos de mezclas gaussianas (Gaussian Mixture Models, GMM) son modelos probabilísticos que representan los datos mediante una combinación de distribuciones normales.\nCada distribución gaussiana representa un componente de la mezcla que puede asociarse con un cluster.\n\nA diferencia de K-means:\n\nPermiten representar clusters con diferentes formas, tamaños y orientaciones.\nAsignan probabilidades de pertenencia a cada cluster.\nPermiten que las distribuciones de los clusters se superpongan."
+    "section": "Optimización",
+    "text": "Optimización\nt-SNE busca las posiciones de las observaciones que minimicen la divergencia KL:\n\\[\n\\boxed{\nY^*=\\underset{Y}{\\operatorname{arg\\,min}}\\ KL(P\\|Q(Y))\n}\n\\]\nPara resolver este problema se utiliza un procedimiento iterativo basado en gradientes.\nEn cada iteración:\n\nCalcula las similitudes \\(q_{ij}\\) según las posiciones actuales.\nEvalúa la diferencia respecto a las similitudes originales \\(p_{ij}\\).\nActualiza las posiciones para reducir la divergencia.\n\nEl proceso continúa hasta alcanzar un criterio de convergencia o el número máximo de iteraciones."
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-04.html#introducción-1",
-    "href": "lecciones/unidad-02/leccion-04.html#introducción-1",
+    "objectID": "lecciones/unidad-02/leccion-06.html#introducción-1",
+    "href": "lecciones/unidad-02/leccion-06.html#introducción-1",
     "title": "Aprendizaje no supervisado",
     "section": "Introducción",
     "text": "Introducción"
   },
   {
-    "objectID": "lecciones/unidad-02/leccion-04.html#distribución-gaussiana",
-    "href": "lecciones/unidad-02/leccion-04.html#distribución-gaussiana",
+    "objectID": "lecciones/unidad-02/leccion-06.html#comparación-con-pca-1",
+    "href": "lecciones/unidad-02/leccion-06.html#comparación-con-pca-1",
     "title": "Aprendizaje no supervisado",
-    "section": "Distribución gaussiana",
-    "text": "Distribución gaussiana\nUna distribución gaussiana describe cómo se distribuyen las observaciones alrededor de una media.\n\n\nEn una dimensión, su función de densidad es:\n\\[\nf(x)=\\frac{1}{\\sqrt{2\\pi\\sigma^2}}\n\\exp\\left(-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right)\n\\]\ndonde:\n\n\\(\\mu\\): media de la distribución.\n\\(\\sigma^2\\): varianza de la distribución.\n\\(x\\): valor de una observación."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#distribución-gaussiana-1",
-    "href": "lecciones/unidad-02/leccion-04.html#distribución-gaussiana-1",
-    "title": "Aprendizaje no supervisado",
-    "section": "Distribución gaussiana",
-    "text": "Distribución gaussiana\nCuando las observaciones tienen varias variables, se utiliza una distribución gaussiana multivariada. Su función de densidad es:\n\\[\nf(\\mathbf{x})=\n\\frac{1}{(2\\pi)^{d/2}|\\Sigma|^{1/2}}\n\\exp\\left(\n-\\frac{1}{2}\n(\\mathbf{x}-\\boldsymbol{\\mu})^T\n\\Sigma^{-1}\n(\\mathbf{x}-\\boldsymbol{\\mu})\n\\right)\n\\]\n\n\ndonde:\n\n\\(\\mathbf{x}\\): vector de características de una observación.\n\\(\\boldsymbol{\\mu}\\): vector de medias de las variables.\n\\(\\Sigma\\): matriz de covarianzas que describe la dispersión y relación entre las variables."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#modelo-de-mezclas-gaussianas",
-    "href": "lecciones/unidad-02/leccion-04.html#modelo-de-mezclas-gaussianas",
-    "title": "Aprendizaje no supervisado",
-    "section": "Modelo de mezclas gaussianas",
-    "text": "Modelo de mezclas gaussianas\nUn GMM supone que las observaciones provienen de una combinación de \\(K\\) distribuciones gaussianas. Su función de densidad se expresa como:\n\n\\[\np(x)=\\sum_{k=1}^{K}\\pi_k\n\\mathcal{N}(x\\mid\\boldsymbol{\\mu}_k,\\Sigma_k),\n\\quad \\sum_{k=1}^{K}\\pi_k=1\n\\]\n\ndonde:\n\n\\(\\pi_k\\): peso del componente \\(k\\).\n\\(\\boldsymbol{\\mu}_k, \\Sigma_k\\): vector de medias y matriz de covarianzas.\n\\(\\mathcal{N}\\): densidad de la distribución normal."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#asignación-probabilística",
-    "href": "lecciones/unidad-02/leccion-04.html#asignación-probabilística",
-    "title": "Aprendizaje no supervisado",
-    "section": "Asignación probabilística",
-    "text": "Asignación probabilística\nA diferencia de K-means, GMM utiliza una asignación suave (soft clustering).\nCada observación tiene una probabilidad de pertenecer a cada componente.\nPor ejemplo:\n\n\n\nObservación\nCluster 1\nCluster 2\n\n\n\n\nA\n0.95\n0.05\n\n\nB\n0.60\n0.40\n\n\nC\n0.10\n0.90\n\n\n\nSi se requiere una asignación única, la observación se asigna al componente con mayor probabilidad."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia",
-    "href": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia",
-    "title": "Aprendizaje no supervisado",
-    "section": "Ejemplo: probabilidades de pertenencia",
-    "text": "Ejemplo: probabilidades de pertenencia\nConsidera las observaciones:\n\\[\nX=\\{1,2,3,5,6,7\\}\n\\]\nSupongamos que inicialmente tenemos dos componentes gaussianos:\n\n\n\nParámetro\nGaussiana 1\nGaussiana 2\n\n\n\n\nMedia \\(\\mu\\)\n2\n6\n\n\nVarianza \\(\\sigma^2\\)\n4\n4\n\n\nPeso \\(\\pi\\)\n0.5\n0.5\n\n\n\nQueremos calcular la probabilidad de pertenencia de la observación \\(x=3\\) a cada componente."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia-1",
-    "href": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia-1",
-    "title": "Aprendizaje no supervisado",
-    "section": "Ejemplo: probabilidades de pertenencia",
-    "text": "Ejemplo: probabilidades de pertenencia\nPrimero, evaluamos las funciones de densidad:\n\\[\nf_k(x)=\\frac{1}{\\sqrt{2\\pi\\sigma_k^2}}\n\\exp\\left(-\\frac{(x-\\mu_k)^2}{2\\sigma_k^2}\\right)\n\\]\nObtenemos:\n\\[\nf_1(3)\\approx 0.1760,\\qquad\nf_2(3)\\approx 0.0648\n\\]\nPara obtener las probabilidades de pertenencia, utilizamos el teorema de Bayes:\n\\[\nP(z=k\\mid x)=\n\\frac{\\pi_k f_k(x)}\n{\\sum_{j=1}^{K}\\pi_j f_j(x)}\n\\]"
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia-2",
-    "href": "lecciones/unidad-02/leccion-04.html#ejemplo-probabilidades-de-pertenencia-2",
-    "title": "Aprendizaje no supervisado",
-    "section": "Ejemplo: probabilidades de pertenencia",
-    "text": "Ejemplo: probabilidades de pertenencia\nPara la primera gaussiana:\n\\[\nP(z=1\\mid x=3)=\n\\frac{0.5(0.1760)}\n{0.5(0.1760)+0.5(0.0648)}\n\\approx 0.731\n\\]\nPara la segunda gaussiana:\n\\[\nP(z=2\\mid x=3)=\n\\frac{0.5(0.0648)}\n{0.5(0.1760)+0.5(0.0648)}\n\\approx 0.269\n\\]\nPor lo tanto, la observación \\(x=3\\) tiene mayor probabilidad de pertenecer al primer componente, pero ambos componentes contribuyen a explicar su origen."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#algoritmo-em",
-    "href": "lecciones/unidad-02/leccion-04.html#algoritmo-em",
-    "title": "Aprendizaje no supervisado",
-    "section": "Algoritmo EM",
-    "text": "Algoritmo EM\nLos parámetros se estiman mediante el algoritmo Expectation-Maximization (EM).\n\nInicialización: establecer medias \\(\\boldsymbol{\\mu}_k^{0}\\), covarianzas \\(\\Sigma_k^{0}\\) y pesos iniciales \\(\\pi_k^{0}\\).\nPaso E (Expectation): calcular las probabilidades de pertenencia \\(\\gamma_{ik}\\).\nPaso M (Maximization): actualizar los parámetros \\(\\boldsymbol{\\mu}_k, \\Sigma_k, \\pi_k\\).\nRepetición: alternar los pasos E y M hasta alcanzar la convergencia."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#hiperparámetros-de-gmm",
-    "href": "lecciones/unidad-02/leccion-04.html#hiperparámetros-de-gmm",
-    "title": "Aprendizaje no supervisado",
-    "section": "Hiperparámetros de GMM",
-    "text": "Hiperparámetros de GMM\n\n\n\nHiperparámetro\nDescripción\n\n\n\n\nn_components\nNúmero de componentes gaussianos.\n\n\nmax_iter\nNúmero máximo de iteraciones del algoritmo EM.\n\n\ntol\nTolerancia utilizada para determinar la convergencia.\n\n\nrandom_state\nSemilla para controlar la aleatoriedad.\n\n\n\n\nEl número de componentes puede seleccionarse utilizando criterios como AIC o BIC.\nSe ajustan modelos con distintos valores de \\(K\\) y se selecciona aquel que minimiza AIC o BIC, según el criterio elegido."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#consideraciones-importantes",
-    "href": "lecciones/unidad-02/leccion-04.html#consideraciones-importantes",
-    "title": "Aprendizaje no supervisado",
-    "section": "Consideraciones importantes",
-    "text": "Consideraciones importantes\n\nRequiere establecer el número de componentes gaussianos.\nPermite asignaciones probabilísticas.\nPuede representar clusters elípticos.\nEs sensible a la inicialización y puede converger a óptimos locales.\nPuede presentar problemas cuando las matrices de covarianza son singulares o casi singulares."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#preguntas",
-    "href": "lecciones/unidad-02/leccion-04.html#preguntas",
-    "title": "Aprendizaje no supervisado",
-    "section": "Preguntas",
-    "text": "Preguntas\n\n\n\n\n\n\n¿Seguro? 🤨\n\n\nBueno…\n\n\nPregúntale a ChatGPT pues."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#qué-sigue",
-    "href": "lecciones/unidad-02/leccion-04.html#qué-sigue",
-    "title": "Aprendizaje no supervisado",
-    "section": "¿Qué sigue?",
-    "text": "¿Qué sigue?\nEn el siguiente notebook implementaremos un modelo de mezclas gaussianas, visualizaremos las distribuciones estimadas y analizaremos cómo cambian los resultados al modificar el número de componentes y las matrices de covarianza."
-  },
-  {
-    "objectID": "lecciones/unidad-02/leccion-04.html#algoritmo-em-1",
-    "href": "lecciones/unidad-02/leccion-04.html#algoritmo-em-1",
-    "title": "Aprendizaje no supervisado",
-    "section": "Algoritmo EM",
-    "text": "Algoritmo EM"
+    "section": "Comparación con PCA",
+    "text": "Comparación con PCA"
   }
 ]

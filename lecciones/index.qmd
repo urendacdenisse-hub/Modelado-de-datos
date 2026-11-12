@@ -47,4 +47,4 @@ title: "Lecciones"
 ## Reducción de dimensión
 
 - [Análisis de componentes principales](unidad-02/leccion-05.qmd)
-
+- [t-SNE](unidad-02/leccion-06.qmd)
